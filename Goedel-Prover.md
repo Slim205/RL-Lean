@@ -38,6 +38,15 @@ https://arxiv.org/pdf/2502.07640
 - Translated data : 1.78M formal statement : 860K from Numina / 68K from AOPS => 928K (760K have 2 valid statements). Then add 140K statements from Lean Workbook.
 
 ### Expert Iteration : 
+- Start with DeepSeek-Prover-V1.5-RL and generate 16 proofs for each statement
+- Verify those statements using lean compiler
+- if one proof is valid, we retain one proof per statement (random sampling)
+- SFT on DeepSeek-Prover-V1.5-Base ==> construct the prover-iter-1
+- Iteration : use iter-k to generate answers and construct the iter-k+1 prover
+- lr = 1e-4 / 5e-5 , epochs : 1/2, packing=True, batch_size=8
+
+
+## Results : 
 
 
 

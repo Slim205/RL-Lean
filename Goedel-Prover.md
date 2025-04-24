@@ -47,6 +47,11 @@ https://arxiv.org/pdf/2502.07640
 
 
 ## Results : 
-
-
+### Benchmarks : 
+- miniF2F : 488 problem statements : high school exercices, high-school competition level : Olympiad. (they use the version provided by Xin et al : Lean 4.9)
+- ProofNet : undergraduate-level mathematics, 371 problem statements in Lean. topics : real and complex analysis, linear algebra, abstract algebra, topology ( Xin et al : Lean 4.9 Version)
+- Lean Workbook : (from AOPS) has 140K statement (used in training which is the same as deepSeek)
+- PutnamBench : from theWilliam Lowell Putnam Mathematical Competition years 1962 - 2023. 644 lean statement (algebra, analysis, number theory, geometry, combinatorics, probability and set theory)
+- NuminaTest : select 250 statement from their formalised Numina dataset.
+### Main Results :
 

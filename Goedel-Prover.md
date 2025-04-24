@@ -4,7 +4,7 @@ https://arxiv.org/pdf/2502.07640
 
 ## Abstract:  
 - Goedel-Prover beats the SOTA performance in proof generation  
-- create synthetic dataset: use translated data from NL math problems (Numina) to Lean (LLM was used to check the translation)  
+- create synthetic dataset: use translated data from natural language math problems (Numina) to Lean (LLM was used to check the translation)  
 - to generate the dataset they train a series of provers iteratively (once a prover succeeds in generating a proof, we add the proof to the training dataset for the next prover)  
 - outperforms SOTA models which employ RL  
 - Evaluation: miniF2F / PutnamBench / Lean Workbook (solving new problems)
@@ -15,8 +15,7 @@ https://arxiv.org/pdf/2502.07640
 - Problem with formal math: scarcity of the data (Lean Workbook: 140K / 15.7K with formal proofs, Open Bootstrapped: 107K with proofs from Mathlib4)  
 - miniF2F is the most used dataset (high school level / complex reasoning abilities)  
 - Mathlib4 (simple manipulation of advanced math concepts / doesn't improve the performance on miniF2F when added to training)  
-- The informal math data is not scarce  
-- Numina / MATH / GSM8K / AMC / AIME / AoPs, etc  
+- The informal math data is not scarce : Numina / MATH / GSM8K / AMC / AIME / AoPs, etc  
 - Train two LLMs to translate from Informal to Formal math (1st LLM trained on Lean Workbook data, 2nd on pairs annotated by Claude)  
 - Use an LLM to verify the quality of translation  
 - Data: 1.64 M of statements  
@@ -30,7 +29,8 @@ https://arxiv.org/pdf/2502.07640
 ## Method:  
 ### Statement Formalization:  
 - Formalizer A: trained using F-I statement pairs sourced from Lean Workbook.  
-- Formalizer B: employ Claude-sonnet-3.5 to formalize 230K statements from Numina ⇒ extract 170K statements that successfully passed Lean compilation.  
+- Formalizer B: employ Claude-sonnet-3.5
+- formalize 230K statements from Numina ⇒ extract 170K statements that successfully passed Lean compilation.  
 - Training: SFT on Qwen2.5-Coder-32B (1 day on 8 H100 GPUs)  
 - Quality assessment: 1) Syntax check for Lean: CC: Compiling Correctness ('by sorry' ⇒ to be able to compile) 2) FC: faithfulness and Completeness score using Qwen2.5-72-B-Instruct (4 judgments), keep FC ≥ .5  
 - For each Numina statement, we generate 8 statements using the two Formalizers ⇒ 16 statements per problem. Then test those statements on CC and FC. Then select 1 random statement from the valid ones from each Formalizer.  
@@ -39,7 +39,7 @@ https://arxiv.org/pdf/2502.07640
 ### Expert Iteration:  
 - Start with DeepSeek-Prover-V1.5-RL and generate 16 proofs for each statement  
 - Verify those statements using Lean compiler  
-- if one proof is valid, we retain one proof per statement (random sampling)  
+- if one proof is valid, we retain one proof per statement (Many valid proofs => random sampling)  
 - SFT on DeepSeek-Prover-V1.5-Base ⇒ construct the prover-iter-1  
 - Iteration: use iter-k to generate answers and construct the iter-k+1 prover  
 - lr = 1e-4 / 5e-5, epochs: 1/2, packing = True, batch_size = 8
@@ -54,7 +54,8 @@ https://arxiv.org/pdf/2502.07640
 
 ### Main Results:  
 - Pass@32: we generate 32 proofs  
-- 1st evaluation: miniF2F Pass@32 (Goedel-Prover-SFT, DeepSeek-Prover-RL, SFT) for pass in 32, 3200, 4×6400  
+- 1st evaluation: miniF2F Pass@32 (Goedel-Prover-SFT, DeepSeek-Prover-RL, SFT) for pass 32, 3200, 4×6400  
 - 2nd evaluation: PutnamBench: 7/644 problems (Goedel-Prover, ABEL, InternLM, etc)  
 - 3rd evaluation: ProofNet (different dataset: contains other types of objects: more complex objects vs simple objects with complex questions)  
 - 4th evaluation: Lean Workbook 140K problems: solve 15.7 ⇒ 29.7K problems
+- add Mathlib4 after the 6th iteration

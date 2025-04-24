@@ -1,5 +1,6 @@
 # Goedel-Prover: A Frontier Model for Open-Source Automated Theorem Proving
 
+https://arxiv.org/pdf/2502.07640
 
 ## Abstract : 
 - Goedel-Prover beats sthe SOTA performance in proof generation

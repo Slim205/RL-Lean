@@ -54,4 +54,8 @@ https://arxiv.org/pdf/2502.07640
 - PutnamBench : from theWilliam Lowell Putnam Mathematical Competition years 1962 - 2023. 644 lean statement (algebra, analysis, number theory, geometry, combinatorics, probability and set theory)
 - NuminaTest : select 250 statement from their formalised Numina dataset.
 ### Main Results :
-
+- Pass@32 : we generate 32 proofs
+- 1st evaluation : miniF2F Pass@32 (Goedel-Prover-SFT, DeepSeek-prover-RL, SFT ) for pass in 32, 3200, 4*6400
+- 2nd evaluation : PutnamBench : 7/644 problems ( Goedel-prover, ABEL,internLM,ect)
+- 3rd evaluation : ProofNet (different dataset : contains other type of objects : more complex object Vs simple object with complex questions)
+- 

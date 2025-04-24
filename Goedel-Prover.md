@@ -20,6 +20,24 @@ https://arxiv.org/pdf/2502.07640
 - Train two LLMs to translate from Informal to Formal math ( 1st LLM trained on Lean Workbook data, 2nd on pairs annotated by Claude)
 - Use an LLM to verify that the quality of translation
 - Data : 1.64 M of statements
-
 - Perform expert iteration to train the prover ( generate proofs without interaction with lean : whole-proof generation method)
 - Steps : 1) generate 16 candidates proofs using DeepSeek-Prover-V1.5-RL for each statement / 2) verify the correctness using lean compiler 3) collect data using correct proofs  4) Fine tune DeepSeek-Prover-V1.5-Base 5) re run the same process for 8 iterations
+
+
+## Related Work : 
+- Automated theroem proving : While Goedel-Prover also generates whole proofs, the data and methodology can be adapted to develop stepwise provers as well.
+- Autoformalization and synthetic data generation : DeepSeek Prover and InternLM2.5-StepProver have implemented a translation strategy using expert iteration. Difference : formalizing the Numina dataset + private collected dataset Vs only private dataset // train 2 formalizers to enhance diversity.
+
+## Method : 
+### Statement Formalization : 
+- Formalizer A: trained using F-I statement pairs sourced from Lean Workbook.
+- Formalizer B: employ Claude-sonnet-3.5 to formalize 230K statements from Numina => extract 170K statements that successfully passed Lean compilation. 
+- Training : SFT on Qwen2.5-Coder-32B ( 1 day on 8 H100 GPUs)
+- Quality assessement : 1) Syntax check for lean : CC : Compiling Correctness ( 'by sorry' => to be able to compile) 2) FC : faithfulness and Completeness score using Qwen2.5-72-B-Instruct (4 judgments), keep FC >= .5
+- For each Numina statement, we generate 8 statements using the two Formalizer => 16 statements per problem. Then test those statement on CC and FC.  Then select 1 random statement from the valid ones from each formalizer.
+- Translated data : 1.78M formal statement : 860K from Numina / 68K from AOPS => 928K (760K have 2 valid statements). Then add 140K statements from Lean Workbook.
+
+### Expert Iteration : 
+
+
+

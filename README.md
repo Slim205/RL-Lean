@@ -1,19 +1,20 @@
 # RL-Lean
 
 
-| Model                     | Paper Results (miniF2F) | Paper Results (ProofNet) | Your Results (miniF2F) | Your Results (ProofNet) | Difference        |
-|---------------------------|------------------------|--------------------------|------------------------|-------------------------|------------------|
-| Deepseek-Prover-v1.5-RL   | 50.0%                  | 16.0%                   | 57.17%                 | 17.7%                  | +7.17% / +1.7%  |
-| Goedel-Prover-SFT         | 57.6%                  | 15.2%                   | 62.7%                  | 18.6%                  | +5.1% / +3.4%   |
+| Model                   | Reported (miniF2F) | Reported (ProofNet) | Our Implementation (miniF2F) | Our Implementation (ProofNet) |
+|-------------------------|--------------------|---------------------|------------------------------|-------------------------------|
+| Deepseek-Prover-v1.5-RL | 50.0%              | 16.0%               | 57.17%                       | 17.7%                        |
+| Goedel-Prover-SFT       | 57.6%              | 15.2%               | 62.7%                        | 18.6%                        |
 
 
-
-| Model                     | miniF2F Test | miniF2F Validation | ProofNet Test | ProofNet Validation |
-|---------------------------|--------------|--------------------|---------------|---------------------|
-| **Goedel-Prover-SFT**     |              |                    |               |                     |
-| Success Count             | 137/244      | 169/244            | 27/181        | 40/180              |
-| Percentage                | 56.15%       | 69.26%             | 14.92%        | 22.22%              |
-|                           |              |                    |               |                     |
-| **Deepseek-Prover-v1.5-RL** |              |                    |               |                     |
-| Success Count             | 121/244      | 158/244            | 29/181        | 35/180              |
-| Percentage                | 49.59%       | 64.75%             | 16.02%        | 19.44%              |
+| Model                   | miniF2F (Total: 488) | ProofNet (Total: 361) |
+|-------------------------|----------------------|-----------------------|
+|                         | **Test** (244)       | **Test** (181)        |
+| **Goedel-Prover-SFT**   | 137 (56.15%)         | 27 (14.92%)           |
+| **Deepseek-Prover-v1.5**| 121 (49.59%)         | 29 (16.02%)           |
+|                         | **Validation** (244) | **Validation** (180)   |
+| **Goedel-Prover-SFT**   | 169 (69.26%)         | 40 (22.22%)           |
+| **Deepseek-Prover-v1.5**| 158 (64.75%)         | 35 (19.44%)           |
+|                         | **Combined Score**   | **Combined Score**     |
+| **Goedel-Prover-SFT**   | **62.7%**            | **18.6%**             |
+| **Deepseek-Prover-v1.5**| **57.17%**           | **17.7%**             |

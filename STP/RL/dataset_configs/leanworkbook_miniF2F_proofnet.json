@@ -1,0 +1,14 @@
+[
+    {
+        "dataset_path": "assets/data/training/lean_workbook_dedup.json",
+        "weight": 1
+    },
+    {
+        "dataset_path": "assets/data/training/miniF2F_lean_valid.json",
+        "weight": 256
+    },
+    {
+        "dataset_path": "assets/data/training/proofnet_valid.json",
+        "weight": 256
+    }
+]

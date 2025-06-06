@@ -79,7 +79,7 @@ class LlamaConfig(HFCompatConfig):
     use_layer_norm_weight: bool = True
     rope_scaling: Optional[dict] = None
 
-    reference_checkpoint: str = "meta-llama/Llama-2-7b-hf"
+    reference_checkpoint: str = "meta-llama/Llama-3.1-8B-Instruct"
     tokenizer: Optional[str] = None
 
     # Axis

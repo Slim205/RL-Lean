@@ -11,11 +11,13 @@ import gc
 from collections import defaultdict
 from copy import deepcopy
 from utils.gcloud_utils import read_file, write_data, path_exists, execute_on_all_workers
-from utils.model_utils import init_ray_cluster, CHECKPOINT_TMP_DIR
+from utils.model_utils import init_ray_cluster
 from utils.RL_utils import collect_trajectories, collect_conjecture, load_ds_from_config
 from utils.RL_utils import Sampler_base, Sampler_naive, __DEBUG__, REPO_DIR
-
+import time
 MAX_LENGTH = 1024
+
+#python RL_step1_generate.py --model "/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229" --exp_dir "/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round0" --seed 0  --temperature 1.0 --dataset_config "./dataset_configs/leanworkbook.json"  --sampler "Sampler_base" --conjecture_multiplier 1 --samples_per_statement 64 --statements_per_round 0 --ray_mode True
 
 if __name__ == "__main__":
     logging.basicConfig(format='[%(asctime)s - %(name)s - %(levelname)s] %(message)s', level=logging.DEBUG, force=True)
@@ -31,6 +33,8 @@ if __name__ == "__main__":
     parser.add_argument("--conjecture_multiplier", type=int, default=1)
     parser.add_argument("--samples_per_statement", type=int)
     parser.add_argument("--statements_per_round", type=int, default=20000)
+    parser.add_argument("--ray_mode", type=bool, default=False)
+
     args = parser.parse_args()
     logging.debug(str(args))
     rng = np.random.default_rng(args.seed)
@@ -42,9 +46,10 @@ if __name__ == "__main__":
     if 'gs://' not in args.exp_dir:
         os.makedirs(args.exp_dir, exist_ok = True)
 
-    formatted_ds = load_ds_from_config(args.dataset_config)
-    if __DEBUG__:
-        formatted_ds = formatted_ds[:1000]
+    formatted_ds = load_ds_from_config(args.dataset_config) # dataset of only statements taken from Leanworkbook 89K 
+    #if __DEBUG__:
+    #formatted_ds = formatted_ds[:10000] # 8% of training data
+     #assets/data/training/lean_workbook_dedup.json
 
     logging.info(f'Number of lemmas to generate: {len(formatted_ds)}')
     if args.statements_per_round > 0:
@@ -68,10 +73,11 @@ if __name__ == "__main__":
     else:
         sampler = Sampler()
         sampler.init_lemma_mapping(formatted_ds)
+        # we give each statement an ID : self.lemma_mapping contrains the ID of the lemma
     
-    init_ray_cluster()
+    init_ray_cluster(args.ray_mode)
 
-    lemmas_to_generate = deepcopy(selected_statements)
+    lemmas_to_generate = deepcopy(selected_statements) # This is Leanwoork book data w and w/o proofs (initially)
     collect_conjecture_fn = lambda inference_pool, nr_actors, selected_lemmas, lemma_mapping, seed: \
         collect_conjecture(inference_pool, nr_actors, selected_lemmas, \
                              lemma_mapping, MAX_LENGTH, seed, args.temperature, cache_dir=os.path.join(args.exp_dir, 'sampler_ckpt'))
@@ -108,6 +114,4 @@ if __name__ == "__main__":
     write_data(json.dumps(sampler.valid_conjecture_examples), os.path.join(args.exp_dir, 'conjecture_examples.json'), 'json')
 
     if not __DEBUG__:
-        logging.debug('Removing temporary files...')
-        execute_on_all_workers(f'rm -r {CHECKPOINT_TMP_DIR}; mkdir -p {CHECKPOINT_TMP_DIR}')
         logging.debug('Done.')

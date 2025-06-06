@@ -153,7 +153,7 @@ def copy_dir(source, target):
         os.system(command)
     else:
         # Handle local directory copy
-        shutil.copytree(source, target)
+        shutil.copytree(source, target,dirs_exist_ok=True)
         logging.debug(f"Copied {source} to {target} locally.")
 
 def path_exists(path):

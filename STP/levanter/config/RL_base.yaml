@@ -5,12 +5,12 @@ trust_remote_code: True
 trainer:
   tracker:
     type: wandb
-    project: "STP_deepseek"
+    project: "STP_deepseek_rl"
     tags: ["deepseek-ai/DeepSeek-Prover-V1.5-SFT", "STP"]
 
   mp: p=f32,c=bfloat16
 
-  train_batch_size: 2048
+  train_batch_size: 1024 # 1024
   steps_per_eval: 10
 
   tensor_parallel_axes: ["mlp", "heads"]

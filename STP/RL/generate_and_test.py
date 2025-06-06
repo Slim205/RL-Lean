@@ -17,7 +17,7 @@ MAX_LENGTH = 1024
 def main(args: argparse.Namespace):
     args.save_file_path = os.path.join(args.exp_dir, f'generated_proofs_{args.save_file_name}.jsonl')
     print(args)
-    os.system(f'rm -r /n/netscratch/amin_lab/Lab/slim/STP/benchmark_results')
+    #os.system(f'rm -r /n/netscratch/amin_lab/Lab/slim/STP/benchmark_results')
     
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer_path)
     tokenizer.truncation_side = 'left'
@@ -57,8 +57,7 @@ def main(args: argparse.Namespace):
             insert_lemma(lemma_mapping, test_info) ## lemma_mapping : from statement to indx
     cache_dir = os.path.join(args.exp_dir, 'sampler_ckpt')
 
-    init_ray_cluster(numcpus=args.cpu,numgpus=args.gpu)
-    
+    init_ray_cluster(default=True)
     ray_inference_actors, model_dir = create_inference_actors(args.model, args.tokenizer_path,enable_prefix_caching=False)
     
     rng = np.random.default_rng(0)
@@ -85,8 +84,6 @@ if __name__ == "__main__":
     parser.add_argument("--raw_dataset_config", type=str, default=None)
     parser.add_argument("--temperature", type=float, default=0.7)
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--cpu", type=int, default=8)
-    parser.add_argument("--gpu", type=int, default=2)
 
     parsed_args = parser.parse_args()
     parsed_args.tokenizer_path = parsed_args.model

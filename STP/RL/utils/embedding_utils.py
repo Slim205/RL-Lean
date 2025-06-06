@@ -2,8 +2,8 @@ import os
 os.environ['TOKENIZERS_PARALLELISM'] = 'false'
 import ray
 import torch
-import torch_xla
-import torch_xla.core.xla_model as xm
+#import torch_xla
+#import torch_xla.core.xla_model as xm
 from transformers import AutoTokenizer, AutoModel
 import argparse
 import time
@@ -25,7 +25,7 @@ class LockManager:
     def release(self):
         self.locked += 1
 
-@ray.remote(resources={"TPU": 1})  # Allocate one TPU per worker
+@ray.remote(num_gpus=1)  # Allocate one TPU per worker
 class EmbeddingWorker:
     def __init__(self, model_name: str, model_load_lock: ray.actor.ActorHandle = None, tokenizer_path: str = "deepseek-ai/DeepSeek-Prover-V1.5-SFT"):
         """
@@ -50,7 +50,8 @@ class EmbeddingWorker:
             self.model = AutoModel.from_pretrained(model_name)
             self.model.eval()
             self.model.half()  # Use half-precision for faster inference; adjust if necessary for TPUs
-            self.device = xm.xla_device()  # Set device to TPU
+            self.device = torch.device("cuda")
+#xm.xla_device()  # Set device to TPU
             self.model.to(self.device)
         finally:
             # Ensure the lock is released even if an error occurs
@@ -123,7 +124,7 @@ class EmbeddingWorker:
         mean_hidden = sum_hidden / num_tokens  # Shape: [batch_size, 768]
 
         # Synchronize XLA device to ensure computations are complete
-        xm.mark_step()
+        torch.cuda.synchronize()#xm.mark_step()
 
         # Move the tensor to CPU and convert to NumPy array for serialization
         return mean_hidden.cpu().numpy().tolist()

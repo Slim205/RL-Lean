@@ -26,7 +26,7 @@ from func_timeout import FunctionTimedOut, func_set_timeout
 __DEBUG__ = os.getenv("DEBUG", 'False').lower() in ('true', '1', 't')
 HOME_DIR = os.path.expanduser('~')
 DEFAULT_LAKE_PATH = f'{HOME_DIR}/.elan/bin/lake'
-DEFAULT_LEAN_WORKSPACE = '/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/'
+DEFAULT_LEAN_WORKSPACE = f'{HOME_DIR}/lean/mathlib4/'
 MEMORY_USAGE_THRESHOLD = 15
 DEFAULT_TIMEOUT = 200
 LEAN_HEADER = 'import miniF2F\nimport Aesop\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\n'
@@ -309,10 +309,11 @@ def create_ray_lean4_actors(
     
     for i, node in enumerate(ray.nodes()):
         ip = node['NodeManagerAddress']
+        print(node)
         nr_cpus = int(node['Resources']['CPU']) - reserved_cpus
         nr_local_workers = int(nr_cpus / cpus_per_task)
 
-        if (ip == head_ip) and len(ray.nodes()) > 1 :
+        if (ip == head_ip) and len(ray.nodes()) > 4 :
             continue
 
         print(f'Creating {nr_local_workers} workers on node {ip}, host name {node["NodeManagerHostname"]}')
@@ -329,8 +330,11 @@ def create_ray_lean4_actors(
     print(f'Ray actors created. Number of workers: {len(ray_workers)}')
 
     print('Initializing Lean4 environment...')
-    execute_on_all_workers('cd /n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/; find .lake/build/ -type f -exec cat {} + > /dev/null; lake exec repl < /n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/.lake/packages/REPL/test/aime_1983_p9.in > /n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/.lake/packages/REPL/test/aime_1983_p9.out;',
-                           expect_succ=True)
+  #  execute_on_all_workers('cd /n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/; find .lake/build/ -type f -exec cat {} + > /dev/null; lake exec repl < /n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/.lake/packages/REPL/test/aime_1983_p9.in > /n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/.lake/packages/REPL/test/aime_1983_p9.out;',
+   #                        expect_succ=True)
+   # execute_on_all_workers('cd ~/lean/mathlib4; find .lake/build/ -type f -exec cat {} + > /dev/null; lake exec repl < ~/lean/mathlib4/.lake/packages/REPL/test/aime_1983_p9.in > ~/lean/mathlib4/.lake/packages/REPL/test/aime_1983_p9.out;',
+    #                       expect_succ=True)
+
     print('Lean4 environment initialized.')
     return ray_workers
 

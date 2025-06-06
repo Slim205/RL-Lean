@@ -1,90 +1,88 @@
 #!/bin/bash
+#SBATCH --job-name=stprepo
+#SBATCH --time=72:00:00
+#SBATCH --mem=812GB 
+#SBATCH --export=ALL
+#SBATCH --partition=gpu --nodes=1 --ntasks-per-node=1 --cpus-per-task=64 --gpus-per-node=4
+#SBATCH hetjob
+#SBATCH --partition=gpu --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --gpus-per-node=1
+#SBATCH hetjob
+#SBATCH --partition=gpu --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --gpus-per-node=1
+#SBATCH hetjob
+#SBATCH --partition=gpu --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --gpus-per-node=1
+#SBATCH hetjob
+#SBATCH --partition=gpu --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --gpus-per-node=1
+#SBATCH hetjob
+#SBATCH --partition=gpu --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --gpus-per-node=1
+#SBATCH hetjob
+#SBATCH --partition=gpu --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --gpus-per-node=1
+#SBATCH hetjob
+#SBATCH --partition=gpu --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --gpus-per-node=1
+#SBATCH hetjob
+#SBATCH --partition=gpu --nodes=1 --ntasks-per-node=1 --cpus-per-task=16 --gpus-per-node=1
 
-# we frequently deal with commands failing, and we like to loop until they succeed. this function does that for us
-function retry {
-  for i in {1..5}; do
-    "$@"
-    if [ $? -eq 0 ]; then
-      break
-    fi
-    if [ $i -eq 5 ]; then
-      >&2 echo "Error running $*, giving up"
-      exit 1
-    fi
-    >&2 echo "Error running $*, retrying in 5 seconds"
-    sleep 5
-  done
-}
+export SLURM_STEP_TASKS_PER_NODE=$SLURM_NTASKS_PER_NODE
+export SLURM_JOB_NUM_NODES=$SLURM_NNODES
 
-# Exit immediately if a command exits with a non-zero status
-set -e
+module load python/3.12.5-fasrc01
+module load cuda/12.4.1-fasrc01
+module load cudnn/9.1.1.17_cuda12-fasrc01 
+conda activate /n/netscratch/amin_lab/Lab/slim/env 
+cd /n/netscratch/amin_lab/Lab/slim/STP/RL
 
-source .bash_alias.sh
-# Define variables
-EXP_DIR="$STORAGE/STP_LeanWorkbook"
-BASE_MODEL="$STORAGE/SFT/ygfu8isg/step-114"
+HEAD_NODE=$(scontrol show hostname $SLURM_NODELIST | head -n1)
 
-DATASET_CONFIG="./dataset_configs/leanworkbook.json"
+srun --het-group=0 bash -c '
+    echo "Node 0"
+    ray stop
+    ray start --head --port=6379  
+    sleep 20
+    bash run_RL_steps_function.sh
+' &
+srun --het-group=1 bash -c '
+    sleep 10
+    echo "Node 1"
+    ray start --address='$HEAD_NODE':6379  --num-cpus=16 --num-gpus=1
+    while true; do sleep 1000; done
+' &  
+srun --het-group=2 bash -c ' 
+    sleep 10
+    echo "Node 2"
+    ray start --address='$HEAD_NODE':6379 --num-cpus=16 --num-gpus=1
+    while true; do sleep 1000; done
+' &  
+srun --het-group=3 bash -c '
+    sleep 10
+    echo "Node 3"
+    ray start --address='$HEAD_NODE':6379 --num-cpus=16 --num-gpus=1
+    while true; do sleep 1000; done
+' &  
+srun --het-group=4 bash -c '
+    sleep 10
+    echo "Node 4"
+    ray start --address='$HEAD_NODE':6379 --num-cpus=16 --num-gpus=1
+    while true; do sleep 1000; done
+' &  
+srun --het-group=5 bash -c '
+    sleep 10
+    echo "Node 5"
+    ray start --address='$HEAD_NODE':6379 --num-cpus=16 --num-gpus=1
+    while true; do sleep 1000; done
+' &  
+srun --het-group=6 bash -c '
+    sleep 10
+    ray start --address='$HEAD_NODE':6379 --num-cpus=16 --num-gpus=1
+    while true; do sleep 1000; done
+' &  
+srun --het-group=7 bash -c '
+    sleep 10
+    ray start --address='$HEAD_NODE':6379 --num-cpus=16 --num-gpus=1
+    while true; do sleep 1000; done
+' &  
+srun --het-group=8 bash -c '
+    sleep 10 
+    ray start --address='$HEAD_NODE':6379 --num-cpus=16 --num-gpus=1
+    while true; do sleep 1000; done
+' &  
 
-# Fetch TPU metadata
-TPU_NAME=$(retry curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/description)
-ZONE_FULL_PATH=$(retry curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/zone)
-ZONE=$(echo "$ZONE_FULL_PATH" | awk -F'/' '{print $NF}')
-
-source ~/venv_vllm/bin/activate
-
-# Define the total number of rounds
-TOTAL_ROUNDS=12
-START_ROUND=0
-
-# Loop through each round
-for ((ROUND=$START_ROUND; ROUND<TOTAL_ROUNDS; ROUND++)); do
-    # Determine the model to use
-    if [ "$ROUND" -eq 0 ]; then
-        MODEL="$BASE_MODEL"
-        SEED="$ROUND"
-        SPL=64
-    else
-        PREV_ROUND=$((ROUND-1))
-        MODEL="$EXP_DIR/round${PREV_ROUND}/RL_model"
-        SEED="$ROUND"
-        SPL=32
-    fi
-
-    # Define the experiment directory for the current round
-    CURRENT_EXP_DIR="$EXP_DIR/round${ROUND}"
-
-    echo "=============================="
-    echo "Starting Round ${ROUND}"
-    echo "Generating data with model: $MODEL"
-    echo "Experiment Directory: $CURRENT_EXP_DIR"
-    echo "Seed: $SEED"
-    echo "=============================="
-
-    # Step 1: Generate Data
-    TPU_NAME="$TPU_NAME" ZONE="$ZONE" python RL_step1_generate.py \
-        --model "$MODEL" \
-        --exp_dir "$CURRENT_EXP_DIR" \
-        --seed "$SEED" \
-        --temperature 1.0 \
-        --dataset_config "$DATASET_CONFIG" \
-        --sampler "Sampler_base" \
-        --conjecture_multiplier 1 \
-        --samples_per_statement $SPL \
-        --statements_per_round 0
-
-    echo "Data generation for Round ${ROUND} completed."
-
-    # Step 2: Train Model
-    echo "Starting training for Round ${ROUND} with base model: $MODEL"
-    WANDB_API_KEY=$WANDB_API_KEY \
-    TPU_NAME="$TPU_NAME" ZONE="$ZONE" python RL_step2_train.py \
-        --base_model "$MODEL" \
-        --exp_dir "$CURRENT_EXP_DIR" \
-        --epoch 1 \
-        --lr 5e-5
-
-    echo "Training for Round ${ROUND} completed."
-done
-
-echo "All rounds completed successfully."
+wait

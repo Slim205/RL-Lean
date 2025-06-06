@@ -85,7 +85,7 @@ class TrainArgs:
     eval_data_cache_dir: str = "cache/"  # Path to cache the tokenized data. can be gcs
 
     model_name_or_path: str = "EleutherAI/llemma_7b"
-    tokenizer_name_or_path: str = "meta-llama/Llama-2-7b-hf"
+    tokenizer_name_or_path: str = "meta-llama/Llama-3.1-8B-Instruct"
     trust_remote_code: bool = False  # Trust remote code when loading from HuggingFace checkpoints.
 
     model_cache_dir: Optional[str] = None  # Path to cache the model. must be local.

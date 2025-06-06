@@ -1,3 +1,4 @@
 env/
 sbatch/
 /n/netscratch/amin_lab/Lab/slim/STP/benchmark_results
+.pytest_cache

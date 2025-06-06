@@ -1,0 +1,25 @@
+2025-05-28 15:30:46,689	INFO scripts.py:1186 -- Did not find any active Ray processes.
+2025-05-28 15:30:49,072	INFO usage_lib.py:472 -- Usage stats collection is enabled. To disable this, add `--disable-usage-stats` to the command that starts the cluster, or run the following command: `ray disable-usage-stats` before starting the cluster. See https://docs.ray.io/en/master/cluster/usage-stats.html for more details.
+2025-05-28 15:30:49,072	INFO scripts.py:767 -- [37mLocal node IP[39m: [1m10.31.140.48[22m
+2025-05-28 15:30:52,217	SUCC scripts.py:804 -- [32m--------------------[39m
+2025-05-28 15:30:52,218	SUCC scripts.py:805 -- [32mRay runtime started.[39m
+2025-05-28 15:30:52,218	SUCC scripts.py:806 -- [32m--------------------[39m
+2025-05-28 15:30:52,218	INFO scripts.py:808 -- [36mNext steps[39m
+2025-05-28 15:30:52,218	INFO scripts.py:811 -- To add another node to this Ray cluster, run
+2025-05-28 15:30:52,218	INFO scripts.py:814 -- [1m  ray start --address='10.31.140.48:6379'[22m
+2025-05-28 15:30:52,218	INFO scripts.py:823 -- To connect to this Ray cluster:
+2025-05-28 15:30:52,218	INFO scripts.py:825 -- [35mimport[39m[26m ray
+2025-05-28 15:30:52,218	INFO scripts.py:826 -- ray[35m.[39m[26minit()
+2025-05-28 15:30:52,218	INFO scripts.py:838 -- To submit a Ray job using the Ray Jobs CLI:
+2025-05-28 15:30:52,219	INFO scripts.py:839 -- [1m  RAY_ADDRESS='http://127.0.0.1:8265' ray job submit --working-dir . -- python my_script.py[22m
+2025-05-28 15:30:52,219	INFO scripts.py:848 -- See https://docs.ray.io/en/latest/cluster/running-applications/job-submission/index.html 
+2025-05-28 15:30:52,219	INFO scripts.py:852 -- for more information on submitting Ray jobs to the Ray cluster.
+2025-05-28 15:30:52,219	INFO scripts.py:857 -- To terminate the Ray runtime, run
+2025-05-28 15:30:52,219	INFO scripts.py:858 -- [1m  ray stop[22m
+2025-05-28 15:30:52,219	INFO scripts.py:861 -- To view the status of the cluster, use
+2025-05-28 15:30:52,219	INFO scripts.py:862 --   [1mray status[22m[26m
+2025-05-28 15:30:52,219	INFO scripts.py:866 -- To monitor and debug Ray, view the dashboard at 
+2025-05-28 15:30:52,219	INFO scripts.py:867 --   [1m127.0.0.1:8265[22m[26m
+2025-05-28 15:30:52,219	INFO scripts.py:874 -- [4mIf connection to the dashboard fails, check your firewall settings and network configuration.[24m
+{'CPU': 8.0, 'object_store_memory': 92096663961.0, 'node:__internal_head__': 1.0, 'memory': 204892215911.0, 'node:10.31.140.48': 1.0}
+Number of nodes: 1

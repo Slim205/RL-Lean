@@ -143,6 +143,8 @@ if __name__ == "__main__":
     parser.add_argument("--include_synthetic_examples", action='store_true')
     parser.add_argument("--merge_from", default=[], nargs='+')
     parser.add_argument("--merge_from_rounds", default=[], nargs='+')
+    parser.add_argument("--gpu", type=int, default=0)
+
     args = parser.parse_args()
     if args.save_dir is None:
         args.save_dir = args.exp_dir
@@ -153,7 +155,7 @@ if __name__ == "__main__":
         logging.warning(f"Model already trained. Exiting...")
         exit(0)
 
-    init_ray_cluster()
+    init_ray_cluster(numgpus=args.gpu)
     train_ds = read_file(args.sft_dataset)
     if train_ds is None:
         logging.warning(f"Dataset {args.sft_dataset} contains no data...")

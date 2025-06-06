@@ -1,19 +1,21 @@
 #!/bin/bash
-# Check if the correct number of arguments are provided
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <MODEL> <EXP_DIR>"
-    exit 1
-fi
+#SBATCH --job-name=stprepo
+#SBATCH --nodes=1  
+#SBATCH --ntasks-per-node=1
+#SBATCH --gpus-per-node=1
+#SBATCH --cpus-per-task=12
+#SBATCH --time=01:00:00
+#SBATCH --mem=24GB
+#SBATCH --partition=gpu_test  
+#SBATCH --export=ALL 
 
-MODEL=$1
-EXP_DIR=$2
+module load python/3.12.5-fasrc01
+module load cuda/12.4.1-fasrc01
+module load cudnn/9.1.1.17_cuda12-fasrc01 
+conda activate /n/netscratch/amin_lab/Lab/slim/env 
+cd /n/netscratch/amin_lab/Lab/slim/STP/RL
 
-source .bash_alias.sh
-TPU_NAME=$(curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/description)
-ZONE_FULL_PATH=$(curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/zone)
-DATASET_CONFIG="./dataset_configs/miniF2F_ProofNet.json"
-ZONE=$(echo "$ZONE_FULL_PATH" | awk -F'/' '{print $NF}')
+python generate_and_test.py  --model kfdong/STP_model_Lean_0320 --exp_dir /n/netscratch/amin_lab/Lab/slim/STP/benchmark_results --temperature 1.0 --save_file_name "tests" --raw_dataset_config dataset_configs/miniF2F_ProofNet.json --seed 1
 
-source ~/venv_vllm/bin/activate
-TPU_NAME=$TPU_NAME ZONE=$ZONE python generate_and_test.py --model $MODEL --exp_dir $EXP_DIR --temperature 1.0 \
-        --save_file_name "tests" --raw_dataset_config $DATASET_CONFIG --seed 1
+python summary.py --log_path /n/netscratch/amin_lab/Lab/slim/STP/benchmark_results/generated_proofs_tests.jsonl.gz --split miniF2F --max_iter 32
+python summary.py --log_path /n/netscratch/amin_lab/Lab/slim/STP/benchmark_results/generated_proofs_tests.jsonl.gz --split proofnet --max_iter 32

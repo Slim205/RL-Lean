@@ -1,16 +1,32 @@
 #!/bin/bash
-source .bash_alias.sh
-TPU_NAME=$(curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/description)
-ZONE_FULL_PATH=$(curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/zone)
-ZONE=$(echo "$ZONE_FULL_PATH" | awk -F'/' '{print $NF}')
+#SBATCH --job-name=sft
+#SBATCH --nodes=1               
+#SBATCH --ntasks-per-node=1        
+#SBATCH --gpus-per-node=1      
+#SBATCH --cpus-per-task=16
+#SBATCH --time=24:00:00
+#SBATCH --mem=256GB
+#SBATCH --partition=gpu
+#SBATCH --export=ALL
+#SBATCH --output=%x-%j.out       
 
-gcloud compute tpus tpu-vm ssh $TPU_NAME --zone $ZONE --worker=all \
---command "source ~/venv310/bin/activate; ray stop; cd ~/STP; mkdir -p ~/.logs; \\
-HUGGING_FACE_HUB_TOKEN=$HUGGING_FACE_HUB_TOKEN WANDB_API_KEY=$WANDB_API_KEY python levanter/examples/weighted_lm.py \\
---config_path levanter/config/sft.yaml \\
---trainer.checkpointer.base_path $STORAGE/SFT_ckpt \\
---hf_save_path $STORAGE/SFT \\
---train_data $STORAGE/data/SFT/mathlib_leanworkbook.json \\
---train_data_cache_dir $STORAGE/data/SFT/mathlib_leanworkbook_cache \\
---eval_data $STORAGE/data/SFT/eval.json \\
---eval_data_cache_dir $STORAGE/data/SFT/eval_cache &> ~/.logs/sft.log"
+
+export SLURM_STEP_TASKS_PER_NODE=$SLURM_NTASKS_PER_NODE
+export SLURM_JOB_NUM_NODES=$SLURM_NNODES
+
+module load python/3.12.5-fasrc01
+module load cuda/12.4.1-fasrc01
+module load cudnn/9.1.1.17_cuda12-fasrc01
+conda activate /n/netscratch/amin_lab/Lab/slim/env
+cd /n/netscratch/amin_lab/Lab/slim/STP
+
+ray stop
+
+/n/netscratch/amin_lab/Lab/slim/env/bin/python levanter/examples/weighted_lm.py \
+    --config_path levanter/config/sft.yaml \
+    --trainer.checkpointer.base_path /n/netscratch/amin_lab/Lab/slim/STP/storage/SFT_ckpt \
+    --hf_save_path /n/netscratch/amin_lab/Lab/slim/STP/storage/SFT \
+    --train_data /n/netscratch/amin_lab/Lab/slim/STP/storage/data/SFT/mathlib_leanworkbook.json \
+    --train_data_cache_dir /n/netscratch/amin_lab/Lab/slim/STP/storage/data/SFT/mathlib_leanworkbook_cache \
+    --eval_data /n/netscratch/amin_lab/Lab/slim/STP/storage/data/SFT/eval.json \
+    --eval_data_cache_dir /n/netscratch/amin_lab/Lab/slim/STP/storage/data/SFT/eval_cache 

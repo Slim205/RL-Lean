@@ -184,6 +184,8 @@ def train(config: TrainArgs):
 
     # Since Levanter has different implementations of models from HF, we need to convert the HF checkpoint.
     # This class is a wrapper around the HF checkpoint converter that also downloads the checkpoint if necessary.
+# from levanter.compat.hf_checkpoints import HFCheckpointConverter
+# converter = HFCheckpointConverter.from_hf("AI-MO/Kimina-Prover-Preview-Distill-1.5B", trust_remote_code=True)
     converter = HFCheckpointConverter.from_hf(config.model_name_or_path, trust_remote_code=config.trust_remote_code)
     if hasattr(tokenizer, "vocab") and tokenizer.vocab != converter.tokenizer.vocab:
         logger.warning("The tokenizers appear to be different. You may want to check this.")

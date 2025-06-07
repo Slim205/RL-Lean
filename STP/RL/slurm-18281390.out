@@ -1,0 +1,119 @@
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Fri Jun  6 14:21:57 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:CA:00.0 Off |                   On |
+| N/A   24C    P0             40W /  400W |      74MiB /  40960MiB |     N/A      Default |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| MIG devices:                                                                            |
++------------------+----------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |                     Memory-Usage |        Vol|      Shared           |
+|      ID  ID  Dev |                       BAR1-Usage | SM     Unc| CE ENC DEC OFA JPG    |
+|                  |                                  |        ECC|                       |
+|==================+==================================+===========+=======================|
+|  0    2   0   0  |              37MiB / 19968MiB    | 42      0 |  3   0    2    0    0 |
+|                  |                 0MiB / 32767MiB  |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Node 0
+2025-06-06 14:22:04,660	INFO scripts.py:1186 -- Did not find any active Ray processes.
+2025-06-06 14:22:06,545	INFO usage_lib.py:472 -- Usage stats collection is enabled. To disable this, add `--disable-usage-stats` to the command that starts the cluster, or run the following command: `ray disable-usage-stats` before starting the cluster. See https://docs.ray.io/en/master/cluster/usage-stats.html for more details.
+2025-06-06 14:22:06,545	INFO scripts.py:767 -- [37mLocal node IP[39m: [1m10.31.143.48[22m
+2025-06-06 14:22:10,080	SUCC scripts.py:804 -- [32m--------------------[39m
+2025-06-06 14:22:10,080	SUCC scripts.py:805 -- [32mRay runtime started.[39m
+2025-06-06 14:22:10,080	SUCC scripts.py:806 -- [32m--------------------[39m
+2025-06-06 14:22:10,080	INFO scripts.py:808 -- [36mNext steps[39m
+2025-06-06 14:22:10,080	INFO scripts.py:811 -- To add another node to this Ray cluster, run
+2025-06-06 14:22:10,080	INFO scripts.py:814 -- [1m  ray start --address='10.31.143.48:6379'[22m
+2025-06-06 14:22:10,080	INFO scripts.py:823 -- To connect to this Ray cluster:
+2025-06-06 14:22:10,080	INFO scripts.py:825 -- [35mimport[39m[26m ray
+2025-06-06 14:22:10,080	INFO scripts.py:826 -- ray[35m.[39m[26minit()
+2025-06-06 14:22:10,080	INFO scripts.py:838 -- To submit a Ray job using the Ray Jobs CLI:
+2025-06-06 14:22:10,080	INFO scripts.py:839 -- [1m  RAY_ADDRESS='http://127.0.0.1:8265' ray job submit --working-dir . -- python my_script.py[22m
+2025-06-06 14:22:10,080	INFO scripts.py:848 -- See https://docs.ray.io/en/latest/cluster/running-applications/job-submission/index.html 
+2025-06-06 14:22:10,080	INFO scripts.py:852 -- for more information on submitting Ray jobs to the Ray cluster.
+2025-06-06 14:22:10,080	INFO scripts.py:857 -- To terminate the Ray runtime, run
+2025-06-06 14:22:10,080	INFO scripts.py:858 -- [1m  ray stop[22m
+2025-06-06 14:22:10,080	INFO scripts.py:861 -- To view the status of the cluster, use
+2025-06-06 14:22:10,080	INFO scripts.py:862 --   [1mray status[22m[26m
+2025-06-06 14:22:10,080	INFO scripts.py:866 -- To monitor and debug Ray, view the dashboard at 
+2025-06-06 14:22:10,080	INFO scripts.py:867 --   [1m127.0.0.1:8265[22m[26m
+2025-06-06 14:22:10,080	INFO scripts.py:874 -- [4mIf connection to the dashboard fails, check your firewall settings and network configuration.[24m
+==============================
+Starting Round 0
+Generating data with model: /n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229
+Experiment Directory: /n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round0
+Seed: 0
+==============================
+[2025-06-06 14:22:44,692 - root - DEBUG] Namespace(seed=0, model='/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229', exp_dir='/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round0', dataset_config='./dataset_configs/leanworkbook.json', temperature=1.0, tokenizer_path='deepseek-ai/DeepSeek-Prover-V1.5-SFT', sampler='Sampler_base', conjecture_multiplier=1, samples_per_statement=64, statements_per_round=0, ray_mode=False)
+[2025-06-06 14:22:44,696 - root - WARNING] Dataset already exists. Exiting...
+Data generation for Round 0 completed.
+Starting training for Round 0 with base model: /n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229
+[2025-06-06 14:22:52,219 - root - WARNING] Model already trained. Exiting...
+Namespace(lr=5e-05, seed=2333, epoch=1, exp_dir='/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round0', base_model='/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229', tokenizer_path='deepseek-ai/DeepSeek-Prover-V1.5-SFT', sft_dataset=None, save_dir='/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round0')
+Training for Round 0 completed.
+==============================
+Starting Round 1
+Generating data with model: /n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round0/RL_model
+Experiment Directory: /n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round1
+Seed: 1
+==============================
+[2025-06-06 14:22:57,015 - root - DEBUG] Namespace(seed=1, model='/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round0/RL_model', exp_dir='/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round1', dataset_config='./dataset_configs/leanworkbook.json', temperature=1.0, tokenizer_path='deepseek-ai/DeepSeek-Prover-V1.5-SFT', sampler='Sampler_base', conjecture_multiplier=1, samples_per_statement=32, statements_per_round=0, ray_mode=False)
+[2025-06-06 14:22:57,021 - root - DEBUG] Processing dataset: assets/data/training/lean_workbook_dedup.json
+[2025-06-06 14:22:57,416 - root - DEBUG] Size of the dataset: 89221
+[2025-06-06 14:22:57,714 - root - INFO] Number of lemmas to generate: 89221
+[2025-06-06 14:22:57,714 - root - INFO] Selected 89221 statements for this round.
+[2025-06-06 14:22:58,989 - root - INFO] Ray cluster initialized.
+2025-06-06 14:22:59,022	INFO worker.py:1596 -- Connecting to existing Ray cluster at address: 10.31.143.48:6379...
+[2025-06-06 14:22:59,029 - filelock - DEBUG] Attempting to acquire lock 22841106933488 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/node_ip_address.json.lock
+[2025-06-06 14:22:59,029 - filelock - DEBUG] Lock 22841106933488 acquired on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/node_ip_address.json.lock
+[2025-06-06 14:22:59,029 - filelock - DEBUG] Attempting to release lock 22841106933488 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/node_ip_address.json.lock
+[2025-06-06 14:22:59,029 - filelock - DEBUG] Lock 22841106933488 released on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/node_ip_address.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Attempting to acquire lock 22841023719584 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Lock 22841023719584 acquired on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Attempting to release lock 22841023719584 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Lock 22841023719584 released on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Attempting to acquire lock 22841106933488 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Lock 22841106933488 acquired on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Attempting to release lock 22841106933488 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Lock 22841106933488 released on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Attempting to acquire lock 22841022693984 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Lock 22841022693984 acquired on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Attempting to release lock 22841022693984 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Lock 22841022693984 released on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,031 - filelock - DEBUG] Attempting to acquire lock 22841108733760 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,032 - filelock - DEBUG] Lock 22841108733760 acquired on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,032 - filelock - DEBUG] Attempting to release lock 22841108733760 on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+[2025-06-06 14:22:59,032 - filelock - DEBUG] Lock 22841108733760 released on /tmp/ray/session_2025-06-06_14-22-06_546463_510599/ports_by_node.json.lock
+2025-06-06 14:22:59,032	INFO worker.py:1772 -- Connected to Ray cluster. View the dashboard at [1m[32mhttp://127.0.0.1:8265 [39m[22m
+[2025-06-06 14:23:10,315 - root - INFO] {'accelerator_type:A100': 1.0, 'node:__internal_head__': 1.0, 'node:10.31.143.48': 1.0, 'CPU': 64.0, 'object_store_memory': 158044130918.0, 'memory': 358769638810.0, 'GPU': 1.0}
+[2025-06-06 14:23:10,315 - root - INFO] Nodes: 1
+[2025-06-06 14:23:10,316 - root - INFO] {'node:__internal_head__': 1.0, 'node:10.31.143.48': 1.0, 'object_store_memory': 158044130918.0, 'GPU': 1.0, 'CPU': 64.0, 'memory': 358769638810.0, 'accelerator_type:A100': 1.0}
+[2025-06-06 14:23:11,172 - root - DEBUG] Creating ray actors...
+[2025-06-06 14:23:11,200 - root - DEBUG] Ray inference actors created. Number of workers: 1
+[2025-06-06 14:23:11,513 - root - INFO] #conjecture inputs = 18144
+[2025-06-06 14:23:11,514 - root - DEBUG] Start collecting conjecture theorems:
+[2025-06-06 14:23:11,514 - root - DEBUG] num_workers = 1, num_queries: 145152, max_length = 1024, seed = 1, temperature = 1.0, cache_dir = /n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged/round1/sampler_ckpt
+[2025-06-06 14:23:11,514 - root - DEBUG] Start tokenizing 145152 prompts...
+slurmstepd: error: *** JOB 18281390 ON holygpu7c26203 CANCELLED AT 2025-06-06T14:23:11 ***
+*** SIGTERM received at time=1749234191 on cpu 34 ***
+PC: @     0x5630d286bada  (unknown)  gc_collect_main
+    @     0x14c7050ac990  (unknown)  (unknown)
+[2025-06-06 14:23:11,979 E 511805 511805] logging.cc:440: *** SIGTERM received at time=1749234191 on cpu 34 ***
+[2025-06-06 14:23:11,979 E 511805 511805] logging.cc:440: PC: @     0x5630d286bada  (unknown)  gc_collect_main
+[2025-06-06 14:23:11,979 E 511805 511805] logging.cc:440:     @     0x14c7050ac990  (unknown)  (unknown)

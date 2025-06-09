@@ -4,7 +4,7 @@ EXP_DIR="/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged"
 DATASET_CONFIG="./dataset_configs/leanworkbook.json"
 
 
-TOTAL_ROUNDS=1
+TOTAL_ROUNDS=5
 START_ROUND=0
 
 # Loop through each round

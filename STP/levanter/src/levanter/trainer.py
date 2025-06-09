@@ -621,7 +621,7 @@ class TrainerConfig:
         self._initialize_jax_config()
         # Can't do full logging setup until we've initialized jax b/c we use jax for rank id
         pylogging.basicConfig(level=pylogging.INFO)
-#        self.distributed.initialize()
+      ###  self.distributed.initialize()
         self._validate_and_set_defaults()
 
         id = self._maybe_set_id()

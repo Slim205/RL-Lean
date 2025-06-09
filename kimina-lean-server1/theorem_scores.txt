@@ -1,0 +1,15 @@
+Theorem Scores:
+=========================
+final score
+theoremUniformInducing.cauchy_map_iff : 0
+theoremdiv_mul_comm : 0
+theoremsub_one_mul_padicValNat_factorial : 0
+theoremexists_pow_or_neg_mul_pow_of_isOfFinOrder : 0
+theoremsigmaFinsuppEquivDFinsupp_support : 0
+theoremforall₂_iff_zip : 0
+theoremtoMatrix_vecMul_coords : 0
+theorembddAbove_iff : 0
+theoremleftDistributor_inv : 0
+
+Total theorems with at least one successful proof: 0
+Out of total theorems: 9

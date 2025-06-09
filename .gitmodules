@@ -1,9 +1,9 @@
-[submodule "Goedel-Prover"]
-	path = Goedel-Prover
-	url = https://github.com/Goedel-LM/Goedel-Prover.git
-[submodule "kimina-lean-server"]
-	path = kimina-lean-server
-	url = https://github.com/project-numina/kimina-lean-server.git
+# [submodule "Goedel-Prover"]
+# 	path = Goedel-Prover
+# 	url = https://github.com/Goedel-LM/Goedel-Prover.git
+# [submodule "kimina-lean-server"]
+# 	path = kimina-lean-server
+# 	url = https://github.com/project-numina/kimina-lean-server.git
 # [submodule "STP"]
 # 	path = STP
 # 	url = https://github.com/kfdong/STP.git

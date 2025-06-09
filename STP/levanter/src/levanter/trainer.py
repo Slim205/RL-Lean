@@ -400,13 +400,15 @@ class Trainer:
         """
         Performs training until the number of steps is reached.
         """
+        info = None  # Initialize info variable
         for info in self.training_steps(state, train_loader, run_hooks=run_hooks):
             pass
 
-        self.checkpointer.on_step(info, force=True)
-        if run_hooks:
-            # force hooks to run at the end
-            self.run_hooks(info, force=True)
+        if info is not None:  # Only proceed if training actually ran
+            self.checkpointer.on_step(info, force=True)
+            if run_hooks:
+                # force hooks to run at the end
+                self.run_hooks(info, force=True)
         
         return info
 

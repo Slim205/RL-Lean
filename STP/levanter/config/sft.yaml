@@ -14,15 +14,15 @@ trainer:
     tags: ["AI-MO/Kimina-Prover-Preview-Distill-1.5B", "STP"]
 
   mp: p=f32,c=bfloat16
-
+  load_checkpoint_path : /n/netscratch/amin_lab/Lab/slim/STP/storage/SFT_ckpt/2f5zan35
   train_batch_size: 1024
-  num_train_steps: 230
+  num_train_steps: 240
   steps_per_eval: 20
 
   tensor_parallel_axes: ["mlp", "heads"]
-  per_device_eval_parallelism: 8
-  per_device_parallelism: 8
-save_freq: 230
+  per_device_eval_parallelism: 16
+  per_device_parallelism: 16
+save_freq: 240
 
 optimizer:
   learning_rate: 1e-4

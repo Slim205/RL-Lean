@@ -248,7 +248,7 @@ def train(config: TrainArgs):
         if int(state.step) != 0:
             logger.info(f"Resuming training from step {state.step}")
             for i in range(state.step):
-                next(loader)  # type: ignore
+                next(train_loader)  # type: ignore
 
         # We also save HF checkpoints periodically (and at the end of training).
         if config.hf_save_path is not None:

@@ -1,6 +1,7 @@
-BASE_MODEL="/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229"
+BASE_MODEL="/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/hudak5b9/step-239"
+#BASE_MODEL="/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229"
 
-EXP_DIR="/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged"
+EXP_DIR="/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged_kminia"
 DATASET_CONFIG="./dataset_configs/leanworkbook.json"
 
 

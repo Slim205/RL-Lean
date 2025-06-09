@@ -1,16 +1,17 @@
 max_tune_length: 2048
-tokenizer_name_or_path: "deepseek-ai/DeepSeek-Prover-V1.5-SFT"
+tokenizer_name_or_path: "AI-MO/Kimina-Prover-Preview-Distill-1.5B"
+#"deepseek-ai/DeepSeek-Prover-V1.5-SFT"
 trust_remote_code: True
 
 trainer:
   tracker:
     type: wandb
-    project: "STP_deepseek_rl"
-    tags: ["deepseek-ai/DeepSeek-Prover-V1.5-SFT", "STP"]
+    project: "STP_kimina_rl"
+    tags: ["AI-MO/Kimina-Prover-Preview-Distill-1.5B", "STP"]
 
   mp: p=f32,c=bfloat16
 
-  train_batch_size: 1024 # 1024
+  train_batch_size: 512 # 1024
   steps_per_eval: 10
 
   tensor_parallel_axes: ["mlp", "heads"]

@@ -24,11 +24,14 @@
 export SLURM_STEP_TASKS_PER_NODE=$SLURM_NTASKS_PER_NODE
 export SLURM_JOB_NUM_NODES=$SLURM_NNODES
 
+ssh holygpu8a22203
 module load python/3.12.5-fasrc01
 module load cuda/12.4.1-fasrc01
 module load cudnn/9.1.1.17_cuda12-fasrc01 
 conda activate /n/netscratch/amin_lab/Lab/slim/env 
 cd /n/netscratch/amin_lab/Lab/slim/STP/RL
+ray stop
+ray start --address=holygpu7c26106:6379 
 
 HEAD_NODE=$(scontrol show hostname $SLURM_NODELIST | head -n1)
 

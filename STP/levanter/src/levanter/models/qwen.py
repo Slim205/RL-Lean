@@ -1,6 +1,6 @@
 import dataclasses
 from dataclasses import dataclass
-from typing import Dict, Optional, Type
+from typing import Callable, Dict, Optional, Tuple, Type, Union
 
 import equinox as eqx
 import jax.numpy as jnp
@@ -11,17 +11,22 @@ import haliax.nn as hnn
 from haliax import Axis, NamedArray
 from haliax.jax_utils import maybe_rng_split, named_call, shaped_rng_split
 from haliax.nn.scan import Stacked
-from haliax.state_dict import ModuleWithStateDictSerialization
-
+from levanter.compat.torch_serialization import (
+    StateDict,
+    StateDictSerializationMixin,
+    apply_prefix,
+    flatten_linear_layers,
+    stack_state_dict,
+    unflatten_linear_layers,
+    unstack_state_dict,
+)
 from levanter.compat.hf_checkpoints import HFCheckpointConverter
-from levanter.models.attention import AttentionMask, dot_product_attention
-from levanter.models.llama import LlamaConfig, LlamaEmbedding, LlamaMlp, LlamaTransformer
+from levanter.models.attention import AttentionBackend, AttentionMask, dot_product_attention
+from levanter.models.llama import LlamaConfig, LlamaEmbedding, _apply_rotary_pos_emb, llama_rotary_pos_emb, LlamaMlp, LlamaTransformer, LlamaRMSNorm
 from levanter.models.lm_model import LmConfig, LmHeadModel
-from levanter.models.rotary import RotaryEmbeddingsConfig
-from levanter.utils.activation import ActivationFunctionEnum
 from levanter.utils.flop_utils import lm_flops_per_token
-from levanter.utils.logging import silence_transformer_nag
-from levanter.utils.types import BlockFoldable
+from levanter.logging import silence_transformer_nag
+from levanter.types import BlockFoldable
 
 
 silence_transformer_nag()
@@ -56,8 +61,6 @@ class QwenConfig(LlamaConfig):
 
     @classmethod
     def from_hf_config(cls, hf_config: HfConfig):
-        rope_theta = hf_config.rope_theta
-        rope_config = RotaryEmbeddingsConfig.from_hf_config(rope_theta, hf_config.rope_scaling)
         return QwenConfig(
             seq_len=hf_config.max_position_embeddings,
             hidden_dim=hf_config.hidden_size,
@@ -65,21 +68,15 @@ class QwenConfig(LlamaConfig):
             num_layers=hf_config.num_hidden_layers,
             num_heads=hf_config.num_attention_heads,
             num_kv_heads=hf_config.num_key_value_heads,
-            use_sliding_window=getattr(hf_config, "use_sliding_window", False),
-            sliding_window=getattr(hf_config, "sliding_window", None),
-            max_window_layers=getattr(hf_config, "max_window_layers", 0),
-            activation_function=ActivationFunctionEnum(hf_config.hidden_act),
+            activation_function=hf_config.hidden_act, #return them here is an option
             initializer_range=hf_config.initializer_range,
             layer_norm_epsilon=hf_config.rms_norm_eps,
-            tie_word_embeddings=hf_config.tie_word_embeddings,
-            rope=rope_config,
+            rope_scaling=hf_config.rope_scaling,
         )
 
     def to_hf_config(self, vocab_size: int, config_overrides: Optional[Dict] = None) -> HfQwenConfig:
         if config_overrides is None:
             config_overrides = {}
-
-        rope_theta, rope_scaling = self.rope.to_hf_config()
 
         return HfQwenConfig(
             max_position_embeddings=self.seq_len,
@@ -94,10 +91,8 @@ class QwenConfig(LlamaConfig):
             hidden_act=self.activation_function,
             initializer_range=self.initializer_range,
             rms_norm_eps=self.layer_norm_epsilon,
-            tie_word_embeddings=self.tie_word_embeddings,
             vocab_size=vocab_size,
-            rope_theta=rope_theta,
-            rope_scaling=rope_scaling,
+            rope_scaling=self.rope_scaling,
             **config_overrides,
         )
 
@@ -119,7 +114,7 @@ class QwenConfig(LlamaConfig):
 
 
 # Modified attention class for Qwen
-class QwenAttention(eqx.Module):
+class QwenAttention(StateDictSerializationMixin, eqx.Module):
     config: QwenConfig = eqx.field(static=True)
     q_proj: hnn.Linear
     k_proj: hnn.Linear
@@ -153,6 +148,12 @@ class QwenAttention(eqx.Module):
             out_first=True,
         )
         return QwenAttention(config, q_proj, k_proj, v_proj, o_proj)
+    def _rope_scale_factor(self) -> float:
+        # hasattr for gemma and I'm feeling lazy
+        if hasattr(self.config, "rope_scaling") and self.config.rope_scaling is not None:
+            assert self.config.rope_scaling["type"] == "linear"
+            return self.config.rope_scaling["factor"]
+        return 1.0
 
     @named_call
     def __call__(
@@ -166,8 +167,10 @@ class QwenAttention(eqx.Module):
         v = self.v_proj(x, key=key_v).rearrange((..., "kv_heads", "position", "head_size"))
 
         # Apply rotary embeddings
-        rot_embs = self.config.rope.build(self.config.HeadSize, q.resolve_axis("position"))
-        q, k = rot_embs(self.config.HeadSize, q, k)
+        cos, sin = llama_rotary_pos_emb(
+            self.config.HeadSize, x.resolve_axis("position"), scale=self._rope_scale_factor()
+        )
+        q, k = _apply_rotary_pos_emb(q, k, cos, sin)
 
         k = k.rename({"position": "key_position"})
         v = v.rename({"position": "key_position"})
@@ -201,14 +204,37 @@ class QwenAttention(eqx.Module):
         attn_output = self.o_proj(attn_output, key=key_o)
         return attn_output
 
+    def from_state_dict(self, state_dict: StateDict, prefix: Optional[str] = None):
+        # unflatten the linear layers of HF state_dict to match the shape of LlamaAttention
+        d = {}
+        d.update(unflatten_linear_layers(apply_prefix(prefix, "q_proj"), state_dict, self.q_proj, True))
+        d.update(unflatten_linear_layers(apply_prefix(prefix, "k_proj"), state_dict, self.k_proj, True))
+        d.update(unflatten_linear_layers(apply_prefix(prefix, "v_proj"), state_dict, self.v_proj, True))
+        d.update(unflatten_linear_layers(apply_prefix(prefix, "o_proj"), state_dict, self.o_proj, True))
+
+        return super().from_state_dict(d, prefix)
+
+    def update_state_dict(self, state_dict: StateDict, prefix: Optional[str] = None) -> StateDict:
+        # flatten the linear layers of LlamaAttention to match the shape of HF state_dict
+        my_dict: StateDict = {}
+        super().update_state_dict(my_dict, prefix)
+
+        my_dict.update(flatten_linear_layers(apply_prefix(prefix, "q_proj"), self.q_proj, True))
+        my_dict.update(flatten_linear_layers(apply_prefix(prefix, "k_proj"), self.k_proj, True))
+        my_dict.update(flatten_linear_layers(apply_prefix(prefix, "v_proj"), self.v_proj, True))
+        my_dict.update(flatten_linear_layers(apply_prefix(prefix, "o_proj"), self.o_proj, True))
+
+        state_dict.update(my_dict)
+        return state_dict
+
 
 # Modified decoder layer for Qwen
 class QwenDecoderLayer(eqx.Module):
     config: QwenConfig = eqx.field(static=True)
     self_attn: QwenAttention
     mlp: LlamaMlp  # Can reuse Llama MLP as structure is similar
-    input_layernorm: hnn.RmsNorm
-    post_attention_layernorm: hnn.RmsNorm
+    input_layernorm: LlamaRMSNorm
+    post_attention_layernorm: LlamaRMSNorm
 
     @staticmethod
     def init(config: QwenConfig, *, key) -> "QwenDecoderLayer":
@@ -247,7 +273,7 @@ class QwenDecoderLayer(eqx.Module):
 class QwenTransformer(LlamaTransformer):
     config: QwenConfig = eqx.field(static=True)
     layers: BlockFoldable[QwenDecoderLayer]
-    norm: hnn.RmsNorm
+    norm: LlamaRMSNorm
 
     @staticmethod
     def init(config: QwenConfig, *, key) -> "QwenTransformer":
@@ -268,7 +294,7 @@ class QwenTransformer(LlamaTransformer):
 
 
 # Modified LM head model for Qwen
-class QwenLMHeadModel(LmHeadModel[QwenConfig], ModuleWithStateDictSerialization):
+class QwenLMHeadModel(eqx.Module, LmHeadModel[QwenConfig], StateDictSerializationMixin):
     transformer: QwenTransformer
     embeddings: LlamaEmbedding  # Can reuse Llama embeddings
     lm_head: Optional[hnn.Linear]
@@ -322,12 +348,51 @@ class QwenLMHeadModel(LmHeadModel[QwenConfig], ModuleWithStateDictSerialization)
         k_t, k_emb = jrandom.split(key, 2)
         transformer = QwenTransformer.init(config, key=k_t)
         embeddings = LlamaEmbedding.init(Vocab, config, key=k_emb)
-        if config.tie_word_embeddings:
-            lm_head = None
-        else:
-            lm_head = hnn.Linear.init(In=config.Embed, Out=Vocab, key=k_emb, use_bias=False, out_first=True)
-
+        lm_head = hnn.Linear.init(In=config.Embed, Out=Vocab, key=k_emb, use_bias=False, out_first=True)
         return QwenLMHeadModel(transformer, embeddings, lm_head)
 
     def _state_dict_key_map(self) -> Dict[str, Optional[str]]:
         return {"transformer": "model", "embeddings": None}
+
+    def __call__(
+        self,
+        input_ids: NamedArray,
+        attn_mask: Optional[Union[NamedArray, AttentionMask]] = None,
+        *,
+        key=None,
+    ) -> NamedArray:
+        """
+        Args:
+            input_ids (NamedArray): [batch, position]
+                Indices of input sequence tokens in the vocabulary.
+            attn_mask (Union[NamedArray, AttentionMask], optional): [batch, position]
+                Mask to avoid performing attention on the padding token indices of the encoder input.
+                The attn_mask from training pipeline may be an AttentionMask object instead of NamedArray
+        """
+        k_t, k_head = maybe_rng_split(key, 2)
+        x = self.embeddings.embed(input_ids)
+        x = self.transformer(x, attn_mask=attn_mask, key=k_t)
+        lm_logits = self.lm_head(x, key=k_head)
+        return lm_logits
+
+    def from_state_dict(self, state_dict: StateDict, prefix: Optional[str] = None):
+        # unflatten the linear layers of HF state_dict to match the shape of LlamaMlp
+        d = state_dict.copy()
+        d.update(
+            unflatten_linear_layers(
+                apply_prefix(prefix, "lm_head"), state_dict, self.lm_head, out_dims_first_in_dict=True
+            )
+        )
+        return super().from_state_dict(d, prefix)
+
+    def update_state_dict(self, state_dict: StateDict, prefix: Optional[str] = None) -> StateDict:
+        my_dict: StateDict = {}
+        super().update_state_dict(my_dict, prefix=prefix)
+
+        my_dict.update(
+            flatten_linear_layers(apply_prefix(prefix, "lm_head"), self.lm_head, out_dims_first_in_dict=True)
+        )
+
+        state_dict.update(my_dict)
+        return state_dict
+

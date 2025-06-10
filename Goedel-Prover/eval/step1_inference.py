@@ -56,12 +56,13 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 model_inputs = []
 for data in data_list:
-        # model_inputs.append("Complete the following Lean 4 code with explanatory comments preceding each line of code:\n\n```lean4\n{header}\n/-{informal_prefix}-/ \n{formal_statement}".format(
-        # text = "Complete the following Lean 4 code with explanatory comments preceding each line of code:\n\n```lean4\n{header}{informal_prefix}{formal_statement}".format(
-        #         header=data.get('header', LEAN4_DEFAULT_HEADER),
-        #         informal_prefix=data.get('informal_prefix', str()),
-        #         formal_statement=data['formal_statement'],
-        #     )
+    if model_name != 'AI-MO/Kimina-Prover-Preview-Distill-1.5B' :
+        text = "Complete the following Lean 4 code with explanatory comments preceding each line of code:\n\n```lean4\n{header}{informal_prefix}{formal_statement}".format(
+                header=data.get('header', LEAN4_DEFAULT_HEADER),
+                informal_prefix=data.get('informal_prefix', str()),
+                formal_statement=data['formal_statement'],
+            )
+    else :
         prompt = "Think about and solve the following problem step by step in Lean 4."
         prompt += f"\n# Problem:{data.get('informal_prefix', str())}"""
         prompt += f"\n# Formal statement:\n```lean4\n{data.get('header', LEAN4_DEFAULT_HEADER)}\n{data['formal_statement']}\n```\n"
@@ -77,16 +78,16 @@ for data in data_list:
         )
 
 
-        model_inputs.append(text)
+    model_inputs.append(text)
 
 
 # model = LLM(model=model_name, max_num_batched_tokens=8192, seed=1, trust_remote_code=True, swap_space=8, tensor_parallel_size=args.gpu)
-model = LLM(model=model_name, seed=1, trust_remote_code=True, swap_space=8, tensor_parallel_size=args.gpu, max_model_len=4096)
+model = LLM(model=model_name, seed=1, trust_remote_code=True, swap_space=8,tensor_parallel_size=args.gpu, max_model_len=4096)
 
 
 sampling_params = SamplingParams(
     temperature=0.6, #1
-    max_tokens=8096, #2048
+    max_tokens=4096, #2048
     top_p=0.95,
     n=args.n,
 )
@@ -109,7 +110,11 @@ to_inference_codes = []
 for i in range(len(data_list)):
     data_list[i]["model_input"] = model_inputs[i]
     data_list[i]["model_outputs"] = [output.text for output in model_outputs[i].outputs]
-    data_list[i]["full_code"] = [extrac_code( output.text) for output in model_outputs[i].outputs] #model_inputs[i] +
+    if model_name != 'AI-MO/Kimina-Prover-Preview-Distill-1.5B' :
+        data_list[i]["full_code"] = [extrac_code(model_inputs[i] + output.text) for output in model_outputs[i].outputs] 
+    else : 
+        data_list[i]["full_code"] = [extrac_code(output.text) for output in model_outputs[i].outputs] 
+
     if "problem_id" in data_list[i]:
         to_inference_codes += [{"name": data_list[i]["problem_id"], "code": code} for code in data_list[i]["full_code"]]
     else:

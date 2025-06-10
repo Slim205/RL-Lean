@@ -24,7 +24,7 @@ while getopts ":i:m:o:s:n:c:g:" opt; do
     ;;
   esac
 done
-python -m eval.step1_inference --input_path ${INPUT_PATH}  --model_path ${MODEL_PATH}  --output_dir $OUTPUT_DIR --split $SPLIT --n $N --gpu $GPU
+/n/netscratch/amin_lab/Lab/slim/env/bin/python -m eval.step1_inference --input_path ${INPUT_PATH}  --model_path ${MODEL_PATH}  --output_dir $OUTPUT_DIR --split $SPLIT --n $N --gpu $GPU
 
 INPUT_FILE=${OUTPUT_DIR}/to_inference_codes.json
 COMPILE_OUTPUT_PATH=${OUTPUT_DIR}/code_compilation.json

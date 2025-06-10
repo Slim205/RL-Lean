@@ -19,8 +19,8 @@ with open(input_file_path, 'r') as json_file:
     codes = json.load(json_file)
 #codes = codes[7000:7128]
 
-timeout = 60
 batch_size = 1
+timeout = 200
 print(os.cpu_count())
 num_proc = args.cpu
 print(num_proc)

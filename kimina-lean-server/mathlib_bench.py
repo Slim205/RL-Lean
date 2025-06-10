@@ -36,10 +36,11 @@ def change_result(results):
 
 def generate(model_name, input_list, use_vllm=True):
     if use_vllm:
-        llm = LLM(model=model_name, dtype="bfloat16")
+        llm = LLM(model=model_name, seed=1, trust_remote_code=True, max_model_len=4096, dtype="bfloat16")
         sampling_params = SamplingParams(
-            top_p=1,
-            max_tokens=1024,
+        temperature=1, #1
+        max_tokens=8096, #2048
+        top_p=0.95,
         )
         outputs = llm.generate(input_list, sampling_params)
         proofs = []
@@ -55,15 +56,13 @@ def generate(model_name, input_list, use_vllm=True):
             device_map="auto",
             torch_dtype="bfloat16"
         ).eval()
-      #  print('model loaded')
-       # print(input_list[0])
         outputs = []
         for inputs_batch in tqdm(input_list, desc="Processing batches"):
             inputs = tokenizer(inputs_batch, return_tensors="pt").to("cuda:0")
             outputs_batch = model.generate(
                 **inputs,
                 pad_token_id=tokenizer.eos_token_id,
-                max_length=1024,
+                max_new_tokens=1024,
                 top_p=1,
                 do_sample=True
             )
@@ -73,17 +72,19 @@ def generate(model_name, input_list, use_vllm=True):
             tokenizer.decode(out, skip_special_tokens=True).split('lean4')[1].split('`')[0]
             for out in outputs
         ]
+
     return proofs
 
 def extrac_code(inputs):
     try:
         return re.search(r'```lean4\n(.*?)\n```', inputs, re.DOTALL).group(1)
     except:
+        print('extrac_code failed')
         return "None"
 
 def generate_kimina(model_name, input_list, use_vllm=True):
     if use_vllm:
-        llm = LLM(model=model_name, seed=1, trust_remote_code=True, max_model_len=4096, dtype="bfloat16")
+        llm = LLM(model=model_name, seed=1, trust_remote_code=True,swap_space=8, max_model_len=4096, dtype="bfloat16")
         sampling_params = SamplingParams(
         temperature=0.6, #1
         max_tokens=8096, #2048
@@ -91,10 +92,8 @@ def generate_kimina(model_name, input_list, use_vllm=True):
         )
         outputs = llm.generate(input_list, sampling_params,use_tqdm=True)
         proofs = []
-        for i,output in enumerate(outputs) : 
-          out = output.outputs[0].text
-        #  proof = input_list[i].split('lean4')[1] + output.outputs[0].text.split('`')[0] 
-          proofs.append(extrac_code(input_list[i]))
+        for output in outputs : 
+          proofs.append(extrac_code(output.outputs[0].text))
 
     else:
         tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -126,7 +125,7 @@ def get_prompt(theorem,tokenizer,is_kimina):
         return  f"Complete the following Lean 4 code :\n```lean4\n{LEAN4_DEFAULT_HEADER}{theorem}"
     
     prompt = "Think about and solve the following problem step by step in Lean 4."
-#    prompt += f"\n# Problem:{str()}"""
+    prompt += f"\n# Problem:{str()}"""
     prompt += f"\n# Formal statement:\n```lean4\n{LEAN4_DEFAULT_HEADER}\n{theorem}\n```\n"
     messages = [
         {"role": "system", "content": "You are an expert in mathematics and Lean 4."},
@@ -144,13 +143,14 @@ def get_theorem_name(ch) :
 
 def main(model_name, n, pass_rate, is_vllm=True, push_to_hf=True, m=0, is_re=False, is_kimina=False) : 
     print(model_name, n, pass_rate, is_vllm, push_to_hf, m,is_re,is_kimina)
+    assert m < n 
     dataset = load_dataset("Slim205/mathlib_benchmark",split='train').select(range(m,n))
     redundant_list = []
     theorem_list_names=[]
     theorem_list=[]
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     for example in dataset:
-        input_text = get_prompt(example['theorem'],tokenizer,is_kimina)
+        input_text = get_prompt("theorem mathd_algebra_478 (b h v : \u211d) (h\u2080 : 0 < b \u2227 0 < h \u2227 0 < v) (h\u2081 : v = 1 / 3 * (b * h))\n    (h\u2082 : b = 30) (h\u2083 : h = 13 / 2) : v = 65 := by\n",tokenizer,is_kimina)
         redundant_list.extend([input_text] * pass_rate)
         theorem_list_names.append(get_theorem_name(example['theorem']))
         theorem_list.extend([get_theorem_name(example['theorem'])] * pass_rate)
@@ -169,7 +169,7 @@ def main(model_name, n, pass_rate, is_vllm=True, push_to_hf=True, m=0, is_re=Fal
     nest_asyncio.apply()
     client = Lean4Client(base_url="http://0.0.0.0:12332")
 
-    batch_size = 12
+    batch_size = 10
     proof_dict = [{"proof": proof, "custom_id": theorem_list[i] + 'NNN' + str(i) } for i,proof in enumerate(proofs) ]
 
     results_data = {
@@ -192,16 +192,19 @@ def main(model_name, n, pass_rate, is_vllm=True, push_to_hf=True, m=0, is_re=Fal
             proof_idx = int(res['custom_id'].split('NNN')[1])
             
             # Add to results dataset
-            original_idx = proof_idx // pass_rate  # Get original dataset index
-            results_data["input"].append(dataset[original_idx]["input"])
+            results_data["input"].append(redundant_list[proof_idx])
             results_data["llm_output"].append(proofs[proof_idx])
             results_data["result"].append(1 if res['complete'] else 0)
-            results_data['proof'].append(proofs[proof_idx].split('= by')[1].strip()) 
-            # Update scores
+            try : 
+                proof = proofs[proof_idx].split('= by')[1].strip()
+                results_data['proof'].append(proof) 
+                if len(proof) == 0 : 
+                    empty_proof[theorem_name] +=1
+            except : 
+                results_data['proof'].append("") 
+                empty_proof[theorem_name] +=1
             if res['complete']:
                 score_dict[theorem_name] += 1 
-            if len(proofs[proof_idx].split('= by')[1].strip()) == 0 : 
-                empty_proof[theorem_name] +=1
             appear[theorem_name] += 1
 
     # Create and push results dataset

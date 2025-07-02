@@ -262,14 +262,13 @@ def generate_and_test(
         execute_on_all_workers("""pkill -f "repl"; pkill -f "lake" """)
 
         # allow more memory for stage 2 because the failed jobs are likely to be more memory-consuming
-        ray_test_actors = create_ray_lean4_actors(reserved_cpus = 2, cpus_per_task=2, timeout=DEFAULT_TIMEOUT)
+        ray_test_actors = create_ray_lean4_actors(reserved_cpus = 2, cpus_per_task=10, timeout=DEFAULT_TIMEOUT)
         tester_pool = ActorPool(ray_test_actors)
 
         new_testing_tasks = []
         for test_info in generated_proofs_dedup:
             if (get_deduplication_key(test_info) not in test_results) or ('complete' not in test_results[get_deduplication_key(test_info)]):
                 new_testing_tasks.append(test_info)
-        print(test_results)
         logging.info(f'Number of lemmas to test in stage 2: {len(new_testing_tasks)}')
         pbar = tqdm(total=len(new_testing_tasks))
         new_testing_tasks = [[test_info] for test_info in new_testing_tasks]
@@ -292,7 +291,6 @@ def generate_and_test(
         for actor in ray_test_actors:
             ray.kill(actor)
         execute_on_all_workers("""pkill -f "repl"; pkill -f "lake" """)
-        print(test_results)
         # update generated lemmas
         nr_failed = 0
         for test_info in generated_proofs_dedup:
@@ -303,9 +301,6 @@ def generate_and_test(
                 nr_failed += 1
                 test_info['complete'] = False
                 test_info['system_errors'] = 'test failed'
-        print('=============')
-        print(len(generated_proofs_dedup))
-        print(nr_failed)
         assert nr_failed < len(generated_proofs_dedup) * 0.005, f'Failed to test {nr_failed} lemmas'
         write_data(json.dumps(generated_proofs_dedup), save_file_generation, 'json')
     else:

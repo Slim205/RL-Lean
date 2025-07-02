@@ -13,5 +13,6 @@ logs/
 .vscode/
 .env
 *.csv
-benchmark
-benchmark_evaluation
+*.log
+*.txt
+*.json

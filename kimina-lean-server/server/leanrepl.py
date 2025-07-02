@@ -5,6 +5,7 @@ import subprocess
 import tempfile
 import threading
 import time
+import psutil
 
 from func_timeout import FunctionTimedOut, func_timeout  # type: ignore
 from loguru import logger
@@ -13,19 +14,17 @@ from utils.proof_utils import get_error_msg
 
 from .config import settings
 
-base = settings.WORKSPACE
-
-path_to_repl = f"{base}/repl/.lake/build/bin/repl"
-path_to_mathlib = f"{base}/mathlib4"
-
-
+HOME_DIR = os.path.expanduser('~')
+path_to_mathlib = f'{HOME_DIR}/lean/mathlib4/'
+path_to_repl = f"{HOME_DIR}/lean/mathlib4/.lake/packages/REPL/.lake/build/bin/repl"
+path_to_lake = f'{HOME_DIR}/.elan/bin/lake'
 # error for lean crashes
 class LeanCrashError(Exception):
     pass
 
 
 class LeanREPL:
-    def __init__(self):
+    def __init__(self, include_ast=False):
         # Start the REPL process
         self.error_file = tempfile.TemporaryFile(
             "w+",
@@ -34,6 +33,11 @@ class LeanREPL:
         # Create a lock for thread safety
         self.lock = threading.Lock()
         self.header = None
+        self.psutil_process = None
+        self.children_processes = []
+        self.run_command_total = 0 
+        self.include_ast=include_ast
+
 
     def _send_command(self, command):
         """
@@ -42,6 +46,7 @@ class LeanREPL:
 
         with self.lock:
             try:
+                self.run_command_total += 1
                 # Convert the command to JSON and add two newlines
                 json_command = json.dumps(command, ensure_ascii=False) + "\n\n"
                 # Send the command to the REPL
@@ -83,11 +88,9 @@ class LeanREPL:
                 }
 
             error_content = self.get_error_content()
-            if len(error_content.strip()) > 0:
+            if error_content and "has local changes" not in error_content:
                 logger.error("Error from stderr: %s", error_content)
-                raise LeanCrashError(
-                    f"Lean process encountered an error: {error_content}"
-                )
+                raise LeanCrashError(f"Lean process encountered an error: {error_content}")
             response_json["time"] = time_elapsed
             return response_json
 
@@ -99,6 +102,12 @@ class LeanREPL:
             command = {"cmd": code}
         else:
             command = {"cmd": code, "infotree": infotree_type}
+        if self.include_ast : 
+            command['ast'] = False
+            command['premises'] = False
+            command["allTactics"] =  True
+            command["tactics"] =  False
+
         try:
             response = func_timeout(timeout, self._send_command, args=(command,))
         except FunctionTimedOut:
@@ -110,6 +119,12 @@ class LeanREPL:
         Send code to create a new context.
         """
         command = {"cmd": code}
+        if self.include_ast : 
+            command['ast'] = False
+            command['premises'] = False
+            command["allTactics"] =  True
+            command["tactics"] =  False
+
         try:
             response = func_timeout(timeout, self._send_command, args=(command,))
         except FunctionTimedOut:
@@ -126,6 +141,12 @@ class LeanREPL:
             command = {"cmd": code, "env": context_id}
         else:
             command = {"cmd": code, "env": context_id, "infotree": infotree_type}
+        if self.include_ast : 
+            command['ast'] = False
+            command['premises'] = False
+            command["allTactics"] =  True
+            command["tactics"] =  False
+
         try:
             response = func_timeout(timeout, self._send_command, args=(command,))
         except FunctionTimedOut:
@@ -148,7 +169,7 @@ class LeanREPL:
     def get_error_content(self):
         # Ensure that we seek back to the beginning of the file before reading
         if self.error_file is None:
-            print("Error file is None")
+            logger.debug("Error file is None")
         self.error_file.seek(0)
         return self.error_file.read()
 
@@ -157,7 +178,8 @@ class LeanREPL:
         Terminate the REPL process and all its child processes.
         """
         try:
-            # Terminate the entire process group
+            # stop input to repl (which will result in the program loop for lean repl terminating)
+            self.process.stdin.close()
             os.killpg(os.getpgid(self.process.pid), signal.SIGKILL)
         except ProcessLookupError:
             # Process already terminated
@@ -168,3 +190,38 @@ class LeanREPL:
 
     def __del__(self):
         self.close()
+
+    def exceeds_memory_limit(self, limit_gb):
+        """
+        Check if the REPL process exceeds the given memory limit.
+        Returns True if memory usage exceeds limit, False otherwise.
+        """
+
+        if self.psutil_process is None:
+            self.psutil_process = psutil.Process(self.process.pid)
+
+        if self.psutil_process is not None:
+            try:
+                memory_usage = self.psutil_process.memory_info().rss
+                try:
+                    if not self.children_processes:
+                        self.children_processes = self.psutil_process.children()
+                        
+                    if self.children_processes:
+                        child_memory = sum(child.memory_info().rss for child in self.children_processes)
+                        total_memory = memory_usage + child_memory
+                    else:
+                        total_memory = memory_usage
+                except Exception as e:
+                    logger.error(f"Error getting child processes: {e}")
+                    total_memory = memory_usage
+                
+                logger.debug(f"REPL pid {self.process.pid} using {total_memory/1024/1024/1024:.2f}GB")
+                return total_memory > limit_gb * 1024 * 1024 * 1024
+            except (psutil.NoSuchProcess, psutil.AccessDenied) as e:
+                logger.error(f"Error accessing process: {e}")
+                return False
+            except Exception as e:
+                logger.error(f"Error checking memory: {e}")
+                return False
+        return False

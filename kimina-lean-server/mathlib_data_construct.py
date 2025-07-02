@@ -51,14 +51,17 @@ def read_lean_files(directory: Path) -> Dict[str, str]:
     return file_contents
 
 
+HOME_DIR = os.path.expanduser('~')
+path_to_mathlib = f'{HOME_DIR}/lean/mathlib4/'
 
-MATHLIB_DIR = Path("~/lean/mathlib4/Mathlib").expanduser()  
+
+MATHLIB_DIR = Path(path_to_mathlib).expanduser()  
 lean_file_dict = read_lean_files(MATHLIB_DIR)
 lean_file_dict = {k.split('mathlib4/')[-1]: v for k, v in lean_file_dict.items()} # File name : [list of lines in the file]
 print(f"Total .lean files read: {len(lean_file_dict)}")
 
 # Leandojo
-LeanDojo_DIR = Path("~/leandojo_benchmark_4/").expanduser()
+LeanDojo_DIR = Path("../leandojo_benchmark_4/").expanduser()
 train_path = LeanDojo_DIR / "random/train.json"
 val_path = LeanDojo_DIR / "random/val.json"
 test_path = LeanDojo_DIR / "random/test.json"
@@ -97,8 +100,9 @@ train_theorems = [{'Context': entry[1], 'target': entry[2], 'file_name': entry[0
 
 from datasets import Dataset
 dataset = Dataset.from_list(train_theorems)
-dataset.push_to_hub("Slim205/mathlib_v2")  
+dataset.push_to_hub("Slim205/mathlib_v09")  
 
+#dataset = load_dataset("Slim205/mathlib_v09")
 def filter1(sample):
     """Filter samples that are theorems with proofs."""
     return sample['target'].startswith('theorem') and ':= by' in sample['target']
@@ -111,10 +115,10 @@ def map1(sample):
     theorem_part, proof_part = target.split(':= by', 1)  
     return {
         'theorem': theorem_part + ':= by',
-        'proof': proof_part.strip()
+        'proof': proof_part
     }
 
 dataset = dataset.map(map1)
 dataset = dataset.remove_columns(['target'])  
 
-dataset.push_to_hub('Slim205/mathlib_benchmark')
+dataset.push_to_hub('Slim205/mathlib_benchmark_v09')

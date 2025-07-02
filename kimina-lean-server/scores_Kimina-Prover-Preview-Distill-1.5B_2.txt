@@ -1,7 +1,0 @@
-Theorem Scores:
-=========================
-one_lt_val_iff : 0 (2)
-
-Total theorems with at least one successful proof: 0
-Out of total theorems: 1 
-Pass rate : 2 

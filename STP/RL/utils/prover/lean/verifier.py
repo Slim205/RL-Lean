@@ -142,7 +142,7 @@ def verify_lean4_file(codes, headers, lake_path=DEFAULT_LAKE_PATH, lean_workspac
         proc = None
         last_header = None
         for code, header in zip(codes, headers):
-            if proc is None or header != last_header:
+            if proc is None or header != last_header: #You see if the header is the same think, we keep it
                 terminate_repl(proc)
                 proc = start_repl_process(lake_path, lean_workspace, header)
                 last_header = header
@@ -150,9 +150,9 @@ def verify_lean4_file(codes, headers, lake_path=DEFAULT_LAKE_PATH, lean_workspac
             message_str = json.dumps(command | {'cmd': code, 'env': 0}, ensure_ascii=False) + '\r\n\r\n'
             try:
                 start_time = time.time()
-                output = query_repl(proc, message_str)
-                repl_result = json.loads(output)
-                result = get_result_from_repl(repl_result, code, start_time)
+                output = query_repl(proc, message_str) # send the lean query
+                repl_result = json.loads(output) # read the results (the messages)
+                result = get_result_from_repl(repl_result, code, start_time) # format the results
                 results.append(result)
             except (Exception, FunctionTimedOut) as e:
                 if __DEBUG__:
@@ -237,7 +237,7 @@ class Lean4Worker():
             results = verify_lean4_file(**tasks)
 
             # get premises
-            if self.collect_premises:
+            if False:
                 for i, (test_info, result) in enumerate(zip(inputs, results)):
                     if result.get('complete', False):
                         task = dict(code=test_info['statement'] + '\n' + test_info['proof'],
@@ -330,8 +330,6 @@ def create_ray_lean4_actors(
     print(f'Ray actors created. Number of workers: {len(ray_workers)}')
 
     print('Initializing Lean4 environment...')
-  #  execute_on_all_workers('cd /n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/; find .lake/build/ -type f -exec cat {} + > /dev/null; lake exec repl < /n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/.lake/packages/REPL/test/aime_1983_p9.in > /n/netscratch/amin_lab/Lab/slim/Goedel-Prover/mathlib4/.lake/packages/REPL/test/aime_1983_p9.out;',
-   #                        expect_succ=True)
    # execute_on_all_workers('cd ~/lean/mathlib4; find .lake/build/ -type f -exec cat {} + > /dev/null; lake exec repl < ~/lean/mathlib4/.lake/packages/REPL/test/aime_1983_p9.in > ~/lean/mathlib4/.lake/packages/REPL/test/aime_1983_p9.out;',
     #                       expect_succ=True)
 
@@ -467,6 +465,6 @@ def ray_lean4_testing(
 if __name__ == '__main__':
     test_inputs = json.loads('[{"lemma_id": 214, "statement": "theorem lean_workbook_214 (x y : \\u211d) : (x - y) ^ 2 \\u2265 0  :=  by", "label": ["lean_workbook", "inequality", "algebra", "number_theory"], "iter": 0, "proof": "\\n  rw [sq]\\n  apply mul_self_nonneg"}, {"lemma_id": 314, "statement": "theorem lean_workbook_314 (n : \\u2115) : \\u2211 i in Finset.range (n+1), choose n i = 2 ^ n  :=  by", "label": ["lean_workbook", "number_theory", "algebra", "combinatorics"], "iter": 0, "proof": "\\n  have := Nat.sum_range_choose n\\n  simpa only [Finset.sum_range_id] using this\\n  <;> rfl"}, {"lemma_id": 542, "statement": "theorem lean_workbook_543 : \\u2200 p : \\u2115, p.Prime \\u2192 \\u2200 n : \\u2115, p - 1 \\u2223 p ^ n - 1  :=  by", "label": ["lean_workbook", "number_theory", "divisibility", "proof"], "iter": 0, "proof": "\\n  intro p hp n\\n  simpa only [one_pow] using nat_sub_dvd_pow_sub_pow _ 1 n"}]')
     worker = Lean4Worker.remote(0, 0)
-    results = worker.run.remote(test_inputs, batched=True)
+    results = ray.get(worker.run.remote(test_inputs, batched=True))
     pprint(results)
-    import pdb; pdb.set_trace()
+    #import pdb; pdb.set_trace()

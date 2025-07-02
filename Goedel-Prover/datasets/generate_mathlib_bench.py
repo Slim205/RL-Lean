@@ -18,17 +18,22 @@ def save_inputs_to_jsonl(data: list, filename: str) -> None:
         for item in data:
             f.write(json.dumps(item) + '\n')
 
-m, n = 0, 100 
-dataset = load_dataset("Slim205/mathlib_benchmark", split='train').select(range(m, n))
+dataset = load_dataset("Slim205/mathlib_RL_v3", split='train')#.select(range(300,607))
 inputs = []
+p = 0
+thm=[]
 for sample in dataset:
+    p+=1
     theorem_name = get_theorem_name(sample['theorem'])
+    thm.append(theorem_name + str(p))
+
     inputs.append({
-        "name": theorem_name,
+        "name": theorem_name + str(p),
         "split": "test"  ,
         "formal_statement" : sample['theorem'],
-        'header' : sample['Context']
+        'header' : sample['Context'],
     })
 
-save_inputs_to_jsonl(inputs, 'mathlib_context.jsonl')
+assert len(thm) == len(inputs)
+save_inputs_to_jsonl(inputs, 'mathlib_train.jsonl')
 print(f"Saved {len(inputs)} entries to mathlib.jsonl")

@@ -3,3 +3,10 @@ sbatch/
 /n/netscratch/amin_lab/Lab/slim/STP/benchmark_results
 .pytest_cache
 .cache/
+env*
+logs/
+flash*
+flash*
+leandojo*
+*.log
+*.out

@@ -86,7 +86,9 @@ Once running, the server exposes a FastAPI application for LeanREPL interaction.
 > [!NOTE]
 > Make sure `mathlib4` and `repl` exist in the workspace directory before launching the server.
 
-The server is up! You can test the endpoint with:
+The server is up! You can test the endpoint with the same cURL request as in the containerized section.
+
+If you change the code, validate your changes by running tests with:
 
 ```sh
 pytest
@@ -165,6 +167,16 @@ response:
 | `LEANSERVER_WORKSPACE`               | $(pwd)        | Root directory containing `mathlib` and `repl`         |
 | `LEANSERVER_MAX_REPLS`               | **CPU count** | Maximum number of Lean REPL instances                  |
 | `LEANSERVER_MAX_CONCURRENT_REQUESTS` | **CPU count** | Maximum number of concurrent requests in the Lean REPL |
+| `LEANSERVER_HEALTHCHECK_CPU_USAGE_THRESHOLD` | **None** | CPU usage threshold for healthcheck |
+| `LEANSERVER_HEALTHCHECK_MEMORY_USAGE_THRESHOLD` | **None** | Memory usage threshold for healthcheck |
+| `LEANSERVER_REPL_MEMORY_LIMIT_GB` | **None** | Memory limit for REPLs |
+| `LEANSERVER_REPL_MEMORY_CHECK_INTERVAL` | **None** | Number of consecutive commands that run on REPL before memory check |
+
+
+Note:
+-  `LEANSERVER_REPL_MEMORY_LIMIT_GB` needs to be used together with `LEANSERVER_REPL_MEMORY_CHECK_INTERVAL`
+-  In some bloated systems, memory detection can be slow, which impacts performance. However, this isn't an issue in streamlined systems.
+
 
 ## 🚀 Performance Benchmarks
 
@@ -203,3 +215,16 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 This project is licensed under the MIT License.
 You are free to use, modify, and distribute this software with proper attribution. See the [LICENSE](./LICENSE) file for full details.
+
+## 📑 Citation
+```
+@misc{santos2025kiminaleanservertechnical,
+      title={Kimina Lean Server: Technical Report}, 
+      author={Marco Dos Santos and Haiming Wang and Hugues de Saxcé and Ran Wang and Mantas Baksys and Mert Unsal and Junqi Liu and Zhengying Liu and Jia Li},
+      year={2025},
+      eprint={2504.21230},
+      archivePrefix={arXiv},
+      primaryClass={cs.LO},
+      url={https://arxiv.org/abs/2504.21230}, 
+}
+```

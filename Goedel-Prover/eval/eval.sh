@@ -3,8 +3,8 @@ MODEL_PATH=Goedel-LM/Goedel-Prover-SFT
 OUTPUT_DIR=results/minif2f/Godel-Prover-SFT
 SPLIT=test
 N=32
-CPU=128 #32
-GPU=2
+CPU=12 #32
+GPU=1
 FIELD=complete
 while getopts ":i:m:o:s:n:c:g:" opt; do
   case $opt in
@@ -28,7 +28,7 @@ python -m eval.step1_inference --input_path ${INPUT_PATH}  --model_path ${MODEL_
 
 INPUT_FILE=${OUTPUT_DIR}/to_inference_codes.json
 COMPILE_OUTPUT_PATH=${OUTPUT_DIR}/code_compilation.json
-python -m eval.step2_compile2 --input_path $INPUT_FILE --output_path $COMPILE_OUTPUT_PATH --cpu $CPU
+python -m eval.step2_compile --input_path $INPUT_FILE --output_path $COMPILE_OUTPUT_PATH --cpu $CPU 
 
 
 SUMMARIZE_OUTPUT_PATH=${OUTPUT_DIR}/compilation_summarize.json

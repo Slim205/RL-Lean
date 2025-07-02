@@ -1,13 +1,19 @@
-BASE_MODEL="/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/hudak5b9/step-239"
-#BASE_MODEL="/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229"
+#BASE_MODEL="/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/hudak5b9/step-239"
+BASE_MODEL="/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229"
 
-EXP_DIR="/n/netscratch/amin_lab/Lab/slim/STP/storage/STP_LeanWorkbook_merged_kminia"
+EXP_DIR="/n/netscratch/amin_lab/Lab/slim/STP/storage/test"
 DATASET_CONFIG="./dataset_configs/leanworkbook.json"
 
+rm  /n/netscratch/amin_lab/Lab/slim/STP/storage/test/round0/conjecture_examples.json*
+rm  /n/netscratch/amin_lab/Lab/slim/STP/storage/test/round0/generated_proofs.json*
+rm  /n/netscratch/amin_lab/Lab/slim/STP/storage/test/round0/sampler.pkl*
+rm  /n/netscratch/amin_lab/Lab/slim/STP/storage/test/round0/sampler_ckpt/gen*
+rm  /n/netscratch/amin_lab/Lab/slim/STP/storage/test/round0/sampler_ckpt/test*
 
-TOTAL_ROUNDS=5
+TOTAL_ROUNDS=1
 START_ROUND=0
-
+## For STP : reduce to pass 32 and pass 16
+## Reduce the data : 20K of leanwoorkbook
 # Loop through each round
 for ((ROUND=$START_ROUND; ROUND<TOTAL_ROUNDS; ROUND++)); do
     # Determine the model to use
@@ -49,13 +55,13 @@ for ((ROUND=$START_ROUND; ROUND<TOTAL_ROUNDS; ROUND++)); do
     # Step 2: Train Model
     echo "Starting training for Round ${ROUND} with base model: $MODEL"
 
-    python RL_step2_train.py \
-        --base_model "$MODEL" \
-        --exp_dir "$CURRENT_EXP_DIR" \
-        --epoch 1 \
-        --lr 5e-5
+    # python RL_step2_train.py \
+    #     --base_model "$MODEL" \
+    #     --exp_dir "$CURRENT_EXP_DIR" \
+    #     --epoch 1 \
+    #     --lr 5e-5
 
-    echo "Training for Round ${ROUND} completed."
+    # echo "Training for Round ${ROUND} completed."
 done
 
 echo "All rounds completed successfully."

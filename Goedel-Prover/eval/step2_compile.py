@@ -20,21 +20,20 @@ with open(input_file_path, 'r') as json_file:
 #codes = codes[7000:7128]
 
 batch_size = 1
-timeout = 200
-print(os.cpu_count())
+timeout = 60 
 num_proc = args.cpu
 print(num_proc)
 url = "http://0.0.0.0:12332"
-
+url = "http://holy8a14101:12332"
 logger.info("Testing cached mode")
 client = Lean4Client(base_url=url, disable_cache=False)
 
 samples= []
 for i in range(len(codes)):
     codes[i]["custom_id"] = f"{codes[i]['name']}_{i}"
-    samples.append({"custom_id": codes[i]["custom_id"] , "proof": codes[i]["code"]})
+    samples.append({"custom_id": codes[i]["custom_id"] , "proof": codes[i]["code"] })
 
-
+print(len(codes))
 result = batch_verify_proof(
     samples=samples,
     client=client,
@@ -42,46 +41,41 @@ result = batch_verify_proof(
     num_proc=num_proc,
     batch_size=batch_size,
 )
+def get_verification_results(old_result) : 
+    custom_id= old_result['custom_id']
+    old_result = old_result['response']
+    system_messages = ''
+    try:
 
-def change_result(results):
-    transformed_results = []
-    for item in results:
+        result = {
+            "sorries" : old_result.get('sorries', []), 
+            "tactics" : old_result.get('tactics', []),
+            "errors" : [m for m in old_result.get('messages', []) if m['severity'] == 'error'],
+            "warnings" : [m for m in old_result.get('messages', []) if m['severity'] == 'warning'],
+            "infos" : [m for m in old_result.get('messages', []) if m['severity'] == 'info'],
+            "system_messages" : system_messages,
+            "system_errors" : None,
+        }
+        result['pass'] = not result['errors']
+        result['complete'] = result['pass'] and not result['sorries'] and not any("declaration uses 'sorry'" in warning['data'] or 'failed' in warning['data'] for warning in result['warnings'])
+        result['verify_time']  = old_result['time']
 
-        start_time = time.time()
-        system_messages = ''
-        try:
-            response = item["response"]
-            messages = response["messages"]
-            
-            transformed = {
-                "custom_id" : item['custom_id'],
-                "errors": [m for m in messages if m["severity"] == "error"],
-                "warnings": [m for m in messages if m["severity"] == "warning"],
-                "infos": [m for m in messages if m["severity"] == "info"],
-                "sorries": [m for m in messages if "sorry" in m.get("data", "")],
-                "system_messages": '',
-                "system_errors": None,
-                "verify_time": response["time"],
-                "pass": not any(m["severity"] == "error" for m in messages),
-                "complete": (not any(m["severity"] == "error" for m in messages) and 
-                           not any("sorry" in m.get("data", "") for m in messages) and
-                           not any("failed" in m.get("data", "") for m in messages if m["severity"] == "warning"))
-            }
+    except:
+        result = {
+            "pass": False,
+            "complete": False,
+            "system_errors": traceback.format_exc(),
+            "system_messages": system_messages,
+            "tactics" : []
 
-        except:
-            transformed = {
-                "custom_id" : item['custom_id'],
-                "pass": False,
-                "complete": False,
-                "system_errors": traceback.format_exc(),
-                "system_messages": system_messages
-            }
-        transformed['verify_time'] = time.time() - start_time
-        transformed_results.append(transformed)
+        }
+    result['custom_id'] = custom_id
+    return result
 
-    return transformed_results
 
-compilation_results = change_result(result)
+compilation_results =[]
+for res in result : 
+    compilation_results.append(get_verification_results(res))
 
 assert len(compilation_results) == len(codes)
 
@@ -91,6 +85,7 @@ for code in codes:
     custom_id = code['custom_id']  
     if custom_id in compilation_dict:
         code['compilation_result'] = compilation_dict[custom_id]
-
+    else :
+        print(custom_id)
 with open(args.output_path, 'w') as json_file:
     json.dump(codes, json_file, indent=4)

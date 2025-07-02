@@ -1,0 +1,49 @@
+{
+    (
+        'theorem lean_workbook_plus_52864 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : b ≠ c^2) (h : a / (b - c^2) 
+= (a - c^2) / b) : a + b - c ≥ -1 / 4   :=  by', '\n  have h1 : 0 < b - c^2 := by\n  
+  have h1 : b - c^2 ≠ 0 := mt (fun h => hab (by simpa using h)) hab\n    have h2 : b - c^2 < b := by 
+  linarith [sq_nonneg c]\n    linarith [ha, hb, h1, h2]\n  field_simp [h1] at h\n  nlinarith', None, 0
+    ):
+    {
+        'sorries': [],
+        'errors': 
+        [
+            {'severity': 'error', 'pos': {'line': 8, 'column': 66}, 'endPos': {'line': 8, 'column': 69}, 'data': 'application type'},
+            {'severity': 'error', 'pos': {'line': 8, 'column': 50}, 'endPos': {'line': 8, 'column': 63},'data': 'type mismatch\n '},
+            {'severity': 'error', 'pos': {'line': 9, 'column': 32}, 'endPos': {'line': 9, 'column': 54}, 'data': 'linarith faild'}, 
+            {'severity': 'error', 'pos': {'line': 10, 'column': 4}, 'endPos': {'line': 10, 'column': 29}, 'data': 'linarith faile'}, 
+            {'severity': 'error', 'pos': {'line': 12, 'column': 2}, 'endPos': {'line': 12, 'column': 11}, 'data': 'linarith failed '}
+        ],
+
+        'verified_code': 'theorem lean_workbook_plus_52864 (a b c : ℝ) (ha : 0< a) (hb : 0 < b) (hc : 0 < c) (hab : b ≠ c^2) (h : a / (b - c^2) = (a - c^2) / b) : a + b - c ≥ -1 / 4   := by\n\n  have h1 : 0 < b - c^2 := by\n    have h1 : b - c^2 ≠ 0 := mt (fun h => hab (by simpa using h)) hab\n  have h2 : b - c^2 < b := by linarith [sq_nonneg c]\n    linarith [ha, hb, h1, h2]\n  field_simp [h1] at h\n  nlinarith',
+        'pass': False, 
+        'complete': False, 
+        'verify_time': 43.63958287239075
+   }
+}
+
+
+####Kimina : 
+
+{
+    'results': 
+    [
+        {   
+        'custom_id': '1',
+        'error': None, 
+        'response': 
+            {
+                'messages': 
+                [
+                    {'severity': 'info', 'pos': {'line': 7, 'column': 32}, 'endPos': {'line': 7, 'column': 33}, 'data': "The "},
+                    {'severity': 'info', 'pos': {'line': 7, 'column': 0}, 'endPos': {'line': 24, 'column': 5}, 'data': 'Goals accomplished!'}
+                ], 
+                'env': 1, 
+                'time': 0.33763623237609863
+            }
+        }
+    ]
+}
+
+

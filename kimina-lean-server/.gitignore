@@ -16,3 +16,4 @@ logs/
 *.log
 *.txt
 *.json
+scores/

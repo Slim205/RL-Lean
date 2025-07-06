@@ -43,16 +43,51 @@ def get_goals(res) :
     return goals
 
 
+def get_results(data) :
+    samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
+    extra_info = {}
+    for sample in data :
+        extra_info[sample['custom_id']] =  sample['extra_info'] 
+
+    results = batch_verify_proof(
+    samples=samples,
+    client=Lean4Client(base_url="http://holy8a14401:12332",disable_cache=False),
+    timeout=60,
+    num_proc=64,
+    batch_size=1,
+)
+    scores = []
+    for x in results :
+        res = get_verification_results(x)
+        if res['complete'] : 
+            score = 1 
+        else :
+            ground_truth = extra_info[res['custom_id']]['goals']
+
+            if len(ground_truth) > 1 : 
+                old_goals = ground_truth[1:] #remove the first goal as it need ot be included in both
+                goals = get_goals(res) # it can be [] when it timeout
+                ss = 0
+                for goal in old_goals : 
+                    if goal in goals :
+                        ss +=1
+                score = ss/ len(old_goals) 
+            else :
+                score = 0
+        scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
+    return scores
+
 # def get_results(data) :
 #     samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
-#     extra_info = {}
 #     for sample in data :
-#         extra_info[sample['custom_id']] =  sample['extra_info'] 
-
+#         split =   sample['split'] 
+#         break
+#     url = "http://holy8a14107:12332"
+    
 #     results = batch_verify_proof(
 #     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14102:12332",disable_cache=True),
-#     timeout=200,
+#     client=Lean4Client(base_url=url,disable_cache=True),
+#     timeout=60,
 #     num_proc=100,
 #     batch_size=1,
 # )
@@ -62,62 +97,16 @@ def get_goals(res) :
 #         if res['complete'] : 
 #             score = 1 
 #         else :
-#             goals_before = extra_info[res['custom_id']]['goals_before']
-#             ground_truth = extra_info[res['custom_id']]['new_goals']
-
-#             if len(ground_truth) > 0 : 
-#                 goals = get_goals(res)
-#                 new_goals = []
-#                 for x in goals : 
-#                     if x not in goals_before : 
-#                         new_goals.append(x)
-                
-#                 ss = 0
-#                 for goal in ground_truth : 
-#                     if goal in new_goals :
-#                         ss +=1
-#                 score = ss/len(ground_truth)
-#             else :
-#                 score = 0
+#             score = 0
 #         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
 #     return scores
-
-def get_results(data) :
-    samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
-    for sample in data :
-        split =   sample['split'] 
-        break
-    if split == 'train' : 
-        disable_cache=True
-        url = "http://holy8a14401:12332"
-    else : 
-        disable_cache=False
-        url = "http://holy8a14107:12332"
-    
-    results = batch_verify_proof(
-    samples=samples,
-    client=Lean4Client(base_url=url,disable_cache=disable_cache),
-    timeout=60,
-    num_proc=100,
-    batch_size=1,
-)
-    print(results)
-    scores = []
-    for x in results :
-        res = get_verification_results(x)
-        if res['complete'] : 
-            score = 1 
-        else :
-            score = 0
-        scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
-    return scores
 
 # def get_results(samples) : 
 #     results = batch_verify_proof(
 #     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14401:12332",disable_cache=True),
+#     client=Lean4Client(base_url="http://holy8a14201:12332",disable_cache=False),
 #     timeout=60,
-#     num_proc=100,
+#     num_proc=64,
 #     batch_size=1,
 # )
 #     scores = []
@@ -136,27 +125,10 @@ import Aesop
 set_option maxHeartbeats 0
 open BigOperators Real Nat Topology Rat
 
-theorem aime_1983_p3 (f : ℝ → ℝ)
-    (h₀ : ∀ x, f x = x^2 - 12 *x + 20)
-    (h₁ : Fintype (f ⁻¹' {0})) : (∏ x in (f ⁻¹' {0}).toFinset, x) = 20 := by
-  have h₂ : (f ⁻¹' {0}).toFinset = {2, 10} := by
-    ext x
-    simp only [Set.mem_toFinset, Set.mem_singleton_iff, Set.mem_preimage, Set.mem_setOf_eq,
-      h₀, Finset.mem_insert, Finset.mem_singleton]
-    constructor
-    · intro h
-      have h₃ : x ^ 2 - 12 * x + 20 = 0 := h
-      have h₄ : (x - 2) * (x - 10) = 0 := by linarith
-      have h₅ : x - 2 = 0 ∨ x - 10 = 0 := eq_zero_or_eq_zero_of_mul_eq_zero h₄
-      cases h₅ with
-      | inl h₅ => exact Or.inl (by linarith)
-      | inr h₅ => exact Or.inr (by linarith)
-    · intro h
-      cases h with
-      | inl h => rw [h]; norm_num
-      | inr h => rw [h]; norm_num
-  rw [h₂]
-  norm_num
+theorem thm1 (x : ℝ ) ( h1 : x ^ 2 + (18 * x + 30) - 2 * Real.sqrt (x ^ 2 + (18 * x + 45)) = 0 )  (hx :  x ^ 2 + (18 * x + 45) > 0) : 
+    (Real.sqrt (x ^ 2 + (18 * x + 45)) - 5 ) *  (Real.sqrt (x ^ 2 + (18 * x + 45)) + 3 )  = 0 := by 
+    exo_Doss
+
 """
 #code = "import Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/-- Show that there are no integers $x$ and $y$ such that $4x^3 - 7y^3 = 2003$.-/\ntheorem numbertheory_4x3m7y3neq2003 (x y : ℤ) : 4 * x ^ 3 - 7 * y ^ 3 ≠ 2003 := by\n  norm_num\n  ring_nf\n  intro h\n  have h₁ : (x - y) ^ 2 * (4 * x + 4 * y) = 2003 := by\n    nlinarith\n  have h₂ : x - y = 1 ∧ 4 * x + 4 * y = 2003 ∨ x - y = -1 ∧ 4 * x + 4 * y = -2003 := by\n    apply mul_eq_one_or_mul_eq_neg_one_of_mul_eq_one\n    nlinarith\n  cases' h₂ with h₂ h₂ <;> nlinarith"
 goals = [ ' (√(x ^ 2 + (18 * x + 45)) - 5) * (√(x ^ 2 + (18 * x + 45)) + 3) = 0', 
@@ -166,15 +138,15 @@ goals = [ ' (√(x ^ 2 + (18 * x + 45)) - 5) * (√(x ^ 2 + (18 * x + 45)) + 3) 
   ' 0 ≤ x ^ 2 + (18 * x + 45)',
   ' 0 ≤ 45 + x * 18 + x ^ 2'
 ]
-extra_info = {'new_goals' :goals, 'goals_before' : []}
-print(get_results([{'proof' :code  ,'custom_id' : '0' , 'split' : 'train'}]))
+extra_info = {'goals' :goals}
+print(get_results([{'proof' :code  ,'custom_id' : '0' , 'extra_info' : extra_info}]))
 
 # def get_results(samples) : 
 #     results = batch_verify_proof(
 #     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14202:12332"),
+#     client=Lean4Client(base_url="http://holy8a14201:12332"),
 #     timeout=60,
-#     num_proc=100,
+#     num_proc=64,
 #     batch_size=1,
 # )
 #     scores = []
@@ -192,7 +164,7 @@ print(get_results([{'proof' :code  ,'custom_id' : '0' , 'split' : 'train'}]))
 #         if res['complete'] : 
 #             score = 1 
 #         elif  use_meta_tactics :
-#             score = -5
+#             score = -1
 #         else :
 #             score = 0
 #         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })

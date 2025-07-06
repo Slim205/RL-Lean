@@ -48,7 +48,7 @@ def get_raw_theorem(prompt: str) -> str:
 
     
 def main(debug=False) : 
-    dataset = load_dataset("Slim205/LeanWorkbook", split='train')#.select(range(10))
+    dataset = load_dataset("Slim205/LeanWorkbook", split='train').select(range(1500))
     theorem_list=[]
     proofs=[]
     p=0
@@ -68,7 +68,7 @@ def main(debug=False) :
     score_dict = {thm: 0 for thm in theorem_list}
     
     print('Start Verification')
-    client = Lean4Client(base_url="http://0.0.0.0:12332")
+    client = Lean4Client(base_url="http://holy8a14201:12332")
 
     responses = batch_verify_proof(
         samples=proof_dict,
@@ -82,38 +82,37 @@ def main(debug=False) :
     for response in responses : 
       compilation_results.append(get_verification_results(response))
         
-    for res in compilation_results:
-      theorem_name = res['custom_id']
-      if res['pass']:
-          score_dict[theorem_name] += 1 
-      else : 
-        print('============================================')
-        print(res['custom_id'])
-        print(res)
-    file_name_txt =f"leanworkbook_scores.txt"
-    with open(file_name_txt, 'w', encoding='utf-8') as f:
-        f.write("Theorem Scores:\n")
-        f.write("=========================\n")
+    # for res in compilation_results:
+    #   theorem_name = res['custom_id']
+    #   if res['pass']:
+    #       score_dict[theorem_name] += 1 
+    #   else : 
+    #     print('============================================')
+    #     print(res['custom_id'])
+    # file_name_txt =f"leanworkbook_scores.txt"
+    # with open(file_name_txt, 'w', encoding='utf-8') as f:
+    #     f.write("Theorem Scores:\n")
+    #     f.write("=========================\n")
         
-        score_final = 0
-        for k, v in score_dict.items():
-            line = f'{k} : {v}\n'
-            f.write(line)
-            if v > 0:
-                score_final += 1
+    #     score_final = 0
+    #     for k, v in score_dict.items():
+    #         line = f'{k} : {v}\n'
+    #         f.write(line)
+    #         if v > 0:
+    #             score_final += 1
         
-        f.write(f"\nTotal theorems with at least one successful proof: {score_final}\n")
-        f.write(f"Out of total theorems: {len(theorem_list)} \n")
-        print(score_final)
-    inputs_data = []
-    for example in dataset : 
-        theorem = get_raw_theorem(example['formal_statement'])
-        if score_dict[theorem] == 1 : 
-            inputs_data.append(example)
-    hf_dataset = Dataset.from_list(inputs_data)
-    hf_dataset.push_to_hub('Slim205/lean_workbook_RL')
-    print(dataset)
-    print(hf_dataset)
+    #     f.write(f"\nTotal theorems with at least one successful proof: {score_final}\n")
+    #     f.write(f"Out of total theorems: {len(theorem_list)} \n")
+    #     print(score_final)
+    # inputs_data = []
+    # for example in dataset : 
+    #     theorem = get_raw_theorem(example['formal_statement'])
+    #     if score_dict[theorem] == 1 : 
+    #         inputs_data.append(example)
+    # hf_dataset = Dataset.from_list(inputs_data)
+    # hf_dataset.push_to_hub('Slim205/lean_workbook_RL')
+    #print(dataset)
+   # print(hf_dataset)
 if __name__ == '__main__':
     fire.Fire(main)
 

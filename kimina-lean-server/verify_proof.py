@@ -61,8 +61,8 @@ def process_lean_code(text):
 
 def get_verification_results(old_result,code) : 
     custom_id= old_result['custom_id']
+    system_messages = old_result['error']
     old_result = old_result['response']
-    system_messages = ''
     try:
        # print(old_result['ast'])
         ast_results = lean4_parser(code, old_result['ast']) if 'ast' in old_result and old_result['ast'] else {}
@@ -128,66 +128,80 @@ theorem aime_1983_p3 (f : ℝ → ℝ)
   rw [h₂]
   norm_num
 """
-code ="""
-import Mathlib
+code ="""import Mathlib
 import Aesop
+
+set_option maxRecDepth 100000
 set_option maxHeartbeats 0
 open BigOperators Real Nat Topology Rat
-theorem lean_workbook_0 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (b + c) / Real.sqrt (a ^ 2 + 8 * b * c) + (c + a) / Real.sqrt (b ^ 2 + 8 * c * a) + (a + b) / Real.sqrt (c ^ 2 + 8 * a * b) ≥ 2 := by sorry
+
+theorem lean_workbook_50790_V1 (case left a b c d e : ℝ ) (h₁ : a + b + c + d + e = 5 ) (h₂ : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 + e ^ 2 = 10 ) : -1 ≤ e := by 
 """
+import re
+path= '/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/results/leanworkbook_test/deepseek-SFT-3/code_compilation.json'
+import json
+
+with open(path, 'r') as json_file:
+    codes = json.load(json_file)
+
+for x in codes : 
+  if 'lean_workbook_50790' == x['name'] and x['compilation_result']['complete'] : 
+    print(x['code']) 
+def process_state(ch) : 
+    goal = ch.split('⊢')[1]
+    hypo = ch.split('⊢')[0]
+
+    new_hypo = ''
+    for x in hypo.split(' : ') : 
+        pos = re.split(r'[ \n]', x)[-1]
+        for y in re.split(r'[ \n]', x)[:-1] : 
+            new_hypo += y + ' '
+        if pos == '' : 
+            continue
+        if pos[0] != '('  :
+            new_hypo += ') ('
+        new_hypo += pos + ' : '
+    return new_hypo[2:] + ") :" + goal
+ch ="f : ℝ → ℝ h₀ : ∀ (x : ℝ), f x = x ^ 2 - 12 * x + 20 h₁ : Fintype ↑(f ⁻¹' {0}) ⊢ ∏ x ∈ (f ⁻¹' {0}).toFinset, x = 20"
+
+#theorem aime_1983_p3 f : ℝ → ℝ h₀ : ∀ (x : ℝ), f x = x ^ 2 - 12 * x + 20 h₁ : Fintype ↑(f ⁻¹' {0}) : ∏ x ∈ (f ⁻¹' {0}).toFinset, x = 20 := by sorry
+#theorem aime_1983_p3 (f : ℝ → ℝ) (h₀ : ∀ (x : ℝ), f x = x ^ 2 - 12 * x + 20) (h₁ : Fintype ↑(f ⁻¹' {0})) : ∏ x ∈ (f ⁻¹' {0}).toFinset, x = 20 := by sorry
+#theorem aime_1983_p3 (f : ℝ → ℝ) (h₀ : ∀ (x : ℝ), f x = x ^ 2 - 12 * x + 20) (h₁ : Fintype ↑(f ⁻¹' {0}) : ∏ x ∈ (f ⁻¹' {0}).toFinset, x = 20 := by sorry
 #print(code.split('sorry')[0].strip())
 #code=  "import Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/-- The least common multiple of two numbers is 3720, and their greatest common divisor is 8. Given that one of the numbers is 120, what is the other number? Show that it is 248.-/\ntheorem mathd_numbertheory_222 (b : \u2115) (h\u2080 : Nat.lcm 120 b = 3720) (h\u2081 : Nat.gcd 120 b = 8) :\n    b = 248 := by\n  have h\u2080' : 120 * b = 3720 := by simpa [Nat.lcm] using h\u2080\n  have h\u2081' : Nat.gcd 120 b = 8 := by simpa [Nat.gcd] using h\u2081\n  norm_num at h\u2080' h\u2081' \u22a2\n  omega"
-response = client.verify([{"proof": code  , "custom_id": "1nkfdnksdn" }], timeout=30)
+response = client.verify([{"proof": code  , "custom_id": "1nkfdnksdn" }], timeout=60)
 from pprint import pprint
 res = get_verification_results(response['results'][0],code)
-pprint(res)
-
-# ground_truth = [ ' (√(x ^ 2 + (18 * x + 45)) - 5) * (√(x ^ 2 + (18 * x + 45)) + 3) = 0', 
-# ' -15 - √(45 + x * 18 + x ^ 2) * 2 + √(45 + x * 18 + x ^ 2) ^ 2 = 0',
-# ' -15 - √(45 + x * 18 + x ^ 2) * 2 + (45 + x * 18 + x ^ 2) = 0',
-#   ' 30 + x * 18 + (x ^ 2 - √(45 + x * 18 + x ^ 2) * 2) = 0',
-#   ' 0 ≤ x ^ 2 + (18 * x + 45)',
-#   ' 0 ≤ 45 + x * 18 + x ^ 2'
-# ]
-
-def get_goals(res) : 
-    goals = []
-    for x in res['tactics'] : 
-        goal = x['goals'].split('⊢')[-1]
-        if goal not in goals : 
-            goals.append(goal)
-    return goals
-
-pprint(get_goals(res))
-# #ground_truth = list(set(ground_truth))
-# pprint(get_goals(res) )
-# goals = get_goals(res)
-# score = 0
-# for goal in goals : 
-#   if goal in ground_truth :
-#     score +=1
-# print(score/len(ground_truth))
-# print(score)
-# print(len(ground_truth))
+#pprint(res)
 
 
+# new_codes=[]
+# for i,x in enumerate(res['tactics']) : 
+#   new_theorem =  x['goals']
+#  # print(new_theorem)
+#   new_code =f"""
+# import Mathlib
+# import Aesop
 
-# ch = comp.split('\n')
+# set_option maxRecDepth 100000
+# set_option maxHeartbeats 0
+# open BigOperators Real
+# Nat Topology Rat
 
-# i = 0 
-# for i in range(len(ch)) : 
-#   lines= ''
-#   for x in ch[:i+1] : 
-#     if i > 0 : 
-#       lines  = lines + '\n' + x
-#     else : 
-#         lines  = lines  + x
+# theorem aime_1983_p3 {process_state(new_theorem)} := by sorry
+# """
+#   new_codes.append({"proof": new_code  , "custom_id": i})
 
-#   response = client.verify([{"proof": code + lines, "custom_id": "1nkfdnksdn" }], timeout=60)
-#   res = get_verification_results(response['results'][0],code)
-#   if res['complete'] == False : 
-#     for error in res['errors'] : 
-#       if 'unsolved goals' in error['data'] : 
-#         msg = error['data'].split('⊢')[-1]
-#         print(msg)
+# new_theorems=[]
+# response = client.verify(new_codes, timeout=60)
+# from pprint import pprint
+# #res = get_verification_results(response['results'][0],'')
 
+# for res in response['results'] :
+#   x = get_verification_results(res,'')
+ 
+#   if x['pass'] : 
+#     #print(x['custom_id'])
+#     print(new_codes[x['custom_id']]['proof'].split('theorem aime_1983_p3 ')[1])
+#     # if new_codes[x['custom_id']]['proof'] not in new_theorems : 
+#     #   new_theorems.append(new_codes[x['custom_id']]['proof'])

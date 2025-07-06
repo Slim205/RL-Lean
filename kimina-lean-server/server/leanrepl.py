@@ -6,6 +6,7 @@ import tempfile
 import threading
 import time
 import psutil
+import contextlib
 
 from func_timeout import FunctionTimedOut, func_timeout  # type: ignore
 from loguru import logger
@@ -172,20 +173,25 @@ class LeanREPL:
             logger.debug("Error file is None")
         self.error_file.seek(0)
         return self.error_file.read()
-
+    
     def close(self):
-        """
-        Terminate the REPL process and all its child processes.
-        """
+        """Terminate the REPL process and all its children, swallowing race‑condition errors."""
+        # 1. Best‑effort shutdown of stdio
+        with contextlib.suppress(BrokenPipeError, OSError, ValueError):
+            if self.process.stdin and not self.process.stdin.closed:
+                self.process.stdin.close()
+
+        # 2. Ask the process group to exit gracefully first
+        with contextlib.suppress(ProcessLookupError):
+            pgid = os.getpgid(self.process.pid)
+            os.killpg(pgid, signal.SIGTERM)
+
+        # 3. Wait a little; if it’s still around, force‑kill
         try:
-            # stop input to repl (which will result in the program loop for lean repl terminating)
-            self.process.stdin.close()
-            os.killpg(os.getpgid(self.process.pid), signal.SIGKILL)
-        except ProcessLookupError:
-            # Process already terminated
-            pass
-        finally:
-            # Wait for the process to exit
+            self.process.wait(timeout=3)
+        except subprocess.TimeoutExpired:
+            with contextlib.suppress(ProcessLookupError):
+                os.killpg(os.getpgid(self.process.pid), signal.SIGKILL)
             self.process.wait()
 
     def __del__(self):

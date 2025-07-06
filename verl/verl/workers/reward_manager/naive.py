@@ -91,7 +91,7 @@ class NaiveRewardManager:
             code = extrac_code(prompt_str + response_str)
             if code != 'None' : 
                 #parameters.append({'proof' :code  ,'custom_id' : i , 'extra_info' : extra_info })
-                parameters.append({'proof' :code  ,'custom_id' : i }) # , 'split'  : extra_info['split']  })
+                parameters.append({'proof' :code  ,'custom_id' : i }) 
 
         if len(parameters) == 0 :
             print('================== WARNING  ::: Reward == 0 ')

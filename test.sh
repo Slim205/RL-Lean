@@ -25,8 +25,8 @@ sh eval/eval.sh -i datasets/minif2f.jsonl -s test -m /n/netscratch/amin_lab/Lab/
 
 python model_merger.py merge \
     --backend fsdp \
-    --local_dir /n/netscratch/amin_lab/Lab/slim/verl/examples/ppo_trainer/checkpoints/leanworkbook/leanworkbook_V9/global_step_240/actor \
-    --target_dir ./leanworkbook_V9_240  \
+    --local_dir /n/netscratch/amin_lab/Lab/slim/verl/examples/ppo_trainer/checkpoints/leanworkbook/leanworkbook_V12/global_step_120/actor \
+    --target_dir ./leanworkbook_V12_120  \
     --hf_model_path deepseek-ai/DeepSeek-Prover-V1.5-SFT
 
 30.75 Vs 29.51 Vs 31.15 Vs 31.15 Vs 30.75
@@ -41,9 +41,9 @@ cd ..
 conda deactivate 
 conda activate env/
 cd Goedel-Prover
-sh eval/eval.sh -i datasets/minif2f.jsonl -s test -m /n/netscratch/amin_lab/Lab/slim/verl/scripts/leanworkbook_V9_240 -o results/minif2f/leanworkbook_V9_240 -n 1 -c 32 -g 1
-
-
+sh eval/eval.sh -i datasets/minif2f.jsonl -s test -m /n/netscratch/amin_lab/Lab/slim/verl/scripts/leanworkbook_V12_120 -o results/minif2f/leanworkbook_V12_120 -n 1 -c 32 -g 1
+33.20 vs 34.02 Vs 37.3 Vs 37.70
+35.66 35.25 37.3 35.66
 nohup bash run_deepseek7b_llm.sh > out301V9_200.log 2>&1 &
 
 nohup python -m server > log102V6.log 2>&1 & 

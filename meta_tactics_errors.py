@@ -7,7 +7,7 @@ def get_original_theorem(theorem_name) :
             p = x
     return theorem_name[:p]
 
-file_path = "/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/results/leanworkbook_full/SFT-1/code_compilation.json"
+file_path = "/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/results/minif2f/leanworkbook_V1_160/code_compilation.json"
 
 with open(file_path, "r", encoding="utf-8") as f:
     data = json.load(f)
@@ -82,3 +82,29 @@ print(total)
 # 1369
 # 104
 # 1481
+#=============
+# SFT + train on 120 steps + -1
+# 98
+# 156
+# 86
+# 244
+# 91 160 steps
+# 154
+# 86
+# 244
+#==================
+# SFT + train on 120 steps (0/1)
+# 112
+# 156
+# 87
+# 244
+# 108 (160 steps)
+# 156
+# 86
+# 244
+#========
+# SFT  :
+# 118
+# 167
+# 75
+# 244

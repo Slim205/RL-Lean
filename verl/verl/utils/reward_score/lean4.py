@@ -4,8 +4,8 @@ import traceback
 
 def get_verification_results(old_result) : 
     custom_id= old_result['custom_id']
+    system_messages = old_result['error']
     old_result = old_result['response']
-    system_messages = ''
     try:
         result = {
             "sorries" : old_result.get('sorries', []), 
@@ -51,9 +51,9 @@ def get_goals(res) :
 
 #     results = batch_verify_proof(
 #     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14102:12332",disable_cache=True),
-#     timeout=200,
-#     num_proc=100,
+#     client=Lean4Client(base_url="http://holy8a14401:12332",disable_cache=False),
+#     timeout=60,
+#     num_proc=64,
 #     batch_size=1,
 # )
 #     scores = []
@@ -62,21 +62,16 @@ def get_goals(res) :
 #         if res['complete'] : 
 #             score = 1 
 #         else :
-#             goals_before = extra_info[res['custom_id']]['goals_before']
-#             ground_truth = extra_info[res['custom_id']]['new_goals']
+#             ground_truth = extra_info[res['custom_id']]['goals']
 
-#             if len(ground_truth) > 0 : 
-#                 goals = get_goals(res)
-#                 new_goals = []
-#                 for x in goals : 
-#                     if x not in goals_before : 
-#                         new_goals.append(x)
-                
+#             if len(ground_truth) > 1 : 
+#                 old_goals = ground_truth[1:] #remove the first goal as it need ot be included in both
+#                 goals = get_goals(res) # it can be [] when it timeout
 #                 ss = 0
-#                 for goal in ground_truth : 
-#                     if goal in new_goals :
+#                 for goal in old_goals : 
+#                     if goal in goals :
 #                         ss +=1
-#                 score = ss/len(ground_truth)
+#                 score = ss/ len(old_goals) 
 #             else :
 #                 score = 0
 #         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
@@ -109,9 +104,9 @@ def get_goals(res) :
 def get_results(samples) : 
     results = batch_verify_proof(
     samples=samples,
-    client=Lean4Client(base_url="http://holy8a14401:12332",disable_cache=False),
+    client=Lean4Client(base_url="http://holy8a14201:12332",disable_cache=False),
     timeout=60,
-    num_proc=100,
+    num_proc=64,
     batch_size=1,
 )
     scores = []
@@ -132,12 +127,12 @@ def get_results(samples) :
 
 # theorem thm1 (x : ℝ ) ( h1 : x ^ 2 + (18 * x + 30) - 2 * Real.sqrt (x ^ 2 + (18 * x + 45)) = 0 )  (hx :  x ^ 2 + (18 * x + 45) > 0) : 
 #     (Real.sqrt (x ^ 2 + (18 * x + 45)) - 5 ) *  (Real.sqrt (x ^ 2 + (18 * x + 45)) + 3 )  = 0 := by 
-#       ring
-#       rw [ Real.sq_sqrt]
-#       · ring_nf at h1 ⊢
-#       · linarith
+#     ring
+#     rw [ Real.sq_sqrt]
+#         · ring_nf at h1 ⊢
+#         · linarith
 
-# """
+#  """
 # #code = "import Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/-- Show that there are no integers $x$ and $y$ such that $4x^3 - 7y^3 = 2003$.-/\ntheorem numbertheory_4x3m7y3neq2003 (x y : ℤ) : 4 * x ^ 3 - 7 * y ^ 3 ≠ 2003 := by\n  norm_num\n  ring_nf\n  intro h\n  have h₁ : (x - y) ^ 2 * (4 * x + 4 * y) = 2003 := by\n    nlinarith\n  have h₂ : x - y = 1 ∧ 4 * x + 4 * y = 2003 ∨ x - y = -1 ∧ 4 * x + 4 * y = -2003 := by\n    apply mul_eq_one_or_mul_eq_neg_one_of_mul_eq_one\n    nlinarith\n  cases' h₂ with h₂ h₂ <;> nlinarith"
 # goals = [ ' (√(x ^ 2 + (18 * x + 45)) - 5) * (√(x ^ 2 + (18 * x + 45)) + 3) = 0', 
 # ' -15 - √(45 + x * 18 + x ^ 2) * 2 + √(45 + x * 18 + x ^ 2) ^ 2 = 0',
@@ -152,9 +147,9 @@ def get_results(samples) :
 # def get_results(samples) : 
 #     results = batch_verify_proof(
 #     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14202:12332"),
+#     client=Lean4Client(base_url="http://holy8a14201:12332"),
 #     timeout=60,
-#     num_proc=100,
+#     num_proc=64,
 #     batch_size=1,
 # )
 #     scores = []
@@ -172,7 +167,7 @@ def get_results(samples) :
 #         if res['complete'] : 
 #             score = 1 
 #         elif  use_meta_tactics :
-#             score = -5
+#             score = -1
 #         else :
 #             score = 0
 #         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })

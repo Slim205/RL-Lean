@@ -19,7 +19,7 @@ def get_original_theorem(theorem_name) :
     return theorem_name[:p]
 
 # Path to the JSON file
-file_path = "/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/results/mathlib_train/deepseek-SFT/code_compilation.json"
+file_path = "/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/results/minif2f/leanworkbook_V1_160/code_compilation.json"
 
 # Load the list of dicts from the file
 with open(file_path, "r", encoding="utf-8") as f:

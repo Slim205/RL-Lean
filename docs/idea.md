@@ -96,4 +96,12 @@ leanworkbook experiments : / complexity curriculum and  / reward -1
 
 mathlib with all the stars (not now)
 
+=========================
+1 run baseline : find the number of epoch optimal for training and see improvement on minif2f
+1 run with -1 as a reward and see if there is improvement
+# 1 run with complexity curriculum (We need a gpu here. and once we fixed the dataset)
+
+==
+Compute the scores of the proofs using the dataset you have (the heuristic)
+
 

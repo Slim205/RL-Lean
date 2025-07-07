@@ -9,27 +9,36 @@ from verl.utils.hdfs_io import copy, makedirs
 
 def get_prompt(data) :
     text = "Complete the following Lean 4 code :\n\n```lean4\n{formal_statement}".format(
-                formal_statement=data['input'],
+                formal_statement=data['theorem'],
+            )
+    return text
+def get_prompt_minif2f(example) :
+    theorem = 'import miniF2F\nimport Aesop\n' + 'set_option maxRecDepth 100000'+  example['theorem'].split('Aesop')[1] 
+
+    text = "Complete the following Lean 4 code :\n\n```lean4\n{formal_statement}".format(
+                formal_statement=theorem,
             )
     return text
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--local_dir", default="~/data/leanworkbook_V3")
+    parser.add_argument("--local_dir", default="~/data/leanworkbook_V13")
     parser.add_argument("--hdfs_dir", default=None)
 
     args = parser.parse_args()
 
-    data_source = "Slim205/lean_workbook_RL_full_v1"
+    dataset = datasets.load_dataset( "Slim205/lean_workbook_RL_V8_complexity")
+    data_source = "lean_workbook" # minif2f
 
-    dataset = datasets.load_dataset(data_source)
-    train_dataset = dataset["train"].select(range(20000))
+    train_dataset = dataset["train"]#.select(range(12000))
+    import numpy as np
+    print(np.mean(train_dataset['is_proved']))
     print(train_dataset)
-  #  test_dataset = dataset["train"].select(range(10240,11745))
-    test_dataset = dataset["test"]
-
+  #  test_dataset = dataset["train"].select(range(10240,11745)) V2
+    test_dataset = dataset["test"]#.select(range(24000,24434))
+    import numpy as np
+    print(np.mean(test_dataset['is_proved']))
     print(test_dataset)
-    data_source = "lean_workbook"
 
     # add a row to each data item that represents a unique id
     def make_map_fn(split):
@@ -42,6 +51,7 @@ if __name__ == "__main__":
                 "extra_info": {
                     "split": split,
                     "index": idx,
+                    #'goals' : example['goals']
                 },
             }
             return data

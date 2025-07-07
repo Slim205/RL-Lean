@@ -15,23 +15,23 @@ def save_inputs_to_jsonl(data: list, filename: str) -> None:
             f.write(json.dumps(item) + '\n')
 
 #dataset = load_dataset("Slim205/lean_workbook_RL_v3", split='train').select(range(10240,11745))
-dataset = load_dataset("Slim205/lean_workbook_RL_full_v1", split='test')
+dataset = load_dataset("Slim205/lean_workbook_RL_V13_V1", split='train')#.select(range(12000))
 
 inputs = []
 p = 0
 thm=[]
 for sample in dataset:
-    p+=1
-    theorem_name = get_raw_theorem(sample['input'])
-    thm.append(theorem_name )
-
-    inputs.append({
-        "name": theorem_name ,
-        "split": "test"  ,
-        "formal_statement" : sample['input'],
-        'header' : '',
-    })
-
+    if sample['pass']  : 
+        theorem_name = sample['problem_id'] + str(p)
+        thm.append(theorem_name )
+        inputs.append({
+            "name": theorem_name ,
+            "split": "test"  ,
+            "formal_statement" : sample['theorem'],
+            'header' : '',
+        })
+        p+=1
+path_output = 'leanworkbook_hinter.jsonl'
 assert len(thm) == len(inputs)
-save_inputs_to_jsonl(inputs, 'leanworkbook_full.jsonl')
-print(f"Saved {len(inputs)} entries to leanworkbook.jsonl")
+save_inputs_to_jsonl(inputs, path_output)
+print(f"Saved {len(inputs)} entries to leanworkbook_hinter.jsonl")

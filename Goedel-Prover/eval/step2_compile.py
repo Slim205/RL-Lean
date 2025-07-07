@@ -20,17 +20,22 @@ with open(input_file_path, 'r') as json_file:
 #codes = codes[7000:7128]
 
 batch_size = 1
-timeout = 60 
 num_proc = args.cpu
 print(num_proc)
-url = "http://0.0.0.0:12332"
-url = "http://holy8a14101:12332"
+timeout = 60 
+url = "http://holy8a14104:12332"
 logger.info("Testing cached mode")
 client = Lean4Client(base_url=url, disable_cache=False)
 
 samples= []
 for i in range(len(codes)):
     codes[i]["custom_id"] = f"{codes[i]['name']}_{i}"
+    # if codes[i]["code"] =='None' : 
+    #     proof = 'None'
+    # else : 
+    #     proof = 'import miniF2F\nimport Aesop\n' + 'set_option maxRecDepth 100000'+  codes[i]["code"].split('Aesop')[1] 
+    # if i==0 :
+    #     print(proof)
     samples.append({"custom_id": codes[i]["custom_id"] , "proof": codes[i]["code"] })
 
 print(len(codes))
@@ -43,8 +48,8 @@ result = batch_verify_proof(
 )
 def get_verification_results(old_result) : 
     custom_id= old_result['custom_id']
+    system_messages = old_result['error']
     old_result = old_result['response']
-    system_messages = ''
     try:
 
         result = {

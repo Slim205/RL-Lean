@@ -24,7 +24,7 @@ include_ast = settings.include_ast
 
 async def _repl_creater():
     while True:
-        await asyncio.sleep(10)
+        await asyncio.sleep(0.01)
                                         
         if len(repl_cache.create_queue) > 0:
             repl_to_create = Counter(repl_cache.create_queue)
@@ -58,9 +58,17 @@ async def _repl_cleaner():
         await asyncio.sleep(1)
         while not repl_cache.close_queue.empty():
             id, repl = repl_cache.close_queue.get()
-            await asyncio.to_thread(repl.close)
-            logger.info(f"Closed {id} repl")
-
+            try:
+                await asyncio.to_thread(repl.close)
+                logger.info(f"Closed {id} repl.")
+            except Exception as exc:  # noqa: BLE001
+                logger.exception("Error while closing REPL", exc_info=exc)
+            current_total = repl_cache.size() + len(repl_cache.create_queue)
+            logger.info(f"Closed {id} repl. {current_total}/{settings.MAX_REPLS}")
+            if current_total < settings.MAX_REPLS:
+                repl_cache.create_queue.extend(
+        ["import Mathlib\nimport Aesop"] * int(settings.MAX_REPLS - current_total )
+    )
 
 async def _stat_printer():
     update_interval = 15

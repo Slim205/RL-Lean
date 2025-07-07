@@ -12,7 +12,7 @@ def get_theorem_name(theorem_str: str) -> str:
     except Exception as e:
         print(f"Error parsing theorem: {e}")
         return "error"
-input_file= '/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/results/mathlib/deepseek-baseline-RL/code_compilation.json'
+input_file= '/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/results/minif2f/deepseek-SFT-2/code_compilation.json'
 
 with open(input_file, 'r') as json_file:
     codes = json.load(json_file)

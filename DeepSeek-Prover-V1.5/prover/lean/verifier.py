@@ -156,51 +156,26 @@ def get_goals(res) :
 
 if __name__ == '__main__':
    # code = open( DEFAULT_LEAN_WORKSPACE+'.lake/packages/REPL/test/aime_1983_p9.in').read()
-    code="""
-import Mathlib.Geometry.RingedSpace.PresheafedSpace
-import Mathlib.CategoryTheory.Limits.Final
-import Mathlib.Topology.Sheaves.Stalks
-#align_import algebraic_geometry.stalks from "leanprover-community/mathlib"@"d39590fc8728fbf6743249802486f8c91ffe07bc"
-noncomputable section
-universe v u v' u'
-open Opposite CategoryTheory CategoryTheory.Category CategoryTheory.Functor CategoryTheory.Limits
-  AlgebraicGeometry TopologicalSpace
-variable {C : Type u} [Category.{v} C] [HasColimits C]
-open TopCat.Presheaf
-namespace AlgebraicGeometry.PresheafedSpace
-abbrev stalk (X : PresheafedSpace C) (x : X) : C :=
-  X.presheaf.stalk x
-set_option linter.uppercaseLean3 false in
-#align algebraic_geometry.PresheafedSpace.stalk AlgebraicGeometry.PresheafedSpace.stalk
-def stalkMap {X Y : PresheafedSpace.{_, _, v} C} (α : X ⟶ Y) (x : X) :
-    Y.stalk (α.base x) ⟶ X.stalk x :=
-  (stalkFunctor C (α.base x)).map α.c ≫ X.presheaf.stalkPushforward C α.base x
-set_option linter.uppercaseLean3 false in
-#align algebraic_geometry.PresheafedSpace.stalk_map AlgebraicGeometry.PresheafedSpace.stalkMap
-namespace stalkMap
-theorem congr {X Y : PresheafedSpace.{_, _, v} C} (α β : X ⟶ Y)
-    (h₁ : α = β) (x x' : X) (h₂ : x = x') :
-    stalkMap α x ≫ eqToHom (show X.stalk x = X.stalk x' by rw [h₂]) =
-      eqToHom (show Y.stalk (α.base x) = Y.stalk (β.base x') by rw [h₁, h₂]) ≫ stalkMap β x' := by
-  ext
-  substs h₁ h₂
-  simp
-set_option linter.uppercaseLean3 false in
-#align algebraic_geometry.PresheafedSpace.stalk_map.congr AlgebraicGeometry.PresheafedSpace.stalkMap.congr
+    code = """
+import Mathlib
+import Aesop
+set_option maxHeartbeats 0
+open BigOperators Real Nat Topology Rat
 
-
+theorem le_total_2 (x : ℝ) :     3 / 4 ≤ x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y * z ∨     x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y * z ≤ 3 / 4 := by
+  cases' le_total (x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y * z) (3 / 4) := by sorry
 """
+
 #    code="\nimport Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n/-- Show that $\frac{9x^2\\sin^2 x + 4}{x\\sin x} \\geq 12$ for $0 < x < \\pi$.-/\ntheorem aime_1983_p9 (x : ℝ) (h₀ : 0 < x ∧ x < Real.pi) :\n  12 ≤ (9 * (x ^ 2 * Real.sin x ^ 2) + 4) / (x * Real.sin x) := by\n  /-\n  To find the minimum value of $\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$, we need to show that it is at least 12. We start by noting that the expression can be rewritten using the division property of inequalities. We then use the fact that \\$sin x$ and $x$ are positive in the given range to establish the necessary inequalities. Finally, we apply these results to conclude that the minimum value is indeed 12.\n  -/\n  -- We start by ensuring that the product x * sin x is positive in the given range.\n  have h₁ : 0 < x * Real.sin x := by\n    apply mul_pos\n    -- x is positive in the range (0, π).\n    exact h₀.1\n    -- sin x is positive in the range (0, π).\n    exact Real.sin_pos_of_pos_of_lt_pi h₀.1 h₀.2\n  -- Using the division property of inequalities, we rewrite the expression.\n  rw [le_div_iff h₁]\n  /- tactic state:\n    x : ℝ\n    h₀ : 0 < x ∧ x < π\n    h₁ : 0 < x * x.sin\n    ⊢ 12 * (x * x.sin) ≤ 9 * (x ^ 2 * x.sin ^ 2) + 4\n  -/\n  -- This is equivalent to showing that 9x^2 sin^2 x - 12x sin x + 4 ≥ 0, and the left hand side can be rewritten as a perfect square (3x sin x - 2)^2.\n  -- We use the fact that (3x sin x - 2)^2 is non-negative to establish this.\n  nlinarith [sq_nonneg (3 * x * Real.sin x - 2)]\n"
   
-    code_dict = {"code": code, "allTactics": True, "ast": False, "tactics": False, "premises": False
-     }
+    code_dict = {"code": code, "allTactics": False, "ast": True, "tactics": False, "premises": True}
     lean4_scheduler = Lean4ServerScheduler(max_concurrent_requests=1, timeout=200, memory_limit=10, name='verifier')
     request_id_list = lean4_scheduler.submit_all_request([code_dict])
     outputs_list = lean4_scheduler.get_all_request_outputs(request_id_list)
     lean4_scheduler.close()
     #pprint(outputs_list)
     
-    print(outputs_list[0]['pass'])
+    print(outputs_list[0]['ast'])
     print(get_goals(outputs_list[0]))
     print(len(get_goals(outputs_list[0])))
 # {

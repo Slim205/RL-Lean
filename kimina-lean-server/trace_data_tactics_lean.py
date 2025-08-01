@@ -51,9 +51,9 @@ def main3(model_name='test/ground_true', n=4, pass_rate=1,debug=False) :
       return len(z['goals']) > 1
     print(dataset.filter(filter1))
 def main2(model_name='test/ground_true', n=4, pass_rate=1,debug=False) : 
-    dataset = load_dataset("Slim205/lean_workbook_RL_V8", split='train')
+    dataset = load_dataset("Slim205/lean_workbook_hard", split='train')
 
-    with open('compilation_res_tests_V8.json', 'r') as json_file:
+    with open('compilation_v20_hard.json', 'r') as json_file:
         compilation_results = json.load(json_file)
     dict_res = {}
     for res in compilation_results:
@@ -69,15 +69,15 @@ def main2(model_name='test/ground_true', n=4, pass_rate=1,debug=False) :
     def map1(s) :
       s['goals'] = ['']
       return s
-    test_ds = load_dataset("Slim205/lean_workbook_RL_V8", split='test').map(map1)
-    print(test_ds)
-    print(train_ds)
-    hf_dataset = DatasetDict({'train' : train_ds , 'test' : test_ds})
-    hf_dataset.push_to_hub('Slim205/lean_workbook_RL_V8_goals')
+    #test_ds = load_dataset("Slim205/lean_workbook_RL_V8", split='test').map(map1)
+    #print(test_ds)
+    #print(train_ds)
+    #hf_dataset = DatasetDict({'train' : train_ds , 'test' : test_ds})
+    train_ds.push_to_hub('Slim205/lean_workbook_hard_goals')
 
 
 def main(debug=False) : 
-    dataset = load_dataset("Slim205/lean_workbook_RL_V8", split='train')#.select(range(100))
+    dataset = load_dataset("Slim205/lean_workbook_hard", split='train')#.select(range(100))
     theorem_list=[]
     proofs=[]
     p=0
@@ -103,7 +103,7 @@ def main(debug=False) :
     for response in responses : 
       compilation_results.append(get_verification_results(response))
 
-    with open('compilation_res_tehhsts_V8.json', 'w') as json_file:
+    with open('compilation_v20_hard.json', 'w') as json_file:
         json.dump(compilation_results, json_file, indent=4)
 
     for res in compilation_results:

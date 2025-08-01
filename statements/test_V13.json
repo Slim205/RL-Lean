@@ -1,0 +1,2202 @@
+[
+ {
+  "old": "",
+  "new": "(p q : \u211d) : (p + q) ^ 3 = 4 * (p ^ 3 + q ^ 3) - 3 * (p + q) * (p - q) ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x : \u211d, x^8 - x^5 + x^2 - x + 1 > 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 4 * (-(Real.cos x) ^ 2 + Real.cos x + 1 / 2) = 4 * (-((Real.cos x) - 1 / 2) ^ 2 + 3 / 4) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(z : \u2102) (hz : 2 * z ^ 3 - (5 + 6 * Complex.I) * z ^ 2 + 9 * Complex.I * z + (1 - 3 * Complex.I) = 0) : (z = 0.5 \u2228 z = 1 + 2 * Complex.I \u2228 z = 1 + Complex.I) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx : 0 < x) : 2 * x^4 - 7 * x^3 + 12 * x + 2 > 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) : (a^2 - a + 2) * (b^2 - b + 2) * (c^2 - c + 2) * (d^2 - d + 2) \u2265 (a + b + c + d)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "a : sin (2 * a) = 2 * sin a * cos a := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 4 * x^3 - 3 * x - 2 / (5 * Real.sqrt 5) = 0 \u2194 (Real.sqrt 5 * x - 2) * (20 * x^2 + 8 * Real.sqrt 5 * x + 1) = 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{a b c : \u211d} (hx: a > 0 \u2227 b > 0 \u2227 c > 0) (hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : |b - c| < a \u2227 |c - a| < b \u2227 |a - b| < c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx : x = (2^31 + 3^31) / (2^29 + 3^29)) : \u230ax\u230b = 8 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx : sin x \u2260 0 \u2227 cos x \u2260 0) : sin x / cos x + cos x / sin x = 1 / (sin x * cos x) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : a + b = 1) : (3 * a - 1) ^ 2 / a + (3 * b - 1) ^ 2 / b \u2265 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (h : x^2 + y^2 + z^2 + 2*x*y*z = 1) : x^2 + y^2 + z^2 >= 3/4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u211d) (ha : 0 < a) : a^3 - a^4 \u2264 27 / 256 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) (X : Fin (n + 1) \u2192 Set (Fin n)) (hX : \u2200 i, X i \u2260 \u2205) : \u2203 I J : Finset (Fin (n + 1)), (I \u2229 J = \u2205 \u2227 \u22c3 i \u2208 I, X i = \u22c3 j \u2208 J, X j) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) : (x^2 + y^2 + z^2) \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u2124) (p s : \u2124) (h\u2081 : x = 6 * p ^ 2 - 4 * p * s + s ^ 2) (h\u2082 : y = 6 * p ^ 2 - s ^ 2) (h\u2083 : z = 6 * p ^ 2 - 6 * p * s + s ^ 2): 3 * x ^ 2 - y ^ 2 = 2 * z ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 2^(2018) + (2^(2018) * (2^(2019) - 1)) = 2^(4037) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(p : \u2124) (hp : p = 5 * k - 1) : p + 26 \u2261 0 [ZMOD 5] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) : a^2 + b^2 + c^2 + 9/2 * a * b * c \u2265 1/2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx : x > 0) : x + 1 / x \u2265 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (ha : a \u2260 0) (hb : b \u2260 0) (hab : a / b + b / a = 5) (h : a^2 / b + b^2 / a = 12) : 1 / a + 1 / b = 7 / 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 b c : \u211d, b^2 - b*c + c^2 \u2265 (b + c)^2 / 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x \u2265 0) (hy : y \u2265 0) (hz : z \u2265 0) (hx1 : x^2 - y = (z - 1)^2) (hy1 : y^2 - z = (x - 1)^2) (hz1 : z^2 - x = (y -1)^2) : x = y \u2227 y = z \u2227 z = x := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (habc : a + b^2 + c = 1) : (1 + a^2) * (1 + b^2) * (1 + c^2) \u2265 25 / 16 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (5 * (a ^ 2 + b ^ 2 + c ^ 2) - 2 * (a * b + b * c + c * a)) ^ 2 \u2265 15 * (a ^ 4 + b ^ 4 + c ^ 4) + 12 * a * b * c * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a p : \u2115) (hp : p.Prime) (h : a.Coprime p) : a^(Nat.totient p) \u2261 1 [ZMOD p] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (h\u2081 : a + b = 9) (h\u2082 : a * (a - 2) + b * (b - 2) = 21) : a * b = 21 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : \u2211 k in (Finset.range (n + 1)), k = n * (n + 1) / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 3) : 9 * (a^2 - a + 1) * (b^2 - b + 1) * (c^2 - c + 1) \u2265 (a + b + c)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx: (x - 1) * (x - 3) \u2265 0) : x \u2264 1 \u2228 x \u2265 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) (h\u2080 : 0 < n) (h\u2081 : (4:\u211d) / 10 * (16:\u211d) / (16 + n) + 6 / 10 * n / (16 + n) = 29 / 50) : n = 144 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b \u2264 c) : a * b + b ^ 2 + c ^ 2 \u2265 (7 / 9) * (a + 2 * b) * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (f : \u211d \u2192 \u211d) (h\u2081 : f = fun x => a * x ^ 4 - b * x ^ 2 + x + 5) (h\u2082 : f (-3) = 2) : f 3 = 8 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) (x y : \u2115 \u2192 \u211d) : (\u2211 k in Finset.range n, x k * y k) ^ 2 \u2264 (\u2211 k in Finset.range n, x k ^ 2) * (\u2211 k in Finset.range n, y k ^ 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) : Real.sqrt ((a^2 + d^2) * (b^2 + c^2)) \u2265 a * c + b * d := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{a b c : \u211d} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 1) : a^2 * b + b^2 * c + c^2 * a \u2264 1 / Real.sqrt 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(k : \u211d) (h : k = -11 - 37 / 2) : \u20162 * k\u2016 = 59 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(r s a d : \u2124) : (r + s) ^ 3 = (a + d) ^ 3 \u2192 r ^ 3 + s ^ 3 = a ^ 3 + d ^ 3 + 3 * a ^ 2 * d + 3 * a * d ^ 2 - 3 * r * s * (r + s) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": Int.floor (Real.sqrt 2021) = 44 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(k : \u2115) (x : \u211d) (hx : 0 < x) : (x * (k/x) - (x+1) * (k/(x+1))) \u2264 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{x y : \u2124} (h\u2081 : 17 \u2223 y - 2) (h\u2082 : 17 \u2223 x - 2 * y + 1) : 17 \u2223 x - 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (h\u2081 : 2 < x) (h\u2082 : x \u2264 3) : -(x - 3) - (x - 4) = -2 * x + 7 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u211d) : (a - 1) ^ 2 * (9 * a ^ 10 + 6 * a ^ 9 + 3 * a ^ 8 + 12 * a ^ 7 + 9 * a ^ 6 + 6 * a ^ 5 + 13 * a ^ 4 + 8 * a ^ 3 + 3 * a ^ 2 + 2 * a + 1) \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 + a * b * c = 4) : a * b + b * c + c * a \u2264 a + b + c \u2227 a + b + c \u2264 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hx : 0 \u2264 x) (hy : 0 \u2264 y) : \u221ax = 10 + \u221ay \u2192 x - 2*y \u2264 200 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : x * y * z = 1) : 1 / (x + y) + 1 / (y + z) + 1 / (z + x) \u2265 1 / (1 + y) + 1 / (1 + z) + 1 / (1 + x) - 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x : \u211d, (x - 1) ^ 2 * ((x ^ 2 - 1) ^ 2 + x ^ 2) \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a \u2227 a < 1) (hb : 0 < b \u2227 b < 1) (hc : 0 < c \u2227 c < 1) (hab : a + b + c = 2) : a * b * c >= 8 * (1 - a) * (1 - b) * (1 - c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) : 1 / a + 3 / (a + b) \u2264 4 / 3 * (1 / a + 1 / b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) : (x^2+y^2+z^2)^2+48 \u2265 24*|x*y*z| := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : a + b = 1) : a * b + 1 / (a * b) \u2265 17 / 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) (x : \u211d) : (sin (n * x))^2 = 1 / 2 * (1 - cos (2 * n * x)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211a) : 1 / 21 + 1 / 22 = 1 / 462 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a + b + c = 3) (hab : a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0): a^2 + b^2 + c^2 + a * b + b * c + c * a \u2265 6 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{a b c d : \u211d} (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (hd : d \u2265 0) : (a + b + c) * (b + c + d) * (c + d + a) * (d + a + b) \u2265 4 * (a + b) * (b + c) * (c + d) * (d + a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a^4 + b^4 + c^4 + 2 * a * b * c * (a + b + c) = 1 / 2 * ((a^2 - b^2)^2 + (b^2 - c^2)^2 + (c^2 - a^2)^2) + (a * b + b * c + c * a)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a c : \u211d) (h\u2081 : a \u2260 0) (h\u2082 : a * c = 0) : c = 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2211 x in Finset.Icc 1 3, 2 * x = 12 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (h : (x - z) * (y - z) = x + y + z - 3) : x ^ 2 + y ^ 2 + z ^ 2 \u2265 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x : \u211d, (9*x^6 - 90*x^5 + 431*x^4 - 1100*x^3 + 1927*x^2 - 2394*x + 2241) * (x - 1)^2 \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 \u2265 d * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a * b + b * c + c * a) * (1 / (a + b) + 1 / (b + c) + 1 / (c + a)) \u2264 2 * (a + b + c) + (Real.sqrt (3 * (a ^ 2 + b ^ 2 + c ^ 2))) / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u2115 \u2192 \u2115) (a0 : a 0 = 2) (a_rec : \u2200 n, a (n + 1) = 3 * a n + 1) : \u2203 f : \u2115 \u2192 \u2115, f n = a n := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (p : \u211d \u2192 \u211d) (h\u2081 : p = fun x => x^4 + a*x^3 + b*x^2 + c*x + d) : p 1 = 10 \u2227 p 2 = 20 \u2227 p 3 = 30 \u2192 (p 12 + p (-8)) / 10 = 1984 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hx : 0 \u2264 x) (hy : 0 \u2264 y) (h : x + y + Real.sqrt (2 * x ^ 2 + 2 * x * y + 3 * y ^ 2) = 1) : x + y + Real.sqrt (2 * x ^ 2 + 2 * x * y + 3 * y ^ 2) = 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u2115 \u2192 \u2115 \u2192 \u2115) (h\u2080 : \u2200 x, f x 0 = x) (h\u2081 : \u2200 x y, f x (y + 1) = f (f x y) y) : f 15 11 > f 14 12 \u2227 f 15 11 > f 13 13 \u2227 f 15 11 > f 12 14 \u2227 f 15 11 > f 11 15 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a ^ 2 + b ^ 2 + c ^ 2 \u2265 a * b + b * c + a * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : (n + 1).choose 2 = n * (n + 1) / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 n : \u2115, 2 \u2223 (1111^n - 1109^n) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a * b * c * (a + b + c) + (a ^ 2 + b ^ 2 + c ^ 2) ^ 2 \u2265 (4 / 27) * (a + b + c) ^ 3 * Real.sqrt (3 * (a ^ 2 + b ^ 2 + c ^ 2)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (b + c) / a + ((c + a) * (a + b)) / (b * c) \u2265 8 * ((a / (b + c)) + (b * c) / ((c + a) * (a + b))) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) : a^3 + b^3 + c^3 \u2265 3 * a * b * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h\u2081 : a - 7 * b + 8 * c = 4) (h\u2082 : 8 * a + 4 * b - c = 7) : a^2 - b^2 + c^2 = 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u2124) (ha : a \u2260 0) (hb : b \u2260 0) : gcd a b \u2223 lcm a b := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx : x \u2208 Set.Icc 0 1) : 1 - x \u2264 Real.exp (-x) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) : a^3 * b^2 + b^3 * c^2 + c^3 * a^2 \u2265 a^2 * b^2 * c + a * b^2 * c^2 + a^2 * b * c^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u2124 \u2192 \u2124) (hf: f = fun x \u21a6 x) : \u2200 x y, f (x * f y - 1) + f (x * y) = 2 * x * y - 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(b : \u211d) (hb : b \u2208 Set.Icc (-1) 1) : Real.sqrt (1 - b^2) + b \u2264 Real.sqrt 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : 4 * (a ^ 2 + b ^ 2 + c ^ 2) ^ 2 \u2265 9 * (a + b + c) * (b + c - a) * (c + a - b) * (a + b - c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{a b c : \u211d} (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) : (a + b + c) * (a + b + b + c + c + a) \u2265 (Real.sqrt (a * (b + c)) + Real.sqrt (b * (c + a)) + Real.sqrt (c * (a + b))) ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a^3 + b^3 + c^3 + a * b * c + 8 \u2265 4 * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (ha : a + b + c + d = 1) (hb : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 = 1) (hc : a ^ 3 + b ^ 3 + c ^ 3 + d ^ 3 = 1) : a ^ 4 + b ^ 4 + c ^ 4 + d ^ 4 + 4 * a * b * c * d = 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) : 3 * a ^ 2 * d ^ 2 + 3 * b ^ 2 * c ^ 2 + 2 * a ^ 2 * c ^ 2 + 2 * b ^ 2 * d ^ 2 + 5 * a * b * c * d \u2265 3 * a ^ 2 * c * d + 3 * d ^ 2 * a * b + 3 * c ^ 2 * a * b + 3 * b ^ 2 * c * d := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(R I : \u211d) (m : \u211d) (g \u03b8 : \u211d) (h\u2081 : 0 < R \u2227 0 < I \u2227 0 < m \u2227 0 < g \u2227 0 \u2264 \u03b8 \u2227 \u03b8 \u2264 90) : g * sin \u03b8 / (1 + (I / (m * R^2))) = g * sin \u03b8 / (1 + (I / (m * R^2))) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) : x^12 - x^9 + x^4 - x + 1 > 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a * b * c * (a + b + c) \u2264 (1 / 3) * (a * b + b * c + c * a) ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) : x ^ 2 * (x - y) * (x - z) + y ^ 2 * (y - z) * (y - x) + z ^ 2 * (z - x) * (z - y) = 1 / 2 * ((y + z - x) ^ 2 * (y - z) ^ 2 + (z + x - y) ^ 2 * (z - x) ^ 2 + (x + y - z) ^ 2 * (x - y) ^ 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) : a^3 * b^2 + b^3 * c^2 + c^3 * a^2 \u2265 a^2 * b^2 * c + a * b^2 * c^2 + a^2 * b * c^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (ha : a \u2265 -1) (hb : b \u2265 -1) (hc : c \u2265 -1) (hd : d \u2265 -1) : a^3 + b^3 + c^3 + d^3 + (25/4) \u2265 (a + b + (1/2)) * (c + d + (1/2)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (a + b + c) ^ 2 / (a ^ 2 + b ^ 2 + c ^ 2 + 3) \u2264 1 \u2192 a * b + b * c + c * a \u2264 3 / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (hf1 : f 1 = 1) (hf2 : \u2200 x, f (2 * x) = 4 * f x + 6) (hf3 : \u2200 x, f (x + 4) = 4 * f x + 4 * f 1 + 8 * f 2) : f 6 = 106 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(d : \u2115 \u2192 \u2115) (hd : d = fun k => (Nat.divisors k).card) : \u2203 n, (d (n-1) \u2264 d n \u2227 d n \u2264 d (n+1)) \u2228 (d (n-1) \u2265 d n \u2227 d n \u2265 d (n+1)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d e f : \u211d) : (a * x + b * y = c \u2227 d * x + e * y = f) \u2192 (a + d) * x + (b + e) * y = c + f := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n p : \u2115) : fib (n + p + 1) = fib (n + 1) * fib (p + 1) + fib n * fib p := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h\u2081 : a + b + c = 1) (h\u2082 : a^2 + b^2 + c^2 = 2) (h\u2083 : a^3 + b^3 + c^3 = 3) : a^5 + b^5 + c^5 = 15 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (hf : \u2200 m n : \u211d, f (m * n) = f (m - n)) : f 4 = 2 \u2192 f (-3) + f 6 = 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : x * y * z + x * y + y * z + z * x = 4) : x + y + z >= 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x > 0 \u2227 y > 0 \u2227 z > 0 \u2227 x*y*z = 1) : x / (8*y^3 + 1)^(1/2) + y / (8*z^3 + 1)^(1/2) + z / (8*x^3 + 1)^(1/2) \u2265 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (h : a \u2265 b \u2227 b \u2265 c \u2227 c \u2265 d \u2227 d \u2265 0) (h2: a^2 + b^2 + c^2 + d^2 = 1) : a + b \u2265 1 \u2227 1 \u2265 c + d := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (habc : a * b * c = 1) : a ^ 4 + b ^ 4 + c ^ 4 + a ^ 2 * b ^ 2 + b ^ 2 * c ^ 2 + c ^ 2 * a ^ 2 \u2265 2 * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : 2 * (b * c + c * a + a * b) \u2264 a * b * c + 5 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hab : a + b + c = 3) : a + a*b + 2*a*b*c \u2264 9/2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (hab : a + b + a * b = 3) : 1 / (1 + a ^ 2) + 1 / (1 + b ^ 2) + 1 / (1 + a ^ 2 + b ^ 2) \u2264 4 / 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : 4*a*b*c = a + b + c + 1) : (b^2 + c^2)/a + (c^2 + a^2)/b + (a^2 + b^2)/c \u2265 2 * (a*b + b*c + c*a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a^2 * b + b^2 * c + c^2 * a) * (a * b^2 + b * c^2 + c * a^2) \u2265 9 * a^2 * b^2 * c^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : \u2211 i in Finset.Icc 10 95, (i ^ 2) = 290035 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(S : Finset \u2115) (hS : S = Finset.Icc 1 12) : \u2203 f : \u2115 \u2192 \u2115, \u2200 x \u2208 S, f (f x) = x \u2227 (f x - x) % 3 = 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (9 / 4) * (a * (a + b) * (a + c) + b * (b + c) * (b + a) + c * (c + a) * (c + b)) \u2265 (a + b + c) ^ 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / (b + c) + b / (c + a) + c / (a + b) = 2 \u2192 a ^ 2 / (b + c) + b ^ 2 / (c + a) + c ^ 2 / (a + b) = a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) (hn: n \u2265 3) : (n:\u211d)^(1/n) \u2265 (n+1:\u211d)^(1/(n+1)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (h : \u2200 x, 2 * f x + 3 * f (-x) = x^2 + 5 * x) : f 7 = -126 / 5 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x y z : \u211d, 5 * (x ^ 2 + y ^ 2 + z ^ 2) \u2265 6 * x * y - 8 * x * z + 8 * y * z := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 2013 ^ (294 : \u2115) \u2261 1 [ZMOD 343] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h : a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 a * b * c \u2265 1) : a ^ 3 + b ^ 3 + c ^ 3 \u2265 a * b + b * c + c * a := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) : 4 * (a ^ 3 + b ^ 3) \u2265 (a + b) ^ 3 \u2194 a ^ 3 + b ^ 3 \u2265 a * b ^ 2 + a ^ 2 * b := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c : \u211d, (a+b+c)*(a^2+b^2+c^2-a*b-b*c-c*a) - (a+b+c)^3 = -3*(a+b+c)*(a*b+b*c+c*a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x \u2265 0) (hy : y \u2265 0) (hz : z \u2265 0) : x ^ 3 + y ^ 3 + z ^ 3 + x ^ 2 * y + y ^ 2 * z + z ^ 2 * x \u2265 2 * (x * y ^ 2 + y * z ^ 2 + z * x ^ 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u2124) (ha : a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 d > 0) (habc : a + b + c + d = 0) : a + b + c + d = 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h : a + b + c >= 3 * a * b * c) : a ^ 2 + b ^ 2 + c ^ 2 >= 3 * a * b * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) : 9 * x ^ 2 * y ^ 2 + 4 * x ^ 2 + 54 * x * y ^ 2 + 24 * x + 81 * y ^ 2 + 36 \u2265 12 * x ^ 2 * y + 72 * x * y + 108 * y := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(S : Set \u2115) (h : S = {n | n % 2 = 0 \u2228 n % 3 = 0 \u2228 n % 7 = 0}) : 2 \u2208 S \u2227 3 \u2208 S \u2227 7 \u2208 S := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx : x = (1 - Real.sqrt 10) / 3) : x = (1 - Real.sqrt 10) / 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 1 / Real.tan 1 = Real.cos 1 / Real.sin 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) : (5*x) % 1 + (5*y) % 1 = (3*x + y) % 1 + (3*y + x) % 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (h\u2080 : 0 < x) (h\u2081 : (x + 30) / (x / 55 + 1 / 2) = 50) : x = 110 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u2115 \u2192 \u211d) (ha : \u2200 i, a i > 0) (h : Summable a) : Summable (\u03bb i => a i / (a i + 1)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x1 x2 : \u211d) (h\u2080 : 0 < x1 \u2227 0 < x2) (h\u2081 : x1 > x2) : x1 - x2 + (1 / x1 - 1 / x2) = (x1 - x2) * (x1 * x2 - 1) / (x1 * x2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) : 7 * y^6 + 26 * z^6 + 6 * x^4 * y^2 + 9 * x^4 * z^2 + 12 * y^4 * x^2 + 36 * y^4 * z^2 + 27 * z^4 * x^2 + 54 * z^4 * y^2 - 2 * x^3 * y^3 - 2 * x^3 * z^3 - 2 * y^3 * z^3 + 6 * x * y * z * (x^3 + y^3 + z^3) + 27 * x^2 * y^2 * z^2 \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) : (x + y) * (52 - 2 * x * y) = 2 * x ^ 2 + 19 * y ^ 2 + 8 * x - 34 * y + 126 \u2227 x ^ 2 + y ^ 2 + 4 * x - 4 * y - 1 = 0 \u2194 x = 1 \u2227 y = 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (a^2 + b^2 + c^2)^2 - 2 * (a^3 * b + b^3 * c + c^3 * a) \u2265 2 * a * b * c * (a + b + c) - (a^2 * b^2 + b^2 * c^2 + c^2 * a^2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(m n : \u2115) : (m * n) / (m + n + 1) \u2265 1 / 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 a + b + c = 3) : a^2 + b^2 + c^2 + a * b * c \u2265 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c x y z : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : (a^2 / x + b^2 / y + c^2 / z) \u2265 (a + b + c)^2 / (x + y + z) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (a^4+b^4+c^4) \u2265 max (a^3*b+b^3*c+c^3*a) (a*b^3+b*c^3+c*a^3) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 1 \u2264 a) (hb : 1 \u2264 b) (hc : 1 \u2264 c) : 3 * (a + b + c) ^ 3 \u2265 27 * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u211d) (f : \u211d \u2192 \u211d) (hf: f = fun x => if x \u2260 -Real.sqrt 3 \u2227 x \u2260 Real.sqrt 3 then a else 0) : \u2200 x, x \u2260 -Real.sqrt 3 \u2227 x \u2260 Real.sqrt 3 \u2192 f x = a := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (a^2 * (b + c) + b^2 * (a + c) + c^2 * (a + b) = 0 \u2192 a * b + b * c + c * a \u2264 0) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) : 7 * (a * b + b * c + c * a) \u2264 2 + 9 * a * b * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hab : a^2 + b^2 + c^2 = 1) : a * b ^ 2 + b * c ^ 2 + c * a ^ 2 \u2264 Real.sqrt (a ^ 4 + b ^ 4 + c ^ 4) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (c^2 * (a - b)^2 * (a + b) + a^2 * (b - c)^2 * (b + c) + b^2 * (c - a)^2 * (c + a)) \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (h\u2081 : x^2 + y^2 = 1) : \u2203 x y, x + (1 / (y + 2)) = z := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a ^ 3 + b ^ 3 + c ^ 3) ^ 2 \u2265 a * b * c * (a + b + c) * (a ^ 2 + b ^ 2 + c ^ 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) : 6 * (a ^ 4 + b ^ 4 + c ^ 4 + d ^ 4) + 12 * (a ^ 2 * b ^ 2 + a ^ 2 * c ^ 2 + a ^ 2 * d ^ 2 + b ^ 2 * c ^ 2 + b ^ 2 * d ^ 2 + c ^ 2 * d ^ 2) \u2265 8 * (a ^ 3 * b + b ^ 3 * a + a ^ 3 * c + c ^ 3 * a + a ^ 3 * d + d ^ 3 * a + b ^ 3 * c + c ^ 3 * b + b ^ 3 * d + d ^ 3 * b + c ^ 3 * d + d ^ 3 * c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2211 k in Finset.range 3, (Nat.choose 5 (2 * k + 1)) = 16 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : \u2211 i in Finset.range (n+1), choose n i = 2^n := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : \u2211 r in Finset.Icc 1 n, r / (r + 1) / (r + 2) / (r + 3) = 1 / 4 + 1 / 2 * (1 / (n + 2) - 3 / (n + 3)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) : (a * b + b * c + c * d + d * a + a * c + b * d) ^ 2 \u2265 (9 / 4) * (a + b + c + d) * (a * b * c + b * c * d + c * d * a + d * a * b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d x y z u : \u211d) (h\u2080 : 0 < a \u2227 a < 3) (h\u2081 : 0 < b \u2227 b < 4) (h\u2082 : 0 < c \u2227 c < 3) (h\u2083 : 0 < d \u2227 d < 4) (h\u2084 : x = (3 - a)) (h\u2085 : y = (4 - b)) (h\u2086 : z = (3 - c)) (h\u2087 : u = (4 - d)) (h\u2088 : 0 < x \u2227 0 < y \u2227 0 < z \u2227 0 < u) : x^2 + y^2 + z^2 + u^2 < 50 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2124) : n * (9 * n ^ 2 - 3 * n - 2) = n * (3 * n - 2) * (3 * n + 1) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": X \u2192 Y \u2194 \u00ac(X \u2227 \u00acY) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c d : \u211d, a^2 * b^2 + b^2 * c^2 + c^2 * d^2 + d^2 * a^2 = (a^2 + c^2) * (b^2 + d^2) \u2227 a^2 + b^2 + c^2 + d^2 = 4 \u2192 a^2 * b^2 + b^2 * c^2 + c^2 * d^2 + d^2 * a^2 \u2264 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) (R : \u2115 \u2192 \u2115) (hR : \u2200 i, R i \u2265 1) : \u2211 i in Finset.Icc 1 n, (R i / (R i + 1)) \u2264 (\u220f i in Finset.Icc 1 n, R i)^(1/n) * (\u2211 i in Finset.Icc 1 n, (1 / (R i + 1))) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(w : \u2115 \u2192 \u211d) (F : \u2115 \u2192 \u211d) (h\u2081 : \u2200 n, F n = (w n)^2 + (w (n-1))^2 - 4 * w n * w (n-1)) (h\u2082 : \u2200 n, n \u2265 2 \u2192 F n - F (n-1) = (w n - w (n-2)) * (w n + w (n-2) - 4 * w (n-1))) : \u2200 n, n \u2265 2 \u2192 F n - F (n-1) = (w n - w (n-2)) * (w n + w (n-2) - 4 * w (n-1)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : 2 * (a^2 + b^2 + c^2)^2 \u2265 3 * (a^3 * b + b^3 * c + c^3 * a + a * b^3 + b * c^3 + c * a^3) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a > 0) (hb : b > 0) (hc : c > 0) (habc : a * b * c = 1) : a ^ 2 + b ^ 2 + c ^ 2 + 3 \u2265 a * b + b * c + c * a + a + b + c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) : (x ^ 2 / 4 + y ^ 2 + z ^ 2) \u2265 x * y - x * z + 2 * y * z := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (h\u2081 : x + 2*y = 8) (h\u2082 : 3*x - y = 10) : x = 4 \u2227 y = 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (hf: \u2200 x, x \u2260 0 \u2192 f x / x = f 1 / 1) : \u2200 x, x \u2260 0 \u2192 f x = f 1 * x := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(A B : Finset \u2115) : A = {5, 6, 7, 8, 9, 10} \u2227 B = {1, 2, 3, 4, 5, 6} \u2192 A \u222a B = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u2115 \u2192 \u211d) (a1 : a 0 = 2) (h : \u2200 n, a (n + 1) = (2 ^ (n + 1) * a n) / ((n + 1 / 2) * a n + 2 ^ n)) : \u2200 n, a n = (2 ^ (n + 1)) / (n ^ 2 + 1) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a > 0 \u2227 b > 0 \u2227 c > 0) : (a^2 + 2) * (b^2 + 2) * (c^2 + 2) \u2265 9 * (a * b + b * c + c * a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hx : 1 < x \u2227 x < 3) (hy : 1 < y \u2227 y < 3) : |(x - 2) * (y - 2)| < 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 {a x y : \u2124} (h\u2081 : a \u2223 x) (h\u2082 : a \u2223 y), a \u2223 x + y \u2227 a \u2223 x - y \u2227 \u2200 p q : \u2124, a \u2223 p * x + q * y := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 2 ^ 845 > 3 ^ 362 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(p q s : Prop) (h\u2081 : p \u2192 s) (h\u2082 : q \u2192 s) : p \u2228 q \u2192 s := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) : (x^2 + 2) / Real.sqrt (x^2 + 1) \u2265 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a^3*c^2 + a^2*b^3 + a*b^4 + b^2*c^3 + b^3*c^2 \u2265 a^2*b^2*c + 2*a*b^3*c + 2*a*b^2*c^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c : \u211d, a^2 + b^2 + c^2 + 2 * a * b + 2 * a * c + 2 * b * c = (a + b + c)^2 \u2227 (a + b + c)^2 \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) : (x - y) ^ 2 * (2 * x + y) ^ 2 * (x + 2 * y) ^ 2 \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u00ac Summable (fun n : \u2115 => (1 : \u211d) / n) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : 0 \u2264 (1 / 4) * ((a - b) ^ 2 + (b - c) ^ 2 + (c - a) ^ 2) * ((a - b) ^ 2 * (a + b) + (b - c) ^ 2 * (b + c) + (c - a) ^ 2 * (c + a)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b : \u211d, sin (a + b) * sin (a - b) = (sin a + sin b) * (sin a - sin b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (h : 2 * x + 3 = 7) : x = 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hx : 1 \u2264 x) (hy : x < y) (h2y : y \u2264 2) : (exp (y^(1/3) - x^(1/3)))/(y^(1/3) - x^(1/3)) \u2264 (7 + 10 * exp (y^(1/2) - x^(1/2)))/(10 * (y^(1/2) - x^(1/2))) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) : 2 * (x ^ 2 + y ^ 2) \u2265 (x + y) ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(A B : \u211d) : cos (A + B) = cos A * cos B - sin A * sin B := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 * b + b^2 * c + c^2 * a + a * b^2 + b * c^2 + c * a^2 = 4 + 2 * a * b * c) : (a^2 + b^2) * (b^2 + c^2) * (c^2 + a^2) \u2265 8 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f g : \u211d \u2192 \u211d) (hf : \u2200 x, f ((x + 1) / x) + 3 * g ((1 - 2 * x) / (2 * x)) = (1 / (2 * x)) + 4) (hg : \u2200 x, f (2 * x + 1) + g (x - 1) = 3 * x + 2) : f 2015 + g 2015 = 6029 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{f : \u2115 \u2192 \u2115} (hf : f 1 = 1 \u2227 \u2200 p a : \u2115, Nat.Prime p \u2192 f (p^a) = p * f a) : \u2200 n : \u2115, f n \u2264 n := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (h\u2080 : a + b = 10) (h\u2081 : a * b = 20) : 1 / a + 1 / b = 1 / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hab : a^2 + 4 * b^2 + 9 * c^2 = 14) : 3 * b + 8 * c + a * b * c \u2264 12 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u2124 \u2192 \u2124) (hf: f = fun z => z^2) : \u2200 z : \u2124, f z = z^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) : a^2 + a * b + b^2 \u2265 3 * (a + b - 1) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) : a * b \u2264 (a + b) ^ 2 / 4 \u2227 c * d \u2264 (c + d) ^ 2 / 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2211 k in Finset.range 15, k = 15 * 14 / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (hf : \u2200 x, 2 * f (f x) - Real.sqrt 2 * f x = x) : \u2203 a, f 0 = a := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 n : \u2115, (\u220f i in Finset.range n, (2 * i - 1) / (2 * i)) \u2264 (\u220f i in Finset.range n, (2 * i) / (2 * i + 1)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (h : x ^ 2 + y ^ 2 + z ^ 2 = 9) : 2 * (x + y + z) - x * y * z \u2264 10 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u2115) : 20 * 21 + 2021 = 2441 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(m : \u2115) (hm : 0 < m) : \u2211 k in Finset.Icc 1 m, (1 / (2 ^ k)) < m := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a * b + b * c + c * a \u2264 a ^ 2 + b ^ 2 + c ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) : (x * y + y * z + x * z - 1) ^ 2 \u2264 (1 + x ^ 2) * (1 + y ^ 2) * (1 + z ^ 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 p > 3, \u2200 a : \u2115, a^4 \u2261 1 [ZMOD p] \u2192 (a^2 + 1) * (a^2 - 1) \u2261 0 [ZMOD p] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a^2 + b^2 + c^2 - a * b - b * c - c * a \u2265 (3 / 4) * (a - b)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x1 x2 x3 : \u211d) : (x1 * x2 + x2 * x3 + x3 * x1) ^ 2 \u2265 3 * x1 * x2 * x3 * (x1 + x2 + x3) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hx : 0 < x) (hy : 0 < y) (h : x^2 + y^3 \u2265 x^3 + y^4) : x^5 + y^5 \u2264 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (hab : a > 0 \u2227 b > 0 \u2227 c > 0) (ha : a^3 + b^3 = c^3) : a^2 + b^2 - c^2 \u2265 (2 + (4:\u211d)^(1/3) + 2*(2:\u211d)^(1/3)) * (c - a) * (c - b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h : a * b * c = 1) : (a / (1 + b))^(3 / 5) + (b / (1 + c))^(3 / 5) + (c / (1 + a))^(3 / 5) \u2265 3 / (2^(3 / 5)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u2124) : (a * b * c + a * b * d + a * c * d + b * c * d) ^ 2 = a * b * c * d * (a + b + c + d) ^ 2 + (a * b - c * d) * (a * c - b * d) * (b * c - a * d) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a ^ 4 + b ^ 4 + c ^ 4 + a ^ 3 * b + b ^ 3 * c + c ^ 3 * a \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : a * b > 0) (h : a^3 + b^3 = 1 + a * b) : a^4 + b^4 \u2265 a + b := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a \u2265 b \u2227 b \u2265 c \u2227 c \u2265 0) (hab : a + b + c = 1) : a * b ^ 2 + b * c ^ 2 + c * a ^ 2 \u2264 4 / 27 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) : x^4 - x^3 + x^2 - x + 1 > 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(A\u2081 A\u2082 : Set \u2115) (hA\u2081 : A\u2081 = {k | k % 2 = 0}) (hA\u2082 : A\u2082 = {k | k % 3 = 0}) : A\u2081 \u2229 A\u2082 = {k | k % 6 = 0} := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h : a * b * c = 1) : 2 * (a ^ 2 + b ^ 2 + c ^ 2) - 7 * (a + b + c) \u2265 -15 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a d n : \u2115) : \u2211 i in Finset.range n, (a + i * d) = n * (2 * a + (n - 1) * d) / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h : 9 = 3 * (a ^ 2 + b ^ 2 + c ^ 2)) : a + b + c \u2264 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b w u : \u211d) (ha : 0 < a) (hb : 0 < b) (hw : 0 < w) (hu : 0 < u) : (a * b) / (a + b) \u2264 (w^2 * a + u^2 * b) / (w + u)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (hf : \u2200 x, f x + 2 * f (2 - x) = 2 * x * (2 - x)) : \u2200 x, f x = 2 * x * (2 - x) / 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (h : x + y + z = 4) : 1 \u2264 abs (x - 1) + (abs y + abs (y - 2)) / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{a n c : \u2115} (h\u2081 : a \u2261 1 [ZMOD c]) : a ^ n \u2261 1 [ZMOD c] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x > 0 \u2227 y > 0 \u2227 z > 0) (hab : x * (x + y + z) = 3 * y * z): (x + y) ^ 3 + (x + z) ^ 3 + 3 * (x + y) * (y + z) * (z + x) \u2264 5 * (y + z) ^ 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (hab : a + b^2 + c^2 = 1) : (1 - a^2)^2 + (1 - b^2)^2 + (1 - c^2)^2 \u2265 3 / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 2 + 2 = 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : 1998 = 2 * 3^3 * 37 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u211d) (ha1 : 1 \u2265 a \u2227 a \u2265 1/5) : 32*a^5 + 32*a^4 - 16*a^3 - 16*a^2 + 9*a - 1 \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(r : \u2115) : \u2211 k in Finset.range (2 * r + 2), (Nat.choose (2 * r + 1) k) - 2 = 2^(2 * r + 1) - 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hxy : x + y = 3) (hx : 1 \u2264 x) (hy : 1 \u2264 y) : 9 * (x - 1) * (y - 1) + (y^2 + y + 1) * (x + 1) + (x^2 - x + 1) * (y - 1) \u2265 9 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(A B : Set \u03b1) (h\u2080 : A = {x | x \u2208 B}) : A \\ B = {x | x \u2208 A \u2227 x \u2209 B} := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u2124) : a ^ 4 \u2261 0 [ZMOD 5] \u2228 a ^ 4 \u2261 1 [ZMOD 5] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hx : 0 < x) (hy : 0 < y) (h : x^5 + y^5 = 2) : (x^2 + y^6)*(x^8 + y^4) + 2 \u2265 x^10 + y^10 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (c : \u211d) (g : \u211d \u2192 \u211d) (h\u2081 : \u2200 x, g x = (f x - c) / Real.cos x) (h\u2082 : c = f 0) : \u2200 x, g x = (f x - f 0) / Real.cos x := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : a \u2265 2 * b) : a^2 / b + b^2 / a \u2265 9 * a / 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) : |x+y| = |x| + |y| \u2192 \u2200 \u03b1 : \u211d, 0 \u2264 \u03b1 \u2227 \u03b1 \u2264 1 \u2192 |x+\u03b1*y| = |x| + \u03b1*|y| := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(h : \u2200 n : \u2115, (1/2)^n \u2260 0) : \u2211' i : \u2115, (1/2)^i = 8191/4096 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) : (x \u2265 0 \u2192 |x| = x) \u2227 (x < 0 \u2192 |x| = -x) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0) (hab : a + b + c = 2) : 24 * (a ^ 2 + b ^ 2 + c ^ 2) + (a ^ 2 + b ^ 2 + c ^ 2) ^ 2 \u2264 48 + 8 * (a ^ 3 + b ^ 3 + c ^ 3) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : -1.5 \u2264 x) (hy : -1.5 \u2264 y) (hz : -1.5 \u2264 z) (h : x + y + z = 3) : 2 * (x^3 + y^3 + z^3) \u2265 3 + x^2 + y^2 + z^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : \u2211 k in Finset.range (n+1), (Nat.choose n k)^2 = \u2211 k in Finset.range (n+1), Nat.choose n k * Nat.choose n (n - k) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(X : Type) [MetricSpace X] (f : X \u2192 X) (hf : Continuous f) : Continuous (\u03bb x => dist (f x) x) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) : (a - b) ^ 3 = a ^ 3 - 3 * a ^ 2 * b + 3 * a * b ^ 2 - b ^ 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) (x : \u2124) : x ^ (4 * n) + x ^ (2 * n) + 1 = (x ^ (2 * n) + x ^ n + 1) * (x ^ (2 * n) - x ^ n + 1) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hab : a + b + c = 1) : (120 * a ^ 8 + 136 * b ^ 8) ^ (1 / 8) + (120 * b ^ 8 + 136 * c ^ 8) ^ (1 / 8) + (120 * c ^ 8 + 136 * a ^ 8) ^ (1 / 8) \u2265 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hx : 0 < x) (hy : 0 < y) (h : y \u2265 y^3 + x^2 + x + 1) : x^2 + y^2 \u2265 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c d : \u211d, (a * c - b * d) ^ 2 + (a * d + b * c) ^ 2 = (a ^ 2 + b ^ 2) * (c ^ 2 + d ^ 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : b^2 * c^2 + c^2 * a^2 + a^2 * b^2 \u2265 a * b * c * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u211d) (ha : a > 0) : (1 / Real.sqrt a) > 2 * (Real.sqrt (a + 1) - Real.sqrt a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : x * (x - y) * (x - z) + y * (y - x) * (y - z) + z * (z - x) * (z - y) \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) : a + b \u2265 Real.sqrt (a * b) + Real.sqrt ((a ^ 2 + b ^ 2) / 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (a + b + c) ^ 6 - 27 * (a ^ 2 + b ^ 2 + c ^ 2) * (a * b + b * c + c * a) ^ 2 = (a ^ 2 + b ^ 2 + c ^ 2 + 8 * (a * b + b * c + c * a)) * (a ^ 2 + b ^ 2 + c ^ 2 - a * b - b * c - c * a) ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{a b c d b1 b2 : \u2124} (h : a * d - b * c \u2260 0) (h1 : a * d - b * c \u2223 b1) (h2 : a * d - b * c \u2223 b2) : \u2203 x y, a * x + b * y = b1 \u2227 c * x + d * y = b2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 1 / 2 \u2264 a) (hb : 1 / 2 \u2264 b) (hc : 1 / 2 \u2264 c) (hab : a + b + c = 3) : 2 / 11 \u2264 a * b * c / (a * b * c + a * b + b * c + c * a) \u2227 a * b * c / (a * b * c + a * b + b * c + c * a) \u2264 1 / 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) (hn : 2 \u2264 n) : (\u220f k in Finset.Icc 2 n, (1 - 1 / k ^ 3)) > 1 / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (n : \u2115) : (cos x + sin x * I)^n + (cos y + sin y * I)^n + (cos z + sin z * I)^n \u2208 Set.range (Complex.re) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 a + b + c = 3) : a^2 + b^2 + c^2 + a * b * c \u2265 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) : |x - y| \u2264 |2 * x + y| + |x + 2 * y| := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(u v : \u211d) : (u^3 - Real.sqrt 3 * u^2 * v - (3 - Real.sqrt 3) * u * v^2 + v^3)^2 \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n x : \u211d) : (n^2 + x^2) / 2 = ((n + x) / 2)^2 + ((n - x) / 2)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * (a + 2 * b + c) = 2 * (b ^ 2 + 2 * c ^ 2)) : a / (2 * b + c) \u2265 1 / 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c : \u211d, a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 a + b > c \u2227 a + c > b \u2227 b + c > a \u2192 a * (2 * a^2 - b^2 - c^2) + b * (2 * b^2 - c^2 - a^2) + c * (2 * c^2 - a^2 - b^2) \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (1 + a * b) * (1 + b * c) * (1 + c * a) = 8 \u2192 a + b + c \u2265 a * b * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (h\u2081 : 0 < a \u2227 a \u2264 b \u2227 b \u2264 1 \u2227 c \u2265 1 \u2227 c \u2264 d \u2227 d \u2265 0) (h\u2082 : a + b + c + d = 4) : a * b + a * c + a * d + b * c + b * d + c * d + a * b * c * d \u2265 3 + a * b * c + b * c * d + c * d * a + d * a * b := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : x*y*z + (x + y)*(y + z)*(z + x) = (x + y + z)*(x*y + x*z + y*z) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) : a^2 + b^2 - 2*a*b \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx : x \u2260 0) : x ^ 12 - x ^ 9 - x ^ 3 + 1 = (x ^ 9 - 1) * (x ^ 3 - 1) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) : (1 / 4 : \u211d) * ((2 + a) * (2 + b) / ((1 + a) * (1 + b))) \u2265 (4 - a - b) / (4 + a + b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hab : a + b + c = 2) : a^3 + b^3 + c^3 + 6 * a * b * c \u2265 a * b * (a + b) + b * c * (b + c) + c * a * (c + a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / (b + c) + b / (c + a) + c / (a + b)) \u2265 3 / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : 2 * (a ^ 4 + b ^ 4 + c ^ 4) \u2265 a ^ 3 * b + b ^ 3 * c + c ^ 3 * a + a * b ^ 3 + b * c ^ 3 + c * a ^ 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u211a) : n^2 = (n-1)*(n+1)+1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a > 0 \u2227 b > 0 \u2227 c > 0 \u2192 9 * (a^3 + b^3 + c^3) \u2265 (a + b + c)^3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 11 ^ 41 + 18 ^ 41 \u2261 29 [ZMOD 41] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n k : \u2115) (h : k \u2264 n) : \u2211 i in Finset.Icc k n, choose i k = choose (n + 1) (k + 1) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h\u2081 : a + b + c = 5) (h\u2082 : a * b * c = 7) : \u2016a\u2016 + \u2016b\u2016 + \u2016c\u2016 \u2265 9 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 1995^2 = 3^2 * 5^2 * 7^2 * 19^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : (x + y + 1) ^ 3 + (y + z + 1) ^ 3 + (z + x + 1) ^ 3 > (4 / 3) * (x + y + z + 1) ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(N : \u2124) : \u2203 x r : \u2124, N = 180 * x + r \u2227 0 \u2264 r \u2227 r \u2264 179 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(\u03b1 \u03b2 x y : \u211d) : (2 * \u03b1 ^ 2 + 2 * \u03b1 * \u03b2 + \u03b2 ^ 2) * (2 * x ^ 2 + 2 * x * y + y ^ 2) \u2265 (2 * \u03b1 * x + \u03b1 * y + \u03b2 * x + \u03b2 * y) ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a + b + 1) * (b + c + 1) * (c + a + 1) + 2 \u2265 7 * (a * b + b * c + a * c) + 2 * (a + b + c + a * b * c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c : \u211d, a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0 \u2192 a^2 + 2 * b^2 + c^2 \u2265 (2 * Real.sqrt 3) / 3 * (a + 2 * b) * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx : x^2 = x) : x^3 = x^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : a * (1 - b + c)^(1 / 3) + b * (1 - c + a)^(1 / 3) + c * (1 - a + b)^(1 / 3) \u2264 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 3) : 1 / a + 3 / b + 5 / c \u2265 4 * a^2 + 3 * b^2 + 2 * c^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(\u03b1 : \u211d) : (Real.sin \u03b1)^2 + (Real.cos \u03b1)^2 = 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (h : a^4 + b^4 + a^2 * b^2 = 60) : 4 * a^2 + 4 * b^2 - a * b \u2265 30 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h\u2081 : a + b - c = 5) (h\u2082 : a - b + c = 7) : a^2 + b^2 + c^2 - 2 * b * c = 37 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h : a^2 + 2 * b^2 + 3 * c^2 = 36) : a * b + b * c + c * a + a + 20 * b + 51 * c \u2264 205 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2211 m in Finset.Icc 1 100, \u2211 n in Finset.Icc 1 100, (n^2 - m^2) / (n^2 + m^2)^2 = 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u2124 \u2192 \u2124) (h\u2081 : \u2200 x, f x + f (x-1) = x^2) (h\u2082 : f 19 = 94): f (94) % 1000 = 561 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hd : 0 \u2264 d) : a^3 + b^3 + c^3 + d^3 \u2265 1 / 2 * (a + b + c + d) * (a * c + b * d) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (h\u2081 : y * (2 * x - 3 * y) = 19) (h\u2082 : x * (3 * x - 4 * y) = 94) : |x - y| = 5 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(P : \u211d \u2192 \u211d) (h : P = \u03bb x => 1007 * x ^ 2 - 2014 * x + 2014) : P 1 = 1007 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a = xy) (hb : b = yz) (hc : c = zx) : (a + b + c) ^ 2 \u2265 3 * (a * b + b * c + c * a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : 4 * (a ^ 2 + b ^ 2 + c ^ 2) \u2265 a * (2 * a + b + c) + b * (2 * b + c + a) + c * (2 * c + a + b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u2115 \u2192 \u2115) (a0 : a 0 = 6) (a_rec : \u2200 n, a (n+1) = (2*n+2)*a n - 15*n - 10) : \u2203 f : \u2115 \u2192 \u2115, \u2200 n, a n = f n := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(b : \u211d) : \u2203 x y z : \u211d, y = b \u2227 x = (-1/2 * z^2 + (3 * b + 1) / 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(v : \u2115 \u2192 \u2124) (h\u2080 : v 0 = 2) (h\u2081 : v 1 = 12) (h\u2082 : \u2200 n, v (n + 2) = 6 * v (n + 1) - v n) : \u2200 n, \u2203 k : \u2124, v n = k := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a^2 + b^2 + c^2 = 1): a * b + b * c + c * a \u2265 -0.5 \u2227 (\u2203 a b c : \u211d, a^2 + b^2 + c^2 = 1 \u2227 a * b + b * c + c * a = -0.5) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(m n : \u2124) (h\u2080 : 15 = m + n) (h\u2081 : 3 = m - n) : 45 = m^2 - n^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a^2 + b^2 + c^2 \u2265 (a + b + c) * (a + b + c) / 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : 0 \u2264 x) (hy : 0 \u2264 y) (hz : 0 \u2264 z) (h : x + y + z = 2) : x + 2 * x * y + 13 / 5 * x * y * z \u2264 25 / 8 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) : (b^2+c^2+d^2+a^2)^2 >= b^2 * (b+d) * (c+a) + c^2 * (c+a) * (b+d) + d^2 * (b+d) * (c+a) + a^2 * (c+a) * (b+d) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) : (a / 3 * ((a / 2 + b / 2) / 3) * (b / 3))^(1 / 3) \u2265 (a / 3 * (Real.sqrt (a * b) / 3) * (b / 3))^(1 / 3) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c x y z : \u211d) (habc : a > 0 \u2227 b > 0 \u2227 c > 0) (h : a + b + c = 1) (hx : x = a + b) (hy : y = b + c) (hz : z = c + a) (hxyz : x * y * z = 1) : a * b + b * c + c * a \u2265 3 / 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) : (1 + 2 * a / (b + c)) * (1 + 2 * b / (c + d)) * (1 + 2 * c / (d + a)) * (1 + 2 * d / (a + b)) \u2265 9 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (a b c : \u211d) (hf: \u2200 x > 0, f (x + c) = a * x + b) : \u2203 d, \u2200 x > c, f x = a * x + d := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) : |y| - |x| \u2264 |x - y| := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x \u2265 0) (hy : y \u2265 0) (hz : z \u2265 0) : (x * y + x * z + y * z) * (x * y ^ 2 + y * z ^ 2 + x ^ 2 * z) - (x + y + z) ^ 2 * x * y * z \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": Finset.card (Finset.filter (\u03bb x => 45\u2223x) (Finset.Ico 45 500)) = 11 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (a + b) * (b + c) * (c + a) - 8 * a * b * c = 2 * c * (a - b) ^ 2 + (a + b) * (a - c) * (b - c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hx : 0 < x) (hy : 0 < y) : (x / y) + (y / x) \u2265 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": ((\u2211 k in (Nat.divisors 768), k) / 768 - (\u2211 k in (Nat.divisors 384), k) / 384) = 1 / 192 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 2 / 8 = (2 * 1) / (2 * 4) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (P : \u211d \u2192 \u211d \u2192 \u211d \u2192 Prop) (h : \u2200 x y z : \u211d, P x y z) : P x y z := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x > 0 \u2227 y > 0 \u2227 z > 0 \u2227 x * y * z = 1) : (x + y) * (y + z) * (z + x) \u2265 4 * (x + y + z - 1) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) : x ^ 4 * y ^ 2 + y ^ 4 * z ^ 2 + z ^ 4 * x ^ 2 \u2265 x ^ 3 * y ^ 2 * z + y ^ 3 * z ^ 2 * x + z ^ 3 * x ^ 2 * y := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a\u2081 a\u2082 k : \u2124) (h : a\u2081 \u2261 a\u2082 [ZMOD 8]) : a\u2081 + k \u2261 a\u2082 + k [ZMOD 8] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (1 / (a * b * (a + b) + a * b * c)) + (1 / (b * c * (b + c) + a * b * c)) + (1 / (a * c * (a + c) + a * b * c)) = (1 / (a * b * (a + b + c))) + (1 / (b * c * (a + b + c))) + (1 / (a * c * (a + b + c))) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h : a + b + c + a * b * c = 4) : a ^ 2 + b ^ 2 + c ^ 2 + 3 \u2265 2 * (a * b + b * c + c * a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 29 \u2223 2^90 + 5^90 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 10110 \u2261 6 [ZMOD 8] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : 1/x + 1/y + 1/z = 3) : (x + y + z) ^ 2 + 1 \u2265 10 * x * y * z := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x : \u211d, x >= 0 \u2192 47 * x ^ 9 + 90 * x ^ 8 + x ^ 7 - 52 * x ^ 6 + 137 * x ^ 5 + 318 * x ^ 4 + 247 * x ^ 3 + 88 * x ^ 2 + 14 * x + 1 >= 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (h\u2080 : x < 0 \u2227 y < 0 \u2227 z < 0) (h\u2081 : x^4 + y^4 + z^4 = 3) : x^3 + y^3 + z^3 + (x^2 * y + y^2 * z + z^2 * x) \u2264 6 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (hab : a > 0 \u2227 b > 0 \u2227 c > 0) (habc : a + b > c) (hbc : b + c > a) (hca : a + c > b) : (a^2 + b^2 + c^2) * (a^2 * b^2 + b^2 * c^2 + c^2 * a^2) \u2265 9 * a^2 * b^2 * c^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a * b * (a + b) + b * c * (b + c) + c * a * (c + a) \u2265 (3 * (a + b) * (b + c) * (c + a)) / 4 \u2194 a * b * (a + b) + b * c * (b + c) + c * a * (c + a) \u2265 6 * a * b * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) : 8 * (a^2 + 2)^2 * (b^2 + 2)^2 \u2265 81 * (a + b)^2 + 36 * a * b * (a^2 + 2) * (b^2 + 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x + y + z + 1 = 4 * x * y * z) : 4 * (x * y + y * z + z * x) \u2265 1 + 11 * x * y * z := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x : \u211d, (2-x)^(1/3) + (2+x)^(1/3) < 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / b + b / c + c / a) \u2265 7 / 2 - 3 * a * b * c / (2 * (a ^ 3 + b ^ 3 + c ^ 3)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 1 - (25 : \u211d) / 64 = 39 / 64 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(p q x y : \u211d) (h\u2081 : x - y = p) (h\u2082 : x + y = q) (h\u2083 : p * q = 240) (h\u2084 : p \u2264 q) : x = (q + p) / 2 \u2227 y = (q - p) / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{a b c : \u211d} (hx: a > 0 \u2227 b > 0 \u2227 c > 0) (hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : 12 * (a ^ 4 + b ^ 4 + c ^ 4) \u2265 12 * (b ^ 2 * c ^ 2 + c ^ 2 * a ^ 2 - a ^ 2 * b ^ 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (A : Set \u211d) (hA : A = {0}) : \u2203 f : \u211d \u2192 \u211d, \u2200 x, f x = 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x \u2208 Set.Icc 0 1) (hy : y \u2208 Set.Icc 0 1) (hz : z \u2208 Set.Icc 0 1) : x^2 + y^2 + z^2 \u2264 1 + x^2 * y + y^2 * z + z^2 * x := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (a^2 * b + b^2 * c + c^2 * a) * (a * b + b * c + c * a) - a * b * c * (a + b + c)^2 \u2265 a^2 * c * (b - c)^2 + a * b^2 * (c - a)^2 + b * c^2 * (a - b)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) (hx: x \u2265 0) : (1 / (1 + x ^ 2)) \u2265 1 - x / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a \u2208 Set.Icc 0 1) (hb : b \u2208 Set.Icc 0 1) (hc : c \u2208 Set.Icc 0 1) (habc : a + b + c = 3) : a^3 * b + b^3 * c + c^3 * a + 9 \u2265 4 * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{k : \u2124} (h : k%2 = 1) : k ^ 2 \u2261 1 [ZMOD 8] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 1 \u2264 a) (hb : 1 \u2264 b) (hc : 1 \u2264 c) : a * b * c + 6029 \u2265 2010 * (a^(1/2010) + b^(1/2010) + c^(1/2010)) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x : \u2115, \u2211 i in Finset.range (x + 1), i * (i + 1) = x * (x + 1) * (x + 2) / 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) (x y : \u211d) (hx : x > 0) (hy : y > x) (hxy : y - x > 0) : (y ^ (1 / n) - x ^ (1 / n)) \u2264 (y - x) ^ (1 / n) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u211d) (ha : 0 < a) : \u2203 x : \u211d, 0 < x \u2227 x^(x+1) = a^(2*x - 2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u2124) : (x + y) * (y + z) * (z + x) = (x + y + z) * (x*y + y*z + z*x) - x*y*z := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 3 ^ 10 \u2261 1 [ZMOD 11] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": (sin \u03b8 + cos \u03b1 + 1)^2 \u2265 2 * (sin \u03b8 + 1) * (cos \u03b1 + 1) \u2192 sin \u03b8 ^ 2 \u2265 sin \u03b1 ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : 2 * (a^2 + b^2 + c^2)^2 \u2265 3 * (a^3 * b + b^3 * c + c^3 * a + a * b^3 + b * c^3 + c * a^3) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x : \u211d) : (16*x^4 - 32*x^3 + 28*x^2 - 12*x + 9) * (2*x - 1)^2 \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{a b c : \u211d} : 2 * (a * b + b * c + c * a) * (a * b + b * c + c * a) \u2265 6 * a * b * c * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (hf: Continuous f) (h: \u2200 x \u2265 0, 2 * f (2 * x) = (f x)^2 + 1) : \u2203 x, \u2203 y, \u2200 z, x \u2264 z \u2227 y \u2264 z \u2192 2 * f (2 * z) = (f z)^2 + 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (hab : a + b + c + d = 1 / a + 1 / b + 1 / c + 1 / d) : a * b + a * c + a * d + b * c + b * d + c * d \u2265 6 * a * b * c * d := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(b : \u2115) (h\u2080 : b < 5) (h\u2081 : 1 \u2261 b [MOD 5]) (h\u2082 : 3 \u2261 b [MOD 5]) (h\u2083 : 5 \u2261 b [MOD 5]) (h\u2084 : 7 \u2261 b [MOD 5]) (h\u2085 : 17 \u2261 b [MOD 5]) (h\u2086 : 19 \u2261 b [MOD 5]) (h\u2087 : 21 \u2261 b [MOD 5]) (h\u2088 : 23 \u2261 b [MOD 5]) (h\u2089 : 33 \u2261 b [MOD 5]) (h\u2081\u2080 : 35 \u2261 b [MOD 5]) (h\u2081\u2081 : 37 \u2261 b [MOD 5]) (h\u2081\u2082 : 39 \u2261 b [MOD 5]) (h\u2081\u2083 : 49 \u2261 b [MOD 5]) (h\u2081\u2084 : 51 \u2261 b [MOD 5]) (h\u2081\u2085 : 53 \u2261 b [MOD 5]) (h\u2081\u2086 : 55 \u2261 b [MOD 5]) : b = 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : 0 < x \u2227 x \u2264 1) (hy : 0 < y) (hz : 0 < z) : x * y + y + 2 * z \u2265 4 * Real.sqrt (x * y * z) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2203 k : \u2124, k < 1000 \u2227 |k * Real.sqrt 2 - \u2191\u230ak * Real.sqrt 2\u230b| < 1 / 1000 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : 8 * (x ^ 3 + y ^ 3 + z ^ 3) ^ 2 \u2265 9 * (x ^ 2 + y * z) * (y ^ 2 + z * x) * (z ^ 2 + x * y) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hd : 0 \u2264 d) : (a + b + c + d) ^ 3 \u2265 16 * (a * b * c + b * c * d + c * d * a + d * a * b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d):(\u2200 x y, (x + y) * (f x - f y) = (x - y) * (f x + f y)) \u2194 \u2203 a:\u211d, \u2200 x, f x = a * x := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : (n - (n / 2 - 2)) * ((n / 2 - 2) + 2) < 100 \u2192 n * (n + 4) < 400 \u2192 n \u2264 18 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a^2 + b^2 + c^2 = 6) : (a - b)^4 + (b - c)^4 + (c - a)^4 \u2264 162 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u211d) (hn : n \u2260 0) : (2:\u211d)^(n+1) \u2223 (Int.floor ((1 + Real.sqrt 3)^(2 * n))) + 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c d : \u211d, a^4+b^4+c^4+d^4 \u2265 a^2*b*c + b^2*c*d + c^2*d*a + d^2*a*b := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(u v x : \u211d) (h\u2080 : u = (2 + Real.sqrt 5)^(1 / 3)) (h\u2081 : v = (2 - Real.sqrt 5)^(1 / 3)) (h\u2082 : x = u + v) (h\u2083 : u^3 + v^3 = 4) (h\u2084 : u * v = -1) : x = 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x : \u211d, 0.6 < x \u2227 x < 1 \u2192 x - x^3 < 0.6 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c d : \u211d, (ac-bd)^2 \u2265 0 \u2227 (ab-cd)^2 \u2265 0 \u2227 (ad-bc)^2 \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 19 - 19 = 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) : (x^2 + x*y + y^2)^2 / (x^2 + 2*x*y + 2*y^2) * (y^2 + 2*x*y + 2*x^2) = (x^2 + x*y + y^2)^2 / (x^2 + 2*x*y + 2*y^2) * (y^2 + 2*x*y + 2*x^2) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": Real.cos 10 = Real.cos 10 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) : (x + y + z) * (x + y - z) * (y + z - x) * (z + x - y) = 2 * x ^ 2 * y ^ 2 + 2 * y ^ 2 * z ^ 2 + 2 * z ^ 2 * x ^ 2 - x ^ 4 - y ^ 4 - z ^ 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c: \u211d): 2 * (a ^ 2 + b ^ 2 + c ^ 2) + 6 \u2265 4 * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(b : \u211d) (x : \u2115 \u2192 \u211d) (hx: \u2200 n, abs (x n - Real.sqrt b) \u2264 abs (x (n-1) - Real.sqrt b) / 2) : \u2200 n, abs (x n - Real.sqrt b) \u2264 abs (x 0 - Real.sqrt b) / 2 ^ n := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h : a * b * c = 1) : a * b * c = 1 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : 9 * (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 \u2265 (a ^ 5 + b ^ 5 + c ^ 5) * (a + b + c) ^ 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u211d) : 2021 = 3 * a \u2194 a = 2021/3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a : \u211d) (h\u2081 : 3 * a ^ 2 - 12 * a \u2264 0) (h\u2082 : 0 \u2264 a) (h\u2083 : a \u2264 4) : 0 \u2264 a \u2227 a \u2264 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a * b * c \u2265 (a + b - c) * (b + c - a) * (c + a - b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 21 / 256 + 18 / 256 + 30 / 256 = 69 / 256 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) : (a^4 + 1) * (1 + b^4) \u2265 (a^2 + b^2)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a > 0) (hb : b > 0) (hc : c > 0) : (a^2 + b^2) * (b^2 + c^2) * (c^2 + a^2) \u2265 (a^2 + b * c) * (b^2 + c * a) * (c^2 + a * b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": (1000 : \u211d) ^ 1000 > 1001 ^ 999 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (h : a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 a * b * c = 1) : (a^2 + b^2 + c^2)^2 \u2265 (a^3 + b^3 + c^3) + a * b * (a + b) + b * c * (b + c) + c * a * (c + a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (u v : \u211d) : (u * v = 12 \u2227 x = (v - u - 4) / 8 \u2227 (2 * y + 1) ^ 2 = (u + v - 6) / 2) \u2194 (u * v = 12 \u2227 (u + v - 6) / 2 = (2 * y + 1) ^ 2 \u2227 x = (v - u - 4) / 8) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n k : \u2115) : choose n k + choose n (k + 1) = choose (n + 1) (k + 1) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 77 ^ 10 \u2265 2 ^ 10 * (10!) ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : \u2203 a : \u2115, a = (2^(2^(1-n))-1)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (h\u2081 : a \u2208 Set.Icc 0 3 \u2227 b \u2208 Set.Icc 0 3 \u2227 c \u2208 Set.Icc 0 3 \u2227 d \u2208 Set.Icc 0 3)(h\u2082 : a + 2 * b + 3 * c + 4 * d \u2264 5) : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 \u2264 10 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2211 i in (Finset.Icc (2 : \u2115) 1007), (1 / (2 * i) - 1 / (2 * i + 1)) \u2264 1 / 6 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 n : \u2115, n > 4 \u2192 2^n > n^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (h\u2080 : 0 \u2264 x \u2227 0 \u2264 y) : ((x + y) / 2)^5 \u2264 (x^5 + y^5) / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 + a * b * c = 4) : 0 \u2264 a * b + b * c + c * a - a * b * c \u2227 a * b + b * c + c * a - a * b * c \u2264 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 2222 ^ 5555 + 5555 ^ 2222 \u2261 0 [ZMOD 7] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u211d \u2192 \u211d) (h\u2080 : \u2200 x, \u2200 y, f (x - f y) = 1 - x - y) : \u2200 x, f x = 1 / 2 - x := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (a^2 + b^2 + c^2)^3 \u2265 3 * (a^2 * b + b^2 * c + c^2 * a)^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a \u2265 3) (hbc : a / 3 + b / 2 \u2265 2) (habc : a / 3 + b / 2 + c \u2265 3) : a ^ 3 + b ^ 3 + c ^ 3 \u2265 36 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(h\u2081 : 36 < 37) : 36 + 37 = 73 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (h1 : a \u2264 b \u2227 b \u2264 c \u2227 c \u2264 d) (h2 : a + d = 1) (h3 : b + c = 2) (h4 : a^2 + b^2 + c^2 + d^2 = 9) : -3 \u2264 a * d \u2227 a * d \u2264 -2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x y z : \u211d, (x > 0 \u2227 y > 0 \u2227 z > 0 \u2227 x * y + y * z + z * x = 12) \u2192 8 \u2265 x * y * z := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (h\u2080 : 0 < x \u2227 0 < y \u2227 0 < z) (h\u2081 : x + y + z = 1) (h\u2082 : x * y + y * z + z * x = 1) : -y + (x - 1) * (z - 1) = x * z := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : a * b + b * c + c * a = 1 \u2194 a * (b + c) = 1 - b * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) : x^3 + y^3 + z^3 = 3 * x * y * z + (x + y + z) * (x^2 + y^2 + z^2 - x * y - y * z - z * x) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) : a \u2260 0 \u2227 b \u2260 0 \u2192 1/a - 1/b = (b - a)/(a * b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(b c : \u211d) : 2 * (b ^ 2 + c ^ 2) + 5 * b * c \u2264 (9 / 4) * (b + c) ^ 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d): (a^2 + b^2 + c^2)^2 \u2265 (a+b+c)*(a^2 * b + b^2 * c + c^2 * a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (h : 0 < x \u2227 0 < y) (hx : x^2 + y^4 \u2264 x + y^3) : x^4 + y^4 \u2264 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b : \u211d) : (2 * a + 2 * b) ^ 2 \u2265 b * (4 * a + 3 * b) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": 5 ^ 1 \u2261 5 [ZMOD 31] \u2227 5 ^ 2 \u2261 25 [ZMOD 31] \u2227 5 ^ 3 \u2261 1 [ZMOD 31] := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a \u2208 Set.Icc (-1) 1) (hb : b \u2208 Set.Icc (-1) 1) (hc : c \u2208 Set.Icc (-1) 1) (habc : a + b + c + a * b * c = 0) : a^2 + b^2 + c^2 \u2265 3 * (a + b + c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u2115) (h : a + b + c = 3) : 2 * (a ^ 4 + b ^ 4 + c ^ 4) + 36 \u2265 7 * (a ^ 3 + b ^ 3 + c ^ 3) + 21 * a * b * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(F : \u2115 \u2192 \u2115) (h\u2081 : F 1 = 1 \u2227 F 2 = 1) (h\u2082 : \u2200 n, F (n + 2) = F (n + 1) + F n) : F 8 = 21 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n : \u2115) : 14 \u2223 3^(4*n+2) + 5^(2*n+1) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : a \u2265 3 / 2) (hb : b \u2265 3 / 2) (hc : c \u2265 3 / 2) : a + 2 * b + 3 * c \u2265 9 / 8 * (1 / a + 2 / b + 3 / c + 4) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "{a b c u v w : \u211d} (ha : a + b + c = 3 * u) (hb : a * b + b * c + c * a = 3 * v ^ 2) (hc : a * b * c = w ^ 3) : (a ^ 3 + b ^ 3 + c ^ 3 - 3 * a * b * c) ^ 2 \u2264 (a ^ 2 + b ^ 2 + c ^ 2) ^ 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u2124) (h\u2081 : a + b + c = 96) (h\u2082 : a = 6 * c) (h\u2083 : c = b - 40) : |a - b| = 5 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (h : x + y + z \u2265 3) (hx : x > 0) (hy : y > 0) (hz : z > 0) : x^4 + y^4 + z^4 + x*y*z \u2265 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x : \u211d, |cos x * sin x| \u2264 1 / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 x : \u211d, Real.cos (2 * x) ^ 2 = (1 + Real.cos (4 * x)) / 2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (h\u2081 : y \u2260 0) (h\u2082 : 7 - (x - y) ^ 2 = 2 * (x - y) - 8) : (x - y) ^ 2 + 2 * (x - y) - 15 = 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (f : \u211d \u2192 \u211d) (h\u2080 : \u2200 x, f x = a * x^2 + b * x + c) (h\u2081 : a \u2260 0) : -(b^2 - 4 * a * c) / (4 * a) = c - b^2 / (4 * a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hx : x \u2208 Set.Icc 0 1) (hy : y \u2208 Set.Icc 0 1) : x ^ 2 + y ^ 2 \u2264 1 + x * y := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a * (a + b) * (a + c) + b * (b + c) * (b + a) + c * (c + a) * (c + b) \u2265 (a + b) * (b + c) * (c + a) + 4 * a * b * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) : (a + b + c)^2 \u2265 3 * (a * b + b * c + c * a) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c : \u211d, (b + 2 * a) ^ 2 + (c + 2 * a) ^ 2 \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 3) : a^(5 / 2) * b^2 + b^(5 / 2) * c^2 + c^(5 / 2) * a^2 \u2264 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c k : \u211d) (h\u2081 : k \u2265 (27 / 16)^(1 / 3)) : (k * a ^ 3 - a * b * c) ^ (1 / 3) + (k * b ^ 3 - a * b * c) ^ (1 / 3) + (k * c ^ 3 - a * b * c) ^ (1 / 3) \u2265 0 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y z : \u211d) (hx : x \u2265 0 \u2227 y \u2265 0 \u2227 z \u2265 0) (h : x + y + z = 1) : x * y + y * z + x * z - 3 * x * y * z \u2264 1 / 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a + b + c) ^ 5 \u2265 81 * (a ^ 2 + b ^ 2 + c ^ 2) * a * b * c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(n k : \u2115) : choose (n - 1 + k) (n - 1) = choose (n - 1 + k) k := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b: \u211d) : (a - b) ^ 2 \u2265 0 \u2192 a ^ 2 + b ^ 2 \u2265 2 * a * b := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 a b c : \u211d, a > 0 \u2227 b > 0 \u2227 c > 0 \u2192 a^2 / b + b^2 / c + c^2 / a \u2265 a + b + c := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) : a^3 + b^3 + c^3 - 3*a*b*c \u2265 2 * ((b + c) / 2 - a)^3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x y : \u211d) (hxy : x > y) (hy : y > 0) : x^4 - y^4 > 4 * x * y^3 - 4 * y^4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(q : \u211d) : 1 \u2264 |q| + |q + 1| := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a + b) ^ 2 * (b + c) ^ 2 * (c + a) ^ 2 \u2265 a * b * c * (a + 2 * b + c) * (2 * a + b + c) * (a + b + 2 * c) := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(x a : \u211d) : (3 - x) ^ 2 \u2265 4 * (x ^ 2 - 3 * x + a) \u2194 (x - 1) ^ 2 \u2264 4 - 4 * a / 3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (hab : a * b + b * c + c * a = 3 / 2) : Real.sqrt ((a ^ 2 + 1) ^ 3 / (2 * a ^ 2 + b * c)) + Real.sqrt ((b ^ 2 + 1) ^ 3 / (2 * b ^ 2 + c * a)) + Real.sqrt ((a ^ 2 + 1) ^ 3 / (2 * a ^ 2 + b * c)) \u2265 6 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": (5 / 4 : \u211d) ^ 31 > 2 ^ 7 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(b c d e a : \u211d) (h\u2080 : b + c + d + e = 0) (h\u2081 : a + b + c + d + e = 1) : a^2 + b^2 + c^2 + d^2 + e^2 \u2265 1 / 4 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c d : \u211d) (h1 : a * b + b * c + c * d + d * a = 6) (h2 : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 = 12) : a + b + c + d \u2264 6 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(m r s : \u2102) (f : \u2102 \u2192 \u2102) (h\u2080 : \u2200 x, f x = x^2 - (4 * m + 1) * x + 4 * m^2) (h\u2081 : f r = 0) (h\u2082 : f s = 0) (h\u2083 : r \u2260 s) : r + s = 4 * m + 1 \u2227 r * s = 4 * m^2 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(P : Polynomial \u2124) (a b : \u2124) : (a - b) \u2223 P.eval a - P.eval b := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(f : \u2124 \u2192 \u2124) (hf: f = fun (x:\u2124) \u21a6 x+1) : \u2200 x y, f x * f y - f (x*y) = x + y := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(c : \u211d) (h\u2080 : 0 \u2264 c) : c^3 \u2264 c^3 + c \u2227 c^3 + c < (c + 1)^3 := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": ": \u2200 {x y z t : \u211d}, x + y = y + z \u2227 y + z = z + t \u2227 z + t = t + x \u2194 x = z \u2227 y = t := by",
+  "step": 0
+ },
+ {
+  "old": "",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) : a / (2 + b * c) + b / (2 + a * c) + c / (2 + a * b) \u2265 1 := by",
+  "step": 0
+ },
+ {
+  "old": "(k : \u211d) (h : k = -11 - 37 / 2) : \u20162 * k\u2016 = 59 := by",
+  "new": "(x : \u211d) : \u20162 * x - 1\u2016 = \u20161 - 2 * x\u2016 := by",
+  "step": 1
+ },
+ {
+  "old": "{a b c : \u211d} (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) : (a + b + c) * (a + b + b + c + c + a) \u2265 (Real.sqrt (a * (b + c)) + Real.sqrt (b * (c + a)) + Real.sqrt (c * (a + b))) ^ 2 := by",
+  "new": "{a b : \u211d} (hb : 0 \u2264 b) (h : a ^ 2 \u2264 b) : a \u2264 Real.sqrt b := by",
+  "step": 1
+ },
+ {
+  "old": "(a b c : \u211d) (h\u2081 : a + b + c = 5) (h\u2082 : a * b * c = 7) : \u2016a\u2016 + \u2016b\u2016 + \u2016c\u2016 \u2265 9 := by",
+  "new": "(a b c : \u211d) : \u2016a + b + c\u2016 \u2264 \u2016a\u2016 + \u2016b\u2016 + \u2016c\u2016 := by",
+  "step": 1
+ },
+ {
+  "old": ": \u2200 x : \u2115, \u2211 i in Finset.range (x + 1), i * (i + 1) = x * (x + 1) * (x + 2) / 3 := by",
+  "new": "(n : \u2115) : \u2211 i in Finset.range n, i * i = \u2211 i in Finset.range (n + 1), i * i - n * n:= by",
+  "step": 1
+ },
+ {
+  "old": "(n p : \u2115) : fib (n + p + 1) = fib (n + 1) * fib (p + 1) + fib n * fib p := by",
+  "new": "(n : \u2115) : fib (2 * n + 1) = fib (n + 1) ^ 2 + fib n ^ 2 := by",
+  "step": 2
+ },
+ {
+  "old": ": \u2211 i in (Finset.Icc (2 : \u2115) 1007), (1 / (2 * i) - 1 / (2 * i + 1)) \u2264 1 / 6 := by",
+  "new": ": \u2211 k in (Finset.Icc (1 : \u2115) 1007), (1 / (2 * k + 1) - 1 / (2 * k + 2)) \u2264 1 / 2 := by",
+  "step": 3
+ }
+]

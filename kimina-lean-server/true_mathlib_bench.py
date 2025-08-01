@@ -40,7 +40,7 @@ def get_theorem_name(ch) :
   return ch.split('theorem')[1].split(' ')[1]
 
 def main(model_name='test/ground_true', n=4, pass_rate=1,debug=False) : 
-    dataset = load_dataset("Slim205/mathlib_RL_v3", split='train')#.select(range(100))
+    dataset = load_dataset("Slim205/mathlib_benchmark_v09_new", split='train').select(range(100))
     theorem_list=[]
     proofs=[]
     p=0
@@ -60,7 +60,7 @@ def main(model_name='test/ground_true', n=4, pass_rate=1,debug=False) :
         samples=proof_dict,
         client=client,
         timeout=60,
-        num_proc=100,
+        num_proc=64,
         batch_size=1    )
     compilation_results =[]
     for response in responses : 

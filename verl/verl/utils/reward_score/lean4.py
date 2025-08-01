@@ -41,17 +41,73 @@ def get_goals(res) :
         if goal not in goals : 
             goals.append(goal)
     return goals
-
-
-# def get_results(data) :
+# def get_results(data) : 
 #     samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
-#     extra_info = {}
 #     for sample in data :
-#         extra_info[sample['custom_id']] =  sample['extra_info'] 
+#         split = sample['extra_info']['split']
+#         break
+#     proof_dict = {}
+#     for x in samples : 
+#         proof_dict[x['custom_id']] = x['proof']
 
 #     results = batch_verify_proof(
 #     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14401:12332",disable_cache=False),
+#     client=Lean4Client(base_url="http://holy8a14302:12332",disable_cache=False),
+#     timeout=60,
+#     num_proc=64,
+#     batch_size=1,
+# )
+#     scores = []
+#     for x in results :
+#         res = get_verification_results(x)
+#         if res['complete'] : 
+#             if split == 'train' : 
+#                 score = len(proof_dict[res['custom_id']].split('\n')) 
+#             else :
+#                 score = 1
+#         else :
+#             score = 0
+
+#         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
+#     return scores
+
+# def get_results(data) : 
+#     samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
+#     for sample in data :
+#         split = sample['extra_info']['split']
+#         break
+
+#     results = batch_verify_proof(
+#     samples=samples,
+#     client=Lean4Client(base_url="http://holy8a14107:12332",disable_cache=False),
+#     timeout=60,
+#     num_proc=64,
+#     batch_size=1,
+# )
+#     scores = []
+#     for x in results :
+#         res = get_verification_results(x)
+#         if res['complete'] : 
+#             if split == 'train' : 
+#                 goals = get_goals(res)
+#                 score = len(goals) 
+#             else :
+#                 score = 1
+#         else :
+#             score = 0
+
+#         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
+#     return scores
+
+# def get_results(data) : 
+#     samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
+#     for sample in data :
+#         split = sample['extra_info']['split']
+#         break
+
+#     results = batch_verify_proof(
+#     samples=samples,
+#     client=Lean4Client(base_url="http://holy8a14107:12332",disable_cache=False),
 #     timeout=60,
 #     num_proc=64,
 #     batch_size=1,
@@ -62,6 +118,34 @@ def get_goals(res) :
 #         if res['complete'] : 
 #             score = 1 
 #         else :
+#             if split == 'train' : 
+#                 goals = get_goals(res) 
+#                 score = min(len(goals) / 100 , 0.8)
+#             else : 
+#                 score = 0
+
+#         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
+#     return scores
+
+# def get_results(data) :
+#     samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
+#     extra_info = {}
+#     for sample in data :
+#         extra_info[sample['custom_id']] =  sample['extra_info'] 
+
+#     results = batch_verify_proof(
+#     samples=samples,
+#     client=Lean4Client(base_url="http://holy8a14103:12332",disable_cache=False),
+#     timeout=60,
+#     num_proc=64,
+#     batch_size=1,
+# )
+#     scores = []
+#     for x in results :
+#         res = get_verification_results(x)
+#         if res['complete'] : 
+#             score = 1 
+#         elif 'goals' in extra_info[res['custom_id']].keys()  :
 #             ground_truth = extra_info[res['custom_id']]['goals']
 
 #             if len(ground_truth) > 1 : 
@@ -74,37 +158,45 @@ def get_goals(res) :
 #                 score = ss/ len(old_goals) 
 #             else :
 #                 score = 0
-#         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
-#     return scores
-
-# def get_results(data) :
-#     samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
-#     for sample in data :
-#         split =   sample['split'] 
-#         break
-#     url = "http://holy8a14107:12332"
-    
-#     results = batch_verify_proof(
-#     samples=samples,
-#     client=Lean4Client(base_url=url,disable_cache=True),
-#     timeout=60,
-#     num_proc=100,
-#     batch_size=1,
-# )
-#     scores = []
-#     for x in results :
-#         res = get_verification_results(x)
-#         if res['complete'] : 
-#             score = 1 
 #         else :
 #             score = 0
 #         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
 #     return scores
 
+# def get_results(data) :
+#     samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
+#     extra_info = {}
+#     for sample in data :
+#         extra_info[sample['custom_id']] =  sample['extra_info'] 
+    
+#     results = batch_verify_proof(
+#     samples=samples,
+#     client=Lean4Client(base_url="http://holy8a14302:12332",disable_cache=False),
+#     timeout=60,
+#     num_proc=64,
+#     batch_size=1,
+# )
+#     scores=[]
+#     for x in results :
+#         res = get_verification_results(x)
+#         if 'complexity' in extra_info[res['custom_id']].keys() : 
+#             complexity = extra_info[res['custom_id']]['complexity']    
+#         else : 
+#             complexity = 0
+#         if res['complete'] : 
+             
+#             score = 1 - complexity
+#         else :
+#             score = 0
+#         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
+#     return scores
+
+
+
 def get_results(samples) : 
     results = batch_verify_proof(
     samples=samples,
-    client=Lean4Client(base_url="http://holy8a14201:12332",disable_cache=False),
+    client=Lean4Client(base_url="http://holy8a14401:12332",disable_cache=False),
     timeout=60,
     num_proc=64,
     batch_size=1,
@@ -173,29 +265,35 @@ def get_results(samples) :
 #         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
 #     return scores
 
-
-# def get_results(samples) : 
+# import numpy as np
+# def get_results(data) :
+#     samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
+#     for sample in data :
+#         split = sample['extra_info']['split']
+#         break
 #     results = batch_verify_proof(
 #     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14202:12332"),
+#     client=Lean4Client(base_url="http://holy8a14201:12332"),
 #     timeout=60,
-#     num_proc=1,
+#     num_proc=64,
 #     batch_size=1,
 # )
 #     scores = []
 #     for x in results :
 #         res = get_verification_results(x)
-#         print(res)
 #         errors = res.get("errors", [])
 #         pos_errors=[]
 #         for err in errors:
 #             msg = err.get("endPos")
-#             pos_errors.append(msg['line'])
-#         print(pos_errors)
+#             if msg : 
+#                 pos_errors.append(msg['line'])
 #         if res['complete'] : 
 #             score = 1 
 #         else :
-#             score = pos_errors[0] / (pos_errors[-1]+ 1)/5
+#             if len(pos_errors)> 0 and split == 'train' : 
+#                 score =  np.exp(-40/pos_errors[0] )
+#             else :
+#                 score = 0
 #         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
 #     return scores
 

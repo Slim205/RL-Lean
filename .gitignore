@@ -12,3 +12,4 @@ leandojo*
 *.out
 .pytest_cache
 __pycache__/
+*.pt

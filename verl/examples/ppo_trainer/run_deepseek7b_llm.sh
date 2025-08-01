@@ -2,8 +2,8 @@ set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=gae \
-    data.train_files=$HOME/data/leanworkbook_V13/train.parquet \
-    data.val_files=$HOME/data/leanworkbook_V13/test.parquet \
+    data.train_files=$HOME/data/leanworkbook_V41/train.parquet \
+    data.val_files=$HOME/data/leanworkbook_V41/test.parquet \
     data.train_batch_size=256 \
     data.max_prompt_length=1024 \
     data.max_response_length=2048 \
@@ -35,9 +35,9 @@ python3 -m verl.trainer.main_ppo \
     trainer.critic_warmup=0 \
     trainer.logger=['console','wandb'] \
     trainer.project_name='leanworkbook' \
-    trainer.experiment_name='leanworkbook_V13' \
+    trainer.experiment_name='leanworkbook_V41' \
     trainer.n_gpus_per_node=4 \
     trainer.nnodes=1 \
     trainer.save_freq=40 \
     trainer.test_freq=10 \
-    trainer.total_epochs=5 $@
+    trainer.total_epochs=10 $@

@@ -24,7 +24,7 @@ include_ast = settings.include_ast
 
 async def _repl_creater():
     while True:
-        await asyncio.sleep(0.01)
+        await asyncio.sleep(1)
                                         
         if len(repl_cache.create_queue) > 0:
             repl_to_create = Counter(repl_cache.create_queue)

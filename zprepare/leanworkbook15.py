@@ -5,37 +5,7 @@ import os
 from tqdm import tqdm
 import traceback
 
-
-ds = load_dataset("Slim205/lean_workbook_RL_hinter_V1",split='train').select(range(12000))
-
-csv_path0 = '../Goedel-Prover/results/leanworkbook_train/SFT-32/compilation_summarize.csv'
-
-import csv
-
-
-data0 = {}
-with open(csv_path0, newline="") as f:
-    reader = csv.DictReader(f, delimiter="\t")  # your sample shows tab-separated values
-    for row in reader:
-        data0[row["name"]] = int(row["correct"])
-
-thm_list = []
-for sample in ds:
-    theorem_name = sample['problem_id']
-    if theorem_name in data0.keys() : 
-
-        sample['eval_complexity'] = data0[theorem_name] / 32
-        if  sample['eval_complexity'] > 0 or len(sample['processed_goals']) < 2 : 
-            continue
-        else : 
-            thm_list.append(sample['problem_id'])
-print(len(thm_list)) # 2208
-
-dict_thm = {}
-for x in thm_list : 
-    dict_thm[x] = []
-
-csv_path0 = '../Goedel-Prover/results/leanworkbook_hinter/SFT-32/compilation_summarize.csv'
+csv_path0 = '../Goedel-Prover/results/leanworkbook_hinter_v2/SFT-32/compilation_summarize.csv'
 
 import csv
 
@@ -47,50 +17,62 @@ with open(csv_path0, newline="") as f:
         data0[row["name"]] = int(row["correct"])
   
 
-dataset = load_dataset("Slim205/lean_workbook_RL_V13_V1", split='train')#.select(range(12000))
+dataset = load_dataset("Slim205/lean_workbook_RL_V14_pass4", split='train')#.select(range(12000))
 inputs = []
-inputs_2 = []
+list_inputs=[]
 p = 0
+dict_complexity={}
+thm_hinter = {}
 for sample in dataset:
     theorem_name = sample['problem_id'] + str(p)
     p+=1
 
     if theorem_name in data0.keys() : 
-        dict_thm[sample['problem_id']].append(data0[theorem_name])
-        if data0[theorem_name] > 0 : 
+        if data0[theorem_name] > 0 and data0[theorem_name] < 17 and sample['theorem'] not in list_inputs : 
+            if sample['problem_id']  not in dict_complexity.keys() : 
+                dict_complexity[sample['problem_id'] ] = []
             sample['new_complexity'] = data0[theorem_name] / 32
+       #     if dict_complexity[sample['problem_id']].count(sample['new_complexity']) < 4:
             inputs.append(sample)
-            if data0[theorem_name] < 17 : 
-                inputs_2.append(sample)
+            list_inputs.append(sample['theorem'] )
+            dict_complexity[sample['problem_id'] ].append(sample['new_complexity'])
+
+def closest_to_point_one(numbers):
+    return min(numbers, key=lambda x: abs(x - 0.1))
 
 dataset1 = Dataset.from_list(inputs)
-dataset2 = Dataset.from_list(inputs_2)
 
-dataset1.push_to_hub('Slim205/leanworkbook_hinter_v2')
-dataset2.push_to_hub('Slim205/leanworkbook_hinter_v3')
+for sample in dataset1 : 
+    if sample['new_complexity'] == closest_to_point_one(dict_complexity[sample['problem_id'] ]) :
+        #sample['complexity_list'] =  dict_complexity[sample['problem_id'] ]
+        thm_hinter[sample['problem_id']] = sample
+print(len(thm_hinter))
+#print(dataset1)
+#dataset1.push_to_hub('Slim205/leanworkbook_hinter_v14_v5')
+#ds2 = dataset1.shuffle(seed=42)#.select(range(3551))
 
-s=0
-for x,y in dict_thm.items() : 
-    if len(y) == 0 : 
-        s+=1
-print(s)
+ds = load_dataset("Slim205/lean_workbook_RL_V8_hinter",split='train').select(range(12000)).remove_columns('processed_goals')
 
-s=0
-for x,y in dict_thm.items() : 
-    if len(y) > 0 : 
+new_data = []
+x=0
+for sample in ds:
+    if sample['problem_id'] in thm_hinter.keys() : 
+        new_data.append(thm_hinter[sample['problem_id'] ])
+    else : 
+        if sample['eval_complexity'] == 0 and len(sample['old_theorem']) > 0:
+            sample['new_complexity'] = 0.0
+            sample['theorem'] = sample['old_theorem']
+            sample['old_theorem'] = ''
+        
+        else : 
+            sample['new_complexity'] = 2.0
+       # sample['complexity_list'] = [0.0][1:]
+        new_data.append(sample)
 
-        if min(y) > 0 : 
-            s+=1
-print(s)
+print(len(ds))
+print(len(new_data))
+   
+            
+combined_ds = Dataset.from_list(new_data)
 
-s=0
-for x,y in dict_thm.items() : 
-    if len(y) > 0 : 
-
-        if min(y) > 0 and  min(y) < 17 : 
-            s+=1
-print(s)
-# 2208
-# 381
-# 1068
-# 502
+combined_ds.push_to_hub('Slim205/lean_workbook_RL_V14_hinter_v6')

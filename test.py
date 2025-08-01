@@ -1,11 +1,15 @@
 from client.client import Lean4Client, batch_verify_proof
 import traceback
-
+import re
+import requests
+import json
+import os
+from sentence_transformers import SentenceTransformer, util
 
 def get_verification_results(old_result) : 
     custom_id= old_result['custom_id']
+    system_messages = old_result['error']
     old_result = old_result['response']
-    system_messages = ''
     try:
         result = {
             "sorries" : old_result.get('sorries', []), 
@@ -32,173 +36,230 @@ def get_verification_results(old_result) :
     result['custom_id'] = custom_id
     return result
 
-def get_goals(res) : 
-    goals = []
-    if 'tactics' not in res.keys() : 
+def get_complexity_scores(data_list,n,url,url_gpu) : 
+
+    model_inputs = []
+    for data in data_list:    
+        text = "Complete the following Lean 4 code :\n\n```lean4\n{formal_statement}".format(
+                formal_statement=data['proof'][:-6],
+            )
+        model_inputs.append(text)
+    print(model_inputs[0])
+    payload = {
+        "inputs": model_inputs,
+        "pass_n": n
+    }
+    try:
+        response = requests.post(url_gpu, json=payload)
+        response.raise_for_status()  
+        model_outputs = response.json()            
+    except requests.exceptions.RequestException as e:
+        print(f"Error calling vLLM server: {e}")
         return []
-    for x in res['tactics'] : 
-        goal = x['goals'].split('⊢')[-1]
-        if goal not in goals : 
-            goals.append(goal)
-    return goals
+    
+    assert len(model_outputs) == len(model_inputs)
+
+    def extrac_code(inputs):
+        try:
+            return re.search(r'```lean4\n(.*?)\n```', inputs, re.DOTALL).group(1)
+        except:
+            return "None"
+    is_correct = {}
+    to_inference_codes = []
+    for i in range(len(data_list)):
+        data_list[i]["model_input"] = model_inputs[i]
+        data_list[i]["model_outputs"] = [output for output in model_outputs[i]]
+        data_list[i]["full_code"] = [extrac_code(model_inputs[i] + output) for output in model_outputs[i]] 
+
+        to_inference_codes += [{"name": data_list[i]["custom_id"], "code": code} for code in data_list[i]["full_code"]]
+        is_correct[data_list[i]["custom_id"]] = 0
+    batch_size = 1
+    num_proc = 64
+    timeout = 60 
+    client = Lean4Client(base_url=url, disable_cache=False)
+
+    samples= []
+    for i in range(len(to_inference_codes)):
+        to_inference_codes[i]["custom_id"] = f"{to_inference_codes[i]['name']}_{i}"
+        samples.append({"custom_id": to_inference_codes[i]["custom_id"] , "proof": to_inference_codes[i]["code"] })
+
+    result = batch_verify_proof(
+        samples=samples,
+        client=client,
+        timeout=timeout,
+        num_proc=num_proc,
+        batch_size=batch_size,
+    )
+
+    compilation_results =[]
+    for res in result : 
+        compilation_results.append(get_verification_results(res))
+
+    compilation_dict = {result['custom_id']: result for result in compilation_results}
+    for code in to_inference_codes:
+        custom_id = code['custom_id']  
+        if custom_id in compilation_dict:
+            code['compilation_result'] = compilation_dict[custom_id]
+            if code['compilation_result']['complete'] : 
+                is_correct[code['name']] +=1
+    return is_correct
+
+def extract_theorem(inputs):
+    try:
+        return ' '.join(inputs.split('theorem')[1].split(' sorry')[0].split()[1:])
+    except:
+        return "None"
+
+def get_cosine_sim(code1,code2,model) : 
+    emb1 = model.encode(extract_theorem(code1), convert_to_tensor=True)
+    emb2 = model.encode(extract_theorem(code2), convert_to_tensor=True)
+    return util.cos_sim(emb1, emb2).item()
+
+def load_statements(filename):
+    if os.path.exists(filename):
+        with open(filename, 'r') as f:
+            return json.load(f)
+    return []
+
+def save_statements(statements, filename):
+    with open(filename, 'w') as f:
+        json.dump(statements, f, indent=1)
+
+def add_new_statements(new_statements, filename):
+    existing = load_statements(filename)
+    combined = existing + new_statements
+    save_statements(combined, filename)
+
+def get_goal(thm) : 
+    if thm.startswith(':') :
+        return thm[2:]
+    elif  ') :' in thm : 
+        ch = ') :'
+        return thm.split(ch)[1].strip()
+    elif  '):' in thm : 
+        ch = '):'
+        return thm.split(ch)[1].strip()
+    elif  '} :' in thm : 
+        ch = '} :'
+        return thm.split(ch)[1].strip()
+    elif  '}:' in thm : 
+        ch = '}:'
+        return thm.split(ch)[1].strip()
+    elif  '] :' in thm : 
+        ch = '] :'
+        return thm.split(ch)[1].strip()
+    elif  ']:' in thm : 
+        ch = ']:'
+        return thm.split(ch)[1].strip()
+    return thm
+    
+def pattern(text: str) -> str:
+    """Coarse syntactic pattern of a Lean statement."""
+    s = get_goal(text)
+    s = re.sub(r'\s+', ' ', s)
+    if s.startswith("¬") :
+        return "negation"
+
+    if s.startswith("∃") :
+        return "exists"
+    if s.startswith("∀") :
+        return "forall"
+    if "↔" in s :
+        return "iff"
+    if "∨" in s :
+        return "or"
+    if "∧" in s :
+        return "and"
+    if " → " in s:
+        return "imp"
+    return "atom"
 
 
 def get_results(data) :
-    samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
-    extra_info = {}
+    split = data[0]['split']
+    path = f'/n/netscratch/amin_lab/Lab/slim/statements/{split}_V16.json'
+    statements_dict = load_statements(path)
+    global_step = statements_dict[-1]['step']
+    statements = [dicti['new'] for dicti in statements_dict]
+    #print(len(statements))
+    #print(statements[0])
+    model = SentenceTransformer('all-MiniLM-L6-v2')  
+    embeddings = model.encode(statements, convert_to_tensor=True)
+    embeddings_dict= { statements[i] :embeddings[i] for i in range(len(statements))}
+
+    scores = []
+    samples = []
+    statement_dict = {}
+    new_embeddings = {}
     for sample in data :
-        extra_info[sample['custom_id']] =  sample['extra_info'] 
+
+        new_theorem = extract_theorem(sample['proof'])
+        #print(pattern(new_theorem))
+
+        emb2 = model.encode(new_theorem, convert_to_tensor=True)
+        cosine_old_new =  util.cos_sim(embeddings_dict[extract_theorem(sample['theorem'])], emb2).item()
+        cosine_previous = max([util.cos_sim(emb1, emb2).item() for emb1 in embeddings ])
+        if len(new_embeddings.values()) > 0 :
+            cosine_batch = max([util.cos_sim(emb1, emb2).item() for emb1 in new_embeddings.values() ])
+        else :
+            cosine_batch = 0.
+        class_thm = pattern(new_theorem)
+        if class_thm == 'atom' : 
+            for i in range(1,10) : 
+                if f'≤ {i})' in theorem :
+                    class_thm = 'part'
+                    break
+
+        if cosine_previous < 0.9 and cosine_old_new > 0.4 and cosine_batch < 0.9  : #and class_thm == 'atom'  : 
+            statement_dict[sample['custom_id']] = (new_theorem,extract_theorem(sample['theorem']))
+            new_embeddings[sample['custom_id']] = emb2
+            samples.append({'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  })
+        else : 
+            scores.append({'custom_id' :  sample['custom_id'] , 'score':   0 })
+
+    url= "http://holy8a14105:12332"
 
     results = batch_verify_proof(
     samples=samples,
-    client=Lean4Client(base_url="http://holy8a14401:12332",disable_cache=False),
+    client=Lean4Client(base_url=url,disable_cache=False),
     timeout=60,
     num_proc=64,
     batch_size=1,
 )
-    scores = []
+ 
+    list_eval_complexity=[]
     for x in results :
         res = get_verification_results(x)
-        if res['complete'] : 
-            score = 1 
-        else :
-            ground_truth = extra_info[res['custom_id']]['goals']
-
-            if len(ground_truth) > 1 : 
-                old_goals = ground_truth[1:] #remove the first goal as it need ot be included in both
-                goals = get_goals(res) # it can be [] when it timeout
-                ss = 0
-                for goal in old_goals : 
-                    if goal in goals :
-                        ss +=1
-                score = ss/ len(old_goals) 
-            else :
+        if res['pass'] :
+            list_eval_complexity.append(res['custom_id']) 
+    new_samples = []
+    for sample in samples : 
+        if sample['custom_id'] in list_eval_complexity :
+            new_samples.append(sample)
+    ### get_complexity_scores
+    n = 8
+    statements_to_save =[]
+    if len(new_samples) > 0 : 
+        complexity_scores = get_complexity_scores(new_samples,n,url,'http://holygpu8a22104:8000/generate')
+        for x,y in complexity_scores.items() : 
+            #print(y/n)
+            if y > 0.5 * n or y == 0 :
                 score = 0
-        scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
+            else : 
+                score = 1
+                statements_to_save.append({'old' : statement_dict[x][1], 'new' : statement_dict[x][0], 'step' : global_step + 1 })
+            scores.append({'custom_id' :  x , 'score':   score})
+    if len(statements_to_save) > 0 : 
+        add_new_statements(statements_to_save,path)
+
     return scores
 
-# def get_results(data) :
-#     samples = [{'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  } for sample in data] 
-#     for sample in data :
-#         split =   sample['split'] 
-#         break
-#     url = "http://holy8a14107:12332"
-    
-#     results = batch_verify_proof(
-#     samples=samples,
-#     client=Lean4Client(base_url=url,disable_cache=True),
-#     timeout=60,
-#     num_proc=100,
-#     batch_size=1,
-# )
-#     scores = []
-#     for x in results :
-#         res = get_verification_results(x)
-#         if res['complete'] : 
-#             score = 1 
-#         else :
-#             score = 0
-#         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
-#     return scores
+# header = "import Mathlib\nimport Aesop\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\n"
+# #code = "theorem euler_4649 (a b : ℕ) (h₁ : a > 1) (h₂ : b > 1) (hab : a + b > 2) (h₃ : a * b = 2 ^ 3 * 3 ^ 4) : ∃ a' b', a' * b' = a * b ∧ a' ≤ 2 * a ∧ b' ≤ 2 * b ∧ a' > 1 ∧ b' > 1 ∧ a' + b' > 2:= by sorry" 
+# old_code =  'theorem lean_workbook_39743 :   Int.floor (Real.sqrt 2021) = 44  := by'
+# code = "theorem norm_num_tactic_form (n : ℕ) (hn : 1 < n) :    Int.floor (Real.sqrt 2021) = 44 ↔    44 * 44 ≤ 2021 ∧ 2021 < (44 + 1) * (44 + 1) := by sorry"
+# #code = "theorem lean_workbook_6696 (x : ℝ) : (x - 1)^2 * (x^2 + x + 1)^2 + (x^2 + x + 1)^2 * (x - 1)^2 + (x^2 + x + 1)^2 * (x^2 - x - 1)^2 ≥ 0  := by sorry"
+# # old_code = "theorem lean_workbook_26651 (p q : ℝ) : (p + q) ^ 3 = 4 * (p ^ 3 + q ^ 3) - 3 * (p + q) * (p - q) ^ 2 :=  by"
+# # code = "theorem lean_workbook_26651 (p q : ℝ) : (p + q) ^ 3 = 4 * (p ^ 3 + q ^ 3) - 3 * (p + q) * (p - q) ^ 2 := by"
+# print(get_results([{'custom_id' : '0', 'proof':header + code , 'theorem' : old_code, 'split' : 'train' }]))
 
-# def get_results(samples) : 
-#     results = batch_verify_proof(
-#     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14201:12332",disable_cache=False),
-#     timeout=60,
-#     num_proc=64,
-#     batch_size=1,
-# )
-#     scores = []
-#     for x in results :
-#         res = get_verification_results(x)
-#         if res['complete'] : 
-#             score = 1 
-#         else :
-#             score = 0
-#         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
-#     return scores
-
-code="""
-import Mathlib
-import Aesop
-set_option maxHeartbeats 0
-open BigOperators Real Nat Topology Rat
-
-theorem thm1 (x : ℝ ) ( h1 : x ^ 2 + (18 * x + 30) - 2 * Real.sqrt (x ^ 2 + (18 * x + 45)) = 0 )  (hx :  x ^ 2 + (18 * x + 45) > 0) : 
-    (Real.sqrt (x ^ 2 + (18 * x + 45)) - 5 ) *  (Real.sqrt (x ^ 2 + (18 * x + 45)) + 3 )  = 0 := by 
-    exo_Doss
-
-"""
-#code = "import Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/-- Show that there are no integers $x$ and $y$ such that $4x^3 - 7y^3 = 2003$.-/\ntheorem numbertheory_4x3m7y3neq2003 (x y : ℤ) : 4 * x ^ 3 - 7 * y ^ 3 ≠ 2003 := by\n  norm_num\n  ring_nf\n  intro h\n  have h₁ : (x - y) ^ 2 * (4 * x + 4 * y) = 2003 := by\n    nlinarith\n  have h₂ : x - y = 1 ∧ 4 * x + 4 * y = 2003 ∨ x - y = -1 ∧ 4 * x + 4 * y = -2003 := by\n    apply mul_eq_one_or_mul_eq_neg_one_of_mul_eq_one\n    nlinarith\n  cases' h₂ with h₂ h₂ <;> nlinarith"
-goals = [ ' (√(x ^ 2 + (18 * x + 45)) - 5) * (√(x ^ 2 + (18 * x + 45)) + 3) = 0', 
-' -15 - √(45 + x * 18 + x ^ 2) * 2 + √(45 + x * 18 + x ^ 2) ^ 2 = 0',
-' -15 - √(45 + x * 18 + x ^ 2) * 2 + (45 + x * 18 + x ^ 2) = 0',
-  ' 30 + x * 18 + (x ^ 2 - √(45 + x * 18 + x ^ 2) * 2) = 0',
-  ' 0 ≤ x ^ 2 + (18 * x + 45)',
-  ' 0 ≤ 45 + x * 18 + x ^ 2'
-]
-extra_info = {'goals' :goals}
-print(get_results([{'proof' :code  ,'custom_id' : '0' , 'extra_info' : extra_info}]))
-
-# def get_results(samples) : 
-#     results = batch_verify_proof(
-#     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14201:12332"),
-#     timeout=60,
-#     num_proc=64,
-#     batch_size=1,
-# )
-#     scores = []
-#     for x in results :
-#         res = get_verification_results(x)
-#         use_meta_tactics = False
-#         errors = res.get("errors", [])
-#         for err in errors:
-#             msg = err.get("data")
-#             if msg:
-#                 for x in ['linarith' ,'simp' , 'omega'] : 
-#                     if x in msg :
-#                         use_meta_tactics=True
-
-#         if res['complete'] : 
-#             score = 1 
-#         elif  use_meta_tactics :
-#             score = -1
-#         else :
-#             score = 0
-#         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
-#     return scores
-
-
-# def get_results(samples) : 
-#     results = batch_verify_proof(
-#     samples=samples,
-#     client=Lean4Client(base_url="http://holy8a14202:12332"),
-#     timeout=60,
-#     num_proc=1,
-#     batch_size=1,
-# )
-#     scores = []
-#     for x in results :
-#         res = get_verification_results(x)
-#         print(res)
-#         errors = res.get("errors", [])
-#         pos_errors=[]
-#         for err in errors:
-#             msg = err.get("endPos")
-#             pos_errors.append(msg['line'])
-#         print(pos_errors)
-#         if res['complete'] : 
-#             score = 1 
-#         else :
-#             score = pos_errors[0] / (pos_errors[-1]+ 1)/5
-#         scores.append({'custom_id' :  res['custom_id'] , 'score':   score })
-#     return scores
-
-
-# code = "import Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/-- Show that there are no integers $x$ and $y$ such that $4x^3 - 7y^3 = 2003$.-/\ntheorem numbertheory_4x3m7y3neq2003 (x y : ℤ) : 4 * x ^ 3 - 7 * y ^ 3 ≠ 2003 := by\n  norm_num\n  ring_nf\n  intro h\n  have h₁ : (x - y) ^ 2 * (4 * x + 4 * y) = 2003 := by\n    nlinarith\n  have h₂ : x - y = 1 ∧ 4 * x + 4 * y = 2003 ∨ x - y = -1 ∧ 4 * x + 4 * y = -2003 := by\n    apply mul_eq_one_or_mul_eq_neg_one_of_mul_eq_one\n    nlinarith\n  cases' h₂ with h₂ h₂ <;> nlinarith"
-# print(len(code.split('\n')))
-# for x in code.split('\n') : 
-#     print(x)
-# print(get_results([{'proof' :code  ,'custom_id' : '0' }]))

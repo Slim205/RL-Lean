@@ -29,7 +29,8 @@ def get_score(scores,i) :
 
 def extrac_code(inputs):
     try:
-        return re.search(r'```lean4\n(.*?)\n```', inputs, re.DOTALL).group(1)
+        HEADER = "import Mathlib\nimport Aesop\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\n"
+        return HEADER + 'theorem' + inputs.split(':= by')[0] + ':= by sorry'
     except:
         return "None"
 
@@ -88,10 +89,10 @@ class NaiveRewardManager:
             data_source = data_item.non_tensor_batch[self.reward_fn_key]
             ground_truth = ''
             extra_info = data_item.non_tensor_batch.get("extra_info", None)
-            code = extrac_code(prompt_str + response_str)
+            code = extrac_code(response_str)
             if code != 'None' : 
-                #parameters.append({'proof' :code  ,'custom_id' : i , 'extra_info' : extra_info })
-                parameters.append({'proof' :code  ,'custom_id' : i }) 
+                parameters.append({'proof' :code  ,'custom_id' : i , 'theorem' : extra_info['theorem'],'split' :extra_info['split']  })
+                #parameters.append({'proof' :code  ,'custom_id' : i }) 
 
         if len(parameters) == 0 :
             print('================== WARNING  ::: Reward == 0 ')

@@ -12,32 +12,55 @@ def get_prompt(data) :
                 formal_statement=data['theorem'],
             )
     return text
-def get_prompt_minif2f(example) :
-    theorem = 'import miniF2F\nimport Aesop\n' + 'set_option maxRecDepth 100000'+  example['theorem'].split('Aesop')[1] 
+# def change_input(lean_code):
+#     l = []
+#     for p in range(len(lean_code)) : 
+#         if lean_code[p] == ':' :
+#             l.append(p)
+#     i = l[-2]
+#     return  lean_code[:i+1]
 
-    text = "Complete the following Lean 4 code :\n\n```lean4\n{formal_statement}".format(
-                formal_statement=theorem,
+# def get_prompt_new(data) :
+
+#     if data['eval_complexity'] > 0.5 : 
+#         thoerem = change_input(data['theorem'])
+#     else : 
+#         thoerem = data['theorem']
+#     text = "Complete the following Lean 4 code :\n\n```lean4\n{formal_statement}".format(
+#                 formal_statement=thoerem,
+#             )
+#     return text
+
+# def get_prompt_minif2f(example) :
+#     theorem = 'import miniF2F\nimport Aesop\n' + 'set_option maxRecDepth 100000'+  example['theorem'].split('Aesop')[1] 
+
+#     text = "Complete the following Lean 4 code :\n\n```lean4\n{formal_statement}".format(
+#                 formal_statement=theorem,
+#             )
+#     return text 
+
+def get_prompt_test(data) :
+    text = "Complete the following Lean 4 code :\n\n```lean4\n{header}{informal_prefix}{formal_statement}".format(
+                header= data['header'],
+                informal_prefix=data['informal_prefix'],
+                formal_statement=data['formal_statement'],
             )
     return text
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--local_dir", default="~/data/leanworkbook_V13")
+    parser.add_argument("--local_dir", default="~/data/leanworkbook_V3")
     parser.add_argument("--hdfs_dir", default=None)
 
     args = parser.parse_args()
 
-    dataset = datasets.load_dataset( "Slim205/lean_workbook_RL_V8_complexity")
+    dataset = datasets.load_dataset("Slim205/lean_workbook_hard_goals")
     data_source = "lean_workbook" # minif2f
 
     train_dataset = dataset["train"]#.select(range(12000))
-    import numpy as np
-    print(np.mean(train_dataset['is_proved']))
     print(train_dataset)
-  #  test_dataset = dataset["train"].select(range(10240,11745)) V2
-    test_dataset = dataset["test"]#.select(range(24000,24434))
-    import numpy as np
-    print(np.mean(test_dataset['is_proved']))
+    test_dataset = datasets.load_dataset('Slim205/minif2f',split='valid')
+
     print(test_dataset)
 
     # add a row to each data item that represents a unique id
@@ -51,14 +74,30 @@ if __name__ == "__main__":
                 "extra_info": {
                     "split": split,
                     "index": idx,
-                    #'goals' : example['goals']
                 },
             }
             return data
-        return process_fn
-        
+        def process_fn_test(example, idx):
+            question = get_prompt_test(example)
+            data = {
+                "data_source": data_source,
+                "prompt": question,
+                "ability": "lean",
+                "extra_info": {
+                    "split": split,
+                    "index": idx,
+                },
+            }
+            return data
+        if split == 'train' : 
+            return process_fn
+        return process_fn_test
     train_dataset = train_dataset.map(function=make_map_fn("train"), with_indices=True)
     test_dataset = test_dataset.map(function=make_map_fn("test"), with_indices=True)
+    p = 0
+    for x in train_dataset : 
+        print(x['prompt'])
+        break
 
     local_dir = args.local_dir
     hdfs_dir = args.hdfs_dir

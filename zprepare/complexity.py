@@ -1,25 +1,19 @@
 import numpy as np
 from datasets import DatasetDict,load_dataset
 
-ds = load_dataset("Slim205/lean_workbook_RL_V8",split='train').select(range(12000))
+ds = load_dataset("Slim205/lean_workbook_RL_V8",split='train')#.select(range(12000))
 
 csv_path = '../Goedel-Prover/results/leanworkbook_train/SFT-32/compilation_summarize.csv'
-
+csv_path2 = '../Goedel-Prover/results/leanworkbook_train_part2/SFT-32/compilation_summarize.csv'
 import csv
-
-def get_theorem_name(theorem_str: str) -> str:
-    """Extracts theorem name safely from a Lean theorem string."""
-    try:
-        parts = theorem_str.split("theorem", 1)
-        theorem_part = parts[1].strip()
-        name = theorem_part.split()[0] if theorem_part else "unknown"
-        return name
-    except Exception as e:
-        print(f"Error parsing theorem: {e}")
-        return "error"
 
 data = {}
 with open(csv_path, newline="") as f:
+    reader = csv.DictReader(f, delimiter="\t")  # your sample shows tab-separated values
+    for row in reader:
+        data[row["name"]] = int(row["correct"])
+
+with open(csv_path2, newline="") as f:
     reader = csv.DictReader(f, delimiter="\t")  # your sample shows tab-separated values
     for row in reader:
         data[row["name"]] = int(row["correct"])
@@ -37,12 +31,12 @@ print(num_ds)
 from datasets import Dataset
 ds_train = Dataset.from_list(inputs)
 
-ds_train = ds_train.sort('eval_complexity',reverse=True)
-dataset_test = load_dataset("Slim205/lean_workbook_RL_V8", split='test')
+#ds_train = ds_train.sort('eval_complexity',reverse=True)
+# dataset_test = load_dataset("Slim205/lean_workbook_RL_V8", split='test')
 
-dataset_test = dataset_test.map(lambda x: {'eval_complexity': 0.0})
+# dataset_test = dataset_test.map(lambda x: {'eval_complexity': 0.0})
 
-ds2 = DatasetDict({'train'  : ds_train , 'test' : dataset_test })
-print(ds2)
+# ds2 = DatasetDict({'train'  : ds_train , 'test' : dataset_test })
+# print(ds2)
 
-ds2.push_to_hub('Slim205/lean_workbook_RL_V8_complexity')
+ds_train.push_to_hub('Slim205/lean_workbook_RL_V20_total')

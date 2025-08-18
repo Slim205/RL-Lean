@@ -1,10 +1,7 @@
 [
     {
         "dataset_path": "assets/data/test/miniF2F_lean.json",
-        "weight": 32
-    },
-    {
-        "dataset_path": "assets/data/test/proofnet.jsonl",
-        "weight": 32
+        "weight": 1
     }
+    
 ]

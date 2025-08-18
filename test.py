@@ -65,6 +65,7 @@ def get_complexity_scores(data_list,n,url,url_gpu) :
         except:
             return "None"
     is_correct = {}
+    correct_proofs = {}
     to_inference_codes = []
     for i in range(len(data_list)):
         data_list[i]["model_input"] = model_inputs[i]
@@ -73,6 +74,7 @@ def get_complexity_scores(data_list,n,url,url_gpu) :
 
         to_inference_codes += [{"name": data_list[i]["custom_id"], "code": code} for code in data_list[i]["full_code"]]
         is_correct[data_list[i]["custom_id"]] = 0
+        correct_proofs[data_list[i]["custom_id"]] = []
     batch_size = 1
     num_proc = 64
     timeout = 60 
@@ -102,7 +104,8 @@ def get_complexity_scores(data_list,n,url,url_gpu) :
             code['compilation_result'] = compilation_dict[custom_id]
             if code['compilation_result']['complete'] : 
                 is_correct[code['name']] +=1
-    return is_correct
+                correct_proofs[code['name']].append(code['code'])
+    return is_correct,correct_proofs
 
 def extract_theorem(inputs):
     try:
@@ -130,62 +133,17 @@ def add_new_statements(new_statements, filename):
     combined = existing + new_statements
     save_statements(combined, filename)
 
-def get_goal(thm) : 
-    if thm.startswith(':') :
-        return thm[2:]
-    elif  ') :' in thm : 
-        ch = ') :'
-        return thm.split(ch)[1].strip()
-    elif  '):' in thm : 
-        ch = '):'
-        return thm.split(ch)[1].strip()
-    elif  '} :' in thm : 
-        ch = '} :'
-        return thm.split(ch)[1].strip()
-    elif  '}:' in thm : 
-        ch = '}:'
-        return thm.split(ch)[1].strip()
-    elif  '] :' in thm : 
-        ch = '] :'
-        return thm.split(ch)[1].strip()
-    elif  ']:' in thm : 
-        ch = ']:'
-        return thm.split(ch)[1].strip()
-    return thm
-    
-def pattern(text: str) -> str:
-    """Coarse syntactic pattern of a Lean statement."""
-    s = get_goal(text)
-    s = re.sub(r'\s+', ' ', s)
-    if s.startswith("¬") :
-        return "negation"
-
-    if s.startswith("∃") :
-        return "exists"
-    if s.startswith("∀") :
-        return "forall"
-    if "↔" in s :
-        return "iff"
-    if "∨" in s :
-        return "or"
-    if "∧" in s :
-        return "and"
-    if " → " in s:
-        return "imp"
-    return "atom"
-
+def get_step(statements_dict) :
+    if len(statements_dict) == 0 : 
+        return 0
+    return statements_dict[-1]['step']
 
 def get_results(data) :
     split = data[0]['split']
-    path = f'/n/netscratch/amin_lab/Lab/slim/statements/{split}_V16.json'
+    path = f'/n/netscratch/amin_lab/Lab/slim/statements/{split}_V28.json'
     statements_dict = load_statements(path)
-    global_step = statements_dict[-1]['step']
-    statements = [dicti['new'] for dicti in statements_dict]
-    #print(len(statements))
-    #print(statements[0])
+    global_step = get_step(statements_dict)
     model = SentenceTransformer('all-MiniLM-L6-v2')  
-    embeddings = model.encode(statements, convert_to_tensor=True)
-    embeddings_dict= { statements[i] :embeddings[i] for i in range(len(statements))}
 
     scores = []
     samples = []
@@ -194,30 +152,21 @@ def get_results(data) :
     for sample in data :
 
         new_theorem = extract_theorem(sample['proof'])
-        #print(pattern(new_theorem))
-
+        emb1 = model.encode(extract_theorem(sample['theorem']), convert_to_tensor=True)
         emb2 = model.encode(new_theorem, convert_to_tensor=True)
-        cosine_old_new =  util.cos_sim(embeddings_dict[extract_theorem(sample['theorem'])], emb2).item()
-        cosine_previous = max([util.cos_sim(emb1, emb2).item() for emb1 in embeddings ])
+        cosine_old_new =  util.cos_sim(emb1, emb2).item()
         if len(new_embeddings.values()) > 0 :
             cosine_batch = max([util.cos_sim(emb1, emb2).item() for emb1 in new_embeddings.values() ])
         else :
             cosine_batch = 0.
-        class_thm = pattern(new_theorem)
-        if class_thm == 'atom' : 
-            for i in range(1,10) : 
-                if f'≤ {i})' in theorem :
-                    class_thm = 'part'
-                    break
-
-        if cosine_previous < 0.9 and cosine_old_new > 0.4 and cosine_batch < 0.9  : #and class_thm == 'atom'  : 
+        if cosine_old_new < 0.9 and cosine_old_new > 0.4 and cosine_batch < 0.9  : 
             statement_dict[sample['custom_id']] = (new_theorem,extract_theorem(sample['theorem']))
             new_embeddings[sample['custom_id']] = emb2
             samples.append({'proof' : sample['proof']  , 'custom_id' : sample['custom_id']  })
         else : 
             scores.append({'custom_id' :  sample['custom_id'] , 'score':   0 })
 
-    url= "http://holy8a14105:12332"
+    url= "http://holy8a14103:12332"
 
     results = batch_verify_proof(
     samples=samples,
@@ -232,34 +181,35 @@ def get_results(data) :
         res = get_verification_results(x)
         if res['pass'] :
             list_eval_complexity.append(res['custom_id']) 
+        else : 
+            scores.append({'custom_id' :  res['custom_id'] , 'score':  0  }) 
     new_samples = []
     for sample in samples : 
         if sample['custom_id'] in list_eval_complexity :
             new_samples.append(sample)
-    ### get_complexity_scores
     n = 8
     statements_to_save =[]
     if len(new_samples) > 0 : 
-        complexity_scores = get_complexity_scores(new_samples,n,url,'http://holygpu8a22104:8000/generate')
+        complexity_scores,correct_proofs = get_complexity_scores(new_samples,n,url,'http://holygpu8a22306:8000/generate')
         for x,y in complexity_scores.items() : 
-            #print(y/n)
-            if y > 0.5 * n or y == 0 :
-                score = 0
+            print(y)
+            if y > 0.8 * n or y == 0 : 
+                score = 0 
             else : 
                 score = 1
-                statements_to_save.append({'old' : statement_dict[x][1], 'new' : statement_dict[x][0], 'step' : global_step + 1 })
+                statements_to_save.append({'old' : statement_dict[x][1], 'new' : statement_dict[x][0], 'step' : global_step + 1, 'proof' : correct_proofs[x] })
             scores.append({'custom_id' :  x , 'score':   score})
     if len(statements_to_save) > 0 : 
         add_new_statements(statements_to_save,path)
 
     return scores
 
-# header = "import Mathlib\nimport Aesop\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\n"
-# #code = "theorem euler_4649 (a b : ℕ) (h₁ : a > 1) (h₂ : b > 1) (hab : a + b > 2) (h₃ : a * b = 2 ^ 3 * 3 ^ 4) : ∃ a' b', a' * b' = a * b ∧ a' ≤ 2 * a ∧ b' ≤ 2 * b ∧ a' > 1 ∧ b' > 1 ∧ a' + b' > 2:= by sorry" 
-# old_code =  'theorem lean_workbook_39743 :   Int.floor (Real.sqrt 2021) = 44  := by'
-# code = "theorem norm_num_tactic_form (n : ℕ) (hn : 1 < n) :    Int.floor (Real.sqrt 2021) = 44 ↔    44 * 44 ≤ 2021 ∧ 2021 < (44 + 1) * (44 + 1) := by sorry"
-# #code = "theorem lean_workbook_6696 (x : ℝ) : (x - 1)^2 * (x^2 + x + 1)^2 + (x^2 + x + 1)^2 * (x - 1)^2 + (x^2 + x + 1)^2 * (x^2 - x - 1)^2 ≥ 0  := by sorry"
-# # old_code = "theorem lean_workbook_26651 (p q : ℝ) : (p + q) ^ 3 = 4 * (p ^ 3 + q ^ 3) - 3 * (p + q) * (p - q) ^ 2 :=  by"
-# # code = "theorem lean_workbook_26651 (p q : ℝ) : (p + q) ^ 3 = 4 * (p ^ 3 + q ^ 3) - 3 * (p + q) * (p - q) ^ 2 := by"
-# print(get_results([{'custom_id' : '0', 'proof':header + code , 'theorem' : old_code, 'split' : 'train' }]))
+header = "import Mathlib\nimport Aesop\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\n"
+#code = "theorem euler_4649 (a b : ℕ) (h₁ : a > 1) (h₂ : b > 1) (hab : a + b > 2) (h₃ : a * b = 2 ^ 3 * 3 ^ 4) : ∃ a' b', a' * b' = a * b ∧ a' ≤ 2 * a ∧ b' ≤ 2 * b ∧ a' > 1 ∧ b' > 1 ∧ a' + b' > 2:= by sorry" 
+old_code =  'theorem lean_workbook_39743 :   Int.floor (Real.sqrt 2021) = 44  := by'
+code = "theorem norm_num_tactic_form (n : ℕ) (hn : 1 < n) :    Int.floor (Real.sqrt 2021) = 44 ↔    44 * 44 ≤ 2021 ∧ 2021 < (44 + 1) * (44 + 1) := by sorry"
+#code = "theorem lean_workbook_6696 (x : ℝ) : (x - 1)^2 * (x^2 + x + 1)^2 + (x^2 + x + 1)^2 * (x - 1)^2 + (x^2 + x + 1)^2 * (x^2 - x - 1)^2 ≥ 0  := by sorry"
+# old_code = "theorem lean_workbook_26651 (p q : ℝ) : (p + q) ^ 3 = 4 * (p ^ 3 + q ^ 3) - 3 * (p + q) * (p - q) ^ 2 :=  by"
+# code = "theorem lean_workbook_26651 (p q : ℝ) : (p + q) ^ 3 = 4 * (p ^ 3 + q ^ 3) - 3 * (p + q) * (p - q) ^ 2 := by"
+print(get_results([{'custom_id' : '0', 'proof':header + code , 'theorem' : old_code, 'split' : 'train' }]))
 

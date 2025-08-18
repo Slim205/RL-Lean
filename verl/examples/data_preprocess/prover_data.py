@@ -8,7 +8,7 @@ def load_statements(filename):
     return []
 
 def get_dataset() : 
-    path = '/n/netscratch/amin_lab/Lab/slim/statements/train_V142.json'
+    path = '/n/netscratch/amin_lab/Lab/slim/statements/train_V16.json'
     initial_statements1 =load_statements(path)
     total_list = [x['new'] for x in initial_statements1]
 
@@ -51,7 +51,7 @@ def get_prompt_test(data) :
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--local_dir", default="~/data/leanworkbook_V41")
+    parser.add_argument("--local_dir", default="~/data/leanworkbook_V42")
     parser.add_argument("--hdfs_dir", default=None)
 
     args = parser.parse_args()

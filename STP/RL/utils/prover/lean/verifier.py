@@ -237,7 +237,7 @@ class Lean4Worker():
             results = verify_lean4_file(**tasks)
 
             # get premises
-            if False:
+            if self.collect_premises:
                 for i, (test_info, result) in enumerate(zip(inputs, results)):
                     if result.get('complete', False):
                         task = dict(code=test_info['statement'] + '\n' + test_info['proof'],
@@ -330,9 +330,8 @@ def create_ray_lean4_actors(
     print(f'Ray actors created. Number of workers: {len(ray_workers)}')
 
     print('Initializing Lean4 environment...')
-   # execute_on_all_workers('cd ~/lean/mathlib4; find .lake/build/ -type f -exec cat {} + > /dev/null; lake exec repl < ~/lean/mathlib4/.lake/packages/REPL/test/aime_1983_p9.in > ~/lean/mathlib4/.lake/packages/REPL/test/aime_1983_p9.out;',
-    #                       expect_succ=True)
-
+    # execute_on_all_workers('source ~/.profile; cd ~/lean/mathlib4; find .lake/build/ -type f -exec cat {} + > /dev/null; lake exec repl < ~/lean/mathlib4/.lake/packages/REPL/test/aime_1983_p9.in > ~/lean/mathlib4/.lake/packages/REPL/test/aime_1983_p9.out;',
+    #                        expect_succ=True)
     print('Lean4 environment initialized.')
     return ray_workers
 

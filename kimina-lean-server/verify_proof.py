@@ -84,7 +84,7 @@ open BigOperators Real Nat Topology Rat
 
 theorem lean_workbook_plus_72097_V1 (α : Type u_1 A ) (B : Set α ) (hA : A = ∅ ) : A ×ˢ B = B ×ˢ A ↔ A = ∅ ∨ B = ∅ ∨ A = B := by sorry
 """
-codex = """
+codenx = """
 import Mathlib
 import Aesop
 
@@ -96,23 +96,29 @@ theorem le_total_2 (x : ℝ) :     3 / 4 ≤ x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y *
   cases' le_total (x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y * z) (3 / 4) with h h <;> simp_all
 """
 
-codex = """
+code = """
 import Mathlib
 import Aesop
 
 set_option maxHeartbeats 0
+
 open BigOperators Real Nat Topology Rat
 
-theorem lean_workbook_plus_70767 : ∃ k : ℤ, k < 1000 ∧ |k * Real.sqrt 2 - ↑⌊k * Real.sqrt 2⌋| < 1 / 1000   :=  by
-
-  use 0
-  simp [abs_of_nonneg]
+theorem lean_workbook_plus_4960 (x : ℝ) (h₀ : 0 ≤ x) (h₁ : x ≤ 12) (y : ℝ) (h₂ : 0 ≤ y) (h₃ : y ≤ 12) (z : ℝ) (h₄ : 0 ≤ z) (h₅ : z ≤ 12) (h₆ : 0 ≤ x + y + z) (h₇ : x + y + z ≤ 36) : 0 ≤ (x - y)^2 + (x - z)^2 + (y - z)^2 ∨ 0 ≤ (x + y)^2 + (x + z)^2 + (y + z)^2 ∨ 0 ≤ (x * 2 + y * 2 + z * 2)^2 + (x * 2 - y * 2 - z * 2)^2 + (x * 2 - y * 2 + z * 2)^2 + (x * 2 + y * 2 - z * 2)^2:= by
+  refine' Or.inr (Or.inr _)
+  nlinarith [h₁, h₂, h₃, h₄, h₅, h₆, h₇]
 """
-response = client.verify([{"proof": codex  , "custom_id": "1nkfdnksdn" }], timeout=60)
+response = client.verify([{"proof": code  , "custom_id": "1nkfdnksdn" }], timeout=60)
 from pprint import pprint
 res = get_verification_results(response['results'][0],code)
-pprint(res)
-print(len(res['errors']))
+#pprint(res['ast']['premises'])
+
+def get_tactics(res) : 
+  tactics = []
+  for x in res['ast']['premises'] : 
+    tactics.append(x['fullName'])
+  return list(set(tactics))
+print(get_tactics(res))
 
 # import re
 # path= '/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/results/leanworkbook_test/deepseek-SFT-3/code_compilation.json'

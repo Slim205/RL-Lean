@@ -29,7 +29,7 @@ module load cuda/12.4.1-fasrc01
 module load cudnn/9.1.1.17_cuda12-fasrc01 
 conda activate /n/netscratch/amin_lab/Lab/slim/env 
 cd /n/netscratch/amin_lab/Lab/slim/STP/RL
-ray start --address=holygpu8a22104:6379 --num-cpus=12 --num-gpus=1
+ray start --address='holygpu8a22606:6379' 
 ray stop
 holy8a14104:12332
 

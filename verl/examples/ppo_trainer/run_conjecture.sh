@@ -1,5 +1,6 @@
 set -x
-#kfdong/STP_model_Lean_0320
+#/n/netscratch/amin_lab/Lab/slim/verl/scripts/conjecture_V14_360
+#kfdong/STP_model_Lean_0320 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=gae \
     data.train_files=$HOME/data/conjecture_V2/train.parquet \
@@ -35,7 +36,7 @@ python3 -m verl.trainer.main_ppo \
     trainer.critic_warmup=0 \
     trainer.logger=['console','wandb'] \
     trainer.project_name='conjecture' \
-    trainer.experiment_name='conjecture_V16' \
+    trainer.experiment_name='conjecture_V28' \
     trainer.n_gpus_per_node=4 \
     trainer.nnodes=1 \
     trainer.save_freq=40 \

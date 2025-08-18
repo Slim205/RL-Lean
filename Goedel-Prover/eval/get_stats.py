@@ -54,7 +54,6 @@ def pat(text: str) -> str:
     s = re.sub(r'\s+', ' ', s)
     if s.startswith("¬") :
         return "negation"
-
     if s.startswith("∃") :
         return "exists"
     if s.startswith("∀") :
@@ -65,24 +64,24 @@ def pat(text: str) -> str:
         return "or"
     if "∧" in s :
         return "and"
-    if " → " in s:
+    if "→" in s:
         return "imp"
     return "atom"
 
 patterns = [
     "negation", "iff", "or", "and",
-    "forall", "exists", "imp", "atom",'part'
+    "forall", "exists", "imp", "atom"
 ]
 
 pattern_dict={ x : 0 for x in patterns }
 for line in new_lines:
     theorem = extract_theorem(line)
     class_thm = pat(theorem)
-    if class_thm == 'atom' : 
-        for i in range(1,10) : 
-            if f'≤ {i})' in theorem :
-                class_thm = 'part'
-                break
+    # if class_thm == 'atom' : 
+    #     for i in range(1,10) : 
+    #         if f'≤ {i})' in theorem :
+    #             class_thm = 'part'
+    #             break
 
     pattern_dict[class_thm] += 1
 
@@ -95,6 +94,6 @@ plt.ylabel('Count')
 plt.title('Count of Theorems by Pattern Class')
 plt.tight_layout()
 plt.grid(axis='y')
-plot_path = f"{path}/theorem_type2.png"
+plot_path = f"{path}/theorem_type3.png"
 plt.savefig(plot_path)
 print(f"Saved plot to {plot_path}")

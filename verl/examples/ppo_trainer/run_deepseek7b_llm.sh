@@ -2,15 +2,15 @@ set -x
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=gae \
-    data.train_files=$HOME/data/leanworkbook_V41/train.parquet \
-    data.val_files=$HOME/data/leanworkbook_V41/test.parquet \
+    data.train_files=$HOME/data/leanworkbook_V43/train.parquet \
+    data.val_files=$HOME/data/leanworkbook_V43/test.parquet \
     data.train_batch_size=256 \
     data.max_prompt_length=1024 \
     data.max_response_length=2048 \
     data.filter_overlong_prompts=True \
     data.truncation='error' \
     data.shuffle=False \
-    actor_rollout_ref.model.path=deepseek-ai/DeepSeek-Prover-V1.5-SFT \
+    actor_rollout_ref.model.path=/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/xihn4b4x/step-100 \
     actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
     actor_rollout_ref.actor.ppo_mini_batch_size=128 \
@@ -26,7 +26,7 @@ python3 -m verl.trainer.main_ppo \
     actor_rollout_ref.rollout.n=8 \
     critic.optim.lr=1e-5 \
     critic.model.use_remove_padding=True \
-    critic.model.path=deepseek-ai/DeepSeek-Prover-V1.5-SFT \
+    critic.model.path=/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/xihn4b4x/step-100 \
     critic.model.enable_gradient_checkpointing=True \
     critic.ppo_micro_batch_size_per_gpu=16 \
     critic.model.fsdp_config.param_offload=False \
@@ -35,7 +35,7 @@ python3 -m verl.trainer.main_ppo \
     trainer.critic_warmup=0 \
     trainer.logger=['console','wandb'] \
     trainer.project_name='leanworkbook' \
-    trainer.experiment_name='leanworkbook_V41' \
+    trainer.experiment_name='leanworkbook_V44' \
     trainer.n_gpus_per_node=4 \
     trainer.nnodes=1 \
     trainer.save_freq=40 \

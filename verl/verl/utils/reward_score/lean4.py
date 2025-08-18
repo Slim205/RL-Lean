@@ -196,7 +196,7 @@ def get_goals(res) :
 def get_results(samples) : 
     results = batch_verify_proof(
     samples=samples,
-    client=Lean4Client(base_url="http://holy8a14401:12332",disable_cache=False),
+    client=Lean4Client(base_url="http://holy8a14201:12332",disable_cache=False),
     timeout=60,
     num_proc=64,
     batch_size=1,

@@ -25,7 +25,7 @@ from utils.prover.lean.verifier import create_ray_lean4_actors, TEST_BATCH_SIZE,
 from concurrent.futures import ProcessPoolExecutor
 #from utils.model_utils import copy_checkpoints_all, CHECKPOINT_TMP_DIR, get_lemma_key
 
-BATCH_SIZE = 1024
+BATCH_SIZE = 256
 prompt_length = 1024
 CONJECTURE_THRESHOLD = 0.25
 NR_FOLD = 5
@@ -148,7 +148,7 @@ def generate_and_test(
     if ray_inference_actors is not None:
         inference_pool = ActorPool(ray_inference_actors)
 
-    ray_test_actors = create_ray_lean4_actors(reserved_cpus=2, cpus_per_task=1, 
+    ray_test_actors = create_ray_lean4_actors(reserved_cpus=4, cpus_per_task=4, 
                                               collect_premises=collect_premises, timeout=DEFAULT_TIMEOUT * test_batch_size)
     
     tester_pool = ActorPool(ray_test_actors)
@@ -262,7 +262,7 @@ def generate_and_test(
         execute_on_all_workers("""pkill -f "repl"; pkill -f "lake" """)
 
         # allow more memory for stage 2 because the failed jobs are likely to be more memory-consuming
-        ray_test_actors = create_ray_lean4_actors(reserved_cpus = 2, cpus_per_task=10, timeout=DEFAULT_TIMEOUT)
+        ray_test_actors = create_ray_lean4_actors(reserved_cpus = 4, cpus_per_task=6, timeout=DEFAULT_TIMEOUT)
         tester_pool = ActorPool(ray_test_actors)
 
         new_testing_tasks = []
@@ -697,9 +697,9 @@ def train_model(
         }
     print(REPO_DIR)
     LEV_ROOT = os.path.join(REPO_DIR, 'levanter')
-    training_cmd = f'module load python/3.12.5-fasrc01; module load cuda/12.4.1-fasrc01 ; module load cudnn/9.1.1.17_cuda12-fasrc01 ; conda activate /n/netscratch/amin_lab/Lab/slim/env ;'\
-                    'mkdir -p ~/.logs/; cd /n/netscratch/amin_lab/Lab/slim/STP; ray stop; ' \
-                    '/n/netscratch/amin_lab/Lab/slim/env/bin/python levanter/examples/weighted_lm.py'
+    training_cmd = f'module load cuda/12.4.1-fasrc01 ; module load cudnn/9.1.1.17_cuda12-fasrc01 ; conda activate /n/netscratch/amin_lab/Lab/slim/env ;'\
+                    'cd /n/netscratch/amin_lab/Lab/slim/STP; ray stop; ' \
+                    'python levanter/examples/weighted_lm.py'
     for k, v in training_config.items():
         if v is None:
             training_cmd += f' --{k}'
@@ -723,6 +723,7 @@ def load_ds_from_config(config_path):
     for dataset_config in dataset_configs:
         logging.debug(f'Processing dataset: {dataset_config["dataset_path"]}')
         raw_dataset = read_file(os.path.join(REPO_DIR, dataset_config['dataset_path']))
+        logging.info((os.path.join(REPO_DIR, dataset_config['dataset_path'])))
         assert (raw_dataset is not None), f"Failed to read {dataset_config['dataset_path']}"
         logging.debug(f'Size of the dataset: {len(raw_dataset)}')
 

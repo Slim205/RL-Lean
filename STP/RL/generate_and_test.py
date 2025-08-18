@@ -57,7 +57,7 @@ def main(args: argparse.Namespace):
             insert_lemma(lemma_mapping, test_info) ## lemma_mapping : from statement to indx
     cache_dir = os.path.join(args.exp_dir, 'sampler_ckpt')
 
-    init_ray_cluster(default=True)
+    init_ray_cluster(default=False)
     ray_inference_actors, model_dir = create_inference_actors(args.model, args.tokenizer_path,enable_prefix_caching=False)
     
     rng = np.random.default_rng(0)

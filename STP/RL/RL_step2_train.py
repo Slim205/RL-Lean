@@ -130,6 +130,8 @@ if __name__ == "__main__":
     conjecture_examples = read_file(os.path.join(args.exp_dir, 'conjecture_examples.json'))
     assert generated_proofs is not None, f"Failed to read {os.path.join(args.exp_dir, 'generated_proofs.json')}"
     assert conjecture_examples is not None, f"Failed to read {os.path.join(args.exp_dir, 'conjecture_examples.json')}"
+    logging.info(f'Number of generated_proofs: {len(generated_proofs)}')
+    logging.info(f'Number of conjecture_examples: {len(conjecture_examples)}')
     
     update_succ_lemmas(generated_proofs, succ_lemmas)
 
@@ -192,6 +194,9 @@ if __name__ == "__main__":
     start_time = datetime.now()
     # train the actor
     max_iters = max(len(train_ds) * args.epoch // BATCH_SIZE, 5)
+    logging.info('max_iters: '+ str(len(train_ds) * args.epoch // BATCH_SIZE))
+    logging.info('len train_ds: '+ str(len(train_ds)))
+
     train_model(os.path.join(args.save_dir, 'RL_model'), args.base_model, max_iters, os.path.join(args.save_dir, 'train_ds.json'), 
                     args, wandb_project, wandb_id)
     duration = datetime.now() - start_time

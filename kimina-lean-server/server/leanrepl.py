@@ -104,9 +104,9 @@ class LeanREPL:
         else:
             command = {"cmd": code, "infotree": infotree_type}
         if self.include_ast : 
-            command['ast'] = False
-            command['premises'] = False
-            command["allTactics"] =  True
+            command['ast'] = True
+            command['premises'] = True
+            command["allTactics"] =  False
             command["tactics"] =  False
 
         try:
@@ -123,7 +123,7 @@ class LeanREPL:
         if self.include_ast : 
             command['ast'] = False
             command['premises'] = False
-            command["allTactics"] =  True
+            command["allTactics"] =  False
             command["tactics"] =  False
 
         try:
@@ -143,9 +143,9 @@ class LeanREPL:
         else:
             command = {"cmd": code, "env": context_id, "infotree": infotree_type}
         if self.include_ast : 
-            command['ast'] = False
-            command['premises'] = False
-            command["allTactics"] =  True
+            command['ast'] = True
+            command['premises'] = True
+            command["allTactics"] =  False
             command["tactics"] =  False
 
         try:

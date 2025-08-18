@@ -156,18 +156,23 @@ def get_goals(res) :
 
 if __name__ == '__main__':
    # code = open( DEFAULT_LEAN_WORKSPACE+'.lake/packages/REPL/test/aime_1983_p9.in').read()
-    code = """
+    code = "theorem lean_workbook_plus_38416 {a b c : ℝ} (hx: a > 0 ∧ b > 0 ∧ c > 0) (hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : |b - c| < a ∧ |c - a| < b ∧ |a - b| < c   :=  by"
+    code ='theorem lean_workbook_39077 (a : ℝ) (ha : 0 < a) : a^3 - a^4 ≤ 27 / 256  :=  by'
+#    code="\nimport Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n/-- Show that $\frac{9x^2\\sin^2 x + 4}{x\\sin x} \\geq 12$ for $0 < x < \\pi$.-/\ntheorem aime_1983_p9 (x : ℝ) (h₀ : 0 < x ∧ x < Real.pi) :\n  12 ≤ (9 * (x ^ 2 * Real.sin x ^ 2) + 4) / (x * Real.sin x) := by\n  /-\n  To find the minimum value of $\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$, we need to show that it is at least 12. We start by noting that the expression can be rewritten using the division property of inequalities. We then use the fact that \\$sin x$ and $x$ are positive in the given range to establish the necessary inequalities. Finally, we apply these results to conclude that the minimum value is indeed 12.\n  -/\n  -- We start by ensuring that the product x * sin x is positive in the given range.\n  have h₁ : 0 < x * Real.sin x := by\n    apply mul_pos\n    -- x is positive in the range (0, π).\n    exact h₀.1\n    -- sin x is positive in the range (0, π).\n    exact Real.sin_pos_of_pos_of_lt_pi h₀.1 h₀.2\n  -- Using the division property of inequalities, we rewrite the expression.\n  rw [le_div_iff h₁]\n  /- tactic state:\n    x : ℝ\n    h₀ : 0 < x ∧ x < π\n    h₁ : 0 < x * x.sin\n    ⊢ 12 * (x * x.sin) ≤ 9 * (x ^ 2 * x.sin ^ 2) + 4\n  -/\n  -- This is equivalent to showing that 9x^2 sin^2 x - 12x sin x + 4 ≥ 0, and the left hand side can be rewritten as a perfect square (3x sin x - 2)^2.\n  -- We use the fact that (3x sin x - 2)^2 is non-negative to establish this.\n  nlinarith [sq_nonneg (3 * x * Real.sin x - 2)]\n"
+    code ="""
 import Mathlib
 import Aesop
+
 set_option maxHeartbeats 0
+
 open BigOperators Real Nat Topology Rat
 
-theorem le_total_2 (x : ℝ) :     3 / 4 ≤ x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y * z ∨     x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y * z ≤ 3 / 4 := by
-  cases' le_total (x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y * z) (3 / 4) := by sorry
-"""
+theorem lean_workbook_plus_51532 (x : ℝ) :      0 ≤ √(1 + cos x ^ 2) * √(1 + sin x ^ 2) ∨ √(1 + cos x ^ 2) * √(1 + sin x ^ 2) < 0 ∧ √(1 + cos x ^ 2) * √(1 + sin x ^ 2) ≤ 0:= by
+  by_cases h : √(1 + cos x ^ 2) * √(1 + sin x ^ 2) < 0
+  <;> simp_all
+  <;> linarith [sqrt_nonneg (1 + cos x ^ 2), sqrt_nonneg (1 + sin x ^ 2)]
 
-#    code="\nimport Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n/-- Show that $\frac{9x^2\\sin^2 x + 4}{x\\sin x} \\geq 12$ for $0 < x < \\pi$.-/\ntheorem aime_1983_p9 (x : ℝ) (h₀ : 0 < x ∧ x < Real.pi) :\n  12 ≤ (9 * (x ^ 2 * Real.sin x ^ 2) + 4) / (x * Real.sin x) := by\n  /-\n  To find the minimum value of $\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$, we need to show that it is at least 12. We start by noting that the expression can be rewritten using the division property of inequalities. We then use the fact that \\$sin x$ and $x$ are positive in the given range to establish the necessary inequalities. Finally, we apply these results to conclude that the minimum value is indeed 12.\n  -/\n  -- We start by ensuring that the product x * sin x is positive in the given range.\n  have h₁ : 0 < x * Real.sin x := by\n    apply mul_pos\n    -- x is positive in the range (0, π).\n    exact h₀.1\n    -- sin x is positive in the range (0, π).\n    exact Real.sin_pos_of_pos_of_lt_pi h₀.1 h₀.2\n  -- Using the division property of inequalities, we rewrite the expression.\n  rw [le_div_iff h₁]\n  /- tactic state:\n    x : ℝ\n    h₀ : 0 < x ∧ x < π\n    h₁ : 0 < x * x.sin\n    ⊢ 12 * (x * x.sin) ≤ 9 * (x ^ 2 * x.sin ^ 2) + 4\n  -/\n  -- This is equivalent to showing that 9x^2 sin^2 x - 12x sin x + 4 ≥ 0, and the left hand side can be rewritten as a perfect square (3x sin x - 2)^2.\n  -- We use the fact that (3x sin x - 2)^2 is non-negative to establish this.\n  nlinarith [sq_nonneg (3 * x * Real.sin x - 2)]\n"
-  
+"""
     code_dict = {"code": code, "allTactics": False, "ast": True, "tactics": False, "premises": True}
     lean4_scheduler = Lean4ServerScheduler(max_concurrent_requests=1, timeout=200, memory_limit=10, name='verifier')
     request_id_list = lean4_scheduler.submit_all_request([code_dict])
@@ -175,9 +180,15 @@ theorem le_total_2 (x : ℝ) :     3 / 4 ≤ x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y *
     lean4_scheduler.close()
     #pprint(outputs_list)
     
-    print(outputs_list[0]['ast'])
-    print(get_goals(outputs_list[0]))
-    print(len(get_goals(outputs_list[0])))
+    asta = outputs_list[0]['ast']['declarations'][1]
+    for x in outputs_list[0]['ast']['premises'] : 
+        print(x['fullName'])
+    # print(asta['Type'])
+    # print('-'*10)
+    # print(asta['parameters'])
+    # print('-'*10)
+    #print(asta)
+
 # {
 # "cmd": "\nimport Mathlib\nimport Aesop\n\nset_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n/-- Show that $\frac{9x^2\\sin^2 x + 4}{x\\sin x} \\geq 12$ for $0 < x < \\pi$.-/\ntheorem aime_1983_p9 (x : ℝ) (h₀ : 0 < x ∧ x < Real.pi) :\n  12 ≤ (9 * (x ^ 2 * Real.sin x ^ 2) + 4) / (x * Real.sin x) := by\n  /-\n  To find the minimum value of $\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$, we need to show that it is at least 12. We start by noting that the expression can be rewritten using the division property of inequalities. We then use the fact that \\$sin x$ and $x$ are positive in the given range to establish the necessary inequalities. Finally, we apply these results to conclude that the minimum value is indeed 12.\n  -/\n  -- We start by ensuring that the product x * sin x is positive in the given range.\n  have h₁ : 0 < x * Real.sin x := by\n    apply mul_pos\n    -- x is positive in the range (0, π).\n    exact h₀.1\n    -- sin x is positive in the range (0, π).\n    exact Real.sin_pos_of_pos_of_lt_pi h₀.1 h₀.2\n  -- Using the division property of inequalities, we rewrite the expression.\n  rw [le_div_iff h₁]\n  /- tactic state:\n    x : ℝ\n    h₀ : 0 < x ∧ x < π\n    h₁ : 0 < x * x.sin\n    ⊢ 12 * (x * x.sin) ≤ 9 * (x ^ 2 * x.sin ^ 2) + 4\n  -/\n  -- This is equivalent to showing that 9x^2 sin^2 x - 12x sin x + 4 ≥ 0, and the left hand side can be rewritten as a perfect square (3x sin x - 2)^2.\n  -- We use the fact that (3x sin x - 2)^2 is non-negative to establish this.\n  nlinarith [sq_nonneg (3 * x * Real.sin x - 2)]\n",
 # "allTactics": false,  
@@ -185,3 +196,4 @@ theorem le_total_2 (x : ℝ) :     3 / 4 ≤ x ^ 2 + y ^ 2 + z ^ 2 + 2 * x * y *
 # "tactics": true, 
 # "premises": true
 # }
+

@@ -16,31 +16,31 @@ Formal proofs are **machine-checkable**: the Lean compiler verifies every step, 
 * **Goal.** Train a conjecturer that proposes conjectures **neither too easy nor too hard** for the prover—i.e., maximally useful for training.
 * **Approach.** We use **PPO** with a reward shaped by pass rate, novelty/relatedness, and batch diversity.
 
-### Reward (sketch)
+### Reward 
 
-We first define a base term:
+We define a base term:
 
 $$
 R_{\text{base}}
-= \text{Pass@16}\cdot \mathbf{1}\!\left(0 < \text{Pass@8} \le 0.5\right)
+= \mathbf{1}\!\left(0 < \text{Pass@16} \le 0.5\right)
 \cdot \mathbf{1}\!\left(0.4 < \cos(\texttt{new}, \texttt{old}) < 0.9\right)
 \cdot \mathbf{1}\!\left(\min \cos(\text{same batch}) < 0.9\right)
 $$
 
-Then we use $R_{\text{base}}$ to encourage :
+The $R_{\text{base}}$ term is designed to capture several key aspects :
 
-* **Complexity** (avoid trivial statements),
-* **Novelty** (avoid near-duplicates),
-* **Relatedness** (stay on-distribution),
+* **Complexity** : encourages statements that are non-trivial but not too difficult for the LLM.
+* **Novelty** avoids near-duplicate statements.
+* **Relatedness** : ensures a meaningful connection between the statement and its conjecturer.
+* **Synthetic correctness** : guarantees that statements are syntactically valid and pass the Lean compiler with by sorry.
 
-and enforce **batch-level diversity** to prevent collapse. (See code for exact weights.)
-
+Additionally, $R_{\text{base}}$ enforces batch-level diversity to prevent collapse. 
 ---
 
 ## Training pipeline
 
 1. **Conjecturer RL:** Train with PPO using the reward above.
-2. **Data collection:** Generate \~**30k** conjectures/proofs; **deduplicate**.
+2. **Data collection:** Generate \~**40k** conjectures/proofs; **deduplicate**.
 3. **Prover SFT:** Start from **DeepSeek-Prover-v1.5-SFT**, run **1 epoch** SFT on the collected data.
 4. **Prover RL:** Further fine-tune on **LeanWorkbook** using RL.
 
@@ -52,7 +52,7 @@ and enforce **batch-level diversity** to prevent collapse. (See code for exact w
 | ------------------------- | :-------: | :------: |
 | DeepSeek-Prover-v1.5-SFT  |   30.74   |   47.95  |
 | + SFT on conjecturer data |   32.79   |   49.18  |
-| + SFT + RL (LeanWorkbook) | **39.75** |   49.18  |
+| + SFT + RL (LeanWorkbook) | **39.75** |   **49.18**  |
 
 **Takeaway:** **+9** absolute improvement in Pass\@1 over the base.
 
@@ -65,31 +65,21 @@ and enforce **batch-level diversity** to prevent collapse. (See code for exact w
 * **Lean compiler service:** kimina-server
 * **Base prover:** DeepSeek-Prover-v1.5-SFT
 
-> The conjecturer and prover models are released open source.
-
 ---
 
+## Dataset & Models
 
-## Dataset & models
-
-* **Conjecturer-generated dataset:** \~**30k** samples (post-dedup).
-* **Base model:** DeepSeek-Prover-v1.5-SFT.
-* **Artifacts:** Conjecturer and prover checkpoints (see Releases or `models/`).
-
----
-
-## Project status
-
-* ✅ Conjecturer PPO training & data generation
-* ✅ Prover SFT (1 epoch)
-* ✅ Prover RL on LeanWorkbook
-* 📈 Reported improvements on MiniF2F
+* **Conjecturer-generated dataset:** ~**40k** samples (after deduplication) — [Link](https://huggingface.co/datasets/Slim205/Lean_conjecturer_data_v01)  
+* **Base model:** DeepSeek-Prover-v1.5-SFT  
+* **Artifacts:**  
+  * **Conjecturer:** [Link](https://huggingface.co/Slim205/Lean_conjecturer_v1)  
+  * **Prover:** [Link](https://huggingface.co/Slim205/Lean_prover_v1)  
 
 ---
 
 ## Acknowledgements
 
-Built on and inspired by: **GodelLM**, **kimina-server**, **VERL**, **STP**, **Levanter**, and **DeepSeek-Prover-v1.5**. Thanks to the authors and maintainers of these projects.
+Built on and inspired by: **GodelLM**, **kimina-server**, **VERL**, **STP**, **Levanter**, **Lean Dojo** ,and **DeepSeek-Prover-v1.5**. Thanks to the authors and maintainers of these projects.
 
 ---
 

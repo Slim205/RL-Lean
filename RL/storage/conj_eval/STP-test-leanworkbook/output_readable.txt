@@ -1,0 +1,3058 @@
+Name: lean_workbook_26651
+Pass: True
+Old: theorem lean_workbook_26651 (p q : ℝ) : (p + q) ^ 3 = 4 * (p ^ 3 + q ^ 3) - 3 * (p + q) * (p - q) ^ 2  :=  by
+New: theorem coprime_of_invertible_right (x y : ℤ) (h : 0 < x ∧ 0 < y) (h' : x.gcd y = 1) :      (x : ℤ) ^ 2 + (y : ℤ) ^ 2 = x ^ 2 + y ^ 2:= by
+Cosine_similarity: 0.235
+Complexity: 0.8125
+Z + Positivity + eq(gcd) : eq ==> Trivial
+------------------------------------------------------------
+Name: lean_workbook_26679
+Pass: False
+Old: theorem lean_workbook_26679 : ∀ x : ℝ, x^8 - x^5 + x^2 - x + 1 > 0  :=  by
+New: theorem mt052002 : ¬(∀ x : ℝ, x^8 - x^5 + x^2 - x + 1 < 0)   <hard theorem>:= by
+Cosine_similarity: 0.813
+Complexity: -0.1
+
+------------------------------------------------------------
+Name: lean_workbook_plus_51531
+Pass: True
+Old: theorem lean_workbook_plus_51531 : 4 * (-(Real.cos x) ^ 2 + Real.cos x + 1 / 2) = 4 * (-((Real.cos x) - 1 / 2) ^ 2 + 3 / 4)   := by
+New: theorem pow_four_le_one_of_abs_le_one (x : ℝ) (hx : |x| ≤ 1) : x ^ 4 ≤ 1:= by
+Cosine_similarity: 0.296
+Complexity: 0.0
+R + ineq : ineq ==> OK
+------------------------------------------------------------
+Name: lean_workbook_plus_48317
+Pass: True
+Old: theorem lean_workbook_plus_48317 (z : ℂ) (hz : 2 * z ^ 3 - (5 + 6 * Complex.I) * z ^ 2 + 9 * Complex.I * z + (1 - 3 * Complex.I) = 0) : (z = 0.5 ∨ z = 1 + 2 * Complex.I ∨ z = 1 + Complex.I)   := by
+New: theorem lean_workbook_plus_48318 (z : ℂ) (hz : 2 * z ^ 3 - (5 + 6 * Complex.I) * z ^ 2 + 9 * Complex.I * z + (1 - 3 * Complex.I) = 0) : (z = 1 + Complex.I ∨ z = 1 + 2 * Complex.I ∨ z = 0.5)   := by
+Cosine_similarity: 0.994
+Complexity: 0.0
+False Statment
+------------------------------------------------------------
+Name: lean_workbook_plus_29898
+Pass: True
+Old: theorem lean_workbook_plus_29898 (x : ℝ) (hx : 0 < x) : 2 * x^4 - 7 * x^3 + 12 * x + 2 > 0   := by
+New: theorem reason_with_periods : ∀ (f : ℝ → ℝ), (∀ x y : ℝ, f (x + y) = f x + f y) → ∀ x : ℝ, f x = x ∧ f (-x) = -f x:= by
+Cosine_similarity: 0.242
+Complexity: 0.0
+False Statement
+------------------------------------------------------------
+Name: lean_workbook_28878
+Pass: False
+Old: theorem lean_workbook_28878 (a b c d : ℝ) : (a^2 - a + 2) * (b^2 - b + 2) * (c^2 - c + 2) * (d^2 - d + 2) ≥ (a + b + c + d)^2  := by
+New: theorem derived_inequality  </hard theorem>:= by
+Cosine_similarity: 0.106
+Complexity: -0.1
+
+------------------------------------------------------------
+Name: lean_workbook_plus_11294
+Pass: True
+Old: theorem lean_workbook_plus_11294 a : sin (2 * a) = 2 * sin a * cos a   :=  by
+New: theorem lean_workbook_plus_21535 (x : ℝ) :   (sin x - cos x)^2 ≥ - 2 ∧ (sin x - cos x)^2 ≤ 2:= by
+Cosine_similarity: 0.473
+Complexity: 0.0
+R : ineq(cos) ∧ ineq(cos) => ok
+------------------------------------------------------------
+Name: lean_workbook_plus_9294
+Pass: False
+Old: theorem lean_workbook_plus_9294 :   4 * x^3 - 3 * x - 2 / (5 * Real.sqrt 5) = 0 ↔ (Real.sqrt 5 * x - 2) * (20 * x^2 + 8 * Real.sqrt 5 * x + 1) = 0   :=  by
+New: theorem tfae_3x_plus_1_eq_x </hard theorem>:= by
+Cosine_similarity: 0.119
+Complexity: -0.1
+
+------------------------------------------------------------
+Name: lean_workbook_plus_38416
+Pass: True
+Old: theorem lean_workbook_plus_38416 {a b c : ℝ} (hx: a > 0 ∧ b > 0 ∧ c > 0) (hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : |b - c| < a ∧ |c - a| < b ∧ |a - b| < c   :=  by
+New: theorem lean_workbook_plus_38421 (hx: a > 0 ∧ b > 0 ∧ c > 0) (hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : (Real.sqrt (a ^ 2 + b ^ 2) - Real.sqrt (b ^ 2 + c ^ 2)) ^ 2 < a ^ 2 + b ^ 2 + (b ^ 2 + c ^ 2) + c ^ 2:= by
+Cosine_similarity: 0.796
+Complexity: 0.0
+No variables Declaration 
+------------------------------------------------------------
+Name: lean_workbook_plus_26505
+Pass: True
+Old: theorem lean_workbook_plus_26505 (x : ℝ) (hx : x = (2^31 + 3^31) / (2^29 + 3^29)) : ⌊x⌋ = 8   :=  by
+New: theorem lean_workbook_plus_26521 : ∀ n : ℕ, 0 < n → ∃ x : ℝ, ⌊x⌋ = n ↔ n ≤ (n^2 : ℝ):= by
+Cosine_similarity: 0.347
+Complexity: 0.0
+False Statement
+------------------------------------------------------------
+Name: lean_workbook_plus_71315
+Pass: True
+Old: theorem lean_workbook_plus_71315 (x : ℝ) (hx : sin x ≠ 0 ∧ cos x ≠ 0) : sin x / cos x + cos x / sin x = 1 / (sin x * cos x)   := by
+New: theorem div_sin_cos_add_cos_sin (x : ℝ) :     x / sin x / cos x + cos x / sin x / cos x = 1 / (sin x * cos x):= by
+Cosine_similarity: 0.888
+Complexity: 0.0
+False Statement
+------------------------------------------------------------
+Name: lean_workbook_15394
+Pass: True
+Old: theorem lean_workbook_15394 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a + b = 1) : (3 * a - 1) ^ 2 / a + (3 * b - 1) ^ 2 / b ≥ 1  := by
+New: theorem diet_inequality (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) : (3 * a - 1) ^ 2 / a + (3 * b - 1) ^ 2 / b + (3 * c - 1) ^ 2 / c ≥ 1  := by
+Cosine_similarity: 0.911
+Complexity: 0.0
+R^3 + Positivity + eq : ineq
+------------------------------------------------------------
+Name: lean_workbook_plus_43342
+Pass: True
+Old: theorem lean_workbook_plus_43342 (x y z : ℝ) (h : x^2 + y^2 + z^2 + 2*x*y*z = 1) : x^2 + y^2 + z^2 >= 3/4   := by
+New: theorem to_right_extent (x y : ℝ) (f : ℝ → ℝ) (h : ∀ z, x * y * f (x * z) + y * x * f (y * z) + z * x * f (z * x) + x * y * f (z * y) = 1) : x * y * f (x * y) ≤ 1:= by
+Cosine_similarity: 0.54
+Complexity: 0.0
+R^2 + Function + ∀ R, eq : ineq ok
+------------------------------------------------------------
+Name: lean_workbook_39077
+Pass: True
+Old: theorem lean_workbook_39077 (a : ℝ) (ha : 0 < a) : a^3 - a^4 ≤ 27 / 256  :=  by
+New: theorem frac_le_3 (a : ℝ) : a - ⌊a⌋ ≤ 1:= by
+Cosine_similarity: 0.509
+Complexity: 0.0625
+R : ineq (⌊⌋) Ok
+------------------------------------------------------------
+Name: lean_workbook_37643
+Pass: True
+Old: theorem lean_workbook_37643 (n : ℕ) (X : Fin (n + 1) → Set (Fin n)) (hX : ∀ i, X i ≠ ∅) :     ∃ I J : Finset (Fin (n + 1)), (I ∩ J = ∅ ∧ ⋃ i ∈ I, X i = ⋃ j ∈ J, X j)  :=  by
+New: theorem lean_workbook_37644 (n : ℕ) (X : Fin (n + 1) → Set (Fin n)) (hX : ∀ i, X i ≠ ∅) :     ∃ I J : Finset (Fin (n + 1)), (I ∩ J = ∅ ∧ ⋃ i ∈ I, X i = ⋃ j ∈ J, X j):= by
+Cosine_similarity: 1.0
+Complexity: 0.875
+Same Statement
+------------------------------------------------------------
+Name: lean_workbook_plus_55620
+Pass: True
+Old: theorem lean_workbook_plus_55620 (x y z : ℝ) : (x^2 + y^2 + z^2) ≥ 0   :=  by
+New: theorem xyz_ineq_4 (x y z : ℝ) : x^2 + y^2 + z^2 ≥ -4 * x * y * z:= by
+Cosine_similarity: 0.759
+Complexity: 0.0
+False Statement
+------------------------------------------------------------
+Name: lean_workbook_plus_77378
+Pass: False
+Old: theorem lean_workbook_plus_77378 (x y z : ℤ) (p s : ℤ) (h₁ : x = 6 * p ^ 2 - 4 * p * s + s ^ 2) (h₂ : y = 6 * p ^ 2 - s ^ 2) (h₃ : z = 6 * p ^ 2 - 6 * p * s + s ^ 2): 3 * x ^ 2 - y ^ 2 = 2 * z ^ 2   :=  by
+New: theorem lean_workbook_plus_77378 (x y z : ℤ) (p s : ℤ) (h₁ : x = 6 * p ^ 2 - 4 * p * s + s ^ 2) (h₂ : y = 6 * p ^ 2 - s ^ 2) (h₃ : z = 6 * p ^ 2 - 6 * p * s + s ^ 2): 3 * x ^ 2 - y ^ 2 = 2 * z ^ 2   :=  by   subst_vars; ring:= by
+Cosine_similarity: 0.901
+Complexity: -0.1
+
+------------------------------------------------------------
+Name: lean_workbook_plus_13339
+Pass: True
+Old: theorem lean_workbook_plus_13339 : 2^(2018) + (2^(2018) * (2^(2019) - 1)) = 2^(4037)   := by
+New: theorem bmk37_eq_37 : (37:ℕ) = 37 := by
+Cosine_similarity: 0.301
+Complexity: 1.0
+Trivial
+------------------------------------------------------------
+Name: lean_workbook_11802
+Pass: True
+Old: theorem lean_workbook_11802 (p : ℤ) (hp : p = 5 * k - 1) : p + 26 ≡ 0 [ZMOD 5]  :=  by
+New: theorem euler_4649 (a b : ℕ) (h₁ : a > 1) (h₂ : b > 1) (hab : a + b > 2) (h₃ : a * b = 2 ^ 3 * 3 ^ 4) : ∃ a' b', a' * b' = a * b ∧ a' ≤ 2 * a ∧ b' ≤ 2 * b ∧ a' > 1 ∧ b' > 1 ∧ a' + b' > 2:= by
+Cosine_similarity: 0.209
+Complexity: 0.0
+N + ineq + ineq + ineq(trivial) + eq  : ∃ R^3 ∧ ineq OK
+------------------------------------------------------------
+Name: lean_workbook_31727
+Pass: True
+Old: theorem lean_workbook_31727 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) : a^2 + b^2 + c^2 + 9/2 * a * b * c ≥ 1/2  := by
+New: theorem lemma_4_10 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) :         9 / 2 * a * b * c ≥ 1 / 2 - a ^ 2 - b ^ 2 - c ^ 2 := by
+Cosine_similarity: 0.966
+Complexity: 0.0
+R^3 + Positivity + eq : ineq oK 
+------------------------------------------------------------
+Name: lean_workbook_plus_31513
+Pass: True
+Old: theorem lean_workbook_plus_31513 (x : ℝ) (hx : x > 0) : x + 1 / x ≥ 2   := by
+New: theorem lean_workbook_plus_31513 (x : ℝ) (hx : x > 0) : x + 1 / x ≥ 2   := by
+Cosine_similarity: 1.0
+Complexity: 0.1875
+------------------------------------------------------------
+Name: lean_workbook_plus_63816
+Pass: True
+Old: theorem lean_workbook_plus_63816 (a b : ℝ) (ha : a ≠ 0) (hb : b ≠ 0) (hab : a / b + b / a = 5) (h : a^2 / b + b^2 / a = 12) : 1 / a + 1 / b = 7 / 3   :=  by
+New: theorem leads_to_contradiction (h₁ : (1 : ℝ) / a + 1 / b = 7 / 3) (h₂ : a^2 / b + b^2 / a = 12) : False := by
+Cosine_similarity: 0.838
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_50269
+Pass: True
+Old: theorem lean_workbook_plus_50269 : ∀ b c : ℝ, b^2 - b*c + c^2 ≥ (b + c)^2 / 4   := by
+New: theorem organization_eq_strength (S T : Type) [Inhabited S] [Inhabited T] (organization : S → T) (strength : T → ℕ) (person : S) :    strength (organization person) = strength (organization person):= by
+Cosine_similarity: 0.054
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_30858
+Pass: True
+Old: theorem lean_workbook_plus_30858 (x y z : ℝ) (hx : x ≥ 0) (hy : y ≥ 0) (hz : z ≥ 0) (hx1 : x^2 - y = (z - 1)^2) (hy1 : y^2 - z = (x - 1)^2) (hz1 : z^2 - x = (y -1)^2) : x = y ∧ y = z ∧ z = x   :=  by
+New: theorem m3_24_174 : ∀ a b c : ℝ, a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0 ∧ a * b * c = 1 → a = b ∧ b = c ∧ c = a:= by
+Cosine_similarity: 0.534
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_35066
+Pass: True
+Old: theorem lean_workbook_35066 (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (habc : a + b^2 + c = 1) : (1 + a^2) * (1 + b^2) * (1 + c^2) ≥ 25 / 16  := by
+New: theorem h₀ : a * b * c ≤ (a ^ 2 + b ^ 2 + c ^ 2) / 3 := by
+Cosine_similarity: 0.577
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_37661
+Pass: True
+Old: theorem lean_workbook_plus_37661 (a b c : ℝ) :   (5 * (a ^ 2 + b ^ 2 + c ^ 2) - 2 * (a * b + b * c + c * a)) ^ 2 ≥     15 * (a ^ 4 + b ^ 4 + c ^ 4) + 12 * a * b * c * (a + b + c)   := by
+New: theorem which_star_is_this_in_symplectic_group :        Real.sqrt (8 / (3 * (4 + 3 * √14))) =  Real.sqrt (8 / (3 * (4 + 3 * √14)))        := by
+Cosine_similarity: 0.254
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_28338
+Pass: False
+Old: theorem lean_workbook_plus_28338 (a p : ℕ) (hp : p.Prime) (h : a.Coprime p) : a^(Nat.totient p) ≡ 1 [ZMOD p]   := by
+New: theorem le_of_not_lt (h1 : ¬(a < b)) : a ≤ b := by
+Cosine_similarity: 0.177
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_36636
+Pass: True
+Old: theorem lean_workbook_36636 (a b : ℝ) (h₁ : a + b = 9) (h₂ : a * (a - 2) + b * (b - 2) = 21) : a * b = 21  :=  by
+New: theorem sq_nonneg_of_nonneg_of_le_one {a : ℝ} (ha : 0 ≤ a) (hb : a ≤ 1) : 0 ≤ (a - 1) ^ 2 * a  := by
+Cosine_similarity: 0.537
+Complexity: 0.875
+------------------------------------------------------------
+Name: lean_workbook_plus_5162
+Pass: True
+Old: theorem lean_workbook_plus_5162  (n : ℕ) :   ∑ k in (Finset.range (n + 1)), k = n * (n + 1) / 2   :=  by
+New: theorem  sum_range_id (n : ℕ) :   ∑ k in Finset.range n, k = n * (n - 1) / 2  := by
+Cosine_similarity: 0.944
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_68
+Pass: True
+Old: theorem lean_workbook_68 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 3) : 9 * (a^2 - a + 1) * (b^2 - b + 1) * (c^2 - c + 1) ≥ (a + b + c)^2  :=  by
+New: theorem algebra_solution_iff_polynomial_divisible (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : 0 < a + b + c) : ∃ (p : ℝ), (p - a) * (p - b) * (p - c) = 0 ↔ a^2 + b^2 + c^2 = (a * b + b * c + c * a) * (a + b + c) / (a + b + c):= by
+Cosine_similarity: 0.695
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_45987
+Pass: True
+Old: theorem lean_workbook_45987 (x : ℝ) (hx: (x - 1) * (x - 3) ≥ 0) : x ≤ 1 ∨ x ≥ 3  :=  by
+New: theorem fuel_metering_unit_test (fuel_OK : Bool) (speed : Nat) (fuel_ok_1 : fuel_OK = true ↔ speed > 0) (fuel_ok_2 : fuel_OK = false ↔ speed = 0) :   fuel_OK = true ∧ speed > 0 ↔ speed > 0:= by
+Cosine_similarity: 0.271
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_plus_65567
+Pass: True
+Old: theorem lean_workbook_plus_65567  (n : ℕ)   (h₀ : 0 < n)   (h₁ : (4:ℝ) / 10 * (16:ℝ) / (16 + n) + 6 / 10 * n / (16 + n) = 29 / 50) :   n = 144   :=  by
+New: theorem e3_1_252_206 (n : ℕ)   (h₀ : 0 < n)   (h₁ : (4:ℝ) / 10 * (16:ℝ) / (16 + n) + 6 / 10 * n / (16 + n) = 29 / 50) :   n = 144:= by
+Cosine_similarity: 1.0
+Complexity: 0.875
+------------------------------------------------------------
+Name: lean_workbook_525
+Pass: False
+Old: theorem lean_workbook_525 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b ≤ c) : a * b + b ^ 2 + c ^ 2 ≥ (7 / 9) * (a + 2 * b) * c  :=  by
+New: theorem lean_workbook_540 (h₁ : 0 < a ∧ 0 < b ∧ 0 < c) (hab : a + b + c = 1) :   (4 * a + b) * b + (4 * b + c) * c + (4 * c + a) * a ≥ 2 * a * b * (a + b) + 2 * b * c * (b + c) + 2 * c * a * (c + a)  </hard theorem>:= by
+Cosine_similarity: 0.717
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_17088
+Pass: True
+Old: theorem lean_workbook_plus_17088 (a b : ℝ) (f : ℝ → ℝ) (h₁ : f = fun x => a * x ^ 4 - b * x ^ 2 + x + 5) (h₂ : f (-3) = 2) : f 3 = 8   :=  by
+New: theorem lean_workbook_plus_17128 : ∀ a b : ℝ, a^2 - b^2 = (a+b)*(a-b) ∧ a^4 - b^4 = (a^2 - b^2) * (a^2 + b^2) ∧ a^6 - b^6 = (a^2 - b^2) * (a^4 + a^2 * b^2 + b^4):= by
+Cosine_similarity: 0.388
+Complexity: 0.40625
+------------------------------------------------------------
+Name: lean_workbook_plus_80479
+Pass: True
+Old: theorem lean_workbook_plus_80479 (n : ℕ) (x y : ℕ → ℝ) :   (∑ k in Finset.range n, x k * y k) ^ 2 ≤ (∑ k in Finset.range n, x k ^ 2) * (∑ k in Finset.range n, y k ^ 2)   :=  by
+New: theorem sum_mul_sq_le (a : ℕ → ℝ) (b : ℕ → ℝ) (n : ℕ) :      (∑ i in Finset.range n, a i * b i) ^ 2 ≤      (∑ i in Finset.range n, a i ^ 2) * (∑ i in Finset.range n, b i ^ 2):= by
+Cosine_similarity: 0.817
+Complexity: 0.5
+------------------------------------------------------------
+Name: lean_workbook_plus_38009
+Pass: True
+Old: theorem lean_workbook_plus_38009 (a b c d : ℝ) : Real.sqrt ((a^2 + d^2) * (b^2 + c^2)) ≥ a * c + b * d   :=  by
+New: theorem le_sqrt_of_sq_le' (x y : ℝ) {z : ℝ} (h : x ^ 2 + y ^ 2 ≤ z) : x ^ 2 + y ^ 2 ≤ Real.sqrt z ^ 2 := by
+Cosine_similarity: 0.513
+Complexity: 0.03125
+------------------------------------------------------------
+Name: lean_workbook_plus_56666
+Pass: True
+Old: theorem lean_workbook_plus_56666 {a b c : ℝ} (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 1) : a^2 * b + b^2 * c + c^2 * a ≤ 1 / Real.sqrt 3   := by
+New: theorem gcon_req_mseq (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 1) : a^2 * b + b^2 * c + c^2 * a ≤ 1 / Real.sqrt 3   := by
+Cosine_similarity: 0.995
+Complexity: 0.65625
+------------------------------------------------------------
+Name: lean_workbook_47459
+Pass: True
+Old: theorem lean_workbook_47459 (k : ℝ) (h : k = -11 - 37 / 2) : ‖2 * k‖ = 59  :=  by
+New: theorem arithmetic_rel_symm_with_assump_aux (k : ℝ) (h₀ : k = -11 - 37 / 2) : ‖2 * k‖ = 59 := by
+Cosine_similarity: 0.971
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_13495
+Pass: True
+Old: theorem lean_workbook_plus_13495 (r s a d : ℤ) : (r + s) ^ 3 = (a + d) ^ 3 → r ^ 3 + s ^ 3 = a ^ 3 + d ^ 3 + 3 * a ^ 2 * d + 3 * a * d ^ 2 - 3 * r * s * (r + s)   := by
+New: theorem lean_workbook_plus_22064 : ¬(∀  (x y : ℝ) , x ^ 2 + y ^ 2 = 1 → x ^ 3 + y ^ 3 = 1) := by
+Cosine_similarity: 0.419
+Complexity: 0.15625
+------------------------------------------------------------
+Name: lean_workbook_39743
+Pass: True
+Old: theorem lean_workbook_39743 :   Int.floor (Real.sqrt 2021) = 44  := by
+New: theorem norm_num_tactic_form (n : ℕ) (hn : 1 < n) :    Int.floor (Real.sqrt 2021) = 44 ↔    44 * 44 ≤ 2021 ∧ 2021 < (44 + 1) * (44 + 1) := by
+Cosine_similarity: 0.776
+Complexity: 0.34375
+------------------------------------------------------------
+Name: lean_workbook_1537
+Pass: True
+Old: theorem lean_workbook_1537 (k : ℕ) (x : ℝ) (hx : 0 < x) : (x * (k/x) - (x+1) * (k/(x+1))) ≤ 1  :=  by
+New: theorem lean_workbook_1537 (k : ℕ) (x : ℝ) (hx : 0 < x) : (x * (k/x) - (x+1) * (k/(x+1))) ≤ 1  := by
+Cosine_similarity: 1.0
+Complexity: 0.03125
+------------------------------------------------------------
+Name: lean_workbook_21611
+Pass: True
+Old: theorem lean_workbook_21611 {x y : ℤ} (h₁ : 17 ∣ y - 2) (h₂ : 17 ∣ x - 2 * y + 1) : 17 ∣ x - 3  :=  by
+New: theorem mathd_numbertheory_243 (n : ℕ) : n % 17 = 0 ↔ n ≡ 0 [MOD 17] := by
+Cosine_similarity: 0.483
+Complexity: 0.46875
+------------------------------------------------------------
+Name: lean_workbook_plus_52990
+Pass: True
+Old: theorem lean_workbook_plus_52990 (x : ℝ) (h₁ : 2 < x) (h₂ : x ≤ 3) : -(x - 3) - (x - 4) = -2 * x + 7   :=  by
+New: theorem ax_pow_two_sub_bx_sub_c_eq_zero_of_b_eq_2ac_add_d         (a b c d x : ℝ) (h₀ : 0 < a) (h₁ : 0 < b) (h₂ : 0 < c) (h₃ : 0 < d) (h₄ : a^2 + b^2 + c^2 + d^2 = 1)         (h₅ : a + b + c + d = 1) :         a^2 * x^2 - 2 * a * b * x * (x - 1) - b^2 + a * d * x * (x - 1) + b * d * (1 - x) + c * d * x * (x - 1) +             (a * c * (1 - x) + a * d * x) + b * c * x + b * d * (1 - x) + a * b * x + a * d * x + b * d * x + c *d * x +             c * a * (1 - x) + c * b * x + c * d * x + a * b * x + b * c * x + c * d * (1 - x) + a * c * x =           x ^ 2 * (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2) - 2 * x * (a * b + b * c + c * d + d * a) +             (a * b + b * c + c * d + d * a) ↔           a * b + b * c + c * d + d * a = 1:= by
+Cosine_similarity: 0.446
+Complexity: 0.125
+------------------------------------------------------------
+Name: lean_workbook_plus_17451
+Pass: True
+Old: theorem lean_workbook_plus_17451 (a : ℝ) : (a - 1) ^ 2 * (9 * a ^ 10 + 6 * a ^ 9 + 3 * a ^ 8 + 12 * a ^ 7 + 9 * a ^ 6 + 6 * a ^ 5 + 13 * a ^ 4 + 8 * a ^ 3 + 3 * a ^ 2 + 2 * a + 1) ≥ 0   := by
+New: theorem nonneg_of_mem_Icc {x : ℝ} (hx : x ∈ Set.Icc (-1) 1) : 9 * x ^ 10 + 6 * x ^ 9 + 3 * x ^ 8 + 12 * x ^ 7 + 9 * x ^ 6 + 6 * x ^ 5 + 13 * x ^ 4 + 8 * x ^ 3 + 3 * x ^ 2 + 2 * x + 1 ≥ 0 := by
+Cosine_similarity: 0.584
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_40635
+Pass: True
+Old: theorem lean_workbook_plus_40635 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 + a * b * c = 4) : a * b + b * c + c * a ≤ a + b + c ∧ a + b + c ≤ 3   := by
+New: theorem lean_workbook_plus_40635 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 + a * b * c = 4) : a * b + b * c + c * a ≤ a + b + c ∧ a + b + c ≤ 3   := by
+Cosine_similarity: 1.0
+Complexity: 0.09375
+------------------------------------------------------------
+Name: lean_workbook_plus_34509
+Pass: True
+Old: theorem lean_workbook_plus_34509 (x y : ℝ) (hx : 0 ≤ x) (hy : 0 ≤ y) : √x = 10 + √y → x - 2*y ≤ 200   := by
+New: theorem ring_nf_sqr_add (a b : ℤ) : (a + b) ^ 2 - (a - b) ^ 2 = 4*a*b := by
+Cosine_similarity: 0.353
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_6218
+Pass: True
+Old: theorem lean_workbook_6218 (x y z : ℝ) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : x * y * z = 1) : 1 / (x + y) + 1 / (y + z) + 1 / (z + x) ≥ 1 / (1 + y) + 1 / (1 + z) + 1 / (1 + x) - 1  :=  by
+New: theorem inequality_of_sums_le_mul {M : Type*} [LinearOrderedField M] (a b c : M) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) : a ^ 2 / (b ^ 2 + c ^ 2) + b ^ 2 / (c ^ 2 + a ^ 2) + c ^ 2 / (a ^ 2 + b ^ 2) ≥ 3 / 5:= by
+Cosine_similarity: 0.412
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_3332
+Pass: True
+Old: theorem lean_workbook_plus_3332 : ∀ x : ℝ, (x - 1) ^ 2 * ((x ^ 2 - 1) ^ 2 + x ^ 2) ≥ 0   :=  by
+New: theorem MathematicalConundrum : ∀ x : ℝ, 0 < x → x ^ 2 / (x + 1) < 1:= by
+Cosine_similarity: 0.657
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_14453
+Pass: True
+Old: theorem lean_workbook_14453 (a b c : ℝ) (ha : 0 < a ∧ a < 1) (hb : 0 < b ∧ b < 1) (hc : 0 < c ∧ c < 1) (hab : a + b + c = 2) : a * b * c >= 8 * (1 - a) * (1 - b) * (1 - c)  :=  by
+New: theorem main_theorem_1 (a b c : ℝ) (habc : a + b + c = 3) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a * b * c >= 1 / 9 * (a + b + c) ^ 2:= by
+Cosine_similarity: 0.116
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_36668
+Pass: True
+Old: theorem lean_workbook_36668 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) : 1 / a + 3 / (a + b) ≤ 4 / 3 * (1 / a + 1 / b)  := by
+New: theorem reciprocal_sum_inequality :   ∀ a b : ℝ, 0 < a → 0 < b → 1 / a + 1 / b ≥ 4 / (a + b) := by
+Cosine_similarity: 0.737
+Complexity: 0.875
+------------------------------------------------------------
+Name: lean_workbook_plus_4959
+Pass: True
+Old: theorem lean_workbook_plus_4959 (x y z : ℝ) : (x^2+y^2+z^2)^2+48 ≥ 24*|x*y*z|   := by
+New: theorem lean_workbook_plus_4959 (x y z : ℝ) : 2 * (x^2 + y^2 + z^2) * (y^2 + z^2 + x^2) + 48 ≥ 48 *|x*y*z|:= by
+Cosine_similarity: 0.946
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_15550
+Pass: True
+Old: theorem lean_workbook_plus_15550 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a + b = 1) : a * b + 1 / (a * b) ≥ 17 / 4   := by
+New: theorem r_r_t_340_203_242 (a b c : ℝ) (hab : a > 0 ∧ b > 0 ∧ c > 0) (h : a + b + c = 1) :     1 / (a + b) + 1 / (b + c) + 1 / (c + a) ≥ 3 / 2:= by
+Cosine_similarity: 0.682
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_26955
+Pass: True
+Old: theorem lean_workbook_plus_26955 (n : ℕ) (x : ℝ) : (sin (n * x))^2 = 1 / 2 * (1 - cos (2 * n * x))   := by
+New: theorem lean_workbook_plus_26955 (n : ℕ) (x : ℝ) : (sin (n * x))^2 = 1 / 2 * (1 - cos (2 * n * x))   := by
+Cosine_similarity: 1.0
+Complexity: 0.40625
+------------------------------------------------------------
+Name: lean_workbook_plus_76820
+Pass: True
+Old: theorem lean_workbook_plus_76820 (x : ℚ) : 1 / 21 + 1 / 22 = 1 / 462   :=  by
+New: theorem mathd_algebra_396_eq_d_plus_22q_minus_152 (q : ℚ) :      q - 152 = 396 * q + 22 * q - 152:= by
+Cosine_similarity: 0.605
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_72004
+Pass: True
+Old: theorem lean_workbook_plus_72004 (a b c : ℝ) (ha : a + b + c = 3) (hab : a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0): a^2 + b^2 + c^2 + a * b + b * c + c * a ≥ 6   := by
+New: theorem is_equal_or_equal_of_sum_squares_eq_sum_squares (a b c d : ℝ) (h : a^2 + b^2 = c^2 + d^2) : a = c ∨ a = d ∨ b = c ∨ b = d := by
+Cosine_similarity: 0.519
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_18784
+Pass: True
+Old: theorem lean_workbook_plus_18784 {a b c d : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hd : d ≥ 0) : (a + b + c) * (b + c + d) * (c + d + a) * (d + a + b) ≥ 4 * (a + b) * (b + c) * (c + d) * (d + a)   := by
+New: theorem sum_gcd_div_sum_mul_div_three (a b c d : ℝ) :     (a + b + c + d) / 3 ≥ 0 →     (a + b + c + d) / 3 * (a + b + c + d) / 3 ≥ 0 →     (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2) / 3 ≥ 0 →     (a + b + c + d) ^ 2 / 3 ≥ 0 →     (a + b) * (a + b) * (b + c) * (b + c) +             (b + c) * (b + c) * (c + d) * (c + d) +             (c + d) * (c + d) * (d + a) * (d + a) +             (d + a) * (d + a) * (a + b) * (a + b) ≥             (a + b) * (a + b) * (c + d) * (c + d) +             (b + c) * (b + c) * (d + a) * (d + a) +             (c + d) * (c + d) * (a + b) * (a + b) +             (d + a) * (d + a) * (b + c) * (b + c):= by
+Cosine_similarity: 0.72
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_36462
+Pass: True
+Old: theorem lean_workbook_36462 (a b c : ℝ) : a^4 + b^4 + c^4 + 2 * a * b * c * (a + b + c) = 1 / 2 * ((a^2 - b^2)^2 + (b^2 - c^2)^2 + (c^2 - a^2)^2) + (a * b + b * c + c * a)^2  :=  by
+New: theorem lemma16_205 :     ∀ (a b c : ℝ),       a^4 + b^4 + c^4 + 2 * a * b * c * (a + b + c) =      1 / 2 * ((a^2 - b^2)^2 + (b^2 - c^2)^2 + (c^2 - a^2)^2) + (a * b + b * c + c * a)^2:= by
+Cosine_similarity: 0.96
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_17325
+Pass: True
+Old: theorem lean_workbook_plus_17325 (a c : ℝ) (h₁ : a ≠ 0) (h₂ : a * c = 0) : c = 0   :=  by
+New: theorem v_lemma_32 (n : ℕ) (a : ℕ → ℝ) (k : ℕ) : a (n) ≥ k → (∏ i in Finset.range (n + 1), (1 + a (i)) ^ 2) ≥ (∏ i in Finset.range (n + 1), (1 + a (i))) ^ 2:= by
+Cosine_similarity: 0.313
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_41583
+Pass: True
+Old: theorem lean_workbook_plus_41583 : ∑ x in Finset.Icc 1 3, 2 * x = 12   :=  by
+New: theorem sum_Icc_succ_top (m n : ℕ) : ∑ k in Finset.Icc m (n + 1), k = ∑ k in Finset.Icc m n, k + (n + 1)  := by
+Cosine_similarity: 0.696
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_44795
+Pass: True
+Old: theorem lean_workbook_44795 (x y z : ℝ) (h : (x - z) * (y - z) = x + y + z - 3) : x ^ 2 + y ^ 2 + z ^ 2 ≥ 3  := by
+New: theorem mathd_algebra_268_a (x : ℝ) (y : ℝ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x + y ≤ 1) : x * y ≤ 1 / 4:= by
+Cosine_similarity: 0.419
+Complexity: 0.78125
+------------------------------------------------------------
+Name: lean_workbook_plus_73132
+Pass: True
+Old: theorem lean_workbook_plus_73132 :  ∀ x : ℝ, (9*x^6 - 90*x^5 + 431*x^4 - 1100*x^3 + 1927*x^2 - 2394*x + 2241) * (x - 1)^2 ≥ 0   := by
+New: theorem lean_workbook_plus_63644 :   ∀ x : ℝ, x^3 - 3*x^2 - 9*x + 27 ≥ 0 ↔ x ≥ 3 ∨ x ≤ -3:= by
+Cosine_similarity: 0.578
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_46341
+Pass: True
+Old: theorem lean_workbook_46341 (a b c d : ℝ) : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 ≥ d * (a + b + c)  :=  by
+New: theorem row_of_rat_le_sum_square {m : ℕ} (x : ℚ) (h : 0 < x) : x ^ 2 ≤ m ^ 2 + 1 := by
+Cosine_similarity: 0.249
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_17012
+Pass: True
+Old: theorem lean_workbook_plus_17012 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a * b + b * c + c * a) * (1 / (a + b) + 1 / (b + c) + 1 / (c + a)) ≤ 2 * (a + b + c) + (Real.sqrt (3 * (a ^ 2 + b ^ 2 + c ^ 2))) / 2   := by
+New: theorem contribution_bound (A B C : ℝ) (h₀ : 0 ≤ A ∧ 0 ≤ B ∧ 0 ≤ C) (h₁ : A + B + C = 1) :       Real.sqrt (3 * (A ^ 2 + B ^ 2 + C ^ 2)) / 2 + (A ^ 2 + B ^ 2 + C ^ 2) / 2 ≤ 2 * (A + B + C):= by
+Cosine_similarity: 0.786
+Complexity: 0.03125
+------------------------------------------------------------
+Name: lean_workbook_plus_58620
+Pass: True
+Old: theorem lean_workbook_plus_58620 (a : ℕ → ℕ) (a0 : a 0 = 2) (a_rec : ∀ n, a (n + 1) = 3 * a n + 1) : ∃ f : ℕ → ℕ, f n = a n   :=  by
+New: theorem lean_workbook_plus_58620' (a : ℕ → ℕ) (a0 : a 0 = 2) (a_rec : ∀ n, a (n + 1) = 3 * a n + 1) : ∃ f : ℕ → ℕ, f n = a n   := by
+Cosine_similarity: 1.0
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_plus_4532
+Pass: True
+Old: theorem lean_workbook_plus_4532 (a b c d : ℝ) (p : ℝ → ℝ) (h₁ : p = fun x => x^4 + a*x^3 + b*x^2 + c*x + d) : p 1 = 10 ∧ p 2 = 20 ∧ p 3 = 30 → (p 12 + p (-8)) / 10 = 1984   :=  by
+New: theorem mathd_algebra_110 (f : ℝ → ℝ) (h₀ : ∀ x, f x = x ^ 2 + 2 * x + 1) (h₁ : ∀ x, f x * f (2 - x) = f (2 + x)) (h₂ : f 2 = 9) :    ∀ x, f x = x ^ 2 + 2 * x + 1:= by
+Cosine_similarity: 0.477
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_36571
+Pass: False
+Old: theorem lean_workbook_plus_36571 (x y : ℝ) (hx : 0 ≤ x) (hy : 0 ≤ y) (h : x + y + Real.sqrt (2 * x ^ 2 + 2 * x * y + 3 * y ^ 2) = 1) : x + y + Real.sqrt (2 * x ^ 2 + 2 * x * y + 3 * y ^ 2) = 1   :=  by
+New: theorem prime_iff_prime_int {p : ℕ} : Nat.Prime p ↔ (p : ℤ).Prime </hard theorem>:= by
+Cosine_similarity: 0.04
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_33190
+Pass: False
+Old: theorem lean_workbook_33190  (f : ℕ → ℕ → ℕ)   (h₀ : ∀ x, f x 0 = x)   (h₁ : ∀ x y, f x (y + 1) = f (f x y) y) :   f 15 11 > f 14 12 ∧ f 15 11 > f 13 13 ∧ f 15 11 > f 12 14 ∧ f 15 11 > f 11 15  :=  by
+New: theorem bilin_ineq_14_3 :   f 15 11 > f 14 12 ∧ f 15 11 > f 13 13 ∧ f 15 11 > f 12 14 ∧ f 15 11 > f 11 15  := by
+Cosine_similarity: 0.702
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_50509
+Pass: True
+Old: theorem lean_workbook_50509 (a b c : ℝ) : a ^ 2 + b ^ 2 + c ^ 2 ≥ a * b + b * c + a * c  := by
+New: theorem _root_.Real.sq_nonneg_of_sq_sum_eq_zero {a b : ℝ} (h : a ^ 2 + b ^ 2 = 0) :     a = 0 ∧ b = 0:= by
+Cosine_similarity: 0.357
+Complexity: 0.78125
+------------------------------------------------------------
+Name: lean_workbook_plus_68934
+Pass: True
+Old: theorem lean_workbook_plus_68934 (n : ℕ) : (n + 1).choose 2 = n * (n + 1) / 2   := by
+New: theorem lean_workbook_plus_68934_001 (n : ℕ) : ∀ (m : ℕ), m ≤ n → (m + 1).choose 2 = m * (m + 1) / 2   := by
+Cosine_similarity: 0.759
+Complexity: 0.28125
+------------------------------------------------------------
+Name: lean_workbook_6749
+Pass: True
+Old: theorem lean_workbook_6749 : ∀ n : ℕ, 2 ∣ (1111^n - 1109^n)  :=  by
+New: theorem mathd_algebra_499 : ∀ n : ℕ, n ≥ 2 → ∃ a b : ℝ, a ≠ b ∧ 1 / (a - b) = 1 / (10 - a) + 1 / (10 - b):= by
+Cosine_similarity: 0.474
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_38239
+Pass: True
+Old: theorem lean_workbook_38239 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a * b * c * (a + b + c) + (a ^ 2 + b ^ 2 + c ^ 2) ^ 2 ≥ (4 / 27) * (a + b + c) ^ 3 * Real.sqrt (3 * (a ^ 2 + b ^ 2 + c ^ 2))  := by
+New: theorem algebra_inequality_of_three_positive_numbers (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :     Real.sqrt ((a + b) ^ 2) * Real.sqrt ((a + b) ^ 2) * Real.sqrt ((b + c) ^ 2) * Real.sqrt ((b + c) ^ 2) ≥         (Real.sqrt ((a + b) ^ 2) * Real.sqrt ((b + c) ^ 2) + Real.sqrt ((a + b) ^ 2) * Real.sqrt ((b + c) ^ 2)) * (Real.sqrt ((a + b) ^ 2) * Real.sqrt ((b + c) ^ 2)) ↔       Real.sqrt ((a + b) ^ 2) * Real.sqrt ((a + b) ^ 2) * Real.sqrt ((b + c) ^ 2) * Real.sqrt ((b + c) ^ 2) ≥         (Real.sqrt ((a + b) ^ 2) * Real.sqrt ((b + c) ^ 2) + Real.sqrt ((a + b) ^ 2) * Real.sqrt ((b + c) ^ 2)) * (Real.sqrt ((a + b) ^ 2) * Real.sqrt ((b + c) ^ 2)):= by
+Cosine_similarity: 0.793
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_2591
+Pass: True
+Old: theorem lean_workbook_plus_2591 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (b + c) / a + ((c + a) * (a + b)) / (b * c) ≥ 8 * ((a / (b + c)) + (b * c) / ((c + a) * (a + b)))   := by
+New: theorem avg_arith_geom_three (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :     (a + b) / 2 ≥ (2 * a * b) / (a + b) ∧ (b + c) / 2 ≥ (2 * b * c) / (b + c) ∧ (c + a) / 2 ≥ (2 * c * a) / (c + a):= by
+Cosine_similarity: 0.808
+Complexity: 0.0625
+------------------------------------------------------------
+Name: lean_workbook_plus_24221
+Pass: True
+Old: theorem lean_workbook_plus_24221 (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : a^3 + b^3 + c^3 ≥ 3 * a * b * c   :=  by
+New: theorem lean_workbook_plus_24221_complete (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) :       a ^ 3 + b ^ 3 + c ^ 3 ≥ 3 * a * b * c:= by
+Cosine_similarity: 1.0
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_plus_37894
+Pass: True
+Old: theorem lean_workbook_plus_37894 (a b c : ℝ) (h₁ : a - 7 * b + 8 * c = 4) (h₂ : 8 * a + 4 * b - c = 7) : a^2 - b^2 + c^2 = 1   := by
+New: theorem polynomial_identity (a b c : ℝ) : a^2 - b^2 + c^2 = 1 ↔ a^2 - b^2 + c^2 = 1 := by
+Cosine_similarity: 0.624
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_43801
+Pass: False
+Old: theorem lean_workbook_plus_43801 (a b : ℤ) (ha : a ≠ 0) (hb : b ≠ 0) : gcd a b ∣ lcm a b   := by
+New: theorem _root_.Int.gcd_mul_lcm (i j : ℤ) : gcd i j * lcm i j = i * j:= by
+Cosine_similarity: 0.691
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_35624
+Pass: True
+Old: theorem lean_workbook_35624 (x : ℝ) (hx : x ∈ Set.Icc 0 1) : 1 - x ≤ Real.exp (-x)  := by
+New: theorem mathd_algebra_211_a (x y z : ℝ) (h₀ : x + y + z = 1) (h₁ : x * y + y * z + z * x = 2) : x ^ 2 + y ^ 2 + z ^ 2 = 3 := by
+Cosine_similarity: 0.232
+Complexity: 0.125
+------------------------------------------------------------
+Name: lean_workbook_plus_35738
+Pass: False
+Old: theorem lean_workbook_plus_35738 (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : a^3 * b^2 + b^3 * c^2 + c^3 * a^2 ≥ a^2 * b^2 * c + a * b^2 * c^2 + a^2 * b * c^2   := by
+New: theorem mul_self_nonneg_iff_eq_zero {a : α} : a * a ≥ 0 ↔ a = 0:= by
+Cosine_similarity: 0.255
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_75821
+Pass: True
+Old: theorem lean_workbook_plus_75821 (f : ℤ → ℤ) (hf: f = fun x ↦ x) : ∀ x y, f (x * f y - 1) + f (x * y) = 2 * x * y - 1   :=  by
+New: theorem lean_workbook_plus_75821_converse :   (∀ x y, f (x * f y - 1) + f (x * y) = 2 * x * y - 1) → f = fun x ↦ x:= by
+Cosine_similarity: 0.909
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_503
+Pass: False
+Old: theorem lean_workbook_plus_503 (b : ℝ) (hb : b ∈ Set.Icc (-1) 1) :   Real.sqrt (1 - b^2) + b ≤ Real.sqrt 2   := by
+New: theorem le_sqrt_of_sq_le {a b : ℝ} (ha : 0 ≤ a) (hab : a ^ 2 ≤ b) : a ≤ Real.sqrt b </hard theorem>:= by
+Cosine_similarity: 0.644
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_24036
+Pass: True
+Old: theorem lean_workbook_plus_24036 (a b c : ℝ) : 4 * (a ^ 2 + b ^ 2 + c ^ 2) ^ 2 ≥ 9 * (a + b + c) * (b + c - a) * (c + a - b) * (a + b - c)   := by
+New: theorem real.convex_iff_slope_mono_adjacent {s : Set ℝ} (hs : Convex ℝ s) {f : ℝ → ℝ} (hf : ∀ x ∈ s, DifferentiableWithinAt ℝ f s x) :      ConvexOn ℝ s f ↔ ∀ ⦃x y z : ℝ⦄, x ∈ s → y ∈ s → z ∈ s → x < y → y < z → (f y - f x) / (y - x) ≤ (f z - f y) / (z - y):= by
+Cosine_similarity: 0.221
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_66234
+Pass: True
+Old: theorem lean_workbook_plus_66234 {a b c : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) : (a + b + c) * (a + b + b + c + c + a) ≥ (Real.sqrt (a * (b + c)) + Real.sqrt (b * (c + a)) + Real.sqrt (c * (a + b))) ^ 2   := by
+New: theorem quadratic_le_square (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) : (a + b) * (a + c) ≤ (Real.sqrt (a * (b + c)) + Real.sqrt (b * (a + c))) ^ 2 := by
+Cosine_similarity: 0.948
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_13386
+Pass: False
+Old: theorem lean_workbook_plus_13386 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a^3 + b^3 + c^3 + a * b * c + 8 ≥ 4 * (a + b + c)   := by
+New: theorem theorem pure_math_2010_p4 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a^3 + b^3 + c^3 + a * b * c + 8 ≥ 4 * (a + b + c):= by
+Cosine_similarity: 0.101
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_8214
+Pass: True
+Old: theorem lean_workbook_8214 (a b c d : ℝ) (ha : a + b + c + d = 1) (hb : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 = 1) (hc : a ^ 3 + b ^ 3 + c ^ 3 + d ^ 3 = 1) : a ^ 4 + b ^ 4 + c ^ 4 + d ^ 4 + 4 * a * b * c * d = 1  :=  by
+New: theorem linear_combination (x1 x2 : ℝ) (h1 : x1 ^ 2 + x2 ^ 2 = 1) (h2 : x1 * x2 + x2 * x1 = 1) : x1 = x2:= by
+Cosine_similarity: 0.577
+Complexity: 0.71875
+------------------------------------------------------------
+Name: lean_workbook_plus_81149
+Pass: True
+Old: theorem lean_workbook_plus_81149 (a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) : 3 * a ^ 2 * d ^ 2 + 3 * b ^ 2 * c ^ 2 + 2 * a ^ 2 * c ^ 2 + 2 * b ^ 2 * d ^ 2 + 5 * a * b * c * d ≥ 3 * a ^ 2 * c * d + 3 * d ^ 2 * a * b + 3 * c ^ 2 * a * b + 3 * b ^ 2 * c * d   := by
+New: theorem fun_16940 :     ∀ a b c : ℝ,      a > 0 ∧ b > 0 ∧ c > 0 →     3 * a ^ 2 * d ^ 2 + 3 * b ^ 2 * c ^ 2 + 2 * a ^ 2 * c ^ 2 + 2 * b ^ 2 * d ^ 2 + 5 * a * b * c * d ≥         3 * a ^ 2 * c * d + 3 * d ^ 2 * a * b + 3 * c ^ 2 * a * b + 3 * b ^ 2 * c * d:= by
+Cosine_similarity: 0.743
+Complexity: 0.5625
+------------------------------------------------------------
+Name: lean_workbook_5032
+Pass: True
+Old: theorem lean_workbook_5032 (R I : ℝ) (m : ℝ) (g θ : ℝ) (h₁ : 0 < R ∧ 0 < I ∧ 0 < m ∧ 0 < g ∧ 0 ≤ θ ∧ θ ≤ 90) : g * sin θ / (1 + (I / (m * R^2))) = g * sin θ / (1 + (I / (m * R^2)))  :=  by
+New: theorem exact_value_theorem (a b c : ℝ) (h₁ : 0 < a ∧ 0 < b ∧ 0 < c) :       a / (b / a) / (a / (b / a)) = a / (b / a) / (a / (b / a)) := by
+Cosine_similarity: 0.051
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_33192
+Pass: True
+Old: theorem lean_workbook_33192 (x : ℝ) : x^12 - x^9 + x^4 - x + 1 > 0  := by
+New: theorem feb18_2274 : (fun (a b : ℝ) ↦ a^2 * (1 - b) + b^2 * (1 - a))   ≤ fun (a b : ℝ) ↦ 1 * (1 - (a + b - 1)^2):= by
+Cosine_similarity: 0.326
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_70634
+Pass: True
+Old: theorem lean_workbook_plus_70634 (a b c : ℝ) : a * b * c * (a + b + c) ≤ (1 / 3) * (a * b + b * c + c * a) ^ 2   := by
+New: theorem m_add {m : ℕ} {n : ℕ} : m + n = m + n:= by
+Cosine_similarity: 0.168
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_32611
+Pass: True
+Old: theorem lean_workbook_plus_32611 (x y z : ℝ) : x ^ 2 * (x - y) * (x - z) + y ^ 2 * (y - z) * (y - x) + z ^ 2 * (z - x) * (z - y) = 1 / 2 * ((y + z - x) ^ 2 * (y - z) ^ 2 + (z + x - y) ^ 2 * (z - x) ^ 2 + (x + y - z) ^ 2 * (x - y) ^ 2)   := by
+New: theorem simp_all_real_closed_ball (x y z : ℝ) :    IsClosed { (x, y, z) : ℝ × ℝ × ℝ | x ^ 2 + y ^ 2 + z ^ 2 ≤ 3 ∧ x * y * z ≤ 1 ∧ 0 < x ^ 2 + y ^ 2 + z ^ 2 ∧ 0 < x ^ 2 * y ^ 2 * z ^ 2 } := by
+Cosine_similarity: 0.455
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_33724
+Pass: True
+Old: theorem lean_workbook_33724 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) : a^3 * b^2 + b^3 * c^2 + c^3 * a^2 ≥ a^2 * b^2 * c + a * b^2 * c^2 + a^2 * b * c^2  :=  by
+New: theorem can_prove_by_liquid_tactic : ∃ f : ℕ → ℕ, ∀ m : ℕ, f m = m^2 + 1 ∧ ∃ y : ℕ, y = f m:= by
+Cosine_similarity: 0.153
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_49489
+Pass: True
+Old: theorem lean_workbook_plus_49489 (a b c d : ℝ) (ha : a ≥ -1) (hb : b ≥ -1) (hc : c ≥ -1) (hd : d ≥ -1) : a^3 + b^3 + c^3 + d^3 + (25/4) ≥ (a + b + (1/2)) * (c + d + (1/2))   := by
+New: theorem daily_mean_interwetness_of_wetness_data_int (a b c d e f : ℝ) (h₀ : a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0 ∧ d ≥ 0 ∧ e ≥ 0 ∧ f ≥ 0) :   (a / 16 + b / 16 + c / 16 + d / 16 + e / 16 + f / 16) * 16 ≤ a + b + c + d + e + f:= by
+Cosine_similarity: 0.603
+Complexity: 0.6875
+------------------------------------------------------------
+Name: lean_workbook_57135
+Pass: True
+Old: theorem lean_workbook_57135 (a b c : ℝ) : (a + b + c) ^ 2 / (a ^ 2 + b ^ 2 + c ^ 2 + 3) ≤ 1 → a * b + b * c + c * a ≤ 3 / 2  :=  by
+New: theorem lean_workbook_57135 (a b c : ℝ) : (a + b + c) ^ 2 / (a ^ 2 + b ^ 2 + c ^ 2 + 3) ≤ 1 → a * b + b * c + c * a ≤ 3 / 2  := by
+Cosine_similarity: 1.0
+Complexity: 0.03125
+------------------------------------------------------------
+Name: lean_workbook_plus_9183
+Pass: False
+Old: theorem lean_workbook_plus_9183 (f : ℝ → ℝ) (hf1 : f 1 = 1) (hf2 : ∀ x, f (2 * x) = 4 * f x + 6) (hf3 : ∀ x, f (x + 4) = 4 * f x + 4 * f 1 + 8 * f 2) : f 6 = 106   := by
+New: theorem new_theorem (f : ℝ → ℝ) (hf1 : f 1 = 1) (hf2 : ∀ x, f (2 * x) = 4 * f x + 6) (hf3 : ∀ x, f (x + 4) = 4 * f x + 4 * f 1 + 8 * f 2) : f 12 = 2224 </hard theorem>:= by
+Cosine_similarity: 0.039
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_39881
+Pass: True
+Old: theorem lean_workbook_plus_39881 (d : ℕ → ℕ) (hd : d = fun k => (Nat.divisors k).card) : ∃ n, (d (n-1) ≤ d n ∧ d n ≤ d (n+1)) ∨ (d (n-1) ≥ d n ∧ d n ≥ d (n+1))   :=  by
+New: theorem extreme_value_inequality_lemma (d : ℕ → ℕ) (hd : ∀ n, d n = (Nat.divisors n).card) (k : ℕ)  : (d (k - 1) ≤ d k ∧ d k ≤ d (k + 1)) ∨ (d (k - 1) ≥ d k ∧ d k ≥ d (k + 1))  := by
+Cosine_similarity: 0.961
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_60545
+Pass: True
+Old: theorem lean_workbook_plus_60545 (a b c d e f : ℝ) : (a * x + b * y = c ∧ d * x + e * y = f) → (a + d) * x + (b + e) * y = c + f   :=  by
+New: theorem leaf_theorem (q : ℕ → ℕ → ℕ) (r : ℕ → ℕ → ℕ) (s : ℕ → ℕ → ℕ) (t : ℕ → ℕ → ℕ) (u : ℕ → ℕ → ℕ) (v : ℕ → ℕ → ℕ) (w : ℕ → ℕ → ℕ) ( x : ℕ → ℕ → ℕ) (y : ℕ → ℕ → ℕ) (z : ℕ → ℕ → ℕ) (h₁ : ∀ i j, q i j + r i j = s i j) (h₂ : ∀ i j, r i j + u i j = v i j) (h₃ : ∀ i j, s i j + t i j = u i j) (h₄ : ∀ i j, v i j + w i j = x i j) (h₅ : ∀ i j, x i j + y i j = z i j) : ∀ i j, q i j + 2 * r i j + s i j + 3 * t i j + u i j + 5 * w i j = q i j + 2 * r i j + s i j + 3 * t i j + u i j + 5 * w i j:= by
+Cosine_similarity: 0.064
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_plus_39163
+Pass: True
+Old: theorem lean_workbook_plus_39163 (n p : ℕ) : fib (n + p + 1) = fib (n + 1) * fib (p + 1) + fib n * fib p   := by
+New: theorem lucas_1962_3602 (n p : ℕ) : fib (n + p + 1) = fib (n + 1) * fib (p + 1) + fib n * fib p   := by
+Cosine_similarity: 1.0
+Complexity: 0.65625
+------------------------------------------------------------
+Name: lean_workbook_plus_78890
+Pass: True
+Old: theorem lean_workbook_plus_78890 (a b c : ℝ) (h₁ : a + b + c = 1) (h₂ : a^2 + b^2 + c^2 = 2) (h₃ : a^3 + b^3 + c^3 = 3) : a^5 + b^5 + c^5 = 15   :=  by
+New: theorem monomial_helper : ∀ (a b c : ℝ), a + b + c = 1 ∧ a^2 + b^2 + c^2 = 2 ∧ a^3 + b^3 + c^3 = 3 → a^5 + b^5 + c^5 = 15 := by
+Cosine_similarity: 0.75
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_1636
+Pass: True
+Old: theorem lean_workbook_1636 (f : ℝ → ℝ) (hf : ∀ m n : ℝ, f (m * n) = f (m - n)) : f 4 = 2 → f (-3) + f 6 = 4  := by
+New: theorem lean_workbook_1636 (f : ℝ → ℝ) (hf : ∀ m n : ℝ, f (m * n) = f (m - n)) : f 4 = 2 → f (-3) + f 6 = 4  := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_17286
+Pass: True
+Old: theorem lean_workbook_17286 (x y z : ℝ) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : x * y * z + x * y + y * z + z * x = 4) : x + y + z >= 3  :=  by
+New: theorem main_theorem (f : ℝ → ℝ) (hf: f = fun x => 2 * x ^ 2 + 4 * x + 3) (h : ∀ x y : ℝ, f x + f y - f (x + y) ≥ 0) : ∀ x : ℝ, ∃ a : ℝ, a * x ≥ 0 ∧ (a * x + 1) ^ 2 ≥ 1:= by
+Cosine_similarity: 0.133
+Complexity: 0.15625
+------------------------------------------------------------
+Name: lean_workbook_plus_82571
+Pass: True
+Old: theorem lean_workbook_plus_82571 (x y z : ℝ) (hx : x > 0 ∧ y > 0 ∧ z > 0 ∧ x*y*z = 1) : x / (8*y^3 + 1)^(1/2) + y / (8*z^3 + 1)^(1/2) + z / (8*x^3 + 1)^(1/2) ≥ 1   := by
+New: theorem inequality_2 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a * b * c = 1) :  a / (b^2 + 1) + b / (c^2 + 1) + c / (a^2 + 1) ≥ 1 / 2:= by
+Cosine_similarity: 0.546
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_45492
+Pass: True
+Old: theorem lean_workbook_plus_45492 (a b c d : ℝ) (h : a ≥ b ∧ b ≥ c ∧ c ≥ d ∧ d ≥ 0) (h2: a^2 + b^2 + c^2 + d^2 = 1) : a + b ≥ 1 ∧ 1 ≥ c + d   :=  by
+New: theorem eight_f_le_four_b_and_c_plus_d_le_one : 0 < 8 * f → 8 * f ≤ 4 * b → c + d ≤ 1:= by
+Cosine_similarity: 0.51
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_18558
+Pass: True
+Old: theorem lean_workbook_18558 (a b c : ℝ) (habc : a * b * c = 1) : a ^ 4 + b ^ 4 + c ^ 4 + a ^ 2 * b ^ 2 + b ^ 2 * c ^ 2 + c ^ 2 * a ^ 2 ≥ 2 * (a + b + c)  := by
+New: theorem mathd_algebra_293 (a b c : ℝ) (ha : a = b * c) (hb : b = c / 2) (hc : c = 2 * b) : a = b * b:= by
+Cosine_similarity: 0.616
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_67669
+Pass: True
+Old: theorem lean_workbook_plus_67669 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : 2 * (b * c + c * a + a * b) ≤ a * b * c + 5   := by
+New: theorem involving_d : Real.sqrt ((5 + Real.sqrt 2) * (3 - Real.sqrt 2)) < 13 / 3:= by
+Cosine_similarity: 0.446
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_55500
+Pass: True
+Old: theorem lean_workbook_55500 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a + b + c = 3) : a + a*b + 2*a*b*c ≤ 9/2  := by
+New: theorem lean_workbook_55500 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a + b + c = 3) : a^2 + b^2 + c^2 ≤ 9:= by
+Cosine_similarity: 0.925
+Complexity: 0.15625
+------------------------------------------------------------
+Name: lean_workbook_22992
+Pass: True
+Old: theorem lean_workbook_22992 (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hab : a + b + a * b = 3) : 1 / (1 + a ^ 2) + 1 / (1 + b ^ 2) + 1 / (1 + a ^ 2 + b ^ 2) ≤ 4 / 3  := by
+New: theorem lean_workbook_22992 (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hab : a + b = 2) : a ^ 2 * b + b ^ 2 * a ≤ 4:= by
+Cosine_similarity: 0.743
+Complexity: 0.875
+------------------------------------------------------------
+Name: lean_workbook_plus_74274
+Pass: True
+Old: theorem lean_workbook_plus_74274 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : 4*a*b*c = a + b + c + 1) : (b^2 + c^2)/a + (c^2 + a^2)/b + (a^2 + b^2)/c ≥ 2 * (a*b + b*c + c*a)   := by
+New: theorem recasting_schur_inequality (a b c : ℝ) (habc : a * b * c = 1) :       (a^2 / b + b^2 / c + c^2 / a) ≥ a + b + c:= by
+Cosine_similarity: 0.832
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_26525
+Pass: True
+Old: theorem lean_workbook_plus_26525 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a^2 * b + b^2 * c + c^2 * a) * (a * b^2 + b * c^2 + c * a^2) ≥ 9 * a^2 * b^2 * c^2   := by
+New: theorem nth_add_add_pos_mul_lt_mul_add_mul_add (a b c : ℝ) (n : ℕ) :     0 < n → (a + b) ^ (n + 1) + (b + c) ^ (n + 1) + (c + a) ^ (n + 1) ≤       (a + b + c) ^ (n + 1) + (a + b + c) ^ (n + 1) + (a + b + c) ^ (n + 1):= by
+Cosine_similarity: 0.324
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_19348
+Pass: True
+Old: theorem lean_workbook_19348 (n : ℕ) : ∑ i in Finset.Icc 10 95, (i ^ 2) = 290035  :=  by
+New: theorem lean_workbook_19349 (n : ℕ) : ∑ i in Finset.Icc 10 95, (i ^ 2) = 290035  := by
+Cosine_similarity: 1.0
+Complexity: 0.875
+------------------------------------------------------------
+Name: lean_workbook_plus_52965
+Pass: True
+Old: theorem lean_workbook_plus_52965 (S : Finset ℕ) (hS : S = Finset.Icc 1 12) : ∃ f : ℕ → ℕ, ∀ x ∈ S, f (f x) = x ∧ (f x - x) % 3 = 0   :=  by
+New: theorem mathd_numbertheory_321 : 36360 ≠ 120 * 303 ∧ 120 * 303 ≠ 36360 := by
+Cosine_similarity: 0.401
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_39089
+Pass: True
+Old: theorem lean_workbook_plus_39089 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (9 / 4) * (a * (a + b) * (a + c) + b * (b + c) * (b + a) + c * (c + a) * (c + b)) ≥ (a + b + c) ^ 3   := by
+New: theorem main_inequality : ∀ x y z : ℝ, (x + y + z) ^ 3 ≤ (9 / 4) * (x * (x + y) * (x + z) + y * (y + z) * (y + x) + z * (z + x) * (z + y)) := by
+Cosine_similarity: 0.737
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_16498
+Pass: True
+Old: theorem lean_workbook_plus_16498 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / (b + c) + b / (c + a) + c / (a + b) = 2 → a ^ 2 / (b + c) + b ^ 2 / (c + a) + c ^ 2 / (a + b) = a + b + c)   :=  by
+New: theorem lean_workbook_plus_20006 (a b c : ℝ) (hab : 0 < a ∧ 0 < b) : (a / (b + c) + b / (c + a) + c / (a + b) = 2 → a ^ 2 / (b + c) + b ^ 2 / (c + a) + c ^ 2 / (a + b) = a + b + c)   := by
+Cosine_similarity: 0.898
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_16035
+Pass: False
+Old: theorem lean_workbook_plus_16035 (n : ℕ) (hn: n ≥ 3) : (n:ℝ)^(1/n) ≥ (n+1:ℝ)^(1/(n+1))   := by
+New: theorem orifice_area_calculation : ∃ p q : ℝ, p * q = 1 ∧ (∃ y : ℝ, y < 0 ∧ 1 + y = 0 ∧ (∃ y : ℝ, y < 1 ∧ 1 + y > 0 ∧ (p < 0 ∧ 0 < q ∨ q < 0 ∧ 0 < p)) ∧ (∃ y : ℝ, y < 2 ∧ 1 + y > 2 ∧ (p < 0 ∧ 0 < q ∨ q < 0 ∧ 0 < p))  ) </hard theorem>:= by
+Cosine_similarity: 0.304
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_20277
+Pass: True
+Old: theorem lean_workbook_plus_20277 (f : ℝ → ℝ) (h : ∀ x, 2 * f x + 3 * f (-x) = x^2 + 5 * x) : f 7 = -126 / 5   := by
+New: theorem lean_workbook_plus_20277 (f : ℝ → ℝ) (h : ∀ x, 2 * f x + 3 * f (-x) = x^2 + 5 * x) : f 7 = -126 / 5   := by
+Cosine_similarity: 1.0
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_52541
+Pass: True
+Old: theorem lean_workbook_52541 : ∀ x y z : ℝ, 5 * (x ^ 2 + y ^ 2 + z ^ 2) ≥ 6 * x * y - 8 * x * z + 8 * y * z  :=  by
+New: theorem effective_mass_of_space_probing_mirror_interferometry (w : ℝ) : ∀ a b : ℝ, 2 / w * (a ^ 2 + b ^ 2 + w ^ 2) ≥ - 4 * √3 * (a ^ 2 + b ^ 2 + w ^ 2):= by
+Cosine_similarity: 0.471
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_14059
+Pass: True
+Old: theorem lean_workbook_14059 : 2013 ^ (294 : ℕ) ≡ 1 [ZMOD 343]  :=  by
+New: theorem set_encodable_fintype_instance {α} [Fintype α] [Encodable α] : Nonempty (Fintype α) := by
+Cosine_similarity: 0.203
+Complexity: 0.71875
+------------------------------------------------------------
+Name: lean_workbook_plus_66192
+Pass: False
+Old: theorem lean_workbook_plus_66192 (a b c : ℝ) (h : a > 0 ∧ b > 0 ∧ c > 0 ∧ a * b * c ≥ 1) :   a ^ 3 + b ^ 3 + c ^ 3 ≥ a * b + b * c + c * a   := by
+New: theorem smul_pow_mul_eq_smul_pow_mul (g : Q → K) (hg : Isometry g) {n m : ℕ}     (hnm : n ≤ m) (x : P) :     g (n • x) = m • g x := by
+Cosine_similarity: 0.107
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_23676
+Pass: True
+Old: theorem lean_workbook_plus_23676 (a b : ℝ) : 4 * (a ^ 3 + b ^ 3) ≥ (a + b) ^ 3 ↔ a ^ 3 + b ^ 3 ≥ a * b ^ 2 + a ^ 2 * b   := by
+New: theorem inject_salt_into_saltwater_solution : ∀ (x y z : ℝ), x + y + z = 1 → x * y + y * z + z * x ≤ 1 → ∀ (t : ℝ), t ≥ 0 → (x * y) * (x * y + y * z + z * x) + (y * z) * (x * y + y * z + z * x) + (z * x) * (x * y + y * z + z * x) ≤ 3 * (x * y + y * z + z * x):= by
+Cosine_similarity: 0.48
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_31307
+Pass: False
+Old: theorem lean_workbook_31307 : ∀ a b c : ℝ, (a+b+c)*(a^2+b^2+c^2-a*b-b*c-c*a) - (a+b+c)^3 = -3*(a+b+c)*(a*b+b*c+c*a)  :=  by
+New: theorem ( x y z : ℝ) (hx : x ≥ 0) (hy : y ≥ 0) (hz : z ≥ 0) (h : x + y + z = 1) :  x * y * z ≤ 1 / 27 := by
+Cosine_similarity: 0.335
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_10191
+Pass: True
+Old: theorem lean_workbook_10191 (x y z : ℝ) (hx : x ≥ 0) (hy : y ≥ 0) (hz : z ≥ 0) : x ^ 3 + y ^ 3 + z ^ 3 + x ^ 2 * y + y ^ 2 * z + z ^ 2 * x ≥ 2 * (x * y ^ 2 + y * z ^ 2 + z * x ^ 2)  :=  by
+New: theorem aim_1315 : ∀ x y z : ℝ, x ≥ 0 ∧ y ≥ 0 ∧ z ≥ 0 → x ^ 3 + y ^ 3 + z ^ 3 + x ^ 2 * y + y ^ 2 * z + z ^ 2 * x ≥ 2 * (x * y ^ 2 + y * z ^ 2 + z * x ^ 2)  := by
+Cosine_similarity: 0.779
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_7886
+Pass: True
+Old: theorem lean_workbook_plus_7886 (a b c d : ℤ) (ha : a > 0 ∧ b > 0 ∧ c > 0 ∧ d > 0) (habc : a + b + c + d = 0) : a + b + c + d = 0   := by
+New: theorem bug_in_nlinarith     (x y z w : ℝ) (hx: 0 < x) (hy: 0 < y) (hz: 0 < z) (hw: 0 < w) (h2: x^2 / (x + y + z + w) ^ 2 + y^2 / (x + y + z + w) ^ 2 + z^2 / (x + y + z + w) ^ 2 + w^2 / (x + y + z + w) ^ 2 >= 1) : x^2 / (x + y + z + w) ^ 2 + y^2 / (x + y + z + w) ^ 2 + z^2 / (x + y + z + w) ^ 2 + w^2 / (x + y + z + w) ^ 2 >= 1:= by
+Cosine_similarity: 0.128
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_7096
+Pass: True
+Old: theorem lean_workbook_plus_7096 (a b c : ℝ) (h : a + b + c >= 3 * a * b * c) : a ^ 2 + b ^ 2 + c ^ 2 >= 3 * a * b * c   :=  by
+New: theorem lean_workbook_plus_7096 (a b c : ℝ) (h : a + b + c >= 3 * a * b * c) : a ^ 2 + b ^ 2 + c ^ 2 >= 3 * a * b * c := by
+Cosine_similarity: 1.0
+Complexity: 0.03125
+------------------------------------------------------------
+Name: lean_workbook_10992
+Pass: False
+Old: theorem lean_workbook_10992 (x y : ℝ) : 9 * x ^ 2 * y ^ 2 + 4 * x ^ 2 + 54 * x * y ^ 2 + 24 * x + 81 * y ^ 2 + 36 ≥ 12 * x ^ 2 * y + 72 * x * y + 108 * y  := by
+New: theorem ne_zero_of_dvd_ne_zero (h : G ≠ 0) (hh : Irreducible (p * x ^ 2 + q * x + r)) : p ≠ 0 ∧ q ≠ 0 ∧ r ≠ 0:= by
+Cosine_similarity: 0.24
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_10495
+Pass: True
+Old: theorem lean_workbook_plus_10495 (S : Set ℕ) (h : S = {n | n % 2 = 0 ∨ n % 3 = 0 ∨ n % 7 = 0}) : 2 ∈ S ∧ 3 ∈ S ∧ 7 ∈ S   :=  by
+New: theorem mathd_algebra_177_prime_set_2016 (S : Set ℕ) (h₀ : S = {n | n % 2 = 0 ∨ n % 3 = 0 ∨ n % 7 = 0}) :     2 ∈ S ∧ 3 ∈ S ∧ 7 ∈ S := by
+Cosine_similarity: 0.97
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_33712
+Pass: True
+Old: theorem lean_workbook_plus_33712 (x : ℝ) (hx : x = (1 - Real.sqrt 10) / 3) : x = (1 - Real.sqrt 10) / 3   :=  by
+New: theorem lean_workbook_plus_34466 (x : ℝ) : x * x = 1 ↔ x = 1 ∨ x = -1:= by
+Cosine_similarity: 0.42
+Complexity: 0.375
+------------------------------------------------------------
+Name: lean_workbook_4536
+Pass: False
+Old: theorem lean_workbook_4536 : 1 / Real.tan 1 = Real.cos 1 / Real.sin 1  :=  by
+New: theorem tendsto_diff_cos_sin :     Tendsto (fun x => cos x - sin x) (𝓝[<] 0) (𝓝 (1 + 1))   := by
+Cosine_similarity: 0.445
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_76921
+Pass: True
+Old: theorem lean_workbook_plus_76921 (x y : ℝ) : (5*x) % 1 + (5*y) % 1 = (3*x + y) % 1 + (3*y + x) % 1   := by
+New: theorem exact_match_equation (f : ℝ → ℝ) (hf: f = fun x ↦ x^2 - 2*x + 1) (x : ℝ): f x = x^2 - 2*x + 1 := by
+Cosine_similarity: 0.308
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_27265
+Pass: True
+Old: theorem lean_workbook_27265  (x : ℝ)   (h₀ : 0 < x)   (h₁ : (x + 30) / (x / 55 + 1 / 2) = 50) :   x = 110  :=  by
+New: theorem programming_problem_3 (A B C D : Prop)   (h₀ : A ∧ B ∧ C ∧ D)   (h₁ : ¬(A ∧ B ∧ C ∧ D)) : A:= by
+Cosine_similarity: 0.25
+Complexity: 0.40625
+------------------------------------------------------------
+Name: lean_workbook_6271
+Pass: True
+Old: theorem lean_workbook_6271 (a : ℕ → ℝ) (ha : ∀ i, a i > 0) (h : Summable a) : Summable (λ i => a i / (a i + 1))  := by
+New: theorem postulate_the_function_exists (a : ℕ → ℝ) (ha : ∀ i, a i > 0) (h : Summable a) :      ∃ f : ℕ → ℝ, Summable f ∧ ∀ i, 0 < f i ∧ f i ≤ a i:= by
+Cosine_similarity: 0.82
+Complexity: 0.84375
+------------------------------------------------------------
+Name: lean_workbook_plus_59083
+Pass: False
+Old: theorem lean_workbook_plus_59083  (x1 x2 : ℝ)   (h₀ : 0 < x1 ∧ 0 < x2)   (h₁ : x1 > x2) :   x1 - x2 + (1 / x1 - 1 / x2) = (x1 - x2) * (x1 * x2 - 1) / (x1 * x2)   := by
+New: theorem econ_growth_thesis :   ∀ (X : Type) [Field X] [CharZero X] (a b : X) (ha : 0 < a) (hb : 0 < b)     (hab : a + b = 1) (n : ℕ),     a ^ n * b + b ^ n * a + a * b * (a ^ n + b ^ n) ≥ a * b * (a ^ n + b ^ n):= by
+Cosine_similarity: 0.316
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_23374
+Pass: False
+Old: theorem lean_workbook_23374 (x y z : ℝ) : 7 * y^6 + 26 * z^6 + 6 * x^4 * y^2 + 9 * x^4 * z^2 + 12 * y^4 * x^2 + 36 * y^4 * z^2 + 27 * z^4 * x^2 + 54 * z^4 * y^2 - 2 * x^3 * y^3 - 2 * x^3 * z^3 - 2 * y^3 * z^3 + 6 * x * y * z * (x^3 + y^3 + z^3) + 27 * x^2 * y^2 * z^2 ≥ 0  := by
+New: theorem linarith_monotone (hm : Monotone m) (hn : m n ≤ m (n + 1)) : m n ≤ m (n + 1):= by
+Cosine_similarity: 0.085
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_25009
+Pass: True
+Old: theorem lean_workbook_plus_25009 (x y : ℝ) : (x + y) * (52 - 2 * x * y) = 2 * x ^ 2 + 19 * y ^ 2 + 8 * x - 34 * y + 126 ∧ x ^ 2 + y ^ 2 + 4 * x - 4 * y - 1 = 0 ↔ x = 1 ∧ y = 2   := by
+New: theorem A  (x y : ℝ) : (x + y) * (52 - 2 * x * y) = 2 * x ^ 2 + 19 * y ^ 2 + 8 * x - 34 * y + 126 ∧ x ^ 2 + y ^ 2 + 4 * x - 4 * y - 1 = 0 ↔ x = 1 ∧ y = 2   := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_75474
+Pass: True
+Old: theorem lean_workbook_plus_75474 (a b c : ℝ) : (a^2 + b^2 + c^2)^2 - 2 * (a^3 * b + b^3 * c + c^3 * a) ≥ 2 * a * b * c * (a + b + c) - (a^2 * b^2 + b^2 * c^2 + c^2 * a^2)   := by
+New: theorem power_series_and_moments (a : ℝ) (n : ℕ) : ∑ k in Finset.range (n+1), (a ^ k) ^ 2 = ∑ k in Finset.range (n+1), (a ^ (2 * k)) := by
+Cosine_similarity: 0.225
+Complexity: 0.21875
+------------------------------------------------------------
+Name: lean_workbook_20895
+Pass: True
+Old: theorem lean_workbook_20895 (m n : ℕ) : (m * n) / (m + n + 1) ≥ 1 / 3  :=  by
+New: theorem better_survey_theorem (a b c : ℕ) :  (a * b * c) / (a + b + c) ≥ 0:= by
+Cosine_similarity: 0.09
+Complexity: 0.0625
+------------------------------------------------------------
+Name: lean_workbook_plus_61869
+Pass: True
+Old: theorem lean_workbook_plus_61869 (a b c : ℝ) (ha : a > 0 ∧ b > 0 ∧ c > 0 ∧ a + b + c = 3) : a^2 + b^2 + c^2 + a * b * c ≥ 4   := by
+New: theorem control_theorem (a b c : ℝ) (ha : a > 0 ∧ b > 0 ∧ c > 0 ∧ a + b + c = 3) : a^2 + b^2 + c^2 + a * b * c ≥ 4 ∧ (a * b * c) ≤ 1:= by
+Cosine_similarity: 0.075
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_69178
+Pass: True
+Old: theorem lean_workbook_plus_69178 (a b c x y z : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : (a^2 / x + b^2 / y + c^2 / z) ≥ (a + b + c)^2 / (x + y + z)   := by
+New: theorem focus (n : ℕ) (a b : ℕ → ℝ) (h1 : 0 < n) (h2 : ∀ i, 0 < a i) (h3 : ∀ i, 0 < b i) :       (∑ i in Finset.Icc 1 n, (a i + b i) ^ 2) ≥ (∑ i in Finset.Icc 1 n, a i ^ 2 + b i ^ 2):= by
+Cosine_similarity: 0.586
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_28220
+Pass: True
+Old: theorem lean_workbook_28220 (a b c : ℝ) : (a^4+b^4+c^4) ≥ max (a^3*b+b^3*c+c^3*a) (a*b^3+b*c^3+c*a^3)  :=  by
+New: theorem main_theorem (a b c : ℝ) :    (a^4+b^4+c^4) ≥ max (a^3*b+b^3*c+c^3*a) (a*b^3+b*c^3+c*a^3)  := by
+Cosine_similarity: 0.096
+Complexity: 0.3125
+------------------------------------------------------------
+Name: lean_workbook_plus_13928
+Pass: True
+Old: theorem lean_workbook_plus_13928 (a b c : ℝ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hc : 1 ≤ c) : 3 * (a + b + c) ^ 3 ≥ 27 * (a + b + c)   :=  by
+New: theorem add_le_33 (a b c : ℝ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hc : 1 ≤ c) : a * b + b * c + c * a ≤ 33:= by
+Cosine_similarity: 0.891
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_14217
+Pass: True
+Old: theorem lean_workbook_plus_14217 (a : ℝ) (f : ℝ → ℝ) (hf: f = fun x => if x ≠ -Real.sqrt 3 ∧ x ≠ Real.sqrt 3 then a else 0) : ∀ x, x ≠ -Real.sqrt 3 ∧ x ≠ Real.sqrt 3 → f x = a   :=  by
+New: theorem lean_workbook_plus_14216 (a : ℝ) (f : ℝ → ℝ) (hf : f = fun x => if x ≠ -Real.sqrt 3 ∧ x ≠ Real.sqrt 3 then a else 0) : ∀ x, (x ≠ -Real.sqrt 3 ∧ x ≠ Real.sqrt 3) → f x = a:= by
+Cosine_similarity: 0.996
+Complexity: 0.875
+------------------------------------------------------------
+Name: lean_workbook_33566
+Pass: True
+Old: theorem lean_workbook_33566 (a b c : ℝ) : (a^2 * (b + c) + b^2 * (a + c) + c^2 * (a + b) = 0 → a * b + b * c + c * a ≤ 0)  := by
+New: theorem cubed_add_two_mul_le_cube (a b c : ℝ) : a ^ 3 + (2 * a) * b * c ≤ a ^ 3 + (b + c) ^ 2 * (b + c) * (c + a) * (c + b) / 2:= by
+Cosine_similarity: 0.722
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_78358
+Pass: True
+Old: theorem lean_workbook_plus_78358 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) : 7 * (a * b + b * c + c * a) ≤ 2 + 9 * a * b * c   := by
+New: theorem neg_eq_of_add_eq_zero (h₀ : a ≠ 0) (h₁ : b ≠ 0) (h₂ : c ≠ 0) (h₃ : a + b + c = 0) : a = -(b + c) := by
+Cosine_similarity: 0.523
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_49841
+Pass: True
+Old: theorem lean_workbook_49841 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a^2 + b^2 + c^2 = 1) : a * b ^ 2 + b * c ^ 2 + c * a ^ 2 ≤ Real.sqrt (a ^ 4 + b ^ 4 + c ^ 4)  := by
+New: theorem le_sqrt (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a ^ 2 + b ^ 2 + c ^ 2 = 1) :     a * b ^ 2 + b * c ^ 2 + c * a ^ 2 ≤ Real.sqrt (a ^ 4 + b ^ 4 + c ^ 4) := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_57280
+Pass: False
+Old: theorem lean_workbook_57280 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (c^2 * (a - b)^2 * (a + b) + a^2 * (b - c)^2 * (b + c) + b^2 * (c - a)^2 * (c + a)) ≥ 0  :=  by
+New: theorem bayes_theorem_em : P (A|B) * P (B) = P (A and B)  := by
+Cosine_similarity: 0.105
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_30015
+Pass: False
+Old: theorem lean_workbook_30015 (x y : ℝ) (h₁ : x^2 + y^2 = 1) : ∃ x y, x + (1 / (y + 2)) = z  :=  by
+New: theorem lean_workbook_30015_2 (x y : ℝ) (h₁ : x^2 + y^2 = 1) : ∃ x y, x + (1 / (y + 2)) = z  :=  by   refine' ⟨0, 1, _⟩   simp_all:= by
+Cosine_similarity: 0.842
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_79104
+Pass: True
+Old: theorem lean_workbook_plus_79104 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a ^ 3 + b ^ 3 + c ^ 3) ^ 2 ≥ a * b * c * (a + b + c) * (a ^ 2 + b ^ 2 + c ^ 2)   := by
+New: theorem pow_add_pow_add_pow_le_three_mul (a b c : ℝ) : (a ^ 2 + b ^ 2 + c ^ 2) ^ 3 + (a ^ 2 - b ^ 2) ^ 3 + (b ^ 2 - c ^ 2) ^ 3 + (c ^ 2 - a ^ 2) ^ 3 ≤ 3 * (a ^ 2 + b ^ 2 + c ^ 2) * (a * b * c * (a + b + c)):= by
+Cosine_similarity: 0.753
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_8496
+Pass: True
+Old: theorem lean_workbook_8496 (a b c d : ℝ) : 6 * (a ^ 4 + b ^ 4 + c ^ 4 + d ^ 4) + 12 * (a ^ 2 * b ^ 2 + a ^ 2 * c ^ 2 + a ^ 2 * d ^ 2 + b ^ 2 * c ^ 2 + b ^ 2 * d ^ 2 + c ^ 2 * d ^ 2) ≥ 8 * (a ^ 3 * b + b ^ 3 * a + a ^ 3 * c + c ^ 3 * a + a ^ 3 * d + d ^ 3 * a + b ^ 3 * c + c ^ 3 * b + b ^ 3 * d + d ^ 3 * b + c ^ 3 * d + d ^ 3 * c)  :=  by
+New: theorem ep -- <finset> -- (e_f.1, e_f.2)     (h₁ : ∀ x : ℝ, 0 ≤ x ^ 2) (h₂ : 0 ≤ (a - b) ^ 2 + (a - c) ^ 2 + (a - d) ^ 2 + (b - c) ^ 2 + (b - d) ^ 2 + (c - d) ^ 2)     : 0 ≤ (a + b) ^ 2 + (a + c) ^ 2 + (a + d) ^ 2 + (b + c) ^ 2 + (b + d) ^ 2 + (c + d) ^ 2:= by
+Cosine_similarity: 0.592
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_25691
+Pass: True
+Old: theorem lean_workbook_plus_25691 : ∑ k in Finset.range 3, (Nat.choose 5 (2 * k + 1)) = 16   := by
+New: theorem lean_workbook_plus_25691 : ∑ k in Finset.range 3, (Nat.choose 5 (2 * k + 1)) = 16  := by
+Cosine_similarity: 1.0
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_1848
+Pass: True
+Old: theorem lean_workbook_1848 (n : ℕ) : ∑ i in Finset.range (n+1), choose n i = 2^n  :=  by
+New: theorem lean_workbook_1852 (n : ℕ) (a : ℕ → ℕ) (h1 : ∀ i, a i = choose n i) :      ∑ i in Finset.range (n+1), a i = 2^n:= by
+Cosine_similarity: 0.851
+Complexity: 0.34375
+------------------------------------------------------------
+Name: lean_workbook_plus_42153
+Pass: True
+Old: theorem lean_workbook_plus_42153 (n : ℕ) : ∑ r in Finset.Icc 1 n, r / (r + 1) / (r + 2) / (r + 3) = 1 / 4 + 1 / 2 * (1 / (n + 2) - 3 / (n + 3))   := by
+New: theorem main_theorem (n : ℕ) : ∑ k in Finset.Icc 1 n, k^3 / (k + 1)^3 = 3 * (∑ k in Finset.Icc 1 n, k / (k + 1)) - 1:= by
+Cosine_similarity: 0.078
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_60865
+Pass: True
+Old: theorem lean_workbook_plus_60865 (a b c d : ℝ) : (a * b + b * c + c * d + d * a + a * c + b * d) ^ 2 ≥ (9 / 4) * (a + b + c + d) * (a * b * c + b * c * d + c * d * a + d * a * b)   := by
+New: theorem dffe2830 (a b c d : ℝ) : (a * b + b * c + c * d + d * a + a * c + b * d) ^ 2 ≥ (9 / 4) * (a + b + c + d) * (a * b * c + b * c * d + c * d * a + d * a * b)   := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_48224
+Pass: False
+Old: theorem lean_workbook_plus_48224  (a b c d x y z u : ℝ)   (h₀ : 0 < a ∧ a < 3)   (h₁ : 0 < b ∧ b < 4)   (h₂ : 0 < c ∧ c < 3)   (h₃ : 0 < d ∧ d < 4)   (h₄ : x = (3 - a))   (h₅ : y = (4 - b))   (h₆ : z = (3 - c))   (h₇ : u = (4 - d))   (h₈ : 0 < x ∧ 0 < y ∧ 0 < z ∧ 0 < u) :   x^2 + y^2 + z^2 + u^2 < 50   :=  by
+New: theorem mathd_algebra_249_easy (a b c d x y z u : ℝ)   (h₀ : 0 < a ∧ a < 3)   (h₁ : 0 < b ∧ b < 4)   (h₂ : 0 < c ∧ c < 3)   (h₃ : 0 < d ∧ d < 4)   (h₄ : x = (3 - a))   (h₅ : y = (4 - b))   (h₆ : z = (3 - c))   (h₇ : u = (4 - d))   (h₈ : 0 < x ∧ 0 < y ∧ 0 < z ∧ 0 < u) :   x^2 + y^2 + z^2 + u^2 < 50 </hard theorem>:= by
+Cosine_similarity: 0.978
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_71803
+Pass: True
+Old: theorem lean_workbook_plus_71803 (n : ℤ) : n * (9 * n ^ 2 - 3 * n - 2) = n * (3 * n - 2) * (3 * n + 1)   := by
+New: theorem tauto_example (p : Prop) : (¬ p → p) ↔ p:= by
+Cosine_similarity: 0.205
+Complexity: 0.53125
+------------------------------------------------------------
+Name: lean_workbook_plus_353
+Pass: True
+Old: theorem lean_workbook_plus_353 : X → Y ↔ ¬(X ∧ ¬Y)   :=  by
+New: theorem n2s10 : ¬ (∀  (x : ℕ) , 2^x ≥ 10*x) ↔ ∃ x, 2^x < 10*x  := by
+Cosine_similarity: 0.569
+Complexity: 0.25
+------------------------------------------------------------
+Name: lean_workbook_plus_21306
+Pass: True
+Old: theorem lean_workbook_plus_21306 : ∀ a b c d : ℝ, a^2 * b^2 + b^2 * c^2 + c^2 * d^2 + d^2 * a^2 = (a^2 + c^2) * (b^2 + d^2) ∧ a^2 + b^2 + c^2 + d^2 = 4 → a^2 * b^2 + b^2 * c^2 + c^2 * d^2 + d^2 * a^2 ≤ 4   := by
+New: theorem lean_workbook_plus_20459 : ∀ a b c d : ℝ, a^2 + b^2 + c^2 + d^2 = 1 → a * b * c * d ≤ 1 / 4 ∧ a * b * c * d ≥ -1 / 4:= by
+Cosine_similarity: 0.847
+Complexity: 0.53125
+------------------------------------------------------------
+Name: lean_workbook_plus_18352
+Pass: True
+Old: theorem lean_workbook_plus_18352 (n : ℕ) (R : ℕ → ℕ) (hR : ∀ i, R i ≥ 1) :   ∑ i in Finset.Icc 1 n, (R i / (R i + 1)) ≤     (∏ i in Finset.Icc 1 n, R i)^(1/n) * (∑ i in Finset.Icc 1 n, (1 / (R i + 1)))   := by
+New: theorem c_2022_09_07_11_44_47_155_223_133 : ∀ n : ℕ, 0 < n → ∏ i in Finset.Icc 1 n, (1 + 1 / (1 + i)) ≤ 4^n:= by
+Cosine_similarity: 0.695
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_25133
+Pass: True
+Old: theorem lean_workbook_plus_25133 (w : ℕ → ℝ) (F : ℕ → ℝ) (h₁ : ∀ n, F n = (w n)^2 + (w (n-1))^2 - 4 * w n * w (n-1)) (h₂ : ∀ n, n ≥ 2 → F n - F (n-1) = (w n - w (n-2)) * (w n + w (n-2) - 4 * w (n-1))) : ∀ n, n ≥ 2 → F n - F (n-1) = (w n - w (n-2)) * (w n + w (n-2) - 4 * w (n-1))   :=  by
+New: theorem ineq2: 0 ≤ (x - 1)^2 * 0 + (x - 1)^2 * (x^2 + x + 1) + 4 * (x^2 - x)^2:= by
+Cosine_similarity: 0.376
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_24532
+Pass: True
+Old: theorem lean_workbook_24532 (a b c : ℝ) :   2 * (a^2 + b^2 + c^2)^2 ≥ 3 * (a^3 * b + b^3 * c + c^3 * a + a * b^3 + b * c^3 + c * a^3)  :=  by
+New: theorem poly_four_ineq : ∀ a b c d : ℝ,     2 * (a^2 + b^2 + c^2 + d^2)^2 ≥ 3 * (a * b + b * c + c * d + d * a)^2:= by
+Cosine_similarity: 0.779
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_68984
+Pass: True
+Old: theorem lean_workbook_plus_68984 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (habc : a * b * c = 1) : a ^ 2 + b ^ 2 + c ^ 2 + 3 ≥ a * b + b * c + c * a + a + b + c   :=  by
+New: theorem lean_workbook_plus_68983 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hab : a + b + c = 1) :  (1 - a) * (1 - b) * (1 - c) ≥ 0:= by
+Cosine_similarity: 0.861
+Complexity: 0.40625
+------------------------------------------------------------
+Name: lean_workbook_19382
+Pass: True
+Old: theorem lean_workbook_19382 (x y z : ℝ) : (x ^ 2 / 4 + y ^ 2 + z ^ 2) ≥ x * y - x * z + 2 * y * z  := by
+New: theorem t1 : ∀ n : ℕ, n ≤ n^2 ∧ n ≤ (n + 1)^2:= by
+Cosine_similarity: 0.141
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_plus_43954
+Pass: False
+Old: theorem lean_workbook_plus_43954 (x y : ℝ) (h₁ : x + 2*y = 8) (h₂ : 3*x - y = 10) : x = 4 ∧ y = 2   :=  by
+New: theorem eq_tsub_of_add_eq (h : a + b = c) : b = c - a := by
+Cosine_similarity: 0.514
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_10545
+Pass: False
+Old: theorem lean_workbook_plus_10545 (f : ℝ → ℝ) (hf: ∀ x, x ≠ 0 → f x / x = f 1 / 1) : ∀ x, x ≠ 0 → f x = f 1 * x   :=  by
+New: theorem that_ratio_is_constant (f : ℝ → ℝ) (a : ℝ) (hf: ∀ x, x ≠ 0 → f x / x = a) : ∀ x, x ≠ 0 → f x = a * x   :=  by </hard theorem>:= by
+Cosine_similarity: 0.835
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_63715
+Pass: True
+Old: theorem lean_workbook_plus_63715 (A B : Finset ℕ) : A = {5, 6, 7, 8, 9, 10} ∧ B = {1, 2, 3, 4, 5, 6} → A ∪ B = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}   := by
+New: theorem lean_workbook_plus_5677 (n : ℕ) : ∃ k : ℕ, n < 2 * k + 1 := by
+Cosine_similarity: 0.366
+Complexity: 0.5
+------------------------------------------------------------
+Name: lean_workbook_49280
+Pass: True
+Old: theorem lean_workbook_49280 (a : ℕ → ℝ) (a1 : a 0 = 2) (h : ∀ n, a (n + 1) = (2 ^ (n + 1) * a n) / ((n + 1 / 2) * a n + 2 ^ n)) : ∀ n, a n = (2 ^ (n + 1)) / (n ^ 2 + 1)  :=  by
+New: theorem wolfram_1549 : ∀ a b : ℕ → ℝ,      (∀ n, a (n + 1) = 2 * a n + b n) →      (∀ n, b (n + 1) = b n + 1) →      a 0 = 2 → b 0 = 1 → ∀ n, a n = 2 ^ (n + 1) - 1 ∧ b n = n + 1:= by
+Cosine_similarity: 0.683
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_42591
+Pass: False
+Old: theorem lean_workbook_plus_42591 (a b c : ℝ) (ha : a > 0 ∧ b > 0 ∧ c > 0) : (a^2 + 2) * (b^2 + 2) * (c^2 + 2) ≥ 9 * (a * b + b * c + c * a)   := by
+New: theorem quadratic_integrable_sum :   ∀ f g : ℝ → ℝ, (∀ a, 0 < f a ∧ 0 < g a) →   (∀ a b c, 0 < a ∧ 0 < b ∧ 0 < c → f a * f b * f c = 3 / (a * b * c)) →   ∀ A B, 0 < A ∧ 0 < B →   ∫ x in A..B, (f x)^2 * (g x)^2 ≥ 0   </hard theorem>:= by
+Cosine_similarity: 0.649
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_3913
+Pass: False
+Old: theorem lean_workbook_3913 (x y : ℝ) (hx : 1 < x ∧ x < 3) (hy : 1 < y ∧ y < 3) : |(x - 2) * (y - 2)| < 1  :=  by
+New: theorem lean_workbook_3914 (x y : ℝ) (hx : 1 < x ∧ x < 3) (hy : 1 < y ∧ y < 3) : |(x - 2) * (y - 2)| < 1  :=  by </hard theorem>:= by
+Cosine_similarity: 0.986
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_3912
+Pass: True
+Old: theorem lean_workbook_3912 : ∀ {a x y : ℤ} (h₁ : a ∣ x) (h₂ : a ∣ y), a ∣ x + y ∧ a ∣ x - y ∧ ∀ p q : ℤ, a ∣ p * x + q * y  :=  by
+New: theorem lean_workbook_5209 : ∀ {a x y : ℕ} (h₁ : a ∣ x) (h₂ : a ∣ y), a ∣ x + y ∧ a ∣ x - y ∧ ∀ p q : ℕ, a ∣ p * x + q * y  := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_22040
+Pass: False
+Old: theorem lean_workbook_22040 : 2 ^ 845 > 3 ^ 362  :=  by
+New: theorem lean_workbook_22041 : 2 ^ 845 > 3 ^ 362  :=  by   norm_num [show (2:ℝ) = (2:ℚ) by norm_num, show (3:ℝ) = (3:ℚ) by norm_num]:= by
+Cosine_similarity: 0.702
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_12299
+Pass: True
+Old: theorem lean_workbook_12299 (p q s : Prop) (h₁ : p → s) (h₂ : q → s) : p ∨ q → s  :=  by
+New: theorem theorem_22186 : ∀ n : ℕ, (n + 1 : ℕ) ≠ 0 → (n + 1 : ℕ) - 1 = n := by
+Cosine_similarity: 0.107
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_12220
+Pass: False
+Old: theorem lean_workbook_12220 (x : ℝ) : (x^2 + 2) / Real.sqrt (x^2 + 1) ≥ 2  := by
+New: theorem map_zero_left (g : X → Y) (x : X) (h₀ : g 0 = 0) :   g x = 0 ↔ x = 0 </hard theorem>:= by
+Cosine_similarity: 0.114
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_45086
+Pass: True
+Old: theorem lean_workbook_plus_45086 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a^3*c^2 + a^2*b^3 + a*b^4 + b^2*c^3 + b^3*c^2 ≥ a^2*b^2*c + 2*a*b^3*c + 2*a*b^2*c^2   := by
+New: theorem exact_test_case (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :     2 * (a * b * c) * (a^2 + b^2 + c^2) ≤ a^2 * b^3 + b^2 * c^3 + c^2 * a^3 + 3 * a * b^3 * c + 3 * b * c^3 * a + 3 * a * b * c^2 * c ↔     2 * (a * b * c) * (a^2 + b^2 + c^2) ≤ a^2 * b^3 + b^2 * c^3 + c^2 * a^3 + 3 * a * b^3 * c + 3 * b * c^3 * a + 3 * a * b * c^2 * c:= by
+Cosine_similarity: 0.905
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_49234
+Pass: True
+Old: theorem lean_workbook_plus_49234 : ∀ a b c : ℝ, a^2 + b^2 + c^2 + 2 * a * b + 2 * a * c + 2 * b * c = (a + b + c)^2 ∧ (a + b + c)^2 ≥ 0   :=  by
+New: theorem of_23308 : ∀ a b c : ℝ, a^2 + b^2 + c^2 + 2 * a * b + 2 * a * c + 2 * b * c = (a + b + c)^2 ∧ (a + b + c)^2 ≥ 0 := by
+Cosine_similarity: 1.0
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_54028
+Pass: True
+Old: theorem lean_workbook_54028 (x y : ℝ) : (x - y) ^ 2 * (2 * x + y) ^ 2 * (x + 2 * y) ^ 2 ≥ 0  :=  by
+New: theorem lean_workbook_54028 (x y z : ℝ) : (x - y) ^ 2 * (2 * x + y) ^ 2 * (x + 2 * y) ^ 2 ≥ 0  := by
+Cosine_similarity: 0.936
+Complexity: 0.8125
+------------------------------------------------------------
+Name: lean_workbook_plus_70313
+Pass: False
+Old: theorem lean_workbook_plus_70313 : ¬ Summable (fun n : ℕ => (1 : ℝ) / n)   := by
+New: theorem irreducible_iff_prime [EuclideanDomain α] {p : α} : Irreducible p ↔ Prime p </hard theorem>:= by
+Cosine_similarity: 0.098
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_6337
+Pass: False
+Old: theorem lean_workbook_plus_6337 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : 0 ≤ (1 / 4) * ((a - b) ^ 2 + (b - c) ^ 2 + (c - a) ^ 2) * ((a - b) ^ 2 * (a + b) + (b - c) ^ 2 * (b + c) + (c - a) ^ 2 * (c + a))   := by
+New: theorem cases_mul_self (a : ℕ) : a * a = a ^ 2 </hard theorem>:= by
+Cosine_similarity: 0.342
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_53208
+Pass: True
+Old: theorem lean_workbook_53208 : ∀ a b : ℝ, sin (a + b) * sin (a - b) = (sin a + sin b) * (sin a - sin b)  :=  by
+New: theorem sin_sq_add_cos_sq : ∀ x : ℝ, sin x ^ 2 + cos x ^ 2 = 1 := by
+Cosine_similarity: 0.496
+Complexity: 0.6875
+------------------------------------------------------------
+Name: lean_workbook_8268
+Pass: True
+Old: theorem lean_workbook_8268 (x : ℝ) (h : 2 * x + 3 = 7) : x = 2  :=  by
+New: theorem R_c_p_theorem (x y z : ℝ) (h₀ : 0 < x ∧ 0 < y ∧ 0 < z) (h₁ : x + y + z = 1) : x * y / (x * y + y * z + z * x) ≥ x * y / 1 := by
+Cosine_similarity: 0.105
+Complexity: 0.4375
+------------------------------------------------------------
+Name: lean_workbook_plus_24766
+Pass: True
+Old: theorem lean_workbook_plus_24766 (x y : ℝ) (hx : 1 ≤ x) (hy : x < y) (h2y : y ≤ 2) : (exp (y^(1/3) - x^(1/3)))/(y^(1/3) - x^(1/3)) ≤ (7 + 10 * exp (y^(1/2) - x^(1/2)))/(10 * (y^(1/2) - x^(1/2)))   := by
+New: theorem ln_sub_ln_le_sub_one (b : ℝ) (hb : 1 < b) :  Real.log (b - 1) ≤ b - 1:= by
+Cosine_similarity: 0.428
+Complexity: 0.59375
+------------------------------------------------------------
+Name: lean_workbook_plus_39044
+Pass: True
+Old: theorem lean_workbook_plus_39044 (x y : ℝ) : 2 * (x ^ 2 + y ^ 2) ≥ (x + y) ^ 2   := by
+New: theorem lean_workbook_plus_39044 (x y : ℝ) : (x - y) ^ 2 + 4 * x * y ≥ 2 * x * y:= by
+Cosine_similarity: 0.757
+Complexity: 0.375
+------------------------------------------------------------
+Name: lean_workbook_43177
+Pass: True
+Old: theorem lean_workbook_43177 (A B : ℝ) : cos (A + B) = cos A * cos B - sin A * sin B  :=  by
+New: theorem lean_workbook_43176 (A B : ℝ) : sin (A + B) = sin A * cos B + cos A * sin B:= by
+Cosine_similarity: 0.941
+Complexity: 0.59375
+------------------------------------------------------------
+Name: lean_workbook_plus_18761
+Pass: True
+Old: theorem lean_workbook_plus_18761 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 * b + b^2 * c + c^2 * a + a * b^2 + b * c^2 + c * a^2 = 4 + 2 * a * b * c) : (a^2 + b^2) * (b^2 + c^2) * (c^2 + a^2) ≥ 8   :=  by
+New: theorem cruz_walter_local_2018 : ∀  (a b c : ℝ), a ^ 2 + b ^ 2 + c ^ 2 = 1 → a * b * c = 1 → 8 * (a * b * c) * (b * c * a) * (c * a * b) ≤ (a ^ 2 + b ^ 2) * (b ^ 2 + c ^ 2) * (c ^ 2 + a ^ 2):= by
+Cosine_similarity: 0.715
+Complexity: 0.09375
+------------------------------------------------------------
+Name: lean_workbook_plus_8713
+Pass: True
+Old: theorem lean_workbook_plus_8713 (f g : ℝ → ℝ) (hf : ∀ x, f ((x + 1) / x) + 3 * g ((1 - 2 * x) / (2 * x)) = (1 / (2 * x)) + 4) (hg : ∀ x, f (2 * x + 1) + g (x - 1) = 3 * x + 2) : f 2015 + g 2015 = 6029   := by
+New: theorem main_theorem (f g : ℝ → ℝ) (hf : ∀ x, f ((x + 1) / x) + 3 * g ((1 - 2 * x) / (2 * x)) = (1 / (2 * x)) + 4) (hg : ∀ x, f (2 * x + 1) + g (x - 1) = 3 * x + 2) : f 2015 + g 2015 = 6029  := by
+Cosine_similarity: 0.148
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_20112
+Pass: False
+Old: theorem lean_workbook_20112 {f : ℕ → ℕ} (hf : f 1 = 1 ∧ ∀ p a : ℕ, Nat.Prime p → f (p^a) = p * f a) : ∀ n : ℕ, f n ≤ n  := by
+New: theorem chain_of_injective_enumeration      (f : Fin N → Fin N)      (h₀ : Function.Injective f)      (h₁ : ∃ k, f k = k) :      (Finset.univ.image f).Nonempty ∧ ∀ k ∈ Finset.univ.image f, ∀ l ∈ Finset.univ, f l ≠ k ∨ l ≤ k </hard theorem>:= by
+Cosine_similarity: 0.545
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_56691
+Pass: True
+Old: theorem lean_workbook_56691  (a b : ℝ)   (h₀ : a + b = 10)   (h₁ : a * b = 20) :   1 / a + 1 / b = 1 / 2  :=  by
+New: theorem main_theorem (a b : ℝ)    (h₀ : a + b = 10)    (h₁ : a * b = 20) :    1 / a + 1 / b = 1 / 2  := by
+Cosine_similarity: 0.068
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_plus_9727
+Pass: True
+Old: theorem lean_workbook_plus_9727 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a^2 + 4 * b^2 + 9 * c^2 = 14) : 3 * b + 8 * c + a * b * c ≤ 12   := by
+New: theorem not_le_of_gt_12 : ¬(∀  (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a^2 + 4 * b^2 + 9 * c^2 = 14) , 3 * b + 8 * c + a * b * c ≤ 12)  := by
+Cosine_similarity: 0.847
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_55396
+Pass: True
+Old: theorem lean_workbook_plus_55396 (f : ℤ → ℤ) (hf: f = fun z => z^2) : ∀ z : ℤ, f z = z^2   :=  by
+New: theorem conclude : ∀ {p : ℕ}, p ∣ 18 → p ≤ 18 := by
+Cosine_similarity: 0.23
+Complexity: 0.875
+------------------------------------------------------------
+Name: lean_workbook_3462
+Pass: True
+Old: theorem lean_workbook_3462 (a b : ℝ) : a^2 + a * b + b^2 ≥ 3 * (a + b - 1)  :=  by
+New: theorem lean_workbook_3466 (a b c : ℝ) : a^2 + b^2 + c^2 + 2 * (a * b + b * c + c * a) ≥ 2 * (a + b + c) := by
+Cosine_similarity: 0.643
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_72145
+Pass: False
+Old: theorem lean_workbook_plus_72145 (a b c d : ℝ) : a * b ≤ (a + b) ^ 2 / 4 ∧ c * d ≤ (c + d) ^ 2 / 4   :=  by
+New: theorem test_a_25 (a b : ℝ) : 0 ≤ (a - b) ^ 2 → (0 : ℝ) ≤ (a + b) ^ 2 + 4 * a * b </hard theorem>:= by
+Cosine_similarity: 0.533
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_31941
+Pass: True
+Old: theorem lean_workbook_31941 : ∑ k in Finset.range 15, k = 15 * 14 / 2  :=  by
+New: theorem not_triangle_equality : ¬(∀  (n : ℕ), n ^ 2 + (n + 1) ^ 2 = (n + 2) ^ 2 ↔ n = 0 ∧ n + 1 = 2 ∨ n = 1)   := by
+Cosine_similarity: 0.227
+Complexity: 0.84375
+------------------------------------------------------------
+Name: lean_workbook_plus_30444
+Pass: False
+Old: theorem lean_workbook_plus_30444 (f : ℝ → ℝ) (hf : ∀ x, 2 * f (f x) - Real.sqrt 2 * f x = x) : ∃ a, f 0 = a   := by
+New: theorem additive_of_continuous_at_zero {G H : Type*} [Add G] [Add H] [TopologicalSpace G] [TopologicalSpace H] [ContinuousAdd G] [ContinuousAdd H] (f : G → H) (hf : ContinuousAt f 0) (h'f : ∀ x, f (x + x) = f x + f x) : ∀ x, f (x + x) = f x + f x </hard theorem>:= by
+Cosine_similarity: 0.454
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_47291
+Pass: False
+Old: theorem lean_workbook_plus_47291 : ∀ n : ℕ, (∏ i in Finset.range n, (2 * i - 1) / (2 * i)) ≤ (∏ i in Finset.range n, (2 * i) / (2 * i + 1))   := by
+New: theorem finset_mul_sum_eq_sum_mul {α β γ : Type*} [DecidableEq α] [AddCommMonoid β]      [CommMonoid γ] {f : α → β} {g : α → γ} {s : Finset α} (h₀ : ∀ i ∈ s, g i ≠ 1) :      (∏ i ∈ s, g i) * (∑ i ∈ s, f i) = ∑ i ∈ s, (∏ i ∈ s.erase i, g i) * f i </hard theorem>:= by
+Cosine_similarity: 0.154
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_28642
+Pass: True
+Old: theorem lean_workbook_plus_28642 (x y z : ℝ) (h : x ^ 2 + y ^ 2 + z ^ 2 = 9) :   2 * (x + y + z) - x * y * z ≤ 10   := by
+New: theorem le_max_div_two_add_div_two_add_div_two (x y z : ℝ) :    x / 2 + y / 2 + z / 2 ≤ max (max (x / 2 + y / 2) (y / 2 + z / 2)) (x / 2 + z / 2) := by
+Cosine_similarity: 0.456
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_47286
+Pass: True
+Old: theorem lean_workbook_47286 (a : ℕ) : 20 * 21 + 2021 = 2441  :=  by
+New: theorem lean_workbook_47287 (a : ℕ) : a ^ 2 + 2 * a + 1 = (a + 1) ^ 2 := by
+Cosine_similarity: 0.483
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_plus_42854
+Pass: True
+Old: theorem lean_workbook_plus_42854 (m : ℕ) (hm : 0 < m) :   ∑ k in Finset.Icc 1 m, (1 / (2 ^ k)) < m   := by
+New: theorem zero_ne_one_add_one : 0 ≠ 1 + 1 := by
+Cosine_similarity: 0.333
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_plus_52304
+Pass: True
+Old: theorem lean_workbook_plus_52304 (a b c : ℝ) : a * b + b * c + c * a ≤ a ^ 2 + b ^ 2 + c ^ 2   :=  by
+New: theorem linarith_sum_squares {a b c : ℝ} (h₁ : a ≠ b) (h₂ : a ≠ c) (h₃ : b ≠ c) :      (a - b) ^ 2 + (a - c) ^ 2 + (b - c) ^ 2 ≠ 0  := by
+Cosine_similarity: 0.567
+Complexity: 0.03125
+------------------------------------------------------------
+Name: lean_workbook_47943
+Pass: True
+Old: theorem lean_workbook_47943 (x y z : ℝ) : (x * y + y * z + x * z - 1) ^ 2 ≤ (1 + x ^ 2) * (1 + y ^ 2) * (1 + z ^ 2)  := by
+New: theorem lean_workbook_47945 (x y z : ℝ) : (x + y + z - 1) ^ 2 ≤ 3 * (x ^ 2 + y ^ 2 + z ^ 2) := by
+Cosine_similarity: 0.844
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_21991
+Pass: True
+Old: theorem lean_workbook_plus_21991 : ∀ p > 3, ∀ a : ℕ, a^4 ≡ 1 [ZMOD p] → (a^2 + 1) * (a^2 - 1) ≡ 0 [ZMOD p]   :=  by
+New: theorem lagrange_four_squares {x : ℤ} (hx : ∃ a b c d : ℤ, x = a^2 + b^2 + c^2 + d^2) :     ∃ a b c d : ℤ, x = a^2 + b^2 + c^2 + d^2:= by
+Cosine_similarity: 0.241
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_plus_42467
+Pass: False
+Old: theorem lean_workbook_plus_42467 (a b c : ℝ) : a^2 + b^2 + c^2 - a * b - b * c - c * a ≥ (3 / 4) * (a - b)^2   := by
+New: theorem norm_mul_leq_sqrt_norm_mul_sqrt_norm {𝕜  : Type*} [is_R_or_C 𝕜] {n : ℕ} (f g : n → 𝕜) :      (‖ ∑ i : Fin n, f i * g i ‖ : 𝕜) ≤ √(‖ ∑ i : Fin n, f i * f i ‖) * √(‖ ∑ i : Fin n, g i * g i ‖):= by
+Cosine_similarity: 0.128
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_50747
+Pass: True
+Old: theorem lean_workbook_plus_50747 (x1 x2 x3 : ℝ) : (x1 * x2 + x2 * x3 + x3 * x1) ^ 2 ≥ 3 * x1 * x2 * x3 * (x1 + x2 + x3)   := by
+New: theorem sum_three_squares_eq_zero_iff_mul_self_eq_zero (a b c : ℝ) : a * a + b * b + c * c = 0 ↔ a = 0 ∧ b = 0 ∧ c = 0:= by
+Cosine_similarity: 0.294
+Complexity: 0.375
+------------------------------------------------------------
+Name: lean_workbook_377
+Pass: True
+Old: theorem lean_workbook_377 (x y : ℝ) (hx : 0 < x) (hy : 0 < y) (h : x^2 + y^3 ≥ x^3 + y^4) : x^5 + y^5 ≤ 2  := by
+New: theorem problem1_4_100_v2 (x y : ℝ) (hx : 0 < x) (hy : 0 < y) (hxy : x * y ≤ 1) :     x^2 / (x + y) + y^2 / (x + y) + 2 * x * y / 2 ≤ x^2 + y^2 + x + y:= by
+Cosine_similarity: 0.65
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_56939
+Pass: True
+Old: theorem lean_workbook_56939 (a b c : ℝ) (hab : a > 0 ∧ b > 0 ∧ c > 0) (ha : a^3 + b^3 = c^3) : a^2 + b^2 - c^2 ≥ (2 + (4:ℝ)^(1/3) + 2*(2:ℝ)^(1/3)) * (c - a) * (c - b)  := by
+New: theorem finite_cover_balls (n : ℕ) (U : Set ℝ) (hU : B ⊆ U) : ∃ t : ℕ → ℝ,        (∀ m, 0 < t m) ∧ (∀ m, t m ≤ 1) ∧        (∀ x : ℝ, x ∈ B → ∃ m, t m * x ∈ U) ∧        (∑ m in Finset.range n, t m) ≤ n:= by
+Cosine_similarity: 0.408
+Complexity: 0.125
+------------------------------------------------------------
+Name: lean_workbook_42964
+Pass: True
+Old: theorem lean_workbook_42964 (a b c : ℝ) (h : a * b * c = 1) : (a / (1 + b))^(3 / 5) + (b / (1 + c))^(3 / 5) + (c / (1 + a))^(3 / 5) ≥ 3 / (2^(3 / 5))  := by
+New: theorem mha_principle (n : ℕ) (A : Fin n → ℝ) (hA : ∀ i, 0 < A i) (hA_le : ∀ i, A i ≤ 1) :        (∏ i, A i) ≤ 1:= by
+Cosine_similarity: 0.282
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_55007
+Pass: True
+Old: theorem lean_workbook_plus_55007 (a b c d : ℤ) : (a * b * c + a * b * d + a * c * d + b * c * d) ^ 2 = a * b * c * d * (a + b + c + d) ^ 2 + (a * b - c * d) * (a * c - b * d) * (b * c - a * d)   :=  by
+New: theorem hilbert_weak_10_mul_triangle_2 (a b c d : ℤ) : a * d + b * d + c * d = a * b + b * c + c * a:= by
+Cosine_similarity: 0.796
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_63081
+Pass: True
+Old: theorem lean_workbook_plus_63081 (a b c : ℝ) : a ^ 4 + b ^ 4 + c ^ 4 + a ^ 3 * b + b ^ 3 * c + c ^ 3 * a ≥ 0   := by
+New: theorem universe_meets_in_anniversary :   ∀ (ε : ℝ), ε > 0 →    ∃ (c : ℝ), ∀ (t : ℝ), t > 0 → ( ∃ (x : ℝ), ∃ (y : ℝ), |x - y| < ε ∧ (x ^ 2 + y ^ 2 = t ^ 2)) := by
+Cosine_similarity: 0.324
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_60066
+Pass: True
+Old: theorem lean_workbook_plus_60066 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a * b > 0) (h : a^3 + b^3 = 1 + a * b) : a^4 + b^4 ≥ a + b   := by
+New: theorem weird_ineq (x : ℝ) (hx : 0 < x ∧ x < 1) :       x^2 / (x^2 - x + 1) + x^3 / (x^3 - x^2 + x) ≥ x:= by
+Cosine_similarity: 0.575
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_75314
+Pass: True
+Old: theorem lean_workbook_plus_75314 (a b c : ℝ) (ha : a ≥ b ∧ b ≥ c ∧ c ≥ 0) (hab : a + b + c = 1) : a * b ^ 2 + b * c ^ 2 + c * a ^ 2 ≤ 4 / 27   := by
+New: theorem baker_deal  (a b c : ℝ) (ha : a ≥ b ∧ b ≥ c ∧ c ≥ 0) (hab : a + b + c = 1) :  a ^ 2 * b ^ 2 + b ^ 2 * c ^ 2 + c ^ 2 * a ^ 2 ≤ 2 / 81 := by
+Cosine_similarity: 0.882
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_17841
+Pass: False
+Old: theorem lean_workbook_17841 (x : ℝ) : x^4 - x^3 + x^2 - x + 1 > 0  :=  by
+New: theorem exists_root_of_degree_eq_one (h : natDegree p = 1) : ∃ x, IsRoot p x </hard theorem>:= by
+Cosine_similarity: 0.313
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_61940
+Pass: True
+Old: theorem lean_workbook_plus_61940 (A₁ A₂ : Set ℕ) (hA₁ : A₁ = {k | k % 2 = 0}) (hA₂ : A₂ = {k | k % 3 = 0}) : A₁ ∩ A₂ = {k | k % 6 = 0}   :=  by
+New: theorem lean_workbook_plus_61940_ (x : ℕ) (h₁ : x % 2 = 0) (h₂ : x % 3 = 0) : x % 6 = 0:= by
+Cosine_similarity: 0.582
+Complexity: 0.34375
+------------------------------------------------------------
+Name: lean_workbook_plus_565
+Pass: True
+Old: theorem lean_workbook_plus_565 (a b c : ℝ) (h : a * b * c = 1) :   2 * (a ^ 2 + b ^ 2 + c ^ 2) - 7 * (a + b + c) ≥ -15   := by
+New: theorem sum_squares_le_durch_prod (a b c : ℝ) (h : a * b * c = 1) :    a ^ 2 + b ^ 2 + c ^ 2 ≤ 10 * (a ^ 2 + b ^ 2 + c ^ 2) - 6 * (a + b + c) ↔     (a + b + c) ^ 2 - a ^ 2 - b ^ 2 - c ^ 2 ≤ 6 * (a ^ 2 + b ^ 2 + c ^ 2) - 2 * (a * b + b * c + c * a) ∧     6 * (a ^ 2 + b ^ 2 + c ^ 2) - 2 * (a * b + b * c + c * a) ≤ 9 * (a ^ 2 + b ^ 2 + c ^ 2):= by
+Cosine_similarity: 0.641
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_37555
+Pass: False
+Old: theorem lean_workbook_37555 (a d n : ℕ) : ∑ i in Finset.range n, (a + i * d) = n * (2 * a + (n - 1) * d) / 2  := by
+New: theorem     1570  :         Finset.sum (Finset.range 7) (fun i => 2 + i * 3) = 238 </hard theorem>:= by
+Cosine_similarity: 0.584
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_30310
+Pass: True
+Old: theorem lean_workbook_plus_30310 (a b c : ℝ) (h : 9 = 3 * (a ^ 2 + b ^ 2 + c ^ 2)) :   a + b + c ≤ 3   := by
+New: theorem student_solution : ∀ a b c : ℝ, a ^ 2 + b ^ 2 + c ^ 2 ≤ 3 → a + b + c ≤ 3:= by
+Cosine_similarity: 0.768
+Complexity: 0.6875
+------------------------------------------------------------
+Name: lean_workbook_8128
+Pass: True
+Old: theorem lean_workbook_8128 (a b w u : ℝ) (ha : 0 < a) (hb : 0 < b) (hw : 0 < w) (hu : 0 < u) : (a * b) / (a + b) ≤ (w^2 * a + u^2 * b) / (w + u)^2  :=  by
+New: theorem theorem_of_lucas (n : ℕ) (hn : 1 < n) : ∃ x y : ℕ, x * y = n ∧ (x - 1) * (y - 1) ≤ n ∧ (x - 1) * (y - 1) * (x * y) ≤ n * (x * y):= by
+Cosine_similarity: 0.094
+Complexity: 0.8125
+------------------------------------------------------------
+Name: lean_workbook_18736
+Pass: True
+Old: theorem lean_workbook_18736 (f : ℝ → ℝ) (hf : ∀ x, f x + 2 * f (2 - x) = 2 * x * (2 - x)) : ∀ x, f x = 2 * x * (2 - x) / 3  :=  by
+New: theorem lean_workbook_18737 (f : ℝ → ℝ) (hf : ∀ x, f x + 2 * f (2 - x) = 2 * x * (2 - x)) : ∀ x, f x = 2 * x * (2 - x) / 3  := by
+Cosine_similarity: 1.0
+Complexity: 0.84375
+------------------------------------------------------------
+Name: lean_workbook_plus_40686
+Pass: True
+Old: theorem lean_workbook_plus_40686 (x y z : ℝ) (h : x + y + z = 4) : 1 ≤ abs (x - 1) + (abs y + abs (y - 2)) / 2   := by
+New: theorem known_inequality (x y z : ℝ) (h₁ : 0 < x ∧ 0 < y ∧ 0 < z) (h₂ : x + y + z = 4) : 9 / 4 ≤ 4 / x + 4 / y + 4 / z := by
+Cosine_similarity: 0.706
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_51827
+Pass: True
+Old: theorem lean_workbook_plus_51827 {a n c : ℕ} (h₁ : a ≡ 1 [ZMOD c]) : a ^ n ≡ 1 [ZMOD c]   := by
+New: theorem pow_modEq_one {n : ℕ} {a : ℕ} (h₁ : a ≡ 1 [ZMOD n]) : a ^ n ≡ 1 [ZMOD n]   := by
+Cosine_similarity: 0.922
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_52510
+Pass: True
+Old: theorem lean_workbook_52510 (x y z : ℝ) (hx : x > 0 ∧ y > 0 ∧ z > 0) (hab : x * (x + y + z) = 3 * y * z): (x + y) ^ 3 + (x + z) ^ 3 + 3 * (x + y) * (y + z) * (z + x) ≤ 5 * (y + z) ^ 3  :=  by
+New: theorem algebra_kings_inequality (a b c : ℝ) (h₀ : a > 0 ∧ b > 0 ∧ c > 0) (h₁ : a + b + c = 3) (h₂ : a * b * c = 1)  : a^2 * b^2 + b^2 * c^2 + c^2 * a^2 ≤ 9:= by
+Cosine_similarity: 0.723
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_64989
+Pass: True
+Old: theorem lean_workbook_plus_64989 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (hab : a + b^2 + c^2 = 1) : (1 - a^2)^2 + (1 - b^2)^2 + (1 - c^2)^2 ≥ 3 / 2   := by
+New: theorem lean_workbook_plus_64990 (x y : ℝ) (hx : 0 < x) (hy : 0 < y) (hxy : x * y = 1) : 2 * (x^2 + y^2) ≥ 4 * x * y := by
+Cosine_similarity: 0.624
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_plus_71947
+Pass: True
+Old: theorem lean_workbook_plus_71947 : 2 + 2 = 4   :=  by
+New: theorem lean_workbook_plus_71947 : 2 + 2 = 4   := by
+Cosine_similarity: 1.0
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_1071
+Pass: True
+Old: theorem lean_workbook_1071 (n : ℕ) : 1998 = 2 * 3^3 * 37  :=  by
+New: theorem lean_workbook_1071_1074_1082_1083 (n : ℕ) (hn : n < 1998) : n < 2 * 3^3 * 37 := by
+Cosine_similarity: 0.859
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_plus_66593
+Pass: True
+Old: theorem lean_workbook_plus_66593 (a : ℝ) (ha1 : 1 ≥ a ∧ a ≥ 1/5) : 32*a^5 + 32*a^4 - 16*a^3 - 16*a^2 + 9*a - 1 ≥ 0   := by
+New: theorem lean_workbook_plus_66593 (a b : ℝ) (ha1 : 1 ≥ a ∧ a ≥ 1/5) (hb1 : 1 ≥ b ∧ b ≥ 1/5) : 32*a^5 + 32*a^4 - 16*a^3 - 16*a^2 + 9*a - 1 ≥ 0 ∧ 32*b^5 + 32*b^4 - 16*b^3 - 16*b^2 + 9*b - 1 ≥ 0 → 32*a^5 + 32*a^4 - 16*a^3 - 16*a^2 + 9*a - 1 ≥ 0 ∧ 32*b^5 + 32*b^4 - 16*b^3 - 16*b^2 + 9*b - 1 ≥ 0:= by
+Cosine_similarity: 0.859
+Complexity: 0.34375
+------------------------------------------------------------
+Name: lean_workbook_plus_82603
+Pass: True
+Old: theorem lean_workbook_plus_82603 (r : ℕ) : ∑ k in Finset.range (2 * r + 2), (Nat.choose (2 * r + 1) k) - 2 = 2^(2 * r + 1) - 2   :=  by
+New: theorem lean_workbook_plus_82604 (n : ℕ) : ∑ k in Finset.range (n + 1), (Nat.choose n k) = 2^n  := by
+Cosine_similarity: 0.81
+Complexity: 0.6875
+------------------------------------------------------------
+Name: lean_workbook_plus_74298
+Pass: True
+Old: theorem lean_workbook_plus_74298 (x y : ℝ) (hxy : x + y = 3) (hx : 1 ≤ x) (hy : 1 ≤ y) : 9 * (x - 1) * (y - 1) + (y^2 + y + 1) * (x + 1) + (x^2 - x + 1) * (y - 1) ≥ 9   := by
+New: theorem lee_E3_142 (a : ℕ → ℝ) (a1 : a 0 = 1) (a_rec : ∀ n, a (n + 1) = (a n) ^ 2 / 2 + (a n) / 2 + 1) : a 5 ≥ 1:= by
+Cosine_similarity: 0.383
+Complexity: 0.34375
+------------------------------------------------------------
+Name: lean_workbook_plus_49744
+Pass: True
+Old: theorem lean_workbook_plus_49744  (A B : Set α)   (h₀ : A = {x | x ∈ B}) :   A \ B = {x | x ∈ A ∧ x ∉ B}   :=  by
+New: theorem lean_workbook_plus_51169 (B : Set α) :     {x | ¬ x ∈ B} = Bᶜ ∧ {x | x ∈ B}ᶜ = {x | ¬ x ∈ B} ↔ Bᶜ = {x | x ∉ B} ∧ {x | x ∈ B}ᶜ = {x | ¬ x ∈ B} := by
+Cosine_similarity: 0.617
+Complexity: 0.59375
+------------------------------------------------------------
+Name: lean_workbook_21504
+Pass: True
+Old: theorem lean_workbook_21504 (a : ℤ) : a ^ 4 ≡ 0 [ZMOD 5] ∨ a ^ 4 ≡ 1 [ZMOD 5]  :=  by
+New: theorem cube_pow_four_mod_9 (a : ℤ) : a ^ 12 ≡ 1 [ZMOD 9] ∨ a ^ 12 ≡ 0 [ZMOD 9]  := by
+Cosine_similarity: 0.77
+Complexity: 0.65625
+------------------------------------------------------------
+Name: lean_workbook_plus_6548
+Pass: True
+Old: theorem lean_workbook_plus_6548 (x y : ℝ) (hx : 0 < x) (hy : 0 < y) (h : x^5 + y^5 = 2) : (x^2 + y^6)*(x^8 + y^4) + 2 ≥ x^10 + y^10   := by
+New: theorem loves_binomial_theorem : ∀ n : ℕ, ∀ x y : ℝ, (x + y) ^ (n + 1) ≥ x * (x + y) ^ n + y * (x + y) ^ n:= by
+Cosine_similarity: 0.069
+Complexity: 0.71875
+------------------------------------------------------------
+Name: lean_workbook_plus_54702
+Pass: True
+Old: theorem lean_workbook_plus_54702 (f : ℝ → ℝ) (c : ℝ) (g : ℝ → ℝ) (h₁ : ∀ x, g x = (f x - c) / Real.cos x) (h₂ : c = f 0) : ∀ x, g x = (f x - f 0) / Real.cos x   :=  by
+New: theorem x_mul_y_mul_z_div_y_mul_y_mul_z_eq_x     (x y z : ℝ)     (h₀ : 0 < y * y * z)     (h₁ : 0 < y)     (h₂ : 0 < z) :     x * y * z / (y * y * z) = x / y:= by
+Cosine_similarity: 0.47
+Complexity: 0.28125
+------------------------------------------------------------
+Name: lean_workbook_plus_25237
+Pass: False
+Old: theorem lean_workbook_plus_25237 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a ≥ 2 * b) : a^2 / b + b^2 / a ≥ 9 * a / 4   := by
+New: theorem assumes a and b positive real numbers and a is greater than or equal to 2 times b prove the inequality of the function expression:= by
+Cosine_similarity: 0.597
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_19809
+Pass: False
+Old: theorem lean_workbook_plus_19809 (x y : ℝ) :   |x+y| = |x| + |y| → ∀ α : ℝ, 0 ≤ α ∧ α ≤ 1 → |x+α*y| = |x| + α*|y|   :=  by
+New: theorem lean_workbook_plus_19809 (x y : ℝ) :   |x+y| = |x| + |y| → ∀ α : ℝ, 0 ≤ α ∧ α ≤ 1 → |x+α*y| = |x| + α*|y|   :=  by </hard theorem>:= by
+Cosine_similarity: 0.981
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_8367
+Pass: True
+Old: theorem lean_workbook_plus_8367 (h : ∀ n : ℕ, (1/2)^n ≠ 0) : ∑' i : ℕ, (1/2)^i = 8191/4096   := by
+New: theorem abel_16_nsmul_add_16_nsmul_sub_48_nsmul_one_eq_nsmul_one (n : ℕ) (a : ℕ → ℕ)     (h₁ : n ≤ 16)     (h₂ : ∀ i, i ≤ n → a i = 1)     (h₃ : ∀ i, n < i → a i = 0) :     ∑ k in Finset.Icc 0 n, a k - ∑ k in Finset.Icc 0 (n - 1), a k = a n:= by
+Cosine_similarity: 0.5
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_45784
+Pass: True
+Old: theorem lean_workbook_45784 (x : ℝ) : (x ≥ 0 → |x| = x) ∧ (x < 0 → |x| = -x)  :=  by
+New: theorem mt_iff_contra : (¬p → ¬q) ↔ (¬q → ¬p):= by
+Cosine_similarity: 0.437
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_33663
+Pass: True
+Old: theorem lean_workbook_plus_33663 (a b c : ℝ) (ha : a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0) (hab : a + b + c = 2) : 24 * (a ^ 2 + b ^ 2 + c ^ 2) + (a ^ 2 + b ^ 2 + c ^ 2) ^ 2 ≤ 48 + 8 * (a ^ 3 + b ^ 3 + c ^ 3)   := by
+New: theorem azerty_1039 : ∀ x y z : ℝ, x + y + z = 2 ∧ x ≥ 0 ∧ y ≥ 0 ∧ z ≥ 0 → 24 * (x ^ 2 + y ^ 2 + z ^ 2) + (x ^ 2 + y ^ 2 + z ^ 2) ^ 2 ≤ 48 + 8 * (x ^ 3 + y ^ 3 + z ^ 3):= by
+Cosine_similarity: 0.83
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_51101
+Pass: True
+Old: theorem lean_workbook_plus_51101 (x y z : ℝ) (hx : -1.5 ≤ x) (hy : -1.5 ≤ y) (hz : -1.5 ≤ z) (h : x + y + z = 3) : 2 * (x^3 + y^3 + z^3) ≥ 3 + x^2 + y^2 + z^2   :=  by
+New: theorem mathd_algebra_241_a (x : ℝ) (h₀ : 0 < x) (h₁ : x ≤ 1) :     Real.sqrt (1 + x) ≥ x^2 / (x + 1):= by
+Cosine_similarity: 0.412
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_33678
+Pass: False
+Old: theorem lean_workbook_33678 (n : ℕ) : ∑ k in Finset.range (n+1), (Nat.choose n k)^2 = ∑ k in Finset.range (n+1), Nat.choose n k * Nat.choose n (n - k)  :=  by
+New: theorem show_expr_eq (t : ℕ) : show (Nat.choose t 0) ^ 2 + ∑ k in Finset.Ico 1 (t+1), (Nat.choose t k) ^ 2 = (Nat.choose t 0) * Nat.choose t t + ∑ k in Finset.Ico 1 (t+1), Nat.choose t k * Nat.choose t (t - k) by   have h₀ : ∑ k in Finset.Ico 1 (t + 1), (Nat.choose t k) ^ 2 = ∑ k in Finset.Ico 1 (t + 1), Nat.choose t k * Nat.choose t (t - k) := by
+Cosine_similarity: 0.742
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_34511
+Pass: True
+Old: theorem lean_workbook_34511 (X : Type) [MetricSpace X]   (f : X → X) (hf : Continuous f) : Continuous (λ x => dist (f x) x)  :=  by
+New: theorem metric_space_2_x (X : Type) [MetricSpace X]   (f : X → X) (hf : Continuous f) : Continuous (λ x => dist (f x) x)  := by
+Cosine_similarity: 1.0
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_24730
+Pass: True
+Old: theorem lean_workbook_24730 (a b : ℝ) : (a - b) ^ 3 = a ^ 3 - 3 * a ^ 2 * b + 3 * a * b ^ 2 - b ^ 3  :=  by
+New: theorem lean_workbook_24729 : ¬(∀  (x y z : ℝ) , x * y * (x * z + y * z) + y * z * (x * z + y * z) ≥ 0 ↔ ∃ (a b : ℝ), a * b = x * y ∧ a * b + y * z + x * z = x * z + y * z) := by
+Cosine_similarity: 0.341
+Complexity: 0.1875
+------------------------------------------------------------
+Name: lean_workbook_plus_13250
+Pass: False
+Old: theorem lean_workbook_plus_13250 (n : ℕ) (x : ℤ) : x ^ (4 * n) + x ^ (2 * n) + 1 = (x ^ (2 * n) + x ^ n + 1) * (x ^ (2 * n) - x ^ n + 1)   := by
+New: theorem squarefree_of_nat_iff_squarefree_of_part_data (n : ℕ) : Squarefree n ↔ Squarefree n.partData.fst </hard theorem>:= by
+Cosine_similarity: 0.375
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_30644
+Pass: True
+Old: theorem lean_workbook_30644 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a + b + c = 1) : (120 * a ^ 8 + 136 * b ^ 8) ^ (1 / 8) + (120 * b ^ 8 + 136 * c ^ 8) ^ (1 / 8) + (120 * c ^ 8 + 136 * a ^ 8) ^ (1 / 8) ≥ 2  :=  by
+New: theorem l8_450_346 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a + b + c = 1) :  Real.sqrt (a ^ 8 + b ^ 8) + Real.sqrt (b ^ 8 + c ^ 8) + Real.sqrt (c ^ 8 + a ^ 8) ≥ 2 * (a ^ 2 + b ^ 2 + c ^ 2) * (1 / 2)  := by
+Cosine_similarity: 0.883
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_74188
+Pass: True
+Old: theorem lean_workbook_plus_74188 (x y : ℝ) (hx : 0 < x) (hy : 0 < y) (h : y ≥ y^3 + x^2 + x + 1) : x^2 + y^2 ≥ 1   := by
+New: theorem pimpa_19_22_not_eq_zero (x y : ℝ) (h₀ : 0 < x ∧ 0 < y) (h₁ : x^2 + y^2 = 1) :     x * y ≤ 1:= by
+Cosine_similarity: 0.699
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_54780
+Pass: True
+Old: theorem lean_workbook_54780 : ∀ a b c d : ℝ, (a * c - b * d) ^ 2 + (a * d + b * c) ^ 2 = (a ^ 2 + b ^ 2) * (c ^ 2 + d ^ 2)  :=  by
+New: theorem lean_workbook_54811 : ∀ a b c d : ℝ, (a * c + b * d) ^ 2 + (a * d - b * c) ^ 2 = (a ^ 2 + b ^ 2) * (c ^ 2 + d ^ 2)  := by
+Cosine_similarity: 0.997
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_8526
+Pass: False
+Old: theorem lean_workbook_8526 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : b^2 * c^2 + c^2 * a^2 + a^2 * b^2 ≥ a * b * c * (a + b + c)  :=  by
+New: theorem postcomp (h₀ : 0 ≤ ‖f‖) : A h₀ = ‖f‖ * r^2 := by
+Cosine_similarity: 0.336
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_35979
+Pass: False
+Old: theorem lean_workbook_plus_35979 (a : ℝ) (ha : a > 0) : (1 / Real.sqrt a) > 2 * (Real.sqrt (a + 1) - Real.sqrt a)   := by
+New: theorem arithmetic_mean_geometric_mean (x y : ℝ) (h₀ : 0 < x ∧ 0 < y) : (x + y) / 2 ≥ Real.sqrt (x * y) </hard theorem>:= by
+Cosine_similarity: 0.573
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_21005
+Pass: True
+Old: theorem lean_workbook_21005 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : x * (x - y) * (x - z) + y * (y - x) * (y - z) + z * (z - x) * (z - y) ≥ 0  := by
+New: theorem quadratic_form_nonneg (a b c : ℝ)     (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a + b + c = 1) :     a ^ 2 / b ^ 2 + b ^ 2 / c ^ 2 + c ^ 2 / a ^ 2 ≥ 3 * (a / 3 + b / 3 + c / 3) := by
+Cosine_similarity: 0.499
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_47649
+Pass: True
+Old: theorem lean_workbook_plus_47649 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) : a + b ≥ Real.sqrt (a * b) + Real.sqrt ((a ^ 2 + b ^ 2) / 2)   := by
+New: theorem is_power_of_two_le_iff_sum_eq (m n : ℕ) (h₀ : 1 < m ∧ 1 < n) :      (∃ k : ℕ, m + n = 2 ^ k) ↔ ∃ k₁ k₂ : ℕ, k₁ + k₂ = 2 ∧ m = 2 ^ k₁ ∧ n = 2 ^ k₂:= by
+Cosine_similarity: 0.279
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_27293
+Pass: True
+Old: theorem lean_workbook_27293 (a b c : ℝ) :   (a + b + c) ^ 6 - 27 * (a ^ 2 + b ^ 2 + c ^ 2) * (a * b + b * c + c * a) ^ 2 =     (a ^ 2 + b ^ 2 + c ^ 2 + 8 * (a * b + b * c + c * a)) * (a ^ 2 + b ^ 2 + c ^ 2 - a * b - b * c - c * a) ^ 2  :=  by
+New: theorem lean_workbook_27335 (a b : ℝ) :  ∃ x y : ℝ, (x ^ 2 + y ^ 2) ^ 2 = 4 * (x * y) ^ 2:= by
+Cosine_similarity: 0.37
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_13204
+Pass: False
+Old: theorem lean_workbook_13204 {a b c d b1 b2 : ℤ} (h : a * d - b * c ≠ 0) (h1 : a * d - b * c ∣ b1) (h2 : a * d - b * c ∣ b2) : ∃ x y, a * x + b * y = b1 ∧ c * x + d * y = b2  := by
+New: theorem gauss_lemma_aux3 {a b c d b1 b2 : ℤ} (h : a * d - b * c ≠ 0) (h1 : a * d - b * c ∣ b1) (h2 : a * d - b * c ∣ b2) : (∃ x y : ℤ, a * x + b * y = b1 ∧ c * x + d * y = b2) ↔ (∃ x y : ℤ, a * d - b * c ∣ (b1 * d - b2 * c) ∧ a * x + b * y = b1 ∧ c * x + d * y = b2) </hard theorem>:= by
+Cosine_similarity: 0.898
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_80659
+Pass: True
+Old: theorem lean_workbook_plus_80659 (a b c : ℝ) (ha : 1 / 2 ≤ a) (hb : 1 / 2 ≤ b) (hc : 1 / 2 ≤ c) (hab : a + b + c = 3) : 2 / 11 ≤ a * b * c / (a * b * c + a * b + b * c + c * a) ∧ a * b * c / (a * b * c + a * b + b * c + c * a) ≤ 1 / 4   := by
+New: theorem pow_min_le_sum_pow_div_four (n : ℕ) (x : ℕ → ℝ) :      (∑ i in Finset.range n, (x i) ^ 2) ^ 2 ≤      n * ∑ i in Finset.range n, ((x i) ^ 2) ^ 2:= by
+Cosine_similarity: 0.3
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_23272
+Pass: False
+Old: theorem lean_workbook_plus_23272 (n : ℕ) (hn : 2 ≤ n) : (∏ k in Finset.Icc 2 n, (1 - 1 / k ^ 3)) > 1 / 2   := by
+New: theorem mathd_numbertheory_349 : (∑ k in Finset.Icc 1 11, (1 / k)) = 1 </hard theorem>:= by
+Cosine_similarity: 0.672
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_21362
+Pass: False
+Old: theorem lean_workbook_21362 (x y z : ℝ) (n : ℕ) : (cos x + sin x * I)^n + (cos y + sin y * I)^n + (cos z + sin z * I)^n ∈ Set.range (Complex.re)  :=  by
+New: theorem sub_ne_zero_of_ne {x y : ℝ} (h : x ≠ y) : x - y ≠ 0 := by
+Cosine_similarity: 0.277
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_3014
+Pass: True
+Old: theorem lean_workbook_3014 (a b c : ℝ) (ha : a > 0 ∧ b > 0 ∧ c > 0 ∧ a + b + c = 3) : a^2 + b^2 + c^2 + a * b * c ≥ 4  := by
+New: theorem yijing_makes_perfect_sense (a b c : ℝ) (ha : a > 0 ∧ b > 0 ∧ c > 0 ∧ a + b + c = 3) : a^2 + b^2 + c^2 + a * b * c ≥ 4 := by
+Cosine_similarity: 1.0
+Complexity: 0.0625
+------------------------------------------------------------
+Name: lean_workbook_plus_5232
+Pass: True
+Old: theorem lean_workbook_plus_5232 (x y : ℝ) : |x - y| ≤ |2 * x + y| + |x + 2 * y|   := by
+New: theorem lean_workbook_plus_5250 (x y z : ℝ) : (x^2 + y^2 + z^2)^2 ≥ (x^2 + y^2 - z^2)^2  := by
+Cosine_similarity: 0.436
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_51994
+Pass: False
+Old: theorem lean_workbook_51994 (u v : ℝ) : (u^3 - Real.sqrt 3 * u^2 * v - (3 - Real.sqrt 3) * u * v^2 + v^3)^2 ≥ 0  :=  by
+New: theorem ideal_sqrt_zero_ne_zero [IsDomain R] {I : Ideal R} [I.IsPrime] {r : R} (hr : r ≠ 0) :     r^2 ≠ 0:= by
+Cosine_similarity: 0.205
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_14047
+Pass: False
+Old: theorem lean_workbook_14047  (n x : ℝ) :   (n^2 + x^2) / 2 = ((n + x) / 2)^2 + ((n - x) / 2)^2  :=  by
+New: theorem sum_of_squares_le_of_sum_of_squares_le (a b c d : ℝ)     (h₁ : (a^2 + b^2) / 2 ≤ c^2)     (h₂ : (c^2 + d^2) / 2 ≤ a^2) :     0 ≤ (a - b) ^ 2 + (c - d) ^ 2 </hard theorem>:= by
+Cosine_similarity: 0.269
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_18449
+Pass: True
+Old: theorem lean_workbook_plus_18449 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * (a + 2 * b + c) = 2 * (b ^ 2 + 2 * c ^ 2)) : a / (2 * b + c) ≥ 1 / 3   := by
+New: theorem brad_control_4029 (a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) :     a * b + b * c + c * d + d * a > 0 ∧   a * b + b * c + c * d + d * a ≥ a * b + b * c + c * d + d * a - (a * d + b * a + c * b + d * c):= by
+Cosine_similarity: 0.717
+Complexity: 0.65625
+------------------------------------------------------------
+Name: lean_workbook_plus_33
+Pass: True
+Old: theorem lean_workbook_plus_33 :     ∀ a b c : ℝ, a > 0 ∧ b > 0 ∧ c > 0 ∧ a + b > c ∧ a + c > b ∧ b + c > a → a * (2 * a^2 - b^2 - c^2) + b * (2 * b^2 - c^2 - a^2) + c * (2 * c^2 - a^2 - b^2) ≥ 0   := by
+New: theorem sphere_intersection_nonempty :      let D₁ : ℝ := √2 - 1;      let D₂ : ℝ := √3 - √2;      let D₃ : ℝ := √4 - √3;      D₁ + D₂ + D₃ < 1:= by
+Cosine_similarity: 0.412
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_81977
+Pass: False
+Old: theorem lean_workbook_plus_81977 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (1 + a * b) * (1 + b * c) * (1 + c * a) = 8 → a + b + c ≥ a * b * c   :=  by
+New: theorem solution_separately_simplify_expected_value (R : Type*) (k : ℕ) (hR : Fintype R)        (h1 : ∀ r : R, 0 < r) (h2 : ∀ r : R, r ≠ 0) (h3 : ∀ r : R, ∑ r' : R, r' ≠ 0)        (h4 : ∀ r : R, ∑ r' : R, r' * r ≠ 0) :        ∃ r : R, ∑ r' : R, r' * r = 0:= by
+Cosine_similarity: 0.327
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_12322
+Pass: True
+Old: theorem lean_workbook_plus_12322 (a b c d : ℝ) (h₁ : 0 < a ∧ a ≤ b ∧ b ≤ 1 ∧ c ≥ 1 ∧ c ≤ d ∧ d ≥ 0) (h₂ : a + b + c + d = 4) : a * b + a * c + a * d + b * c + b * d + c * d + a * b * c * d ≥ 3 + a * b * c + b * c * d + c * d * a + d * a * b   := by
+New: theorem covariance_ineq_21_15_2_2_2_2 :     ∀ a b c d : ℝ, a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0 ∧ d ≥ 0 ∧ a * b + c * d = 1 →     a ^ 2 * b ^ 2 + a ^ 2 * d ^ 2 + b ^ 2 * c ^ 2 + c ^ 2 * d ^ 2 + 2 * a * b * c * d ≥       a * b + c * d:= by
+Cosine_similarity: 0.843
+Complexity: 0.875
+------------------------------------------------------------
+Name: lean_workbook_plus_14447
+Pass: False
+Old: theorem lean_workbook_plus_14447 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) :  x*y*z + (x + y)*(y + z)*(z + x) = (x + y + z)*(x*y + x*z + y*z)   := by
+New: theorem linarith_pow_mul_eq_prime_mul_pow_of_prime (x y z : ℝ) (hp : IsPrime 5) (h₀ : 5 ^ 5 * y = x * z) (h₁ : 5 ^ 3 * x * z = x * y) (h₂ : 5 ^ 3 * z * z = x * y * z) : x + y + z ≠ 0 → 2 ^ 3 * x * z = x * y * 2:= by
+Cosine_similarity: 0.648
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_50631
+Pass: True
+Old: theorem lean_workbook_50631 (a b : ℝ) : a^2 + b^2 - 2*a*b ≥ 0  :=  by
+New: theorem main_theorem (a b : ℝ) :     a^2 + b^2 ≥ 2 * a * b ↔ a ≤ b + |a - b|:= by
+Cosine_similarity: 0.121
+Complexity: 0.46875
+------------------------------------------------------------
+Name: lean_workbook_24772
+Pass: True
+Old: theorem lean_workbook_24772 (x : ℝ) (hx : x ≠ 0) : x ^ 12 - x ^ 9 - x ^ 3 + 1 = (x ^ 9 - 1) * (x ^ 3 - 1)  :=  by
+New: theorem lean_workbook_24775 (x : ℝ) :  (x ^ 9 - 1) * (x ^ 3 - 1) = x ^ 12 - x ^ 9 - x ^ 3 + 1:= by
+Cosine_similarity: 0.868
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_50277
+Pass: True
+Old: theorem lean_workbook_50277 (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) : (1 / 4 : ℝ) * ((2 + a) * (2 + b) / ((1 + a) * (1 + b))) ≥ (4 - a - b) / (4 + a + b)  := by
+New: theorem hammer_inequality (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) :        (a + b + c) * (1 / a + 1 / b + 1 / c) ≥ 9:= by
+Cosine_similarity: 0.76
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_49532
+Pass: True
+Old: theorem lean_workbook_49532 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a + b + c = 2) : a^3 + b^3 + c^3 + 6 * a * b * c ≥ a * b * (a + b) + b * c * (b + c) + c * a * (c + a)  := by
+New: theorem lean_workbook_49533 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (habc : a + b + c = 2) : a * b * c * (a + b + c) + a * b ^ 2 + b * c ^ 2 + c * a ^ 2 ≥ a * b * c + a * b * (a + b) + b * c * (b + c) + c * a * (c + a):= by
+Cosine_similarity: 0.886
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_20717
+Pass: True
+Old: theorem lean_workbook_plus_20717 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / (b + c) + b / (c + a) + c / (a + b)) ≥ 3 / 2   := by
+New: theorem lean_workbook_plus_20717 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / (b + c) + b / (c + a) + c / (a + b)) ≥ 3 / 2  := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_21725
+Pass: True
+Old: theorem lean_workbook_plus_21725 (a b c : ℝ) : 2 * (a ^ 4 + b ^ 4 + c ^ 4) ≥ a ^ 3 * b + b ^ 3 * c + c ^ 3 * a + a * b ^ 3 + b * c ^ 3 + c * a ^ 3   := by
+New: theorem lean_workbook_plus_31548 (a b c : ℝ) : 2 * (a ^ 4 + b ^ 4 + c ^ 4) ≥ a ^ 3 * b + b ^ 3 * c + c ^ 3 * a + a * b ^ 3 + b * c ^ 3 + c * a ^ 3   := by
+Cosine_similarity: 1.0
+Complexity: 0.25
+------------------------------------------------------------
+Name: lean_workbook_plus_49545
+Pass: True
+Old: theorem lean_workbook_plus_49545 (n : ℚ) : n^2 = (n-1)*(n+1)+1   := by
+New: theorem mathd_algebra_131_speed_distance (d : ℝ) (k : ℝ) (t : ℝ) (h₀ : d = 5) (h₁ : k = 1 / 2)   (h₂ : t = 2 * d / k) : t = 20:= by
+Cosine_similarity: 0.246
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_59714
+Pass: False
+Old: theorem lean_workbook_plus_59714 (a b c : ℝ) : a > 0 ∧ b > 0 ∧ c > 0 → 9 * (a^3 + b^3 + c^3) ≥ (a + b + c)^3   := by
+New: theorem sum_sq_le_sq_sum (a b c d : ℝ) :       a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 ≤ (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2) + 2 * (a * b + a * c + a * d + b * c + b * d + c * d)  </hard theorem>:= by
+Cosine_similarity: 0.439
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_39618
+Pass: True
+Old: theorem lean_workbook_39618 : 11 ^ 41 + 18 ^ 41 ≡ 29 [ZMOD 41]  :=  by
+New: theorem congr_n_mod_n_pow_sub_n {a b n : ℕ} (h₁ : a < b) (h₂ : 2 ≤ n) (h₃ : a ≡ b [MOD n]) :    a ^ n ≡ b ^ n [MOD n ^ 2]:= by
+Cosine_similarity: 0.441
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_73605
+Pass: True
+Old: theorem lean_workbook_plus_73605 (n k : ℕ) (h : k ≤ n) :   ∑ i in Finset.Icc k n, choose i k = choose (n + 1) (k + 1)   := by
+New: theorem loo_1980_p204_generalised (n : ℕ) (ha : 2 ≤ n) :     (∑ k in Finset.Ico 1 n, choose (k + 1) 2 * choose (n - k) 2) ≤      (∑ k in Finset.Ico 1 n, choose n 2 * choose (n - k) 2):= by
+Cosine_similarity: 0.786
+Complexity: 0.5
+------------------------------------------------------------
+Name: lean_workbook_18201
+Pass: True
+Old: theorem lean_workbook_18201 (a b c : ℝ) (h₁ : a + b + c = 5) (h₂ : a * b * c = 7) : ‖a‖ + ‖b‖ + ‖c‖ ≥ 9  := by
+New: theorem norm_eq_abs (n : ℤ) : ‖(n : ℝ)‖ = |n| := by
+Cosine_similarity: 0.396
+Complexity: 0.25
+------------------------------------------------------------
+Name: lean_workbook_plus_63829
+Pass: True
+Old: theorem lean_workbook_plus_63829 : 1995^2 = 3^2 * 5^2 * 7^2 * 19^2   := by
+New: theorem minimal_polynomial_42 (x : ℝ) : x^2 = 42 → x = Real.sqrt 42 ∨ x = -Real.sqrt 42 := by
+Cosine_similarity: 0.323
+Complexity: 0.5625
+------------------------------------------------------------
+Name: lean_workbook_29779
+Pass: True
+Old: theorem lean_workbook_29779 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : (x + y + 1) ^ 3 + (y + z + 1) ^ 3 + (z + x + 1) ^ 3 > (4 / 3) * (x + y + z + 1) ^ 2  :=  by
+New: theorem lean_workbook_29779 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : 1 / x + 1 / y + 1 / z ≥ 9 / (x + y + z) := by
+Cosine_similarity: 0.795
+Complexity: 0.46875
+------------------------------------------------------------
+Name: lean_workbook_plus_26482
+Pass: True
+Old: theorem lean_workbook_plus_26482 (N : ℤ) : ∃ x r : ℤ, N = 180 * x + r ∧ 0 ≤ r ∧ r ≤ 179   :=  by
+New: theorem lean_workbook_plus_26482 (N : ℤ) : ∃ x r : ℤ, N = 180 * x + r ∧ 0 ≤ r ∧ r ≤ 179 := by
+Cosine_similarity: 1.0
+Complexity: 0.40625
+------------------------------------------------------------
+Name: lean_workbook_25399
+Pass: True
+Old: theorem lean_workbook_25399 (α β x y : ℝ) : (2 * α ^ 2 + 2 * α * β + β ^ 2) * (2 * x ^ 2 + 2 * x * y + y ^ 2) ≥ (2 * α * x + α * y + β * x + β * y) ^ 2  :=  by
+New: theorem co_test (n : ℕ) (x y : ℕ → ℝ) (hx : ∀ n, x n >= 0) (hy : ∀ n, y n >= 0) : (∑ i in Finset.range n, x i * y i) ≤ (∑ i in Finset.range n, x i) * (∑ i in Finset.range n, y i):= by
+Cosine_similarity: 0.391
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_35537
+Pass: True
+Old: theorem lean_workbook_plus_35537 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a + b + 1) * (b + c + 1) * (c + a + 1) + 2 ≥ 7 * (a * b + b * c + a * c) + 2 * (a + b + c + a * b * c)   := by
+New: theorem a240_210_331_sum_eq_a240_210_331_aux1 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :       (a + b + 1) * (b + c + 1) * (c + a + 1) ≥ 7 * (a * b + b * c + a * c) - 2 * (a + b + c + a * b * c)  := by
+Cosine_similarity: 0.989
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_42708
+Pass: True
+Old: theorem lean_workbook_plus_42708 : ∀ a b c : ℝ, a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0 → a^2 + 2 * b^2 + c^2 ≥ (2 * Real.sqrt 3) / 3 * (a + 2 * b) * c   := by
+New: theorem lean_workbook_plus_42708 : ∀ a b c : ℝ, a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0 → a^2 + 2 * b^2 + c^2 ≥ (2 * Real.sqrt 3) / 3 * (a + 2 * b) * c   := by
+Cosine_similarity: 1.0
+Complexity: 0.125
+------------------------------------------------------------
+Name: lean_workbook_14013
+Pass: True
+Old: theorem lean_workbook_14013 (x : ℝ) (hx : x^2 = x) : x^3 = x^2  :=  by
+New: theorem theorem_1_2 (x : ℝ) (hx : x^2 = x) : x^3 = x^2  := by
+Cosine_similarity: 0.099
+Complexity: 0.53125
+------------------------------------------------------------
+Name: lean_workbook_11529
+Pass: True
+Old: theorem lean_workbook_11529 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : a * (1 - b + c)^(1 / 3) + b * (1 - c + a)^(1 / 3) + c * (1 - a + b)^(1 / 3) ≤ 3  :=  by
+New: theorem linarith_lemma (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (hab : x + y + z = 3) : x * y * (x + y) + y * z * (y + z) + z * x * (z + x) ≤ 18:= by
+Cosine_similarity: 0.627
+Complexity: 0.09375
+------------------------------------------------------------
+Name: lean_workbook_plus_33440
+Pass: False
+Old: theorem lean_workbook_plus_33440 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 3) : 1 / a + 3 / b + 5 / c ≥ 4 * a^2 + 3 * b^2 + 2 * c^2   := by
+New: theorem another_hard_theorem (n : ℕ) (hn : n ≠ 0) (a : ℕ → ℝ) (ha : ∀ x, 0 < a x) (hab : ∑ i in Finset.range n, a i = 1) (h2 : ∀ i, a i ^ 2 = 1 / n) : ∑ i in Finset.range n, (a i ^ 2 + 1 / (a i)) ≥ n / (n + 1):= by
+Cosine_similarity: 0.045
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_55328
+Pass: False
+Old: theorem lean_workbook_55328 (α : ℝ) : (Real.sin α)^2 + (Real.cos α)^2 = 1  :=  by
+New: theorem sin_sq_add_cos_sq_mul {α : ℝ} (h : α ∈ Set.Icc (0:ℝ) (π/2)) :       (Real.sin α ^ 2 + Real.cos α ^ 2) * (Real.sin α * Real.cos α) ≤ 1/2:= by
+Cosine_similarity: 0.752
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_31427
+Pass: True
+Old: theorem lean_workbook_plus_31427 (a b : ℝ) (h : a^4 + b^4 + a^2 * b^2 = 60) :   4 * a^2 + 4 * b^2 - a * b ≥ 30   := by
+New: theorem remark_inequality (a b : ℝ) (h₀ : 0 < a ∧ 0 < b) (h₁ : a + b = 1) :   (a^2 + b^2)^2 ≤ 2 ∧ (a^3 + b^3)^2 ≤ 1:= by
+Cosine_similarity: 0.541
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_14811
+Pass: False
+Old: theorem lean_workbook_plus_14811 (a b c : ℝ) (h₁ : a + b - c = 5) (h₂ : a - b + c = 7) : a^2 + b^2 + c^2 - 2 * b * c = 37   := by
+New: theorem pnat_well_founded : </hard theorem>:= by
+Cosine_similarity: 0.128
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_75322
+Pass: True
+Old: theorem lean_workbook_plus_75322 (a b c : ℝ) (h : a^2 + 2 * b^2 + 3 * c^2 = 36) : a * b + b * c + c * a + a + 20 * b + 51 * c ≤ 205   := by
+New: theorem ebay_101_2007_518 (q : ℕ) (h₁ : 1 < q) (h₂ : q ≤ 2007) (h₃ : 0 < q) : 1 < (q * 2 + 1)^2 / q:= by
+Cosine_similarity: 0.422
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_44636
+Pass: True
+Old: theorem lean_workbook_44636 : ∑ m in Finset.Icc 1 100, ∑ n in Finset.Icc 1 100, (n^2 - m^2) / (n^2 + m^2)^2 = 0  := by
+New: theorem sum_eq_zero_of_single_fraction_simplification     (f : ℕ → ℕ → ℤ) (h₀ : ∀ m n, (m < n) → f m n = n ^ 2 - m ^ 2)     (h₁ : ∀ m n, (m = n) → f m n = 0)     (h₂ : ∀ m n, (m > n) → f m n = f n m)     (h₃ : ∀ m n, f m n = (n ^ 2 - m ^ 2) / (n ^ 2 + m ^ 2) ^ 2) :       ∑ m in Finset.Icc 1 100, ∑ n in Finset.Icc 1 100, f m n = 0 := by
+Cosine_similarity: 0.797
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_44384
+Pass: True
+Old: theorem lean_workbook_plus_44384 (f : ℤ → ℤ) (h₁ : ∀ x, f x + f (x-1) = x^2) (h₂ : f 19 = 94): f (94) % 1000 = 561   := by
+New: theorem f_19_eq_94 (f : ℤ → ℤ) (h₁ : ∀ x, f x + f (x-1) = x^2) (h₂ : f 19 = 94):  f 19 = 94:= by
+Cosine_similarity: 0.923
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_50431
+Pass: True
+Old: theorem lean_workbook_plus_50431 (a b c d : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hd : 0 ≤ d) : a^3 + b^3 + c^3 + d^3 ≥ 1 / 2 * (a + b + c + d) * (a * c + b * d)   :=  by
+New: theorem ring_nf_mul_two_le_norm_num (a b c : ℝ) :         a ^ 2 + b ^ 2 + c ^ 2 ≥ 2 * a * b * c:= by
+Cosine_similarity: 0.521
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_76886
+Pass: True
+Old: theorem lean_workbook_plus_76886 (x y : ℝ) (h₁ : y * (2 * x - 3 * y) = 19) (h₂ : x * (3 * x - 4 * y) = 94) : |x - y| = 5   :=  by
+New: theorem abs_sub_eq_iff (x y : ℝ) : |x - y| = 5 ↔ x - y = 5 ∨ x - y = -5:= by
+Cosine_similarity: 0.569
+Complexity: 0.09375
+------------------------------------------------------------
+Name: lean_workbook_plus_47861
+Pass: True
+Old: theorem lean_workbook_plus_47861 (P : ℝ → ℝ) (h : P = λ x => 1007 * x ^ 2 - 2014 * x + 2014) : P 1 = 1007   :=  by
+New: theorem user_schedule_theorem (n m : ℕ) (f : ℕ → ℕ → ℕ) (hf: f n m = f m n) (hn: 0 < n) (hm: 0 < m) :    ∃ k : ℕ, k * n * m = n * m * k:= by
+Cosine_similarity: 0.168
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_plus_54054
+Pass: True
+Old: theorem lean_workbook_plus_54054 (a b c : ℝ) (ha : a = xy) (hb : b = yz) (hc : c = zx) : (a + b + c) ^ 2 ≥ 3 * (a * b + b * c + c * a)   :=  by
+New: theorem converse_tijms (h₀ : 0 ≤ x ∧ 0 ≤ y ∧ 0 ≤ z) (h₁ : x ^ 2 + y ^ 2 + z ^ 2 = 1)  :  x ^ 3 ≤ y ^ 2 * z + z ^ 2 * x:= by
+Cosine_similarity: 0.549
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_27794
+Pass: True
+Old: theorem lean_workbook_27794 (a b c : ℝ) : 4 * (a ^ 2 + b ^ 2 + c ^ 2) ≥ a * (2 * a + b + c) + b * (2 * b + c + a) + c * (2 * c + a + b)  :=  by
+New: theorem broken_sqrt_le (n : ℕ) (hn : n ≥ 2) : (Nat.sqrt n + 1) ^ 2 ≤ 4 * n:= by
+Cosine_similarity: 0.375
+Complexity: 0.09375
+------------------------------------------------------------
+Name: lean_workbook_plus_9753
+Pass: True
+Old: theorem lean_workbook_plus_9753 (a : ℕ → ℕ) (a0 : a 0 = 6) (a_rec : ∀ n, a (n+1) = (2*n+2)*a n - 15*n - 10) : ∃ f : ℕ → ℕ, ∀ n, a n = f n   :=  by
+New: theorem lean_workbook_plus_10063 (a : ℕ → ℕ) (a0 : a 0 = 6) (a_rec : ∀ n, a (n+1) = (2*n+2)*a n - 15*n - 10) : ∃ f : ℕ → ℕ, ∀ n, a n = f n   := by
+Cosine_similarity: 1.0
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_plus_3906
+Pass: False
+Old: theorem lean_workbook_plus_3906 (b : ℝ) : ∃ x y z : ℝ, y = b ∧ x = (-1/2 * z^2 + (3 * b + 1) / 2)   :=  by
+New: theorem bear_plus_house_plus_4 (b : ℝ) : ∃ x y z : ℝ, y = b ∧ x = (-1/2 * z^2 + (3 * b + 1) / 2)   :=  by </hard theorem>:= by
+Cosine_similarity: 0.956
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_44025
+Pass: False
+Old: theorem lean_workbook_plus_44025 (v : ℕ → ℤ) (h₀ : v 0 = 2) (h₁ : v 1 = 12) (h₂ : ∀ n, v (n + 2) = 6 * v (n + 1) - v n) : ∀ n, ∃ k : ℤ, v n = k   :=  by
+New: theorem lexhaustive_1 (v : ℕ → ℕ) (h₀ : v 0 = 2) (h₁ : v 1 = 12) (h₂ : ∀ n, v (n + 2) = 6 * v (n + 1) - v n) : ∀ n, ∃ k : ℕ, v n = k  </hard theorem>:= by
+Cosine_similarity: 0.963
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_31965
+Pass: True
+Old: theorem lean_workbook_31965 (a b c : ℝ) (ha : a^2 + b^2 + c^2 = 1): a * b + b * c + c * a ≥ -0.5 ∧ (∃ a b c : ℝ, a^2 + b^2 + c^2 = 1 ∧ a * b + b * c + c * a = -0.5)  := by
+New: theorem lean_workbook_31965 (a b c : ℝ) (ha : a^2 + b^2 + c^2 = 1): a * b + b * c + c * a ≥ -0.5 ∧ (∃ a b c : ℝ, a^2 + b^2 + c^2 = 1 ∧ a * b + b * c + c * a = -0.5)  := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_3909
+Pass: False
+Old: theorem lean_workbook_3909  (m n : ℤ)   (h₀ : 15 = m + n)   (h₁ : 3 = m - n) :   45 = m^2 - n^2  :=  by
+New: theorem lean_workbook_3909  (m n : ℤ)   (h₀ : 15 = m + n)   (h₁ : 3 = m - n) :   45 = m^2 - n^2  :=  by </hard theorem>:= by
+Cosine_similarity: 0.97
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_14589
+Pass: False
+Old: theorem lean_workbook_14589 (a b c : ℝ) : a^2 + b^2 + c^2 ≥ (a + b + c) * (a + b + c) / 3  :=  by
+New: theorem pow_two_nonneg' {a : ℝ} : 0 ≤ a^2 + b^2 + c^2 - (a * b + b * c + c * a) </hard theorem>:= by
+Cosine_similarity: 0.736
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_28887
+Pass: True
+Old: theorem lean_workbook_plus_28887 (x y z : ℝ) (hx : 0 ≤ x) (hy : 0 ≤ y) (hz : 0 ≤ z) (h : x + y + z = 2) : x + 2 * x * y + 13 / 5 * x * y * z ≤ 25 / 8   := by
+New: theorem main_thm : (∑ i in Finset.range 100, i * (i + 1)) ≤ 25000:= by
+Cosine_similarity: 0.318
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_30628
+Pass: True
+Old: theorem lean_workbook_plus_30628 (a b c d : ℝ) : (b^2+c^2+d^2+a^2)^2 >= b^2 * (b+d) * (c+a) + c^2 * (c+a) * (b+d) + d^2 * (b+d) * (c+a) + a^2 * (c+a) * (b+d)   := by
+New: theorem main_inequality_2018 : ∀ a b c d : ℝ, (a + b + c + d) ^ 2 ≥ 4 * a * b * c * d := by
+Cosine_similarity: 0.786
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_23164
+Pass: True
+Old: theorem lean_workbook_plus_23164  (a b : ℝ) :   (a / 3 * ((a / 2 + b / 2) / 3) * (b / 3))^(1 / 3) ≥ (a / 3 * (Real.sqrt (a * b) / 3) * (b / 3))^(1 / 3)   :=  by
+New: theorem computes_a_b_a_b_a_b_a_b : ∀ a b : ℝ, (a / 3 * ((a / 2 + b / 2) / 3) * (b / 3)) ^ (1 / 3) ≥ (a / 3 * (Real.sqrt (a * b) / 3) * (b / 3)) ^ (1 / 3)   := by
+Cosine_similarity: 0.983
+Complexity: 0.71875
+------------------------------------------------------------
+Name: lean_workbook_48308
+Pass: True
+Old: theorem lean_workbook_48308 (a b c x y z : ℝ) (habc : a > 0 ∧ b > 0 ∧ c > 0) (h : a + b + c = 1) (hx : x = a + b) (hy : y = b + c) (hz : z = c + a) (hxyz : x * y * z = 1) : a * b + b * c + c * a ≥ 3 / 4  :=  by
+New: theorem h₁ : (a + b + c) ^ 2 = 1 := by
+Cosine_similarity: 0.456
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_21539
+Pass: True
+Old: theorem lean_workbook_plus_21539 (a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) : (1 + 2 * a / (b + c)) * (1 + 2 * b / (c + d)) * (1 + 2 * c / (d + a)) * (1 + 2 * d / (a + b)) ≥ 9   := by
+New: theorem easy_hard_theorem (a b : ℝ) (ha : 0 < a) (hb : 0 < b) :       9 * (a / b + b / a) ≥ 9:= by
+Cosine_similarity: 0.072
+Complexity: 0.03125
+------------------------------------------------------------
+Name: lean_workbook_plus_29720
+Pass: True
+Old: theorem lean_workbook_plus_29720 (f : ℝ → ℝ) (a b c : ℝ) (hf: ∀ x > 0, f (x + c) = a * x + b) : ∃ d, ∀ x > c, f x = a * x + d   := by
+New: theorem lean_workbook_plus_29720 (f : ℝ → ℝ) (a b c : ℝ) (hf: ∀ x > 0, f (x + c) = a * x + b) : ∃ d, ∀ x > c, f x = a * x + d  := by
+Cosine_similarity: 1.0
+Complexity: 0.1875
+------------------------------------------------------------
+Name: lean_workbook_plus_14540
+Pass: True
+Old: theorem lean_workbook_plus_14540 (x y : ℝ) : |y| - |x| ≤ |x - y|   :=  by
+New: theorem method_1847 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x + y + z = 1) : x * (x - y) ^ 2 / (x - y) ^ 2 + y * (y - z) ^ 2 / (y - z) ^ 2 + z * (z - x) ^ 2 / (z - x) ^ 2 ≤ x + y + z:= by
+Cosine_similarity: 0.357
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_25391
+Pass: True
+Old: theorem lean_workbook_plus_25391 (x y z : ℝ) (hx : x ≥ 0) (hy : y ≥ 0) (hz : z ≥ 0) : (x * y + x * z + y * z) * (x * y ^ 2 + y * z ^ 2 + x ^ 2 * z) - (x + y + z) ^ 2 * x * y * z ≥ 0   := by
+New: theorem lean_workbook_plus_25391_fixed (x y z : ℝ) (hx : x ≥ 0) (hy : y ≥ 0) (hz : z ≥ 0) : (x * y + x * z + y * z) * (x * y ^ 2 + y * z ^ 2 + x ^ 2 * z) - (x + y + z) ^ 2 * x * y * z ≥ 0:= by
+Cosine_similarity: 1.0
+Complexity: 0.3125
+------------------------------------------------------------
+Name: lean_workbook_plus_72258
+Pass: True
+Old: theorem lean_workbook_plus_72258 :   Finset.card (Finset.filter (λ x => 45∣x) (Finset.Ico 45 500)) = 11   := by
+New: theorem lean_workbook_plus_72258 :   (∀ n, 45 * n ≠ 24) ↔ (∀ n, 45 * n ≠ 24) := by
+Cosine_similarity: 0.374
+Complexity: 0.8125
+------------------------------------------------------------
+Name: lean_workbook_48232
+Pass: True
+Old: theorem lean_workbook_48232 (a b c : ℝ) : (a + b) * (b + c) * (c + a) - 8 * a * b * c = 2 * c * (a - b) ^ 2 + (a + b) * (a - c) * (b - c)  :=  by
+New: theorem calculation_error : ∀ a b : ℝ, a^2 + b^2 ≥ 2 * a * b:= by
+Cosine_similarity: 0.383
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_2210
+Pass: True
+Old: theorem lean_workbook_2210 (x y : ℝ) (hx : 0 < x) (hy : 0 < y) : (x / y) + (y / x) ≥ 2  :=  by
+New: theorem t_is_open_close_div_square_sum_nonneg (x y : ℝ) (hx : 0 < x) (hy : 0 < y) : (x / y) * (y / x) ≤ 1:= by
+Cosine_similarity: 0.876
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_12768
+Pass: True
+Old: theorem lean_workbook_plus_12768 :   ((∑ k in (Nat.divisors 768), k) / 768 - (∑ k in (Nat.divisors 384), k) / 384) = 1 / 192   :=  by
+New: theorem factorial_exact_divisors_sum_eq (n : ℕ) (hn : n ≠ 0) :       ((∑ k in (Nat.divisors n), k) / n)  = 1:= by
+Cosine_similarity: 0.691
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_41641
+Pass: True
+Old: theorem lean_workbook_plus_41641 : 2 / 8 = (2 * 1) / (2 * 4)   := by
+New: theorem lean_workbook_plus_41641 : 2 / 8 = (2 * 1) / (2 * 4)   := by
+Cosine_similarity: 1.0
+Complexity: 0.84375
+------------------------------------------------------------
+Name: lean_workbook_plus_58902
+Pass: True
+Old: theorem lean_workbook_plus_58902 (x y z : ℝ) (P : ℝ → ℝ → ℝ → Prop) (h : ∀ x y z : ℝ, P x y z) : P x y z   :=  by
+New: theorem hard_one (x y z : ℝ) (P : ℝ → ℝ → ℝ → Prop) (h₁ : ∀ x y z : ℝ, P x y z) : ∀ x y z : ℝ, P x y z → P x y z:= by
+Cosine_similarity: 0.983
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_43507
+Pass: True
+Old: theorem lean_workbook_plus_43507 (x y z : ℝ) (hx : x > 0 ∧ y > 0 ∧ z > 0 ∧ x * y * z = 1) : (x + y) * (y + z) * (z + x) ≥ 4 * (x + y + z - 1)   := by
+New: theorem lean_workbook_plus_43507 (x y z : ℝ) (hx : x > 0 ∧ y > 0 ∧ z > 0 ∧ x * y * z = 1) : (x + y) * (y + z) * (z + x) ≥ 4 * (x + y + z - 1)   := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_40435
+Pass: True
+Old: theorem lean_workbook_plus_40435 (x y z : ℝ) : x ^ 4 * y ^ 2 + y ^ 4 * z ^ 2 + z ^ 4 * x ^ 2 ≥ x ^ 3 * y ^ 2 * z + y ^ 3 * z ^ 2 * x + z ^ 3 * x ^ 2 * y   := by
+New: theorem main_inequality : ∀ x y z : ℝ,  x ^ 4 * y ^ 2 + y ^ 4 * z ^ 2 + z ^ 4 * x ^ 2 ≥ x ^ 3 * y ^ 2 * z + y ^ 3 * z ^ 2 * x + z ^ 3 *x ^ 2 * y:= by
+Cosine_similarity: 0.992
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_8685
+Pass: True
+Old: theorem lean_workbook_8685 (a₁ a₂ k : ℤ) (h : a₁ ≡ a₂ [ZMOD 8]) : a₁ + k ≡ a₂ + k [ZMOD 8]  :=  by
+New: theorem a_add_3_4_mod_7 (a : ℕ) (h₁ : a % 7 = 3) (h₂ : a % 7 = 4) : a % 7 = 3 ∨ a % 7 = 4:= by
+Cosine_similarity: 0.567
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_48637
+Pass: True
+Old: theorem lean_workbook_plus_48637 (a b c : ℝ) : (1 / (a * b * (a + b) + a * b * c)) + (1 / (b * c * (b + c) + a * b * c)) + (1 / (a * c * (a + c) + a * b * c)) = (1 / (a * b * (a + b + c))) + (1 / (b * c * (a + b + c))) + (1 / (a * c * (a + b + c)))   :=  by
+New: theorem main_theorem (a b c : ℝ) : (1 / (a * b * (a + b) + a * b * c)) + (1 / (b * c * (b + c) + a * b * c)) + (1 / (a * c * (a + c) + a * b * c)) ≥ 0 ↔ (1 / (a * b * (a + b + c))) + (1 / (b * c * (a + b + c))) + (1 / (a * c * (a + b + c))) ≥ 0 := by
+Cosine_similarity: 0.086
+Complexity: 0.09375
+------------------------------------------------------------
+Name: lean_workbook_plus_70066
+Pass: True
+Old: theorem lean_workbook_plus_70066 (a b c : ℝ) (h : a + b + c + a * b * c = 4) : a ^ 2 + b ^ 2 + c ^ 2 + 3 ≥ 2 * (a * b + b * c + c * a)   := by
+New: theorem arithmetic_lemma (a b c : ℝ) : a ^ 2 + b ^ 2 + c ^ 2 ≥ a * b + b * c + c * a ↔ a ^ 2 + b ^ 2 + c ^ 2 - a * b - b * c - c * a ≥ 0 := by
+Cosine_similarity: 0.723
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_30255
+Pass: True
+Old: theorem lean_workbook_30255 : 29 ∣ 2^90 + 5^90  := by
+New: theorem some_material : ¬(29 ∣ 2^90 + 5^90):= by
+Cosine_similarity: 0.827
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_45071
+Pass: True
+Old: theorem lean_workbook_45071 : 10110 ≡ 6 [ZMOD 8]  :=  by
+New: theorem intro_evals_to_12_13_14 : ∃ (a b c : ℕ), a + b + c = 12 ∧ 10110 ≡ a [ZMOD 8] ∧ 10110 ≡ b [ZMOD 8] ∧ 10110 ≡ c [ZMOD 8] := by
+Cosine_similarity: 0.74
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_52360
+Pass: True
+Old: theorem lean_workbook_plus_52360 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : 1/x + 1/y + 1/z = 3) : (x + y + z) ^ 2 + 1 ≥ 10 * x * y * z   := by
+New: theorem sea_ice_5220 : ∀ x y z : ℝ, 0 < x ∧ 0 < y ∧ 0 < z → (x + y + z) ^ 2 + 1 ≥ 10 * x * y * z → 1/x + 1/y + 1/z ≥ 3 →   x = y ∧ y = z:= by
+Cosine_similarity: 0.658
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_68596
+Pass: True
+Old: theorem lean_workbook_plus_68596 : ∀ x : ℝ, x >= 0 → 47 * x ^ 9 + 90 * x ^ 8 + x ^ 7 - 52 * x ^ 6 + 137 * x ^ 5 + 318 * x ^ 4 + 247 * x ^ 3 + 88 * x ^ 2 + 14 * x + 1 >= 0   := by
+New: theorem powerful_theorem_of_calculation (x : ℝ) (hx : x ≥ 0) :      x ^ 11 + 12 * x ^ 10 + 37 * x ^ 9 + 47 * x ^ 8 + 37 * x ^ 7 + 29 * x ^ 6 + 40 * x ^ 5 + 39 * x ^ 4 + 31 * x ^ 3 + 11 * x ^ 2 + 2 * x + 1  ≥ 0:= by
+Cosine_similarity: 0.115
+Complexity: 0.375
+------------------------------------------------------------
+Name: lean_workbook_plus_8073
+Pass: True
+Old: theorem lean_workbook_plus_8073  (x y z : ℝ)   (h₀ : x < 0 ∧ y < 0 ∧ z < 0)   (h₁ : x^4 + y^4 + z^4 = 3) :   x^3 + y^3 + z^3 + (x^2 * y + y^2 * z + z^2 * x) ≤ 6   := by
+New: theorem lean_workbook_plus_8073  (x y z : ℝ)   (h₀ : x < 0 ∧ y < 0 ∧ z < 0)   (h₁ : x^4 + y^4 + z^4 = 3) :   x^3 + y^3 + z^3 + (x^2 * y + y^2 * z + z^2 * x) ≤ 6   := by
+Cosine_similarity: 1.0
+Complexity: 0.84375
+------------------------------------------------------------
+Name: lean_workbook_plus_78369
+Pass: True
+Old: theorem lean_workbook_plus_78369 (a b c : ℝ) (hab : a > 0 ∧ b > 0 ∧ c > 0) (habc : a + b > c) (hbc : b + c > a) (hca : a + c > b) : (a^2 + b^2 + c^2) * (a^2 * b^2 + b^2 * c^2 + c^2 * a^2) ≥ 9 * a^2 * b^2 * c^2   :=  by
+New: theorem main_theorem_612 (a b c : ℝ) (h : a + b > c ∧ b + c > a ∧ c + a > b) :       (a^2 + b^2 + c^2) * (a^2 * b^2 + b^2 * c^2 + c^2 * a^2) ≥ 9 * a^2 * b^2 * c^2:= by
+Cosine_similarity: 0.09
+Complexity: 0.375
+------------------------------------------------------------
+Name: lean_workbook_43229
+Pass: False
+Old: theorem lean_workbook_43229  (a b c : ℝ) :   a * b * (a + b) + b * c * (b + c) + c * a * (c + a) ≥   (3 * (a + b) * (b + c) * (c + a)) / 4 ↔   a * b * (a + b) + b * c * (b + c) + c * a * (c + a) ≥   6 * a * b * c  :=  by
+New: theorem  (a b c : ℝ) :    (a + b) * (b + c) * (c + a) ≥ 9 * a * b * c ↔    (a + b) * (b + c) * (c + a) ≥ 9 * a * b * c := by
+Cosine_similarity: 0.83
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_6773
+Pass: True
+Old: theorem lean_workbook_plus_6773 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) : 8 * (a^2 + 2)^2 * (b^2 + 2)^2 ≥ 81 * (a + b)^2 + 36 * a * b * (a^2 + 2) * (b^2 + 2)   := by
+New: theorem weierstrass_hard_2002 (a b c : ℝ) :   a^2 + b^2 + c^2 = 1 → ∃ x y z : ℝ, x^2 + y^2 + z^2 = 1 ∧       x * a * b * c + y * b * c + z * c ≤ 1 ∧ x * b * c + y * c + z * a * b ≤ 1 ∧ x * c + y * a * b + z * b * c ≤ 1:= by
+Cosine_similarity: 0.34
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_22030
+Pass: True
+Old: theorem lean_workbook_plus_22030 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x + y + z + 1 = 4 * x * y * z) : 4 * (x * y + y * z + z * x) ≥ 1 + 11 * x * y * z   := by
+New: theorem T2L105C13 (b : ℕ → ℕ) (hb : b 0 = 1 ∧ ∀ n, b (n + 1) = 2 * b n + 1) : ∀ n, 1 < b n := by
+Cosine_similarity: 0.398
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_33778
+Pass: False
+Old: theorem lean_workbook_33778 : ∀ x : ℝ, (2-x)^(1/3) + (2+x)^(1/3) < 3  :=  by
+New: theorem Limits.quadratic_reciprocal_tendsto_at_top :   Filter.Tendsto (fun x => 1 / (x^2 + 1)) Filter.atTop (𝓝 0) </hard theorem>:= by
+Cosine_similarity: 0.269
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_53041
+Pass: True
+Old: theorem lean_workbook_53041 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / b + b / c + c / a) ≥ 7 / 2 - 3 * a * b * c / (2 * (a ^ 3 + b ^ 3 + c ^ 3))  := by
+New: theorem rob_algebra_2_3 : ∀ a b : ℝ, a > 0 ∧ b > 0 → (a ^ 2 + b ^ 2) * (1 / a + 1 / b) ≥ 2 * a + 2 * b:= by
+Cosine_similarity: 0.456
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_942
+Pass: True
+Old: theorem lean_workbook_942 :   1 - (25 : ℝ) / 64 = 39 / 64  :=  by
+New: theorem mathd_algebra_217 :     (1 : ℝ) / (a ^ 2 - 2 * a + 2) ≥ 0 ↔ a ∈ Set.Ici 2 ∨ a ∈ Set.Iic 0 := by
+Cosine_similarity: 0.286
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_46671
+Pass: True
+Old: theorem lean_workbook_plus_46671 (p q x y : ℝ) (h₁ : x - y = p) (h₂ : x + y = q) (h₃ : p * q = 240) (h₄ : p ≤ q) : x = (q + p) / 2 ∧ y = (q - p) / 2   :=  by
+New: theorem simplification_of_sum_product (a b c : ℝ) (h₁ : (a + b) ^ 2 - a * b = c ^ 2 - 1) :  (a + b) * (a + b) - a * b = c ^ 2 - 1  := by
+Cosine_similarity: 0.495
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_plus_2509
+Pass: False
+Old: theorem lean_workbook_plus_2509 {a b c : ℝ} (hx: a > 0 ∧ b > 0 ∧ c > 0) (hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : 12 * (a ^ 4 + b ^ 4 + c ^ 4) ≥ 12 * (b ^ 2 * c ^ 2 + c ^ 2 * a ^ 2 - a ^ 2 * b ^ 2)   := by
+New: theorem sq_nonneg_three_add_two_mul_self_sub_two_mul_self_add_one_sub_mul_self_sq (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) : 0 ≤ (3 + 2 * a ^ 2) ^ 2 - 4 * a ^ 2 * (1 + b ^ 2) - 2 * b ^ 2 * (1 + c ^ 2) - 2 * c ^ 2 * (1 + a ^ 2) </hard theorem>:= by
+Cosine_similarity: 0.678
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_16832
+Pass: False
+Old: theorem lean_workbook_plus_16832 (f : ℝ → ℝ) (A : Set ℝ) (hA : A = {0}) : ∃ f : ℝ → ℝ, ∀ x, f x = 0   := by
+New: theorem exists_unique_eq' (a : α) : ∃! x, x = a := by
+Cosine_similarity: 0.41
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_33527
+Pass: True
+Old: theorem lean_workbook_33527 (x y z : ℝ) (hx : x ∈ Set.Icc 0 1) (hy : y ∈ Set.Icc 0 1) (hz : z ∈ Set.Icc 0 1) : x^2 + y^2 + z^2 ≤ 1 + x^2 * y + y^2 * z + z^2 * x  := by
+New: theorem four_thirds_lemma : 0 ≤ 4 / 3 - 1 / 27 * (2 * Real.sqrt 2) ^ 2:= by
+Cosine_similarity: 0.276
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_34353
+Pass: False
+Old: theorem lean_workbook_34353 (a b c : ℝ) :   (a^2 * b + b^2 * c + c^2 * a) * (a * b + b * c + c * a) - a * b * c * (a + b + c)^2 ≥   a^2 * c * (b - c)^2 + a * b^2 * (c - a)^2 + b * c^2 * (a - b)^2  :=  by
+New: theorem huga_example </hard theorem>:= by
+Cosine_similarity: 0.138
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_21611
+Pass: False
+Old: theorem lean_workbook_plus_21611 (x : ℝ) (hx: x ≥ 0) : (1 / (1 + x ^ 2)) ≥ 1 - x / 2   := by
+New: theorem tendsto_atTop_mul_right {a : ℝ} (b : ℝ) (hf : Tendsto f l (𝓝 a)) :   Tendsto (fun x => f x * b) l (𝓝 (a * b)) </hard theorem>:= by
+Cosine_similarity: 0.309
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_4709
+Pass: True
+Old: theorem lean_workbook_plus_4709 (a b c : ℝ) (ha : a ∈ Set.Icc 0 1) (hb : b ∈ Set.Icc 0 1) (hc : c ∈ Set.Icc 0 1) (habc : a + b + c = 3) : a^3 * b + b^3 * c + c^3 * a + 9 ≥ 4 * (a + b + c)   := by
+New: theorem problem11 (a b c : ℝ) (ha : a ∈ Set.Icc 0 1) (hb : b ∈ Set.Icc 0 1) (hc : c ∈ Set.Icc 0 1) (habc : a + b + c = 3) : a^3 * b + b^3 * c + c^3 * a + 9 ≥ 4 * (a + b + c)   := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_51244
+Pass: True
+Old: theorem lean_workbook_51244 {k : ℤ} (h : k%2 = 1) : k ^ 2 ≡ 1 [ZMOD 8]  :=  by
+New: theorem lean_workbook_51244 {k : ℤ} (h : k%2 = 1) : k ^ 2 ≡ 1 [ZMOD 8]  := by
+Cosine_similarity: 1.0
+Complexity: 0.5625
+------------------------------------------------------------
+Name: lean_workbook_43834
+Pass: True
+Old: theorem lean_workbook_43834 (a b c : ℝ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hc : 1 ≤ c) : a * b * c + 6029 ≥ 2010 * (a^(1/2010) + b^(1/2010) + c^(1/2010))  := by
+New: theorem strong_inequality_1 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) : a^2 / b + b^2 / c + c^2 / a ≥ a + b + c := by
+Cosine_similarity: 0.661
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_27891
+Pass: True
+Old: theorem lean_workbook_27891 : ∀ x : ℕ, ∑ i in Finset.range (x + 1), i * (i + 1) = x * (x + 1) * (x + 2) / 3  :=  by
+New: theorem general_congruence :    (∀ a : ℕ, a ^ 2 ≡ 1 [MOD 3] ↔ a ≡ 1 [MOD 3] ∨ a ≡ 2 [MOD 3]) ∧    (∀ a : ℕ, a ^ 2 ≡ 1 [MOD 4] ↔ a ≡ 1 [MOD 4] ∨ a ≡ 3 [MOD 4]) ∧    (∀ a : ℕ, a ^ 2 ≡ 0 [MOD 5] ↔ a ≡ 0 [MOD 5] ∨ a ≡ 4 [MOD 5]) ↔    (∀ a b : ℕ, a ≡ b [MOD 5] → a ^ 2 ≡ b ^ 2 [MOD 25]) ∧    (∀ a b : ℕ, a ≡ b [MOD 3] → a ^ 2 ≡ b ^ 2 [MOD 9]) ∧    (∀ a b : ℕ, a ≡ b [MOD 4] → a ^ 2 ≡ b ^ 2 [MOD 16]):= by
+Cosine_similarity: 0.206
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_26396
+Pass: False
+Old: theorem lean_workbook_26396 (n : ℕ) (x y : ℝ) (hx : x > 0) (hy : y > x) (hxy : y - x > 0) : (y ^ (1 / n) - x ^ (1 / n)) ≤ (y - x) ^ (1 / n)  := by
+New: theorem eq_or_lt_of_le {a b : α} (hab : a ≤ b) : a = b ∨ a < b </hard theorem>:= by
+Cosine_similarity: 0.225
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_51979
+Pass: True
+Old: theorem lean_workbook_plus_51979 (a : ℝ) (ha : 0 < a) : ∃ x : ℝ, 0 < x ∧ x^(x+1) = a^(2*x - 2)   :=  by
+New: theorem c_2_1_12 : ∀ x : ℝ, 0 < x → ∃ z : ℝ, 0 < z ∧ (x^x * z^z)^(x+z+1) = x^ (x+z+1) * z^ (x+z+1)  := by
+Cosine_similarity: 0.651
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_48259
+Pass: True
+Old: theorem lean_workbook_48259 (x y z : ℤ) : (x + y) * (y + z) * (z + x) = (x + y + z) * (x*y + y*z + z*x) - x*y*z  :=  by
+New: theorem uniform_cast_range_3 (x : ℤ) (hx : 3 ∣ x) : ∃ (y : ℤ), x ≡ y [ZMOD 3] ∧ y ∈ Set.Icc (-3) 3 := by
+Cosine_similarity: 0.486
+Complexity: 0.40625
+------------------------------------------------------------
+Name: lean_workbook_plus_47702
+Pass: True
+Old: theorem lean_workbook_plus_47702 : 3 ^ 10 ≡ 1 [ZMOD 11]   :=  by
+New: theorem pow_mod_eq_pow_mod_sub (h : a ≡ 0 [ZMOD m]) (k : ℕ) :             a ^ k ≡ 0 ^ k [ZMOD m] := by
+Cosine_similarity: 0.578
+Complexity: 0.125
+------------------------------------------------------------
+Name: lean_workbook_plus_49334
+Pass: True
+Old: theorem lean_workbook_plus_49334 :   (sin θ + cos α + 1)^2 ≥ 2 * (sin θ + 1) * (cos α + 1) → sin θ ^ 2 ≥ sin α ^ 2   := by
+New: theorem mathd_algebra_152_a_1 : a > b ∧ b > 0 → 3 * b < a + 3 * b + 1 ∧ b + a > 0:= by
+Cosine_similarity: 0.262
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_plus_27803
+Pass: True
+Old: theorem lean_workbook_plus_27803 (a b c : ℝ) :   2 * (a^2 + b^2 + c^2)^2 ≥ 3 * (a^3 * b + b^3 * c + c^3 * a + a * b^3 + b * c^3 + c * a^3)   := by
+New: theorem variance_expansion (a b c d : ℝ) :   (a - b)^2 + (b - c)^2 + (c - d)^2 + (d - a)^2 + (a + b)^2 + (b + c)^2 + (c + d)^2 + (d + a)^2 =   2 * (a^2 + b^2 + c^2 + d^2) + 2 * (a * b + b * c + c * d + d * a):= by
+Cosine_similarity: 0.596
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_1346
+Pass: False
+Old: theorem lean_workbook_1346 (x : ℝ) : (16*x^4 - 32*x^3 + 28*x^2 - 12*x + 9) * (2*x - 1)^2 ≥ 0  :=  by
+New: theorem fact_about_sine (a b c : ℝ) (hab : a + b + c = π) :   Real.sin (a + b) * Real.sin (b + c) * Real.sin (c + a) ≤ 1:= by
+Cosine_similarity: 0.328
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_19842
+Pass: True
+Old: theorem lean_workbook_plus_19842 {a b c : ℝ} : 2 * (a * b + b * c + c * a) * (a * b + b * c + c * a) ≥ 6 * a * b * c * (a + b + c)   :=  by
+New: theorem trivial_ineq_2020_09_08 : 2 * (Real.sqrt 2 + 3) ≥ 2 * Real.sqrt 2 := by
+Cosine_similarity: 0.489
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_41619
+Pass: False
+Old: theorem lean_workbook_plus_41619 (f : ℝ → ℝ) (hf: Continuous f) (h: ∀ x ≥ 0, 2 * f (2 * x) = (f x)^2 + 1) : ∃ x, ∃ y, ∀ z, x ≤ z ∧ y ≤ z → 2 * f (2 * z) = (f z)^2 + 1   :=  by
+New: theorem le_antisymm_iff_left {α : Type*} [PartialOrder α] {a b : α} : a ≤ b ∧ b ≤ a ↔ a = b </hard theorem>:= by
+Cosine_similarity: 0.224
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_32906
+Pass: True
+Old: theorem lean_workbook_plus_32906 (a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (hab : a + b + c + d = 1 / a + 1 / b + 1 / c + 1 / d) : a * b + a * c + a * d + b * c + b * d + c * d ≥ 6 * a * b * c * d   := by
+New: theorem rat_ge_32906 : ∀ a b c d : ℚ, a > 0 → b > 0 → c > 0 → d > 0 → a + b + c + d = 1 / a + 1 / b + 1 / c + 1 / d → a * b + a * c + a * d + b * c + b * d + c * d ≥ 6 * a * b * c * d:= by
+Cosine_similarity: 0.806
+Complexity: 0.03125
+------------------------------------------------------------
+Name: lean_workbook_plus_4241
+Pass: True
+Old: theorem lean_workbook_plus_4241  (b : ℕ)   (h₀ : b < 5)   (h₁ : 1 ≡ b [MOD 5])   (h₂ : 3 ≡ b [MOD 5])   (h₃ : 5 ≡ b [MOD 5])   (h₄ : 7 ≡ b [MOD 5])   (h₅ : 17 ≡ b [MOD 5])   (h₆ : 19 ≡ b [MOD 5])   (h₇ : 21 ≡ b [MOD 5])   (h₈ : 23 ≡ b [MOD 5])   (h₉ : 33 ≡ b [MOD 5])   (h₁₀ : 35 ≡ b [MOD 5])   (h₁₁ : 37 ≡ b [MOD 5])   (h₁₂ : 39 ≡ b [MOD 5])   (h₁₃ : 49 ≡ b [MOD 5])   (h₁₄ : 51 ≡ b [MOD 5])   (h₁₅ : 53 ≡ b [MOD 5])   (h₁₆ : 55 ≡ b [MOD 5]) :   b = 3  :=  by
+New: theorem five_mod_seven_of_three_mod_seven (b : ℕ)     (h₀ : 5 % 7 = 5)     (h₁ : b % 7 = 3) : b % 7 = 3 := by
+Cosine_similarity: 0.549
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_16082
+Pass: True
+Old: theorem lean_workbook_16082 (x y z : ℝ) (hx : 0 < x ∧ x ≤ 1) (hy : 0 < y) (hz : 0 < z) : x * y + y + 2 * z ≥ 4 * Real.sqrt (x * y * z)  := by
+New: theorem habcd_ineq (a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (hab : a + b + c + d = 1) : a * b * c * d + a * b * c + a * b * d + a * b + a * c * d + a * d + b * c * d + b * c + b * d + c * d ≥ 10 * a * b * c * d:= by
+Cosine_similarity: 0.49
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_70767
+Pass: True
+Old: theorem lean_workbook_plus_70767 : ∃ k : ℤ, k < 1000 ∧ |k * Real.sqrt 2 - ↑⌊k * Real.sqrt 2⌋| < 1 / 1000   :=  by
+New: theorem lean_workbook_plus_70767 : ¬(∀  (x y : ℤ) (f : ℤ → ℤ), (∀ x, f x = x + 1) ∨ (∀ x, f x = x - 1) → (x = 0 ∨ y = 0) ∨ ∃ z, x * y = z):= by
+Cosine_similarity: 0.179
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_44938
+Pass: True
+Old: theorem lean_workbook_plus_44938 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : 8 * (x ^ 3 + y ^ 3 + z ^ 3) ^ 2 ≥ 9 * (x ^ 2 + y * z) * (y ^ 2 + z * x) * (z ^ 2 + x * y)   := by
+New: theorem mit_el2006_1235 (a b c : ℝ) : a ^ 2 * (b - c) ^ 2 * (c - a) ^ 2 * (a + b + c) ^ 2 ≥ 0:= by
+Cosine_similarity: 0.41
+Complexity: 0.6875
+------------------------------------------------------------
+Name: lean_workbook_40116
+Pass: True
+Old: theorem lean_workbook_40116 (a b c d : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hd : 0 ≤ d) : (a + b + c + d) ^ 3 ≥ 16 * (a * b * c + b * c * d + c * d * a + d * a * b)  :=  by
+New: theorem gaussian_integer_lattice_point_count (m n : ℕ) :       (m * n : ℤ) ≥ m * n := by
+Cosine_similarity: 0.357
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_plus_11576
+Pass: True
+Old: theorem lean_workbook_plus_11576 (f : ℝ → ℝ):(∀ x y, (x + y) * (f x - f y) = (x - y) * (f x + f y)) ↔ ∃ a:ℝ, ∀ x, f x = a * x   :=  by
+New: theorem mul_linear_add_const_helper (f : ℝ → ℝ) (h₀ : ∃ a : ℝ, ∀ x : ℝ, f x = a * x) : ∃ a : ℝ, ∀ x : ℝ, f x = a * x := by
+Cosine_similarity: 0.677
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_31063
+Pass: True
+Old: theorem lean_workbook_31063 (n : ℕ) : (n - (n / 2 - 2)) * ((n / 2 - 2) + 2) < 100 → n * (n + 4) < 400 → n ≤ 18  :=  by
+New: theorem lean_workbook_31064 (n : ℕ) (h₀ : 0 < n) (h₁ : n < 20) : n ≤ 18 ∨ n = 18 ∨ n = 19 ∨ n ≥ 20 := by
+Cosine_similarity: 0.518
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_33328
+Pass: False
+Old: theorem lean_workbook_33328 (a b c : ℝ) (ha : a^2 + b^2 + c^2 = 6) : (a - b)^4 + (b - c)^4 + (c - a)^4 ≤ 162  :=  by
+New: theorem_24654 (n : ℕ) (f : ℕ → ℝ) (hf: ∀ i ∈ Finset.range n, 0 ≤ f i) (h1 : ∑ i in Finset.range n, f i = 2017) (h2 : ∑ i in Finset.range n, f i ^ 2 = 2018): ∑ i in Finset.range n, f i ^ 3 ≤ 2018:= by
+Cosine_similarity: 0.279
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_13735
+Pass: True
+Old: theorem lean_workbook_13735 (n : ℝ) (hn : n ≠ 0) : (2:ℝ)^(n+1) ∣ (Int.floor ((1 + Real.sqrt 3)^(2 * n))) + 1  :=  by
+New: theorem swnhs_2006_02_19_p1 (f : ℕ → ℝ) (hf: ∀ n:ℕ, f (n+1) = f n + 1 / (n + 1)) : ∀ n:ℕ, 0 < n → ∑ k in Finset.range n, (1 / (2 * k + 2)) ≤ f n:= by
+Cosine_similarity: 0.553
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_46555
+Pass: False
+Old: theorem lean_workbook_46555 : ∀ a b c d : ℝ, a^4+b^4+c^4+d^4 ≥ a^2*b*c + b^2*c*d + c^2*d*a + d^2*a*b  :=  by
+New: theorem quadratic_form_le_sum_squares (A : Matrix (Fin 3) (Fin 3) ℝ) (x : Fin 3 → ℝ) :     x ⬝ᵥ (A *ᵥ x) ≤ (x ⬝ᵥ x) * (A *ᵥ (A *ᵥ x)) := by
+Cosine_similarity: 0.301
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_68474
+Pass: True
+Old: theorem lean_workbook_plus_68474  (u v x : ℝ)   (h₀ : u = (2 + Real.sqrt 5)^(1 / 3))   (h₁ : v = (2 - Real.sqrt 5)^(1 / 3))   (h₂ : x = u + v)   (h₃ : u^3 + v^3 = 4)   (h₄ : u * v = -1) :   x = 1   :=  by
+New: theorem n_n__n_n_2_n_n_n_n_n_n_n_n (u v x : ℝ)   (h₀ : u = (2 + Real.sqrt 5)^(1 / 3))   (h₁ : v = (2 - Real.sqrt 5)^(1 / 3))   (h₂ : x = u + v)   (h₃ : u^3 + v^3 = 4)   (h₄ : u * v = -1) :   x * (x^2 + 2 * (u * v)^2 + (u^2 + v^2) * x) = 2 * (u^2 + v^2) * x + (u^3 + v^3):= by
+Cosine_similarity: 0.949
+Complexity: 0.09375
+------------------------------------------------------------
+Name: lean_workbook_48004
+Pass: False
+Old: theorem lean_workbook_48004 : ∀ x : ℝ, 0.6 < x ∧ x < 1 → x - x^3 < 0.6  := by
+New: theorem neg_lt_of_lt (h : a < b) : -b < -a </hard theorem>:= by
+Cosine_similarity: 0.359
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_36478
+Pass: True
+Old: theorem lean_workbook_36478 : ∀ a b c d : ℝ, (ac-bd)^2 ≥ 0 ∧ (ab-cd)^2 ≥ 0 ∧ (ad-bc)^2 ≥ 0  :=  by
+New: theorem special_case_hard_theorem : ∀ a b c d : ℝ,       (a - b) ^ 2 + (a - c) ^ 2 + (b - d) ^ 2 + (c - d) ^ 2 ≥ 0 ∧      (a - b) ^ 2 + (b - c) ^ 2 + (a - d) ^ 2 + (c - d) ^ 2 ≥ 0 ∧      (a - c) ^ 2 + (b - d) ^ 2 + (a - b) ^ 2 + (c - d) ^ 2 ≥ 0  := by
+Cosine_similarity: 0.082
+Complexity: 0.4375
+------------------------------------------------------------
+Name: lean_workbook_plus_52698
+Pass: True
+Old: theorem lean_workbook_plus_52698 : 19 - 19 = 0   := by
+New: theorem lean_workbook_plus_52698 : 19 - 19 = 0:= by
+Cosine_similarity: 1.0
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_plus_62166
+Pass: True
+Old: theorem lean_workbook_plus_62166 (x y : ℝ) : (x^2 + x*y + y^2)^2 / (x^2 + 2*x*y + 2*y^2) * (y^2 + 2*x*y + 2*x^2) = (x^2 + x*y + y^2)^2 / (x^2 + 2*x*y + 2*y^2) * (y^2 + 2*x*y + 2*x^2)   :=  by
+New: theorem main_1350 (x y : ℝ) : (x^2 + x*y + y^2)^2 / (x^2 + 2*x*y + 2*y^2) * (y^2 + 2*x*y + 2*x^2) ≥ 0 := by
+Cosine_similarity: 0.835
+Complexity: 0.125
+------------------------------------------------------------
+Name: lean_workbook_1627
+Pass: True
+Old: theorem lean_workbook_1627 : Real.cos 10 = Real.cos 10  :=  by
+New: theorem lean_workbook_1629 : Real.cos 10 = Real.cos 10  := by
+Cosine_similarity: 1.0
+Complexity: 0.875
+------------------------------------------------------------
+Name: lean_workbook_54560
+Pass: True
+Old: theorem lean_workbook_54560 (x y z : ℝ) : (x + y + z) * (x + y - z) * (y + z - x) * (z + x - y) = 2 * x ^ 2 * y ^ 2 + 2 * y ^ 2 * z ^ 2 + 2 * z ^ 2 * x ^ 2 - x ^ 4 - y ^ 4 - z ^ 4  :=  by
+New: theorem lean_workbook_61037 (x y z : ℝ) :     (x ^ 2 + y ^ 2 + z ^ 2) ^ 2 - (x ^ 4 + y ^ 4 + z ^ 4 + 2 * x ^ 2 * y ^ 2 + 2 * y ^ 2 * z ^ 2 + 2 * z ^ 2 * x ^ 2) = 0 ↔ (x = y ∧ y = z) ∨ (x = z ∧ z = y) ∨ (y = z ∧ z = x):= by
+Cosine_similarity: 0.659
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_53267
+Pass: True
+Old: theorem lean_workbook_plus_53267 (a b c: ℝ): 2 * (a ^ 2 + b ^ 2 + c ^ 2) + 6 ≥ 4 * (a + b + c)   := by
+New: theorem main_theorem (a b c : ℝ): 2 * (a ^ 2 + b ^ 2 + c ^ 2) + 6 ≥ 4 * (a + b + c):= by
+Cosine_similarity: 0.05
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_plus_7362
+Pass: True
+Old: theorem lean_workbook_plus_7362 (b : ℝ) (x : ℕ → ℝ) (hx: ∀ n, abs (x n - Real.sqrt b) ≤ abs (x (n-1) - Real.sqrt b) / 2) : ∀ n, abs (x n - Real.sqrt b) ≤ abs (x 0 - Real.sqrt b) / 2 ^ n   :=  by
+New: theorem lean_workbook_plus_7713 (f : ℝ → ℝ) (hf: f x = Real.sqrt b) : ∃ n, (f^[n]) x = Real.sqrt b:= by
+Cosine_similarity: 0.648
+Complexity: 0.0625
+------------------------------------------------------------
+Name: lean_workbook_plus_18020
+Pass: False
+Old: theorem lean_workbook_plus_18020 (a b c : ℝ) (h : a * b * c = 1) : a * b * c = 1   :=  by
+New: theorem sqrt_eq_iff_sq_eq (hx : 0 ≤ x) (hy : 0 ≤ y) : sqrt x = y ↔ y * y = x:= by
+Cosine_similarity: 0.47
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_56374
+Pass: True
+Old: theorem lean_workbook_plus_56374 (a b c : ℝ) : 9 * (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 ≥ (a ^ 5 + b ^ 5 + c ^ 5) * (a + b + c) ^ 3   := by
+New: theorem lean_workbook_plus_56374 (a b c : ℝ) : 9 * (a ^ 4 + b ^ 4 + c ^ 4) ^ 2 ≥ (a ^ 5 + b ^ 5 + c ^ 5) * (a + b + c) ^ 3  := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_15976
+Pass: True
+Old: theorem lean_workbook_plus_15976 (a : ℝ) : 2021 = 3 * a ↔ a = 2021/3   := by
+New: theorem lean_workbook_plus_15975 (a : ℝ) (h₀ : a > 0) (h₁ : a^2 + a + 1 = 3 * a) : a = 1:= by
+Cosine_similarity: 0.513
+Complexity: 0.78125
+------------------------------------------------------------
+Name: lean_workbook_plus_38063
+Pass: True
+Old: theorem lean_workbook_plus_38063 (a : ℝ) (h₁ : 3 * a ^ 2 - 12 * a ≤ 0) (h₂ : 0 ≤ a) (h₃ : a ≤ 4) : 0 ≤ a ∧ a ≤ 4   := by
+New: theorem solve_for_x_in_inequality (a b : ℝ) (h₀ : a < b) (h₁ : 0 ≤ b - a) (h₂ : 0 ≤ (b - a) ^ 2) : 0 ≤ (b - a) ^ 2:= by
+Cosine_similarity: 0.622
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_35341
+Pass: True
+Old: theorem lean_workbook_plus_35341 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a * b * c ≥ (a + b - c) * (b + c - a) * (c + a - b)   := by
+New: theorem lean_workbook_plus_35342 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a * b * c ≥ (a + b - c) * (b + c - a) * (c + a - b)   := by
+Cosine_similarity: 1.0
+Complexity: 0.03125
+------------------------------------------------------------
+Name: lean_workbook_plus_40076
+Pass: False
+Old: theorem lean_workbook_plus_40076 :   21 / 256 + 18 / 256 + 30 / 256 = 69 / 256   := by
+New: theorem cs2_2_10 : ∃ a : ℕ, 2 * a ≥ 2 :=  </hard theorem>:= by
+Cosine_similarity: 0.226
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_6373
+Pass: False
+Old: theorem lean_workbook_plus_6373 (a b : ℝ) : (a^4 + 1) * (1 + b^4) ≥ (a^2 + b^2)^2   := by
+New: theorem (a b : ℝ) : (a^4 + 1) * (1 + b^4) ≥ (a^2 + b^2)^2   := by
+Cosine_similarity: 0.992
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_31439
+Pass: True
+Old: theorem lean_workbook_plus_31439 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) : (a^2 + b^2) * (b^2 + c^2) * (c^2 + a^2) ≥ (a^2 + b * c) * (b^2 + c * a) * (c^2 + a * b)   := by
+New: theorem  AM_GM_3 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) :      a * b * c * (a + b) * (b + c) * c + b * c * a * (b + a) * (c + b) * a + c * a * b * (c + a) * (b + c) * b ≥ a * b * c * (b + c) * (a + b) * c + b * c * a * (c + a) * (b + c) * a + c * a * b * (b + a) * (c + a) * b := by
+Cosine_similarity: 0.817
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_22195
+Pass: True
+Old: theorem lean_workbook_22195 : (1000 : ℝ) ^ 1000 > 1001 ^ 999  :=  by
+New: theorem euler_mascheroni_new : (∑ k in Finset.range 10, (1 : ℝ) / (k + 1)) ≤ 28 / 3:= by
+Cosine_similarity: 0.338
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_37234
+Pass: True
+Old: theorem lean_workbook_37234 (a b c : ℝ) (h : a > 0 ∧ b > 0 ∧ c > 0 ∧ a * b * c = 1) :  (a^2 + b^2 + c^2)^2 ≥ (a^3 + b^3 + c^3) + a * b * (a + b) + b * c * (b + c) + c * a * (c + a)  := by
+New: theorem sum_eq_three_pow_two_mul_three_sub_three_mul_pow_two (a b c : ℕ) :         a ^ 2 + b ^ 2 + c ^ 2 = 3 * (a * b + b * c + c * a) ↔           a = b ∧ b = c ∨ a = c ∧ c = b ∨ b = c ∧ c = a:= by
+Cosine_similarity: 0.637
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_41451
+Pass: True
+Old: theorem lean_workbook_41451 (x y : ℝ) (u v : ℝ) : (u * v = 12 ∧ x = (v - u - 4) / 8 ∧ (2 * y + 1) ^ 2 = (u + v - 6) / 2) ↔ (u * v = 12 ∧ (u + v - 6) / 2 = (2 * y + 1) ^ 2 ∧ x = (v - u - 4) / 8)  :=  by
+New: theorem expose_calc {f : ℝ → ℝ} {x y : ℝ} (h₀ : 0 < x ∧ 0 < y) (h₁ : f x = f y) (h₂ : x ≠ y) (h₃ : ∀ x y, f x = f y) : x * y = 2 * f (x + y) - f x - f y:= by
+Cosine_similarity: 0.511
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_53030
+Pass: True
+Old: theorem lean_workbook_plus_53030 (n k : ℕ) : choose n k + choose n (k + 1) = choose (n + 1) (k + 1)   := by
+New: theorem choice_5_4 :      (Finset.card (Finset.filter (fun x : ℕ => 2 < x) (Finset.Icc 1 6))) ≤ 4 := by
+Cosine_similarity: 0.197
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_62454
+Pass: True
+Old: theorem lean_workbook_plus_62454 : 77 ^ 10 ≥ 2 ^ 10 * (10!) ^ 2   := by
+New: theorem h10 : 77 ^ 10 ≥ 2 ^ 10 * (10!) ^ 2 := by
+Cosine_similarity: 1.0
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_69410
+Pass: True
+Old: theorem lean_workbook_plus_69410 (n : ℕ) : ∃ a : ℕ, a = (2^(2^(1-n))-1)^2   :=  by
+New: theorem lean_workbook_plus_69410 (n : ℕ) : ∃ a : ℕ, a = (2^(2^(1-n))-1)^2  := by
+Cosine_similarity: 1.0
+Complexity: 0.75
+------------------------------------------------------------
+Name: lean_workbook_plus_78394
+Pass: True
+Old: theorem lean_workbook_plus_78394 (a b c d : ℝ) (h₁ : a ∈ Set.Icc 0 3 ∧ b ∈ Set.Icc 0 3 ∧ c ∈ Set.Icc 0 3 ∧ d ∈ Set.Icc 0 3)(h₂ : a + 2 * b + 3 * c + 4 * d ≤ 5) : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 ≤ 10   := by
+New: theorem two_mul_self_le_two_mul_self_of_add_le_add {a b c d : ℝ}     (h₁ : a ∈ Set.Icc 0 3 ∧ b ∈ Set.Icc 0 3 ∧ c ∈ Set.Icc 0 3 ∧ d ∈ Set.Icc 0 3)     (h₂ : a + b + c + d ≤ 3)     (h₃ : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 ≤ 10) :     2 * a * b + 2 * c * d ≤ 2 * (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2):= by
+Cosine_similarity: 0.94
+Complexity: 0.0625
+------------------------------------------------------------
+Name: lean_workbook_33780
+Pass: True
+Old: theorem lean_workbook_33780 : ∑ i in (Finset.Icc (2 : ℕ) 1007), (1 / (2 * i) - 1 / (2 * i + 1)) ≤ 1 / 6  := by
+New: theorem mathd_numbertheory_424_15 (a b c : ℕ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c) (h₁ : a + b + c = 327) : 3 * a + 2 * b + c ≤ 327:= by
+Cosine_similarity: 0.283
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_30970
+Pass: True
+Old: theorem lean_workbook_30970 : ∀ n : ℕ, n > 4 → 2^n > n^2  :=  by
+New: theorem basediff_a: ∀ n : ℕ, n > 4 → n^2 < 2^n:= by
+Cosine_similarity: 0.958
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_53437
+Pass: True
+Old: theorem lean_workbook_53437  (x y : ℝ)   (h₀ : 0 ≤ x ∧ 0 ≤ y) :   ((x + y) / 2)^5 ≤ (x^5 + y^5) / 2  := by
+New: theorem mathd_algebra_244_difficulty_5_2 (x y z w : ℝ)    (h₀ : 0 < x ∧ 0 < y ∧ 0 < z ∧ 0 < w) :    (x * y * z * w) ^ (1/4) = 1 ↔ x * y * z * w = 1:= by
+Cosine_similarity: 0.467
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_63006
+Pass: True
+Old: theorem lean_workbook_plus_63006 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 + a * b * c = 4) :  0 ≤ a * b + b * c + c * a - a * b * c ∧ a * b + b * c + c * a - a * b * c ≤ 2   :=  by
+New: theorem anted29_31_1120 : ∃ a b c : ℝ, a * b * c = 1 ∧ a^2 + b^2 + c^2 + a * b * c = 4 ∧ 0 ≤ a * b + b * c + c * a - a * b * c ∧ a * b + b * c + c * a - a * b * c ≤ 2:= by
+Cosine_similarity: 0.845
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_19284
+Pass: True
+Old: theorem lean_workbook_19284 : 2222 ^ 5555 + 5555 ^ 2222 ≡ 0 [ZMOD 7]  :=  by
+New: theorem mathd_numbertheory_349 : 2222 ^ 5555 + 5555 ^ 2222 ≡ 0 [ZMOD 7]  := by
+Cosine_similarity: 1.0
+Complexity: 0.96875
+------------------------------------------------------------
+Name: lean_workbook_10344
+Pass: True
+Old: theorem lean_workbook_10344  (f : ℝ → ℝ)   (h₀ : ∀ x, ∀ y, f (x - f y) = 1 - x - y) :   ∀ x, f x = 1 / 2 - x  := by
+New: theorem lean_workbook_10344  (f : ℝ → ℝ)   (h₀ : ∀ x, ∀ y, f (x - f y) = 1 - x - y) :   ∀ x, f x = 1 / 2 - x  := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_29408
+Pass: False
+Old: theorem lean_workbook_29408 (a b c : ℝ) : (a^2 + b^2 + c^2)^3 ≥ 3 * (a^2 * b + b^2 * c + c^2 * a)^2  := by
+New: theorem squeeze_three_times (f g h : ℝ → ℝ) (a b : ℝ) (hab : a < b)    (hf : ContinuousOn f (Icc a b)) (hg : ContinuousOn g (Icc a b)) (hh : ContinuousOn h (Icc a b))    (h₁ : f a = 0) (h₁' : f b = 0) (h₂ : g a = 0) (h₂' : g b = 0)    (h₃ : h a = 0) (h₃' : h b = 0) :    ∀ x ∈ Icc a b, f x ^ 2 * g x ^ 2 * h x ^ 2 ≤ (b - a) ^ 3 * (f x ^ 2 + g x ^ 2 + h x ^ 2):= by
+Cosine_similarity: 0.454
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_3092
+Pass: True
+Old: theorem lean_workbook_plus_3092 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a ≥ 3) (hbc : a / 3 + b / 2 ≥ 2) (habc : a / 3 + b / 2 + c ≥ 3) : a ^ 3 + b ^ 3 + c ^ 3 ≥ 36   :=  by
+New: theorem quadratic_mean_norm_inequality (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : (a ^ 2 + b ^ 2 + c ^ 2) ≥ 3 * (a * b + b * c + c * a) / 3 ↔ a ^ 2 + b ^ 2 + c ^ 2 = 3 * (a * b + b * c + c * a) / 3:= by
+Cosine_similarity: 0.853
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_9762
+Pass: False
+Old: theorem lean_workbook_plus_9762 (h₁ : 36 < 37) : 36 + 37 = 73   :=  by
+New: theorem eq_nsmul_of_mul_eq_mul_left (ha : 0 < a) (hb : 0 < b)        (c : R) (h : a * c = b * c) : ∃ n : ℕ, n ≠ 0 ∧ b = n • a </hard theorem>:= by
+Cosine_similarity: 0.475
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_5568
+Pass: True
+Old: theorem lean_workbook_5568 (a b c d : ℝ) (h1 : a ≤ b ∧ b ≤ c ∧ c ≤ d) (h2 : a + d = 1) (h3 : b + c = 2) (h4 : a^2 + b^2 + c^2 + d^2 = 9) : -3 ≤ a * d ∧ a * d ≤ -2  := by
+New: theorem main_theorem_2 (a b c d : ℝ) (h1 : a ≤ b ∧ b ≤ c ∧ c ≤ d) (h2 : a + b + c + d = 1) (h3 : b + c + d = 2) (h4 : a^2 + b^2 + c^2 + d^2 = 9) : a * d ≤ -2 ∧ -3 ≤ a * d := by
+Cosine_similarity: 0.06
+Complexity: 0.28125
+------------------------------------------------------------
+Name: lean_workbook_49650
+Pass: False
+Old: theorem lean_workbook_49650 : ∀ x y z : ℝ, (x > 0 ∧ y > 0 ∧ z > 0 ∧ x * y + y * z + z * x = 12) → 8 ≥ x * y * z  := by
+New: theorem square_le_of_sum_le </hard theorem>:= by
+Cosine_similarity: 0.165
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_57931
+Pass: True
+Old: theorem lean_workbook_plus_57931  (x y z : ℝ)   (h₀ : 0 < x ∧ 0 < y ∧ 0 < z)   (h₁ : x + y + z = 1)   (h₂ : x * y + y * z + z * x = 1) :   -y + (x - 1) * (z - 1) = x * z   :=  by
+New: theorem tough_one_a (x y z : ℝ) (h₀ : 0 < x ∧ 0 < y ∧ 0 < z) (h₁ : x + y + z = 1) (h₂ : x * y + y * z + z * x = 1) : x * (x - y) * (y - z) * z = x * z - x * y * z * z - x * y * y * z + x * y * y * z  := by
+Cosine_similarity: 0.974
+Complexity: 0.59375
+------------------------------------------------------------
+Name: lean_workbook_plus_52659
+Pass: False
+Old: theorem lean_workbook_plus_52659  (a b c : ℝ) :   a * b + b * c + c * a = 1 ↔ a * (b + c) = 1 - b * c   := by
+New: theorem trace_path_eq_trace_subtype (P : Path a b) :   P.trace = (trace ((cast (congr_arg _ P.paths.eq) P).comp path.homotopic.refl)):= by
+Cosine_similarity: 0.145
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_8204
+Pass: True
+Old: theorem lean_workbook_plus_8204 (x y z : ℝ) : x^3 + y^3 + z^3 = 3 * x * y * z + (x + y + z) * (x^2 + y^2 + z^2 - x * y - y * z - z * x)   := by
+New: theorem wage_range_formula : ∀ x y z : ℝ, x ^ 3 + y ^ 3 + z ^ 3 - 3 * x * y * z = (x + y + z) * (x ^ 2 + y ^ 2 + z ^ 2 - x * y - x * z - y * z) := by
+Cosine_similarity: 0.967
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_64429
+Pass: True
+Old: theorem lean_workbook_plus_64429 (a b : ℝ) : a ≠ 0 ∧ b ≠ 0 → 1/a - 1/b = (b - a)/(a * b)   := by
+New: theorem lean_workbook_plus_64429 (a b : ℝ) : a ≠ 0 ∧ b ≠ 0 → 1/a - 1/b = (b - a)/(a * b):= by
+Cosine_similarity: 1.0
+Complexity: 0.84375
+------------------------------------------------------------
+Name: lean_workbook_49739
+Pass: True
+Old: theorem lean_workbook_49739 (b c : ℝ) : 2 * (b ^ 2 + c ^ 2) + 5 * b * c ≤ (9 / 4) * (b + c) ^ 2  :=  by
+New: theorem lean_workbook_54018 : ∀ a : ℕ, 2 * a ^ 3 + a ^ 2 ≤ 3 * a ^ 3 + 4 * a ^ 2:= by
+Cosine_similarity: 0.442
+Complexity: 0.0625
+------------------------------------------------------------
+Name: lean_workbook_35176
+Pass: True
+Old: theorem lean_workbook_35176 (a b c : ℝ): (a^2 + b^2 + c^2)^2 ≥ (a+b+c)*(a^2 * b + b^2 * c + c^2 * a)  :=  by
+New: theorem lean_workbook_35176 (a b c : ℝ): (a^2 + b^2 + c^2)^2 ≥ (a+b+c)*(a^2 * b + b^2 * c + c^2 * a)  := by
+Cosine_similarity: 1.0
+Complexity: 0.1875
+------------------------------------------------------------
+Name: lean_workbook_47469
+Pass: True
+Old: theorem lean_workbook_47469 (x y : ℝ) (h : 0 < x ∧ 0 < y) (hx : x^2 + y^4 ≤ x + y^3) : x^4 + y^4 ≤ 2  := by
+New: theorem le_of_sub_nonneg_of_le (h₀ : 0 ≤ y) (h₁ : 0 ≤ z) (h₂ : 0 ≤ x + z) (h₃ : x ^ 2 + y ^ 2 ≤ 1) (h₄ : y ^ 2 + z ^ 2 ≤ 1) : 0 ≤ x ^ 2 - 2 * x * z + z ^ 2 + y ^ 2 - 2 * y * z + z ^ 2:= by
+Cosine_similarity: 0.523
+Complexity: 0.34375
+------------------------------------------------------------
+Name: lean_workbook_plus_14126
+Pass: True
+Old: theorem lean_workbook_plus_14126 (a b : ℝ) : (2 * a + 2 * b) ^ 2 ≥ b * (4 * a + 3 * b)   := by
+New: theorem mathd_algebra_151 (a b : ℝ) (h₀ : 0 ≤ a ∧ 0 ≤ b) (h₁ : a ^ 2 + b ^ 2 ≤ 1) :      a * b + b * (2 * a) ≤ 2 * (a ^ 2 + b ^ 2):= by
+Cosine_similarity: 0.621
+Complexity: 0.40625
+------------------------------------------------------------
+Name: lean_workbook_plus_77194
+Pass: False
+Old: theorem lean_workbook_plus_77194 : 5 ^ 1 ≡ 5 [ZMOD 31] ∧ 5 ^ 2 ≡ 25 [ZMOD 31] ∧ 5 ^ 3 ≡ 1 [ZMOD 31]   :=  by
+New: theorem pow_mod_eq_pow_mod_of_coprime (x y : ℕ) (n : ℕ) (h : x ≡ y [ZMOD n]) (h' : Nat.Coprime x n) : x ^ n ≡ y ^ n [ZMOD n] </hard theorem>:= by
+Cosine_similarity: 0.43
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_46332
+Pass: True
+Old: theorem lean_workbook_plus_46332 (a b c : ℝ) (ha : a ∈ Set.Icc (-1) 1) (hb : b ∈ Set.Icc (-1) 1) (hc : c ∈ Set.Icc (-1) 1) (habc : a + b + c + a * b * c = 0) : a^2 + b^2 + c^2 ≥ 3 * (a + b + c)   := by
+New: theorem square_add_square_add_square_ge_three_times_product_self (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) : a ^ 2 + b ^ 2 + c ^ 2 ≥ 3 * a * b * c := by
+Cosine_similarity: 0.844
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_52338
+Pass: True
+Old: theorem lean_workbook_52338 (a b c : ℕ) (h : a + b + c = 3) : 2 * (a ^ 4 + b ^ 4 + c ^ 4) + 36 ≥ 7 * (a ^ 3 + b ^ 3 + c ^ 3) + 21 * a * b * c  := by
+New: theorem lean_workbook_52338 (a b c : ℕ) (h : a + b + c = 3) : 2 * (a ^ 4 + b ^ 4 + c ^ 4) + 36 ≥ 7 * (a ^ 3 + b ^ 3 + c ^ 3) + 21 * a * b * c:= by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_11733
+Pass: False
+Old: theorem lean_workbook_plus_11733 (F : ℕ → ℕ) (h₁ : F 1 = 1 ∧ F 2 = 1) (h₂ : ∀ n, F (n + 2) = F (n + 1) + F n) : F 8 = 21   :=  by
+New: theorem main_theorem : F 3 = 2 ∧ F 4 = 3 ∧ F 5 = 5 ∧ F 6 = 8 ∧ F 7 = 13 ∧ F 8 = 21 := by
+Cosine_similarity: 0.089
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_11637
+Pass: True
+Old: theorem lean_workbook_plus_11637 (n : ℕ) : 14 ∣ 3^(4*n+2) + 5^(2*n+1)   := by
+New: theorem am_1992_p27 : ∀ n : ℕ, 14 ∣ 3^(4*n+2) + 5^(2*n+1) := by
+Cosine_similarity: 0.977
+Complexity: 0.5625
+------------------------------------------------------------
+Name: lean_workbook_plus_43728
+Pass: True
+Old: theorem lean_workbook_plus_43728 (a b c : ℝ) (ha : a ≥ 3 / 2) (hb : b ≥ 3 / 2) (hc : c ≥ 3 / 2) : a + 2 * b + 3 * c ≥ 9 / 8 * (1 / a + 2 / b + 3 / c + 4)   := by
+New: theorem k  : ∀ x : ℝ, x ≥ 3 / 2 → 4 * x ≥ 2 * (3 / 2):= by
+Cosine_similarity: 0.605
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_56910
+Pass: True
+Old: theorem lean_workbook_plus_56910 {a b c u v w : ℝ} (ha : a + b + c = 3 * u) (hb : a * b + b * c + c * a = 3 * v ^ 2) (hc : a * b * c = w ^ 3) : (a ^ 3 + b ^ 3 + c ^ 3 - 3 * a * b * c) ^ 2 ≤ (a ^ 2 + b ^ 2 + c ^ 2) ^ 3   := by
+New: theorem cub_hiowh_2007_12098 : ∀ a b c : ℝ, (a ^ 3 + b ^ 3 + c ^ 3 - 3 * a * b * c) ^ 2 ≤ (a ^ 2 + b ^ 2 + c ^ 2) ^ 3 := by
+Cosine_similarity: 0.757
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_2484
+Pass: True
+Old: theorem lean_workbook_plus_2484 (a b c : ℤ) (h₁ : a + b + c = 96) (h₂ : a = 6 * c) (h₃ : c = b - 40) : |a - b| = 5   :=  by
+New: theorem lean_workbook_plus_2484 (a b c : ℤ) (h₁ : a + b + c = 96) (h₂ : a = 6 * c) (h₃ : c = b - 40) : |a - b| = 5   := by
+Cosine_similarity: 1.0
+Complexity: 0.4375
+------------------------------------------------------------
+Name: lean_workbook_27429
+Pass: False
+Old: theorem lean_workbook_27429 (x y z : ℝ) (h : x + y + z ≥ 3) (hx : x > 0) (hy : y > 0) (hz : z > 0) :  x^4 + y^4 + z^4 + x*y*z ≥ 4  := by
+New: theorem singleton_mul {α} [CommSemiring α] (a : α) :      (List.range 2).map (a * ·) = [0, a] </hard theorem>:= by
+Cosine_similarity: 0.122
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_26146
+Pass: False
+Old: theorem lean_workbook_plus_26146 : ∀ x : ℝ, |cos x * sin x| ≤ 1 / 2   := by
+New: theorem tendsto_pow_atTop_nhds_0_of_lt_1' {α : Type*} [LinearOrderedField α] [Archimedean α]     {r : α} (h₀ : 0 ≤ r) (h₁ : r < 1) : Tendsto (fun n : ℕ ↦ r ^ n) atTop (𝓝 0) := </hard theorem>:= by
+Cosine_similarity: 0.02
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_18853
+Pass: True
+Old: theorem lean_workbook_18853 : ∀ x : ℝ, Real.cos (2 * x) ^ 2 = (1 + Real.cos (4 * x)) / 2  :=  by
+New: theorem lean_workbook_18864 : ∀ x : ℝ,  (1 + Real.cos (4 * x)) / 2 ≤ 1:= by
+Cosine_similarity: 0.853
+Complexity: 0.6875
+------------------------------------------------------------
+Name: lean_workbook_plus_5537
+Pass: True
+Old: theorem lean_workbook_plus_5537 (x y : ℝ) (h₁ : y ≠ 0) (h₂ : 7 - (x - y) ^ 2 = 2 * (x - y) - 8) : (x - y) ^ 2 + 2 * (x - y) - 15 = 0   :=  by
+New: theorem ite_sub_sub_swap (p q : Prop) [Decidable p] [Decidable q] (s₁ s₂ t₁ t₂ : ℝ) :     ((if p then s₁ else t₁) - if q then s₂ else t₂) =     (if p then (s₁ - t₂) else (t₁ - s₂)) := by
+Cosine_similarity: 0.202
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_10621
+Pass: False
+Old: theorem lean_workbook_plus_10621  (a b c : ℝ)   (f : ℝ → ℝ)   (h₀ : ∀ x, f x = a * x^2 + b * x + c)   (h₁ : a ≠ 0) :   -(b^2 - 4 * a * c) / (4 * a) = c - b^2 / (4 * a)   :=  by
+New: theorem quadratic_eq_zero_iff (a b c : ℝ) (ha : a ≠ 0) :   a * x^2 + b * x + c = 0 ↔ x = (-b + Real.sqrt (b^2 - 4 * a * c)) / (2 * a) ∨ x = (-b - Real.sqrt (b^2 - 4 * a * c)) / (2 * a) </hard theorem>:= by
+Cosine_similarity: 0.68
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_45531
+Pass: True
+Old: theorem lean_workbook_plus_45531 (x y : ℝ) (hx : x ∈ Set.Icc 0 1) (hy : y ∈ Set.Icc 0 1) : x ^ 2 + y ^ 2 ≤ 1 + x * y   := by
+New: theorem AM_GM_inequality : ∀ {n : ℕ} {a : ℕ → ℝ}, (n ≥ 1 ∧ ∀ i, 0 < a i) → (∑ i in Finset.range n, a i) / n ≥ (∏ i in Finset.range n, a i) ^ (1 / n):= by
+Cosine_similarity: 0.335
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_21029
+Pass: True
+Old: theorem lean_workbook_plus_21029 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a * (a + b) * (a + c) + b * (b + c) * (b + a) + c * (c + a) * (c + b) ≥ (a + b) * (b + c) * (c + a) + 4 * a * b * c   :=  by
+New: theorem ternary_two_mul_sub_three_mul_le (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : 2 * max a (max b c) ≤ a + b + c:= by
+Cosine_similarity: 0.84
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_1811
+Pass: True
+Old: theorem lean_workbook_1811  (a b c : ℝ) :   (a + b + c)^2 ≥ 3 * (a * b + b * c + c * a)  :=  by
+New: theorem quadratic_form_quadratic_form_lemma (a b c : ℝ) :    a * b + b * c + c * a = (a + b + c) ^ 2 - (a ^ 2 + b ^ 2 + c ^ 2) / 2  := by
+Cosine_similarity: 0.697
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_47746
+Pass: False
+Old: theorem lean_workbook_plus_47746 : ∀ a b c : ℝ, (b + 2 * a) ^ 2 + (c + 2 * a) ^ 2 ≥ 0   :=  by
+New: theorem finite_set_iUnion_eq_finite_set_range (S : ι → Set α) (hS : ∀ i j, i ≠ j → Disjoint (S i) (S j)) (hT : ∀ i, Set.Finite (S i)) :      ⋃ i, S i = ⋃ (i : ι) (_ : i ∈ Finset.univ), S i := by
+Cosine_similarity: 0.066
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_11463
+Pass: True
+Old: theorem lean_workbook_plus_11463 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 3) : a^(5 / 2) * b^2 + b^(5 / 2) * c^2 + c^(5 / 2) * a^2 ≤ 3   := by
+New: theorem tae_property_2021_10_11_15_40_28 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a^2 + b^2 + c^2 = 3) : a^(5 / 2) * b^2 + b^(5 / 2) * c^2 + c^(5 / 2) * a^2 ≤ 3 := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_82423
+Pass: True
+Old: theorem lean_workbook_plus_82423 (a b c k : ℝ) (h₁ : k ≥ (27 / 16)^(1 / 3)) : (k * a ^ 3 - a * b * c) ^ (1 / 3) + (k * b ^ 3 - a * b * c) ^ (1 / 3) + (k * c ^ 3 - a * b * c) ^ (1 / 3) ≥ 0   :=  by
+New: theorem mean_inequality_AM_HM_power_sum (f : ℕ → ℝ) (n : ℕ) (hf: ∀ i, 0 < f i) (h₁ : ∑ i in Finset.range n, f i = 1) :  (∑ i in Finset.range n, (f i) ^ (n + 1)) ≤ 1:= by
+Cosine_similarity: 0.36
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_32329
+Pass: False
+Old: theorem lean_workbook_plus_32329 (x y z : ℝ) (hx : x ≥ 0 ∧ y ≥ 0 ∧ z ≥ 0) (h : x + y + z = 1) : x * y + y * z + x * z - 3 * x * y * z ≤ 1 / 4   :=  by
+New: theorem sum_squares_le (n : ℕ) (x : Fin n → ℝ) : ∑ i, (x i) ^ 2 ≤ n * (∑ i, (x i) ^ 2) / n   <hard theorem>:= by
+Cosine_similarity: 0.189
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_54341
+Pass: True
+Old: theorem lean_workbook_plus_54341 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a + b + c) ^ 5 ≥ 81 * (a ^ 2 + b ^ 2 + c ^ 2) * a * b * c   := by
+New: theorem entry_of_q_relation (a b c : ℕ) (h₀ : 0 < a ∧ 0 < b ∧ 0 < c) (h₁ : 0 < a + b + c)  : (a + b + c) ^ 5 ≥ 81 * (a ^ 2 + b ^ 2 + c ^ 2) * a * b * c := by
+Cosine_similarity: 0.805
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_10295
+Pass: True
+Old: theorem lean_workbook_plus_10295 (n k : ℕ) : choose (n - 1 + k) (n - 1) = choose (n - 1 + k) k   := by
+New: theorem Nat.factorial_succ_eq_factorial_mul_succ (n : ℕ) : n.factorial * (n + 1) = (n + 1).factorial:= by
+Cosine_similarity: 0.648
+Complexity: 0.625
+------------------------------------------------------------
+Name: lean_workbook_47397
+Pass: True
+Old: theorem lean_workbook_47397 (a b: ℝ) : (a - b) ^ 2 ≥ 0 → a ^ 2 + b ^ 2 ≥ 2 * a * b  :=  by
+New: theorem quadratic_le_iff_sum_squares_le {a b c : ℝ} (ha : a ≠ 0) :       a ^ 2 * b ^ 2 - 2 * a * b * c + c ^ 2 ≤ (a * b - c) ^ 2 ↔ b ^ 2 + c ^ 2 ≤ (a + b) ^ 2 + c ^ 2 := by
+Cosine_similarity: 0.606
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_79304
+Pass: True
+Old: theorem lean_workbook_plus_79304 :  ∀ a b c : ℝ, a > 0 ∧ b > 0 ∧ c > 0 → a^2 / b + b^2 / c + c^2 / a ≥ a + b + c   := by
+New: theorem nlinarith_lemma_47 :  ∀ a b c : ℝ,  a > 0 ∧ b > 0 ∧ c > 0 → a^2 / b + b^2 / c + c^2 / a ≥ a + b + c   := by
+Cosine_similarity: 1.0
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_10773
+Pass: True
+Old: theorem lean_workbook_10773 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) : a^3 + b^3 + c^3 - 3*a*b*c ≥ 2 * ((b + c) / 2 - a)^3  :=  by
+New: theorem cube_of_sum_div_three (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) : 3 * (a^2 + b^2 + c^2 - a*b - b*c - c*a)^2 ≥ 0 := by
+Cosine_similarity: 0.869
+Complexity: 0.9375
+------------------------------------------------------------
+Name: lean_workbook_45674
+Pass: True
+Old: theorem lean_workbook_45674 (x y : ℝ) (hxy : x > y) (hy : y > 0) : x^4 - y^4 > 4 * x * y^3 - 4 * y^4  :=  by
+New: theorem tfae_four_numbers (a b c d : ℕ) :      a < b ∧ b < c ∧ c < d ∧ d < a ↔ False := by
+Cosine_similarity: 0.209
+Complexity: 0.28125
+------------------------------------------------------------
+Name: lean_workbook_54686
+Pass: False
+Old: theorem lean_workbook_54686 (q : ℝ) : 1 ≤ |q| + |q + 1|  :=  by
+New: theorem tfae_dvd_int (h₁ : m ≠ 0 ∧ n ≠ 0) (h₂ : m ≠ n) (l : m.natAbs.lcm n.natAbs ≠ 0) :     (m ∣ n) ↔ (m.gcd n = m ∧ m.natAbs ∣ n.natAbs) </hard theorem>:= by
+Cosine_similarity: 0.213
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_51775
+Pass: True
+Old: theorem lean_workbook_51775 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :  (a + b) ^ 2 * (b + c) ^ 2 * (c + a) ^ 2 ≥ a * b * c * (a + 2 * b + c) * (2 * a + b + c) * (a + b + 2 * c)  := by
+New: theorem constructive_proof_of_strong_triangle_inequality_aux3 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :        a ^ 2 + b ^ 2 + c ^ 2 + (a * b + b * c + a * c) ^ 2 ≥ 2 * a * b * c * (a + b + c):= by
+Cosine_similarity: 0.96
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_3586
+Pass: True
+Old: theorem lean_workbook_plus_3586 (x a : ℝ) : (3 - x) ^ 2 ≥ 4 * (x ^ 2 - 3 * x + a) ↔ (x - 1) ^ 2 ≤ 4 - 4 * a / 3   :=  by
+New: theorem arithmetic_3586 : 3 / (4 * 3 / 2) ≤ 4 / 4:= by
+Cosine_similarity: 0.52
+Complexity: 1.0
+------------------------------------------------------------
+Name: lean_workbook_plus_58590
+Pass: True
+Old: theorem lean_workbook_plus_58590 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (hab : a * b + b * c + c * a = 3 / 2) : Real.sqrt ((a ^ 2 + 1) ^ 3 / (2 * a ^ 2 + b * c)) + Real.sqrt ((b ^ 2 + 1) ^ 3 / (2 * b ^ 2 + c * a)) + Real.sqrt ((a ^ 2 + 1) ^ 3 / (2 * a ^ 2 + b * c)) ≥ 6   := by
+New: theorem problem4_v1 : Real.sqrt (9 / 11) + Real.sqrt (9 / 11) + Real.sqrt (9 / 11) ≥ 3 * Real.sqrt (9 / 11):= by
+Cosine_similarity: 0.521
+Complexity: 0.90625
+------------------------------------------------------------
+Name: lean_workbook_21790
+Pass: False
+Old: theorem lean_workbook_21790 : (5 / 4 : ℝ) ^ 31 > 2 ^ 7  :=  by
+New: theorem pow_le_one_iff_of_nonneg (hx : 0 ≤ x) : x ^ (n : ℕ) ≤ 1 ↔ x ≤ 1:= by
+Cosine_similarity: 0.289
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_25788
+Pass: True
+Old: theorem lean_workbook_25788  (b c d e a : ℝ)   (h₀ : b + c + d + e = 0)   (h₁ : a + b + c + d + e = 1) :   a^2 + b^2 + c^2 + d^2 + e^2 ≥ 1 / 4  :=  by
+New: theorem lean_workbook_25820  (n : ℕ) (h₀ : 0 < n) (h₁ : ∃ m, n = 2 ^ m) :   ∃ k, (n : ℝ) ≤ k * 4^n := by
+Cosine_similarity: 0.522
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_71759
+Pass: True
+Old: theorem lean_workbook_plus_71759 (a b c d : ℝ) (h1 : a * b + b * c + c * d + d * a = 6) (h2 : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 = 12) : a + b + c + d ≤ 6   := by
+New: theorem circle_dist_le (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hab : a ^ 2 + b ^ 2 = 4) : Real.sqrt (4 - a * b) ≥ Real.sqrt (4 - a * b) - Real.sqrt (4 - (a + b) ^ 2)   := by
+Cosine_similarity: 0.449
+Complexity: 0.3125
+------------------------------------------------------------
+Name: lean_workbook_43796
+Pass: False
+Old: theorem lean_workbook_43796  (m r s : ℂ)   (f : ℂ → ℂ)   (h₀ : ∀ x, f x = x^2 - (4 * m + 1) * x + 4 * m^2)   (h₁ : f r = 0)   (h₂ : f s = 0)   (h₃ : r ≠ s) :   r + s = 4 * m + 1 ∧ r * s = 4 * m^2  :=  by
+New: theorem sum_zero_product_of_roots_quadratic (z : ℂ)   (h₀ : (2 * z + 1) ^ 2 = 4 * (2 * z + 1)) :   z = 0 ∨ z = -3/2 </hard theorem>:= by
+Cosine_similarity: 0.525
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_46657
+Pass: False
+Old: theorem lean_workbook_plus_46657 (P : Polynomial ℤ) (a b : ℤ) : (a - b) ∣ P.eval a - P.eval b   := by
+New: theorem ivt_sup_le (f : ℝ → ℝ) {a b : ℝ} (hab : a < b) (hf : ContinuousOn f (Icc a b)) (hfab : f a * f b ≤ 0) :     (∃ c ∈ Icc a b, f c = 0) ∨ (∀ c ∈ Icc a b, f c ≤ 0) ∨ (∀ c ∈ Icc a b, 0 ≤ f c):= by
+Cosine_similarity: 0.252
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_plus_45032
+Pass: True
+Old: theorem lean_workbook_plus_45032 (f : ℤ → ℤ) (hf: f = fun (x:ℤ) ↦ x+1) : ∀ x y, f x * f y - f (x*y) = x + y   :=  by
+New: theorem sub_eq_add_neg_long (x y : ℤ) : x - y = x + (-y) := by
+Cosine_similarity: 0.56
+Complexity: 0.84375
+------------------------------------------------------------
+Name: lean_workbook_28500
+Pass: False
+Old: theorem lean_workbook_28500  (c : ℝ)   (h₀ : 0 ≤ c) :   c^3 ≤ c^3 + c ∧ c^3 + c < (c + 1)^3  :=  by
+New: theorem le_div_iff_mul_le (hb : 0 < b) : a ≤ c / b ↔ a * b ≤ c:= by
+Cosine_similarity: 0.483
+Complexity: -0.1
+------------------------------------------------------------
+Name: lean_workbook_9610
+Pass: True
+Old: theorem lean_workbook_9610 : ∀ {x y z t : ℝ}, x + y = y + z ∧ y + z = z + t ∧ z + t = t + x ↔ x = z ∧ y = t  :=  by
+New: theorem induction_group_properties_1 (n : ℕ) :     (∀ x y : ℕ, x ≠ 0 ∧ y ≠ 0 → x + y = y + x) →     (∀ a b c : ℕ, a + b = c → c + a = c + b → a = b) →     n = 1 ∨ n ≠ 1 → n = 2 ∨ n ≠ 2 → n = 3 ∨ n ≠ 3 → n = 4 ∨ n ≠ 4 → n = 5 ∨ n ≠ 5 → n = 6 ∨ n ≠ 6 → n = 7 ∨ n ≠ 7 → n = 8 ∨ n ≠ 8 → n = 9 ∨ n ≠ 9 → n = 10 ∨ n ≠ 10 → n = 11 ∨ n ≠ 11 → n = 12 ∨ n ≠ 12 → n = 13 ∨ n ≠ 13 → n = 14 ∨ n ≠ 14 → n = 15 ∨ n ≠ 15 → n = 16 ∨ n ≠ 16 → n = 17 ∨ n ≠ 17 → n = 18 ∨ n ≠ 18 → n = 19 ∨ n ≠ 19 → n = 20 ∨ n ≠ 20 → n ≠ 0:= by
+Cosine_similarity: 0.453
+Complexity: 0.0
+------------------------------------------------------------
+Name: lean_workbook_plus_15144
+Pass: True
+Old: theorem lean_workbook_plus_15144 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) : a / (2 + b * c) + b / (2 + a * c) + c / (2 + a * b) ≥ 1   := by
+New: theorem   step1 (x : ℝ) (hx : 0 < x) (h : 0 < y) (h' : 0 < z) :    x / (2 + y * z) + y / (2 + z * x) + z / (2 + x * y) ≥ 1 / 2:= by
+Cosine_similarity: 0.713
+Complexity: 0.0
+------------------------------------------------------------

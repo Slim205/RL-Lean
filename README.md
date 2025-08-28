@@ -22,12 +22,12 @@ We first define a base term:
 
 $$
 R_{\text{base}}
-= \text{Pass@8}\cdot \mathbf{1}\!\left(0 < \text{Pass@8} \le 0.5\right)
+= \text{Pass@16}\cdot \mathbf{1}\!\left(0 < \text{Pass@8} \le 0.5\right)
 \cdot \mathbf{1}\!\left(0.4 < \cos(\texttt{new}, \texttt{old}) < 0.9\right)
 \cdot \mathbf{1}\!\left(\min \cos(\text{same batch}) < 0.9\right)
 $$
 
-Then we combine $R_{\text{base}}$ with additional terms encouraging:
+Then we use $R_{\text{base}}$ to encourage :
 
 * **Complexity** (avoid trivial statements),
 * **Novelty** (avoid near-duplicates),

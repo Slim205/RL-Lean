@@ -1,4 +1,0 @@
-accelerate==0.33.0
-flash-attn==2.6.3
-vllm==0.6.3.post1
-vllm_nccl_cu12==2.18.1.0.4.0

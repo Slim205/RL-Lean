@@ -251,17 +251,17 @@ theorem = 'theorem lean_workbook_15395 (a : ℝ) (ha : 0 < a) (hab : a ≤ 9) : 
 # for sample in ds:
 #     theorem = extract_theorem(sample['theorem'])
 #     theorem = 'theorem test ' +  theorem
-n = 28
+n = 29
 path = f'/n/netscratch/amin_lab/Lab/slim/statements/train_V{n}.json'
-path ='/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/datasets/minif2f.jsonl'
+#path ='/n/netscratch/amin_lab/Lab/slim/Goedel-Prover/datasets/minif2f.jsonl'
 p=0
-#statements = load_statements(path)
-statements = []
-with open(path, 'r') as file:
-    for line in file:
-        data = json.loads(line)
+statements = load_statements(path)
+# statements = []
+# with open(path, 'r') as file:
+#     for line in file:
+#         data = json.loads(line)
         
-        statements.append(data)
+#         statements.append(data)
 
 
 
@@ -269,8 +269,8 @@ for statement in statements :
     p +=1
     # if p <= 12000 : 
     #     continue
-    # 'theorem test ' + 
-    theorem = statement['formal_statement']
+    # 
+    theorem = 'theorem test ' + statement['new']
     if p ==1 :
         print(theorem)
     st = get_final_structure(theorem)

@@ -1,0 +1,1 @@
+{"chunks": [{"name": "train_json/chunk-0", "num_rows": 8192, "field_counts": {"input_ids": 16777216}}, {"name": "train_json/chunk-1", "num_rows": 7135, "field_counts": {"input_ids": 14255104}}], "is_finished": false}

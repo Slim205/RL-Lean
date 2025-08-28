@@ -7,25 +7,11 @@ def load_statements(filename):
             return json.load(f)
     return []
 
-path = '/n/netscratch/amin_lab/Lab/slim/statements/train_V28.json'
-initial_statements0 =load_statements(path)[12000:]#[26315+4730: ]
+path = '/n/netscratch/amin_lab/Lab/slim/statements/train_V33.json'
+initial_statements0 =load_statements(path)#[12000:]#[26315+4730: ]
 print(len(initial_statements0))
-path = '/n/netscratch/amin_lab/Lab/slim/statements/train_V25.json'
-initial_statements1 =[]#load_statements(path)[12000:]
-print(len(initial_statements1))
-# path = '/n/netscratch/amin_lab/Lab/slim/statements/train_V20.json'
-# initial_statements3 =load_statements(path)[16732:]
-# print(len(initial_statements3))
 
-# path = '/n/netscratch/amin_lab/Lab/slim/statements/train_V21.json'
-# initial_statements4 =load_statements(path)[16656:]
-# print(len(initial_statements4))
-
-
-# path = '/n/netscratch/amin_lab/Lab/slim/statements/train_V22.json'
-# initial_statements2 =load_statements(path)[12000:]
-
-total_list  = [x['new'] for x in initial_statements0 +  initial_statements1 ]
+total_list  = [x['new'] for x in initial_statements0  ]
 total_list  = list(set(total_list))
 print(len(total_list))
 

@@ -25,7 +25,7 @@ from utils.prover.lean.verifier import create_ray_lean4_actors, TEST_BATCH_SIZE,
 from concurrent.futures import ProcessPoolExecutor
 #from utils.model_utils import copy_checkpoints_all, CHECKPOINT_TMP_DIR, get_lemma_key
 
-BATCH_SIZE = 256
+BATCH_SIZE = 1024
 prompt_length = 1024
 CONJECTURE_THRESHOLD = 0.25
 NR_FOLD = 5
@@ -698,7 +698,7 @@ def train_model(
     print(REPO_DIR)
     LEV_ROOT = os.path.join(REPO_DIR, 'levanter')
     training_cmd = f'module load cuda/12.4.1-fasrc01 ; module load cudnn/9.1.1.17_cuda12-fasrc01 ; conda activate /n/netscratch/amin_lab/Lab/slim/env ;'\
-                    'cd /n/netscratch/amin_lab/Lab/slim/STP; ray stop; ' \
+                    'cd /n/netscratch/amin_lab/Lab/slim/STP; ' \
                     'python levanter/examples/weighted_lm.py'
     for k, v in training_config.items():
         if v is None:

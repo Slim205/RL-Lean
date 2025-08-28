@@ -23,7 +23,7 @@ def get_step(statements_dict) :
         return 0
     return statements_dict[-1]['step']
 
-n = 28
+n = 36
 
 path = f'/n/netscratch/amin_lab/Lab/slim/statements/train_V{n}.json'
 

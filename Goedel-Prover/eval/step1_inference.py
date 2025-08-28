@@ -85,7 +85,12 @@ assert len(model_outputs) == len(model_inputs)
 
 def extrac_code(inputs):
     try:
-        return re.search(r'```lean4\n(.*?)\n```', inputs, re.DOTALL).group(1)
+        if len(inputs.split('```')) == 3 : 
+            return re.search(r'```lean4\n(.*?)\n```', inputs, re.DOTALL).group(1)
+
+        assert len(inputs.split('```lean4\n')[1]) > 0
+        return inputs.split('```lean4\n')[1]
+        
     except:
         return "None"
 

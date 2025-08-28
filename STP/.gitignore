@@ -171,5 +171,5 @@ cython_debug/
 .pypirc
 
 storage/
-benchmark_results/
+benchmark_results*
 wandb/

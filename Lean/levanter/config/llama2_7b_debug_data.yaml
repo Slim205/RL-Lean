@@ -1,0 +1,4 @@
+data:
+  id: hoskinson-center/proof-pile
+  tokenizer: meta-llama/Llama-2-7b-hf
+  stream: true

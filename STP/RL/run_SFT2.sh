@@ -8,3 +8,4 @@ python levanter/examples/weighted_lm.py \
     --train_data_cache_dir /n/netscratch/amin_lab/Lab/slim/STP/storage/data/SFT/SFT_prover_V5/train_cache \
     --eval_data /n/netscratch/amin_lab/Lab/slim/STP/storage/data/SFT/SFT_prover_V5/test.json \
     --eval_data_cache_dir /n/netscratch/amin_lab/Lab/slim/STP/storage/data/SFT/SFT_prover_V5/test_cache 
+ 

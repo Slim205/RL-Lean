@@ -68,14 +68,17 @@ print(pat(thm))
 
 
 # # ----------------- load your data -----------------
-path = '/n/netscratch/amin_lab/Lab/slim/statements/train_V142.json'
-statements = load_statements(path)[12000:]          # your helper from above
+n = 33
+path = f'/n/netscratch/amin_lab/Lab/slim/statements/train_V{n}.json'
+statements = load_statements(path)#[12000:]          # your helper from above
+rank = [x['step'] for x in statements ]
 
 statements = [x['new'] for x in statements]
+
 # ----------------- incremental statistics -----------------
 patterns = [
     "negation", "iff", "or", "and",
-    "forall", "exists", "imp", "atom", 'part'
+    "forall", "exists", "imp", "atom"#, 'part'
 ]
 running_counts   = Counter()                # how many of each seen so far
 running_shares   = defaultdict(list)        # pattern -> list[float]
@@ -84,11 +87,6 @@ total_seen       = 0
 for stmt in tqdm(statements, desc="Processing"):
     total_seen += 1
     ch =pat(stmt)
-    if ch == 'atom' : 
-        for i in range(1,10) : 
-            if f'≤ {i})' in stmt :
-                ch = 'part'
-                break
 
     running_counts[ch] += 1
 
@@ -101,15 +99,15 @@ plt.figure(figsize=(12, 7))
 x = range(1, total_seen + 1)
 
 for p in patterns:
-    plt.plot(x, running_shares[p], label=p)
+    plt.scatter(rank, running_shares[p], label=p)
 
-plt.xlabel("Generated Statements")
+plt.xlabel("Training Steps")
 plt.ylabel("Cumulative proportion")
 plt.title("Pattern distribution as generation progresses")
 plt.legend(title="Pattern")
 plt.grid(True)
 plt.tight_layout()
 
-plot_path = "patterns_over_timeV14.png"
+plot_path = f"patterns_over_timeV{n}special.png"
 plt.savefig(plot_path)
 print(f"Saved plot to {plot_path}")

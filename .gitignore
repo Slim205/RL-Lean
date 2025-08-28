@@ -4,12 +4,12 @@ sbatch/
 .pytest_cache
 .cache/
 env*
-logs/
 flash*
 flash*
 leandojo*
 *.log
 *.out
 .pytest_cache
-__pycache__/
 *.pt
+__pycache__/
+logs/

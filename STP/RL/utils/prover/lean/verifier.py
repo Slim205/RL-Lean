@@ -30,7 +30,7 @@ DEFAULT_LEAN_WORKSPACE = f'{HOME_DIR}/lean/mathlib4/'
 MEMORY_USAGE_THRESHOLD = 15
 DEFAULT_TIMEOUT = 200
 LEAN_HEADER = 'import miniF2F\nimport Aesop\nset_option maxHeartbeats 0\nopen BigOperators Real Nat Topology Rat\n'
-TEST_BATCH_SIZE = 64
+TEST_BATCH_SIZE = 40
 
 MEMORY_THRESHOLD = 75.0  # Memory usage percentage to trigger waiting
 

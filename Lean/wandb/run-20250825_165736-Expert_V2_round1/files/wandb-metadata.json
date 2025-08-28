@@ -1,0 +1,411 @@
+{
+    "os": "Linux-4.18.0-553.44.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.12.11",
+    "heartbeatAt": "2025-08-25T20:57:37.074711",
+    "startedAt": "2025-08-25T20:57:36.328219",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--trainer.wandb.project",
+        "Expert-Iter",
+        "--trainer.wandb.id",
+        "Expert_V2_round1",
+        "--trainer.num_train_steps",
+        "35",
+        "--trainer.train_batch_size",
+        "512",
+        "--trainer.checkpointer.base_path",
+        "/n/netscratch/amin_lab/Lab/slim/Lean/storage/Expert_V2/round1/checkpoints",
+        "--train_data",
+        "/n/netscratch/amin_lab/Lab/slim/Lean/storage/Expert_V2/round1/data/train.json",
+        "--train_data_cache_dir",
+        "/n/netscratch/amin_lab/Lab/slim/Lean/storage/Expert_V2/round1/data/train_cache",
+        "--eval_data",
+        "/n/netscratch/amin_lab/Lab/slim/Lean/storage/Expert_V2/round1/data/test.json",
+        "--eval_data_cache_dir",
+        "/n/netscratch/amin_lab/Lab/slim/Lean/storage/Expert_V2/round1/data/test_cache",
+        "--model_name_or_path",
+        "/n/netscratch/amin_lab/Lab/slim/Lean/storage/Expert_V2/round0/RL_model",
+        "--save_freq",
+        "34",
+        "--config_path",
+        "RL_base.yaml",
+        "--hf_save_path",
+        "/n/netscratch/amin_lab/Lab/slim/Lean/storage/Expert_V2/round1/hf_checkpoints",
+        "--optimizer.learning_rate",
+        "1e-05",
+        "--optimizer.warmup",
+        "5"
+    ],
+    "state": "running",
+    "program": "/n/netscratch/amin_lab/Lab/slim/Lean/levanter/examples/weighted_lm.py",
+    "codePathLocal": "levanter/examples/weighted_lm.py",
+    "codePath": "Lean/levanter/examples/weighted_lm.py",
+    "git": {
+        "remote": "https://github.com/Slim205/RL-Lean.git",
+        "commit": "66cf66713da1063e9da2466810fd66ba7007094b"
+    },
+    "email": "slimbarkallah23@gmail.com",
+    "root": "/n/netscratch/amin_lab/Lab/slim",
+    "host": "holygpu8a22403.rc.fas.harvard.edu",
+    "username": "sbarkallah",
+    "executable": "/n/netscratch/amin_lab/Lab/slim/env/bin/python",
+    "cpu_count": 64,
+    "cpu_count_logical": 64,
+    "cpu_freq": {
+        "current": 3398.4375,
+        "min": 3400.0,
+        "max": 3400.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3300.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        },
+        {
+            "current": 3400.0,
+            "min": 3400.0,
+            "max": 3400.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 49.9755859375,
+            "used": 17.871971130371094
+        }
+    },
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-SXM4-80GB",
+            "memory_total": 85899345920
+        },
+        {
+            "name": "NVIDIA A100-SXM4-80GB",
+            "memory_total": 85899345920
+        },
+        {
+            "name": "NVIDIA A100-SXM4-80GB",
+            "memory_total": 85899345920
+        },
+        {
+            "name": "NVIDIA A100-SXM4-80GB",
+            "memory_total": 85899345920
+        }
+    ],
+    "memory": {
+        "total": 1007.0366325378418
+    }
+}

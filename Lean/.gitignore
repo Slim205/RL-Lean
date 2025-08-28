@@ -1,0 +1,13 @@
+env/
+sbatch/
+.pytest_cache
+.cache/
+env*
+logs/
+*.log
+*.out
+.pytest_cache
+__pycache__/
+*.pt
+checkpoints/
+RL_model/

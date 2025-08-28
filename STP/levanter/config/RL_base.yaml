@@ -10,8 +10,8 @@ trainer:
 
   mp: p=f32,c=bfloat16
 
-  train_batch_size: 1024 # 1024
-  steps_per_eval: 10
+  train_batch_size: 1024 
+  steps_per_eval: 5
 
   tensor_parallel_axes: ["mlp", "heads"]
   per_device_eval_parallelism: 8

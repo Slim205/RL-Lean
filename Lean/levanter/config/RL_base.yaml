@@ -1,0 +1,27 @@
+max_tune_length: 2048
+tokenizer_name_or_path: "deepseek-ai/DeepSeek-Prover-V1.5-SFT"
+trust_remote_code: True
+
+trainer:
+  tracker:
+    type: wandb
+    project: "STP_deepseek"
+    tags: ["deepseek-ai/DeepSeek-Prover-V1.5-SFT", "STP"]
+
+  mp: p=f32,c=bfloat16
+
+  train_batch_size: 2048
+  steps_per_eval: 10
+
+  tensor_parallel_axes: ["mlp", "heads"]
+  per_device_eval_parallelism: 8
+  per_device_parallelism: 8
+
+optimizer:
+  learning_rate: 1.6e-4
+  weight_decay: 0.0
+  beta1: 0.9
+  beta2: 0.95
+  epsilon: 1E-5
+  warmup: 20
+  min_lr_ratio: 1.0

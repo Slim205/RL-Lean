@@ -19,8 +19,8 @@ from . import lean4
 from . import conjecture
 
 def default_compute_score(parameters, extra_info=None, sandbox_fusion_url=None, concurrent_semaphore=None):
-    #return conjecture.get_results(parameters)
-    return lean4.get_results(parameters)
+    return conjecture.get_results(parameters)
+    #return lean4.get_results(parameters)
 
 
 @deprecated("verl.utils.reward_score.default_compute_score")

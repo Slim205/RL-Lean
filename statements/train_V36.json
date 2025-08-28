@@ -1,0 +1,1276 @@
+[
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / (a + Real.sqrt (3 * a + b * c))) + (b / (b + Real.sqrt (3 * b + c * a))) + (c / (c + Real.sqrt (3 * c + a * b))) \u2264 1 := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / (a + b + c) + b / (b + c + a) + c / (c + a + b) : \u211d) \u2264 1 := by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": ": \u2200 x y z : \u211d, x > 0 \u2227 y > 0 \u2227 z > 0 \u2192 (Real.sqrt ((x ^ 2 + y ^ 2) * (z ^ 2 + x ^ 2)) + Real.sqrt ((y ^ 2 + z ^ 2) * (x ^ 2 + y ^ 2)) + Real.sqrt ((z ^ 2 + x ^ 2) * (y ^ 2 + z ^ 2)) \u2265 3 / 4 * (x + y) ^ 2 * (y + z) ^ 2 * y / (x + y + z) / (y ^ 2 + z * x) + 3 / 4 * (x + y) ^ 2 * (z + x) ^ 2 * x / (x + y + z) / (x ^ 2 + y * z) + 3 / 4 * (y + z) ^ 2 * (z + x) ^ 2 * z / (x + y + z) / (z ^ 2 + x * y)) := by",
+  "new": "(n : \u2115) (a : \u2115 \u2192 \u2115 \u2192 \u2115 \u2192 \u2115) (H : \u2200 x y z : \u2115, a x y z = x ^ 2 + y ^ 2 + z ^ 2) : (\u2200 x y z : \u2115, a x y z \u2264 3 * (x ^ 2 + y ^ 2 + z ^ 2)) \u2194 \u2200 x y : \u2115, x ^ 2 + y ^ 2 \u2264 3 * (x ^ 2 + y ^ 2):= by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a + b + c = 1) : a^2 + 6 * b * c \u2264 1 := by",
+  "new": "(z : \u211d) (post : 0 < z \u2227 z \u2264 1) (y : \u211d) (pre : y < 0 \u2227 y \u2265 -1) : z * y + 1 \u2265 0 := by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b c : \u211d) (h\u2080 : 0 < a \u2227 0 < b \u2227 0 < c) (h\u2081 : a + b + c = 1) : 5 \u2265 16 * (a^2 + b^2 + c^2) - 12 * (a^3 + b^3 + c^3) := by",
+  "new": "(x : \u211d) (h\u2081 : x \u2265 0 \u2227 x \u2264 1) : Real.sqrt (1 + x^2) - x \u2265 1 - x^2 - Real.sqrt (1 + x^2):= by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) : \u221a((a - b^2 - c^2) / (2 * (c^2 + a * b))) + \u221a((b - c^2 - a^2) / (2 * (a^2 + b * c))) + \u221a((c - a^2 - b^2) / (2 * (b^2 + c * a))) \u2264 3 := by",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x + y + z = 1) : \u221a((1 - x ^ (1 / 2)) / x) + \u221a((1 - y ^ (1 / 2)) / y) + \u221a((1 - z ^ (1 / 2)) / z) \u2264 9 := by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(x y : \u211d) (h : 0 < x \u2227 0 < y) (h2 : x^3 + y^3 = x - y) : x^2 - y^2 < 1 := by",
+  "new": "\u2192 \u2124) (h\u2081 : \u2200 i, Z i = 0 \u2228 Z i = 1) (h\u2082 : \u2211 i in Finset.range 8, Z i = 3) : \u2203 i, Z i = 1:= by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(f : \u2115 \u2192 \u2115) (hf : f 1 = 1) (hf2 : \u2200 x, f (f (x + 1) + f (x + f x)) = x + 2) : f 10 = 8 := by",
+  "new": "(f : \u2115 \u2192 \u2115) (hf : \u2200 x, f x = Nat.sqrt (x^2 - 2)) : f 2 = 1 := by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (habc : a + b + c = 3) : \u221aa + \u221ab + \u221ac \u2265 ab + ac + bc := by",
+  "new": ": \u2200 a b c : \u211d, a \u2264 1 \u2227 b \u2264 1 \u2227 c \u2264 1 \u2227 a + b + c = 3 \u2192 a * b * c \u2264 1:= by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(A B C : \u211d) (hx: A > 0 \u2227 B > 0 \u2227 C > 0) (hab : A + B + C = 180) : Real.sin (A - B) * Real.sin (A - C) + Real.sin (B - C) * Real.sin (B - A) + Real.sin (C - A) * Real.sin (C - B) \u2265 0 := by",
+  "new": ": \u2200 x : \u211d, sin x ^ 2 \u2264 1 := by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : a + b \u2264 1) : (a + 1 / b) * (b + 1 / a) \u2265 25 / 4 := by",
+  "new": "(n : \u2115) (a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : 0 < a + b) : (min a b) ^ n * (max a b) ^ n \u2264 (a * b) ^ n:= by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b c d : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) : a * b + a * c + a * d + b * c + b * d + c * d + (a ^ 3 + b ^ 3 + c ^ 3 + d ^ 3) / (a + b + c + d) \u2265 a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 + 3 * (a + b + c - d) * (a + b + d - c) * (a + c + d - b) * (b + c + d - a) / (a + b + c + d) ^ 2 := by",
+  "new": "(a b c d : \u211d) (hab : a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 d > 0) : a * b + a * c + a * d + b * c + b * d + c * d + (a ^ 3 + b ^ 3 + c ^ 3 + d ^ 3) / (a + b + c + d) \u2265 a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 + 3 * (a + b + c - d) * (a + b + d - c) * (a + c + d - b) * (b + c + d - a) / (a + b + c + d) ^ 2 \u2227 (a + b + c + d) >0 \u2194 a * b + a * c + a * d + b * c + b * d + c * d + (a ^ 3 + b ^ 3 + c ^ 3 + d ^ 3) / (a + b + c + d) \u2265 a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 + 3 * (a + b + c - d) * (a + b + d - c) * (a + c + d - b) * (b + c + d - a) / (a + b + c + d) ^ 2:= by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : (a + 1/a) * (b + 1/b) = 9/2) : 1 \u2264 a^2 + b^2 \u2227 a^2 + b^2 \u2264 4 := by",
+  "new": "(n : \u2115) (a b : \u2115) (h\u2080 : 2 < n) (h\u2081 : (a + b)^2 < n) (h\u2082 : (n + a)^2 < b) (h\u2083 : (n + b)^2 < a) : n \u2260 0 \u2227 ((a + b)^2 + (n + a)^2 + (n + b)^2) < 3 * n:= by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : (a^2 / (a + 2) + b^2 / (b + 2) + c^2 / (c + 2)) \u2264 3 / (a * b + b * c + a * c) := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : a * b * c * (a + b + c) \u2264 27:= by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(n : \u2115) : \u2211 i in Finset.range (n+1), choose n i = 2 ^ n := by",
+  "new": "(n : \u2115) : \u2211 i in Finset.Ico 0 (n+1), choose n i = 2 ^ n := by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a + b + c = 1) : 5 * (a^2 + b^2 + c^2) \u2264 6 * (a^3 + b^3 + c^3) + 1 := by",
+  "new": ": \u00ac(\u2200 a b c : \u211d, a + b + c = 1 \u2192 5 * (a^2 + c^2 + b^2) \u2264 6 * (a^3 + c^3 + b^3) + 1) := by",
+  "step": 1,
+  "tactic": "And",
+  "percentage": 0.37037037037037035
+ },
+ {
+  "old": "(a b c : \u211d) (hx: a > 0 \u2227 b > 0 \u2227 c > 0) (hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : a / (b + c) + b / (a + c) + c / (a + b) \u2264 2 := by",
+  "new": "(a b c b1 c1 : \u211d) (hb : 0 < b) (hc : 0 < c) (hb1 : 0 < b1) (hc1 : 0 < c1) (hab : a + b > c) (hbc : b + c > a) (hca1 : a + c1 > b1) (hca2 : a + b1 > c1) : a / (b + c) + b1 / (a + c1) \u2264 2:= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(x y : \u211d) (hx : 0 < x) (hy : 0 < y) (h : (1 + x) * (1 + y) = 2) : x*y + 1/(x*y) \u2265 6 := by",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x*y + x*z + y*z = 3) : x^2 + y^2 + z^2 + x^2*y^2*z^2 \u2265 4*x*y*z:= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(n : \u2115) : n - (\u2211 r in Finset.Icc 2 (n + 1), (1:\u211d) / r) < \u2211 r in Finset.Icc 1 n, r / Real.sqrt (r ^ 2 + 1) \u2227 \u2211 r in Finset.Icc 1 n, r / Real.sqrt (r ^ 2 + 1) < n := by",
+  "new": ": \u00ac (\u2200 (n : \u2115) , \u2211 r in Finset.Icc 1 n, r / Real.sqrt (r ^ 2 + 1) < n):= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a : \u211d) : sin (a / 2) * (sin (a / 2) - 1) \u2265 -1 / 4 := by",
+  "new": "(a : \u211d) : Real.sqrt (a + 2) * Real.sqrt (1 - a) \u2265 0 := by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : a + b = 1) : (Real.sqrt a - 1 / a)^2 + (Real.sqrt b + 1 / b)^2 > 44 / 5 := by",
+  "new": "(n : \u2115) (hn : 0 < n) : \u2203 (x: \u211d), x ^ 2 < n:= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b : \u211d) : (a^2 + b^2) / (a * b) + (a + b) / Real.sqrt (a^2 - a * b + b^2) \u2265 4 := by",
+  "new": "(a b c : \u211d) : a^2 + b^2 + c^2 + 2 * Real.sqrt (a^2 + b^2 + c^2) \u2265 a * b + b * c + c * a:= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : \u221a(3 * (a + b + c)) + \u221aa + \u221ab + \u221ac \u2264 \u221a(2 * (a + b)) + \u221a(2 * (b + c)) + \u221a(2 * (c + a)) := by",
+  "new": "(h\u2080 : 0 \u2264 x\u2081) (h\u2081 : 0 \u2264 x\u2082) (h\u2082 : 0 \u2264 x\u2083) : \u221a(2 * (x\u2082 + x\u2081)) \u2264 \u221a(2 * (x\u2082 + x\u2081 + x\u2083)) \u2227 \u221a(2 * (x\u2083 + x\u2082)) \u2264 \u221a(2 * (x\u2082 + x\u2081 + x\u2083)) \u2227 \u221a(2 * (x\u2081 + x\u2083)) \u2264 \u221a(2 * (x\u2082 + x\u2081 + x\u2083)):= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a > 0) (hb : b > 0) (hc : c > 0) : (bc / (3 * a ^ 2 + b ^ 2 + c ^ 2) + ca / (3 * b ^ 2 + c ^ 2 + a ^ 2) + ab / (3 * c ^ 2 + a ^ 2 + b ^ 2)) \u2264 3 / 5 := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (b + c) / (a + 2 * (b + c)) + (c + a) / (b + 2 * (c + a)) + (a + b) / (c + 2 * (a + b)) \u2265 3 / 5:= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (ha2 : a^2 + b^2 + c^2 = 1) : (4 * a^2 + 3 * b * c + 1) / (b^2 + 3 * b * c + c^2) + (4 * b^2 + 3 * c * a + 2) / (c^2 + 3 * c * a + a^2) + (4 * c^2 + 3 * a * b + 3) / (a^2 + 3 * a * b + b^2) \u2265 6 := by",
+  "new": "{x y : \u211d} {a : \u211d} (ha : 0 < a) : x ^ 2 + a * y ^ 2 \u2265 2 * x * y \u2192 (x - a * y) ^ 2 \u2264 (1 + a ^ 2) * (x ^ 2 + y ^ 2) := by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b c : \u211d) : (1 / a ^ 2 + 1 / b ^ 2 + 1 / c ^ 2 + 1 / (a + b + c) ^ 2) \u2265 7 / 25 * (1 / a + 1 / b + 1 / c + 1 / (a + b + c)) ^ 2 := by",
+  "new": "(a b c : \u2115) (h\u2080 : 0 < a \u2227 0 < b \u2227 0 < c) (h\u2081 : 0 < a + b + c) : a^2 + b^2 + c^2 \u2265 a * b \u2227 a^2 + b^2 + c^2 \u2265 b * c \u2227 a^2 + b^2 + c^2 \u2265 a * c := by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(n : \u2115) (c : Fin (n + 1) \u2192 \u211d) (hc : \u2200 i, 0 \u2264 c i \u2227 c i < 1) : \u2203 p q : Fin (n + 1), p \u2260 q \u2227 |c p - c q| < 1 / n := by",
+  "new": "(a : Fin (n + 1) \u2192 \u211d) (i : Fin (n + 1)) (hi : \u2200 i : Fin (n + 1), a i \u2264 a (i + 1)) : \u2200 (j : Fin (n + 1)), a i \u2264 a j \u2192 (\u2200 k, i \u2264 k \u2192 a k \u2264 a (k + 1)) \u2192 i \u2264 j \u2192 a i \u2264 a j:= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b c d : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (habc : a + b + c + d = 2) : 1 / (3 * a ^ 2 + 1) + 1 / (3 * b ^ 2 + 1) + 1 / (3 * c ^ 2 + 1) + 1 / (3 * d ^ 2 + 1) \u2265 16 / 7 := by",
+  "new": "(habc : a + b + c + d = 2) (hp : 0 \u2264 a \u2227 0 \u2264 b \u2227 0 \u2264 c \u2227 0 \u2264 d) : 1 / (3 * a ^ 2 + 1) + 1 / (3 * b ^ 2 + 1) + 1 / (3 * c ^ 2 + 1) \u2265 9 / 23 \u2227 1 / (3 * b ^ 2 + 1) + 1 / (3 * c ^ 2 + 1) + 1 / (3 * d ^ 2 + 1) \u2265 9 / 23:= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : (x^5 + y^5 + z^5)^2 \u2265 3 * x^2 * y^2 * z^2 * (x^4 + y^4 + z^4) := by",
+  "new": ": \u2200 x y z : \u211d, 0 < x \u2227 0 < y \u2227 0 < z \u2192 (x ^ 2 + y ^ 2 + z ^ 2) ^ 2 * (x ^ 2 * y ^ 2 + x ^ 2 * z ^ 2 + y ^ 2 * z ^ 2) * (x ^ 2 * y ^ 2 * z ^ 2) \u2265 0 := by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(x y z : \u211d) (h : x + y + z = 3) : x * y + x * z + y * z \u2264 3 := by",
+  "new": "(x y z : \u211d) (h\u2081 : x + y + z = 3) (h\u2082 : x^2 / (x + y) + y^2 / (y + z) + z^2 / (z + x) \u2264 3) : x * y + x * z + y * z \u2264 3 := by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b c k : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = a^2 + b^2 + c^2) : (Real.sqrt (a^2 + k * b * c) / (a^2 + b * c) + Real.sqrt (b^2 + k * c * a) / (b^2 + c * a) + Real.sqrt (c^2 + k * a * b) / (c^2 + a * b) \u2265 3 * Real.sqrt (k + 1) * (a + b + c) / (2 * (a^2 + b^2 + c^2))) := by",
+  "new": "(a b c : \u2115) (hab : a + b + c = 1) : a * b + b * c + c * a = 0:= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hab : a + b + c = 2) : (a + b - a * b) * (b + c - b * c) * (c + a - c * a) \u2264 1 - a * b * c := by",
+  "new": "(a b c : \u211d) (hab : a + b + c = 2) (h : (a + b) ^ 2 + (b + c) ^ 2 + (c + a) ^ 2 \u2264 8) : a * b + b * c + c * a \u2264 8 / 3 := by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "{a b c d : \u211d} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) : (1 / (a + b) + 1 / (c + d)) \u2265 4 / (a + b + c + d) := by",
+  "new": ": \u2200 a b c d : \u211d, a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 d > 0 \u2192 (1 / (a + b) + 1 / (c + d)) \u2265 4 / (a + b + c + d):= by",
+  "step": 2,
+  "tactic": "And",
+  "percentage": 0.6375838926174496
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (1 / a + 1 / b + 1 / c) \u2265 (7 + 2 * Real.sqrt 10) / 9 * (1 / (a + b) + 2 / (b + c) + 1 / (c + a)) := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (2 / (a + b) + 2 / (b + c) + 2 / (c + a)) \u2265 4 / 2 * (1 / (a + b) + 1 / (b + c) + 1 / (c + a)) := by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(a b c : \u211d) (hab : a * b + b * c + c * a = 3) : a ^ 2 * b ^ 2 + b ^ 2 * c ^ 2 + c ^ 2 * a ^ 2 \u2265 a ^ 2 + b ^ 2 + c ^ 2 := by",
+  "new": "(ha : 0 \u2264 a) (hb : 0 \u2264 b) (hab : a * b \u2264 1) : a ^ 2 + b ^ 2 \u2264 2 * (a + b) ^ 2/2 := by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(a b : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hab : a^2 + 2 * (Real.sqrt 2 + 1) * b^2 = 2) : a^3 + b^3 \u2265 2 * (a - b) := by",
+  "new": "(n : \u2115) (hn : n \u2265 2) (a : \u2115 \u2192 \u211d) (h : \u2200 i, i < n \u2192 a i \u2265 0) (hc : \u2211 i in Finset.range n, a i = 1) : \u2200 i \u2208 Finset.range n, 1 / (1 + a i) \u2264 1:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": ": \u2200 x : \u2115, choose x 2 = (x^2 - x) / 2 := by",
+  "new": ": \u2200 x : Fin 3, x = 0 \u2228 x = 1 \u2228 x = 2 := by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(a b c : \u211d) : (3 / 4 * (a + b) * (b + c) * (c + a) / (a * b * c))^(1 / 3) \u2265 a + b + c \u2194 27 * (a + b) ^ 2 * (b + c) ^ 2 * (c + a) ^ 2 \u2265 64 * a * b * c * (a + b + c) ^ 3 := by",
+  "new": ": \u2200 x : \u211d, x \u2265 0 \u2192 (x + 8 / 3) ^ 2 / (x ^ 2 + 2) \u2265 2 / 3:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : 1 / 3 * (x ^ 2 + y ^ 2 + z ^ 2) * (1 / (x ^ 2 + y * z) + 1 / (y ^ 2 + z * x) + 1 / (z ^ 2 + x * y)) * (x ^ 3 + y ^ 3 + z ^ 3) / ((x ^ 2 + y ^ 2 + z ^ 2) * (x ^ 4 + y ^ 4 + z ^ 4)) ^ (1 / 4) \u2265 x / (y + z) + y / (z + x) + z / (x + y) := by",
+  "new": ": \u2200 (x y z : \u211d), x > 0 \u2227 y > 0 \u2227 z > 0 \u2192 (x * z / (x + z) + y * z / (y + z) + x * z / (x + z)) \u2265 0 := by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(n : \u2115) (a : \u2115 \u2192 \u211d) (h : \u2211 i in Finset.range n, a i = 3) : \u2211 i in Finset.range n, ((a i) * (a (i + 1)) * (a (i + 1) + a (i + 2))) \u2264 4 := by",
+  "new": "(n : \u2115) (b : \u2115 \u2192 \u211d) : \u2211 k in Finset.range n, b k = \u2211 i in Finset.range n, b i := by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": ": \u2200 A B C : \u211d, 0 < A \u2227 0 < B \u2227 0 < C \u2227 A + B + C = \u03c0 \u2192 Real.sin A * Real.sin B * Real.sin C \u2264 (3 * Real.sqrt 3) / 8 := by",
+  "new": ": Real.sqrt 3 \u2260 0 := by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": ": \u2200 \u2983A B C : \u211d\u2984, A \u2208 Set.Ioc 0 Real.pi \u2227 B \u2208 Set.Ioc 0 Real.pi \u2227 C \u2208 Set.Ioc 0 Real.pi \u2227 A + B + C = Real.pi \u2192 Real.cos A + Real.cos C \u2264 2 * Real.sin (B / 2) \u2227 Real.cos A * Real.cos C \u2264 (1 - Real.cos B) / 2 \u2227 (1 - Real.cos B) / 2 = Real.sin (B / 2) ^ 2 := by",
+  "new": ": \u2200 x y : \u211d, cos x - cos y = -2 * sin ((x + y) / 2) * sin ((x - y) / 2) := by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(x y z : \u211d) : (x^2 + z^2) * (y^2 + z^2) > (xy + z^2)^2 := by",
+  "new": "(x y z : \u211d) : (x_2 : \u211d) + y + z > 0 \u2228 (x_2 : \u211d) + y + z \u2264 0:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(a b c : \u211d) (h : a + b + c \u2265 3) : a^2 + b^2 + c^2 + a * b + a * c + b * c \u2265 6 := by",
+  "new": "(a b c d : \u211d) (h\u2080 : a + b + c + d \u2264 20) (h\u2081 : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 \u2264 448) : a * b + c * d \u2264 448 - 20 ^ 2 + 2 * 20 * 20 / 4:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(f : \u211d \u2192 \u211d): (\u2200 x y:\u211d, f (x*y) = f x * f y - f (x + y) + 1) \u2194 \u2203 k:\u211d, \u2200 x:\u211d, f x = k * x + 1 := by",
+  "new": "(f : \u211d \u2192 \u211d) (hf: \u2200 x y : \u211d, f (x^2 + y^2) = f (x^2 - y^2) + f x + f y) : \u2203 a b :\u211d, \u2200 x : \u211d, f x = a * x + b:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(a b c : \u211d) (hab : a + b > c) (hbc : b + c > a) (hca : c + a > b) : a > 0 \u2227 b > 0 \u2227 c > 0 := by",
+  "new": "(a : \u211d) (hf : \u2200 x : \u211d, x * a \u2264 0 \u2192 |a| \u2264 |x|) : a = 0 := by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(a b x : \u211d) : Real.sqrt (a + x) - Real.sqrt (b + x) \u2264 Real.sqrt a - Real.sqrt b := by",
+  "new": "(x : \u211d) : \u221a(x ^ 2) = |x|:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : x^3 + y^3 + z^3 + 3*x*y*z \u2265 x*y*(x + y) + x*z*(x + z) + y*z*(y + z) := by",
+  "new": "[LinearOrderedField \u03b1] {a b : \u03b1} (ha : 0 < a) (hb : 0 < b) (hab : a \u2264 b) : a ^ 3 + b ^ 3 \u2264 2 * b ^ 3:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(\u03b1 \u03b2 \u03b3 : \u211d) (ha : 0 < \u03b1 \u2227 \u03b1 <= 90) (hb : 0 < \u03b2 \u2227 \u03b2 <= 90) (hc : 0 < \u03b3 \u2227 \u03b3 <= 90) : (tan \u03b1)^2 + (tan \u03b2)^2 + (tan \u03b3)^2 + 3 \u2265 1 / (1 - sin \u03b2 * sin \u03b3) + 1 / (1 - sin \u03b3 * sin \u03b1) + 1 / (1 - sin \u03b1 * sin \u03b2) := by",
+  "new": "(a b c : \u211d) (h\u2080 : 0 < a \u2227 0 < b \u2227 0 < c) (h\u2081 : a + b + c = 1) (h\u2082 : 0 < a * b * c) : a * b + b * c + c * a < 1 + 3 * (1 / 2) ^ 1 / 3:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(m n : \u2115) : (Nat.factorial m)! * (Nat.factorial n)! \u2223 (Nat.factorial (m + n))! := by",
+  "new": "(m n : \u2115) i : m + n = i \u2192 (m + n).factorial / (m.factorial * n.factorial) \u2264 i.factorial:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(a b c : \u211d) : (a / b + b / a + 2) + (b / c + c / b + 2) + (c / a + a / c + 2) \u2265 4 * (a ^ 2 + b ^ 2 + c ^ 2) / (a * b + b * c + a * c) + 8 := by",
+  "new": "{a y z : \u211d} (h\u2080 : a \u2260 0) (h\u2081 : y \u2260 0) (h\u2082 : z \u2260 0) (h\u2083 : y * z \u2260 0) : a * y * z = 1 \u2192 a ^ 2 + y ^ 2 + z ^ 2 \u2265 3 * (a * y + y * z + z * a) / 3:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(n : \u2115) (a : Fin n \u2192 \u211d) (ha : \u2200 i, 1 \u2264 a i) : n * (\u2211 i, a i) \u2264 1 + Real.sqrt (1 + (n ^ 3 - 2 * n) * (\u2211 i, (a i) ^ 3)) := by",
+  "new": "(a : \u2115 \u2192 \u211d) (ha : 0 \u2264 a) : \u2200 N : \u2115, N \u2208 Set.Iio N \u2192 Real.sqrt (\u2211 k in Finset.range N, (a k - 1) ^ 2) \u2265 N - 1:= by",
+  "step": 3,
+  "tactic": "And",
+  "percentage": 0.4945054945054945
+ },
+ {
+  "old": "(t : \u211d) (ht : 0 \u2264 t) : Real.log (1 + t) \u2265 t / (1 + t) := by",
+  "new": "(n : \u2115) (x : \u2115 \u2192 \u211d) (hx : \u2200 k, 0 < x k) (h_sum_0 : \u2211 k in Finset.range n, log (x k) = 0) : \u220f k in Finset.range n, x k = 1:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b : \u211d) (hab : 0 \u2264 a \u2227 0 \u2264 b) (h : a * b + Real.sqrt (3 * a * b + 1) + Real.sqrt ((a + b ^ 2) * (b + a ^ 2)) = 5) : 2 * Real.sqrt 2 \u2264 a * Real.sqrt (a + b ^ 2) + b * Real.sqrt (b + a ^ 2) \u2227 a * Real.sqrt (a + b ^ 2) + b * Real.sqrt (b + a ^ 2) \u2264 4 := by",
+  "new": "(A : Fin 10 \u2192 \u211d) (L : Fin 10 \u2192 \u211d) : \u2203 a B C D E F G H J K, a * B + C * D + E * F + G * H + J * K = 10:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(x y z : \u211d) (hx : x > 0 \u2227 y > 0 \u2227 z > 0 \u2227 x * y * z = 1) : 1 / (x ^ 2 + x + 1) + 1 / (y ^ 2 + y + 1) + 1 / (z ^ 2 + z + 1) \u2265 1 := by",
+  "new": "(x : \u211d) (hx : 0 < x \u2227 x < 1) : \u2211 i in Finset.range 3, (x ^ i) \u2265 1 - x ^ 3 := by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : (1 / (a * (b * b + c * a + 1) * (b * b + c * a + 1))) + (1 / (b * (c * c + a * b + 1) * (c * c + a * b + 1))) + (1 / (c * (a * a + b * c + 1) * (a * a + b * c + 1))) >= 1 / 3 := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : (Real.sqrt (3 / 3) + Real.sqrt (4 / 3)) * (Real.sqrt (3 / 3) + Real.sqrt (4 / 3)) \u2264 4 * (Real.sqrt (3 / 3) * (Real.sqrt (3 / 3) + Real.sqrt (4 / 3)) + Real.sqrt (4 / 3) * (Real.sqrt (3 / 3) + Real.sqrt (4 / 3))):= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(x y : \u211d) (hx : 0 < x \u2227 x < 1 / exp 1) (hy : 0 < y \u2227 y < 1 / exp 1) (hxy : x < y) : x ^ x > y ^ y := by",
+  "new": "(x : \u211d) (hx1 : 0 < x) (hx2 : x < 1) : 0 < 1 - x ^ (1+1) := by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(x y z: \u211d) (h : x ^ 2 + y ^ 2 + z ^ 2 = 1) : -0.5 \u2264 x*y + y*z + z*x := by",
+  "new": "(x : \u211d) (p : \u211d) (e : \u211d) (h\u2080 : 0 < x \u2227 0 < p \u2227 0 < e) (h\u2081 : x + p + e = 3) (h\u2082 : x * (cos \u03d5)^2 + p * (cos \u03d5)^2 + e * (cos \u03d5)^2 \u2265 3/3) : x * (cos \u03d5)^2 \u2265 x/3 \u2227 p * (cos \u03d5)^2 \u2265 p/3 \u2227 e * (cos \u03d5)^2 \u2265 e/3:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (habc : a + b + c = 3) : a^2 * b + 2 * b^3 * c + c^2 * a \u2264 2187 / 128 := by",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (habc : a + b + c = 3) : 0 \u2264 a * b + b * c + c * a \u2227 (a * b + b * c + c * a) ^ 2 \u2264 (a + b + c) * (b + c + a) * (c + a + b):= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0) (hab : a + b + c = 2) : \u221a(ab) + 2*\u221a(bc) + 2*\u221a(ca) \u2264 (1 + Real.sqrt 33) / 2 := by",
+  "new": "{a b : \u211d} (h : a ^ 2 \u2264 b) (hb : 0 \u2264 b) : a \u2264 Real.sqrt b:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (habc : a + b + c = 1) : a + (a + \u221ab * \u221ac / 2) * (\u221ab * \u221ac - 2 * \u221a(4 * a * b + 4 * a * c + b * c)) \u2265 0 := by",
+  "new": "(a b : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hab : a + b = 1) : 1 - (4 / (a + b + 2)) * (a * b / 2) \u2264 1:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a + b - c) * (b + c - a) * (c + a - b) \u2264 a * b * c := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : 3 * (a^2 + b^2 + c^2) \u2265 a * b + b * c + c * a:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) : 2 * (a ^ 2 + b ^ 2 + c ^ 2) \u2265 a * (a + 2) / (c + 2) + b * (b + 2) / (a + 2) + c * (c + 2) / (b + 2) + b * (a / b) ^ (c * (2 - c) / (a ^ 2 + b ^ 2 + 1)) + c * (b / c) ^ (a * (2 - a) / (b ^ 2 + c ^ 2 + 1)) + a * (c / a) ^ (b * (2 - b) / (c ^ 2 + a ^ 2 + 1)) := by",
+  "new": "(a b c d e : \u211d) (h\u2080 : a + b + c + d + e = 1) (h\u2081 : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 + e ^ 2 = 1) : Real.sqrt 5 \u2265 \u221a(a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 + e ^ 2) \u2227 Real.sqrt 10 \u2265 \u221a(a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 + e ^ 2):= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (hab : a + b + c = 3) : Real.sqrt (a ^ 2 + 1) + Real.sqrt (b ^ 2 + 1) + Real.sqrt (c ^ 2 + 1) \u2265 Real.sqrt ((4 / 3) * (a ^ 2 + b ^ 2 + c ^ 2) + 14) := by",
+  "new": "(ha : 0 \u2264 a) (hb : 0 \u2264 b) (hab : a + b = 1) : Real.sqrt a + Real.sqrt b \u2264 1 + 1:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(f : \u2124 \u2192 \u2124) (hf: \u2200 m n, f (m^2) + f (m * f n) = f (m + n) * f m) : \u2200 x, f x = 0 \u2228 \u2200 x, f x = 2 \u2228 \u2200 x, f x = x := by",
+  "new": "(f : \u2124 \u2192 \u2124) (h\u2080 : \u2203 x y, f x * f y < 0) (h\u2081 : \u2200 x, 0 \u2264 f x) : \u2203 x, f x = 0:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (hab : a \u2264 b) (hbc : b \u2264 c) : (b + c - 2 * a) ^ 3 * (c - b) \u2265 (a - 2 * b + c) ^ 3 * (c - a) := by",
+  "new": "(a b : \u2115) (hb : 0 < b) : a % b \u2264 a:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c d : \u211d) (h : a + b + c + d = 6) (ha : a >= 0) (hb : b >= 0) (hc : c >= 0) (hd : d >= 0) : 2 * a + a * b + a * b * c + a * b * c * d \u2264 18 := by",
+  "new": "(n : \u2115) (k : \u2115) (h\u2081 : n > 1) (h\u2082 : k > 1) (hx: n + k = 20) : n * k \u2264 190 := by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c d : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (hab : a + b + c + d = 2) : a * Real.sqrt (a + b) + b * Real.sqrt (b + c) + c * Real.sqrt (c + d) + d * Real.sqrt (d + a) \u2265 2 := by",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) : Real.sqrt (2 + a) + Real.sqrt (2 + b) \u2264 2 + (a + b + 4) / 2 := by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (habc : a * b * c = 1) (ha : a > 0) (hb : b > 0) (hc : c > 0) : (Real.sqrt a / (2 + b * Real.sqrt a) + Real.sqrt b / (2 + c * Real.sqrt b) + Real.sqrt c / (2 + a * Real.sqrt c)) \u2265 1 := by",
+  "new": "(b : \u211d) (hb : 0 < b) (habc : a * b * c = 1) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : b * a * c = 1 \u2227 0 < a * b * c \u2227 b * a * c = 1 \u2227 b * a * c = 1 \u2227 b * a * c = 1 := by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a^2 / b^2 + b^2 / c^2 + c^2 / a^2 + 6) \u2265 (9 * (a^2 + b^2 + c^2)) / (a * b + b * c + c * a) := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : 2 * ( 2 * ( (a - b) ^ 2 + (b - c) ^ 2 + (c - a) ^ 2 ) / ( (a + b) ^ 2 + (b + c) ^ 2 + (c + a) ^ 2 ) ) \u2264 4 := by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) : a^3 + b^3 + c^3 + Real.sqrt 3 * (a * b * c * (a + b + c) / Real.sqrt (a^2 + b^2 + c^2)) \u2265 a^2 * (b + c) + b^2 * (c + a) + c^2 * (a + b) := by",
+  "new": ": \u2200 (x : \u211d), Real.sqrt (x ^ 2 + (5 / 3) ^ 2) \u2265 5 / 3 * (x / 5) := by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(n : \u2115) (h : n % 4 = 0) : \u2203 a b, a % 2 = 0 \u2227 b % 2 = 0 \u2227 n = a * b := by",
+  "new": "(a : \u2115) (h\u2081 : a % 2 = 1) (h\u2082 : a = 2 * (a % 2)) : a = 1:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (1 / a + 2 / (b + c) + 3 / (a + b + c)) ^ 2 + (1 / b + 2 / (c + a) + 3 / (a + b + c)) ^ 2 + (1 / c + 2 / (a + b) + 3 / (a + b + c)) ^ 2 \u2265 81 / (a * b + b * c + a * c) := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : \u2203 l:\u211d, l>0 \u2227 l * (a * b + b * c + a * c) \u2264 l * (a^2 + b^2 + c^2):= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (h : a + b + c = 3) : a^4 + b^4 + c^4 + 4 * (a^2 * b^2 + b^2 * c^2 + c^2 * a^2) \u2265 5 * (a^2 + b^2 + c^2) := by",
+  "new": "(a b c d : \u211d) : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 \u2265 (a * b + c * d) + (a * d + b * c):= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(x : \u211d) (hx: x \u2208 Set.Icc (-Real.pi/2) (Real.pi/2)) : -(Real.pi/2)^3 \u2264 x^3 + (Real.pi/2 - x)^3 \u2227 x^3 + (Real.pi/2 - x)^3 \u2264 (Real.pi/2)^3 := by",
+  "new": "(x : \u211d) : |x| ^ 3 \u2264 1 \u2194 x ^ 2 \u2264 1 := by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(n r k : \u2115) (h\u2081 : k \u2264 r) (h\u2082 : r \u2264 n) : choose n r * choose r k = choose n k * choose (n - k) (r - k) := by",
+  "new": "(n i : \u2115) : choose n i * choose (n - i) (n - i) = choose n i:= by",
+  "step": 4,
+  "tactic": "And",
+  "percentage": 0.7966101694915254
+ },
+ {
+  "old": "(a b c : \u211d) (h1 : a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 a * b * c = 1) : 4 * (a ^ 2 + b ^ 2 + c ^ 2) + a + b + c \u2265 4 * (Real.sqrt a + Real.sqrt b + Real.sqrt c) - (a * b + b * c + c * a) + 6 := by",
+  "new": ": \u00ac (\u2200 (a b c d : \u211d) , a^2 + b^2 + c^2 + d^2 + 2 * a * b * c * d \u2265 4 * a * b * c * d + a * b + b * c + c * d + d * a) := by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) : (a + 1 / b) ^ 2 + (b + 1 / a) ^ 2 \u2265 (16 * Real.sqrt 3) / 9 * (a + b) := by",
+  "new": ": (16 * Real.sqrt 3) / 9 * (16 * Real.sqrt 3) / 9 \u2265 164 / 9 / 9 := by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": ": \u00ac\u2203 (x y : \u211a), x^4 = 2*y^2 := by",
+  "new": "(n : \u2115) : 10 \u2223 (\u2211 i in Finset.range n, (10 * i + 10)):= by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) : (ab + c) / (a + b) + (ac + b) / (a + c) + (bc + a) / (b + c) \u2265 (a + b + c + 3) / 2 := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a + b + c = 1) : a * b * (a + b) + b * c * (b + c) + c * a * (c + a) \u2264 1:= by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) : (a^2 + b * c) / (a * Real.sqrt (b + c)) + (b^2 + c * a) / (b * Real.sqrt (c + a)) + (c^2 + a * b) / (c * Real.sqrt (a + b)) \u2265 Real.sqrt 2 := by",
+  "new": "{a b : \u211d} (ha : 0 < a) (hb : 0 < b) : Real.sqrt (a ^ 2 + b ^ 2) \u2264 a + b := by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(x y z : \u211d) : (y + z) * (z + x)^2 / (2 * y + x + z)^2 \u2265 z * x / (x + y) := by",
+  "new": "(x y z : \u211d) : (Real.sqrt (x ^ 2 + y ^ 2) - Real.sqrt (y ^ 2 + z ^ 2)) ^ 2 \u2265 0:= by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) : (a + b + c) * (Real.sqrt ((a * b) ^ 2 + 4 * a * (b + c)) + Real.sqrt ((b * c) ^ 2 + 4 * b * (c + a)) + Real.sqrt ((a * c) ^ 2 + 4 * a * (b + c))) + 2 * (a ^ 2 * b + b ^ 2 * c + c ^ 2 * a) \u2265 (a * b + b * c + c * a) * (a + b + c + 4) := by",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) : (a * b) * (a + b) + (b * c) * (b + c) + (c * a) * (c + a) + 4 * (a * b) \u2265 0 := by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : \u221a(a / (a + b)) + \u221a(b / (b + c)) + \u221a(c / (c + a)) \u2264 2 * \u221a(1 + abc / ((a + b) * (b + c) * (c + a))) := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : \u221a(1 + b / (a + b)) \u2264 \u221a(1 + 1):= by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "{a b c : \u211d} : a^2 + b^2 + c^2 + (9 * a * b * c) / (a + b + c) \u2265 2 * (a * b + b * c + c * a) := by",
+  "new": ": \u2203 x : \u211d, \u2200 y : \u211d, y ^ 2 \u2264 x ^ 2 + (3 * x + 4) ^ 2 \u2192 y ^ 2 + (3 * y + 4) ^ 2 \u2264 (x + 3) ^ 2 + (3 * x + 4) ^ 2 \u2227 y ^ 2 + (3 * y + 4) ^ 2 + 40 * x * y * y \u2264 (x + 3) ^ 2 + (3 * x + 4) ^ 2 + 40 * x * x * x \u2192 y \u2264 x + 3:= by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (hab : a + b \u2260 0) (hbc : b + c \u2260 0) (hca : a + c \u2260 0) : (a^2 / (a + b) + b^2 / (b + c) + c^2 / (c + a)) \u2264 (3 * (a^2 + b^2 + c^2)) / (2 * (a + b + c)) := by",
+  "new": ": \u2200 (a b x : \u211d), a \u2265 0 \u2227 b \u2265 0 \u2227 x \u2265 0 \u2227 x \u2264 a \u2227 x \u2264 b \u2192 (a - x)^2 * b / (a * (a + b)) + (b - x)^2 * a / (b * (a + b)) \u2265 0 := by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : (xy + xz + yz) / (x + yz) \u2264 (9/8) * (y + z) := by",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) : (x / y + y / z + z / x) \u2265 x / y + y / z + z / x - 3:= by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(a b c d : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) : 4 * (a^2 + a + 1) * (b^2 + b + 1) * (c^2 + c + 1) * (d^2 + d + 1) \u2265 81 * (a + b + c + d) * (a^3 * b^3 * c^3 * d^3)^(1 / 4) := by",
+  "new": "(a b : \u2115) (h\u2080 : 0 < a \u2227 0 < b) (h\u2081 : a * b < 1) : round (a * b : \u211d) = 0 := by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(a b : \u211d) (h : a^3 + b^3 = 2 * a - 2 * b) : (-2 / (3:\u211d)^(1 / 4) \u2264 a + b \u2227 a + b \u2264 2 / (3:\u211d)^(1 / 4)) := by",
+  "new": "(a b : \u211d) (h\u2080 : 0 \u2264 a \u2227 0 \u2264 b) (h\u2081 : a ^ 2 + b ^ 2 = 1) : Real.sqrt (1 - a) * b \u2264 1:= by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(a b c d : \u211d) (habcd : a * b * c * d = 1) : 1 / (1 + a ^ 2) + 1 / (1 + b ^ 2) + 1 / (1 + c ^ 2) + 1 / (1 + d ^ 2) \u2265 2 := by",
+  "new": "(a b : \u211d) : 1 + a ^ 2 + b ^ 2 \u2264 2 * (1 + a ^ 2 + b ^ 2):= by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": ": \u2200 a b : \u211d, (a * b) \u2265 0 \u2192 a^3 + b^3 = (a + b) * (a^2 - a * b + b^2) \u2227 a^3 + b^3 \u2264 64^3 := by",
+  "new": "(a b c d t : \u211d) (ht : t \u2265 0) (hab : a + b + c + d \u2264 1014) (h : a + b + c + d = t * t) (h1 : 0 \u2264 a) (h2 : 0 \u2264 b) (h3 : 0 \u2264 c) (h4 : 0 \u2264 d) : Real.sqrt (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2) \u2264 t * t:= by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(x y z : \u211d) (hx : x + y + z = 3) (hx0 : 0 \u2264 x) (hy0 : 0 \u2264 y) (hz0 : 0 \u2264 z) : 1 / (x ^ 2 + y + z) + 1 / (x + y ^ 2 + z) + 1 / (x + y + z ^ 2) \u2264 1 := by",
+  "new": "(x : \u211d) (hx : 0 < x) (h2 : 0 < x + y + z) (h3 : x^2 + y^2 + z^2 = 20) (h4 : x + y + z = 10) : 2 * Real.sqrt (x * y + y * z + z * x) \u2264 20 / 2 := by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(n : \u2115) (x : \u2115 \u2192 \u2115) (hx: x 0 = 1) (hx2: \u2200 n, x (n+1) = x n + n + 1) : x n \u2265 (n + 1) * (n + 2) / 6 := by",
+  "new": "(x : \u211d) (h\u2080 : x \u2265 0) (h\u2081 : \u2203 x, 0 < x \u2227 2 * x = x ^ 2 / 2) : \u2203 x, 0 < x \u2227 2 * x = x ^ 2 / 2 \u2227 x \u2264 4 := by",
+  "step": 5,
+  "tactic": "And",
+  "percentage": 0.6475409836065574
+ },
+ {
+  "old": "(x y s : \u211d) (hxy : x \u2260 y) (hx : x > 0 \u2227 y > 0 \u2227 s > 0) (h : x^(s + 1) * exp (-y) = y^(s + 1) * exp (-x)) : x + y > 2 * s := by",
+  "new": "(x : \u211d) (h\u2080 : 0 < x) (h\u2081 : x < 1) : Real.sqrt (1 + x ^ 2) - x < 1 := by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : 3 * (a + b + c) + 2 * (Real.sqrt (a * b) + Real.sqrt (b * c) + Real.sqrt (a * c)) \u2265 5 / Real.sqrt 2 * (Real.sqrt (a * b + b * c) + Real.sqrt (b * c + a * c) + Real.sqrt (a * c + a * b)) := by",
+  "new": "(x : \u211d) : Real.sqrt (2 + 2) \u2265 0 \u2227 Real.sqrt (2 + 2) \u2265 Real.sqrt (2 + 1) := by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "{x y : \u211d} (hx : 0 \u2264 x) (hy : 0 \u2264 y) : Real.sqrt x * Real.sqrt y = Real.sqrt (x * y) := by",
+  "new": "{x : \u211d} (hx : 0 < x) : Real.sqrt (x ^ 2 / 2) \u2264 x:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a^2 = 2 * b + 1) (hb : b^2 = 2 * c + 1) : a^3 + b + 2 * c \u2265 -8 := by",
+  "new": ": \u00ac(\u2200 a b c : \u211d, a^2 + b^2 + c^2 = 2 * (a * b + b * c + c * a) \u2192 a + b + c = 3) := by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b : \u211d) : a + b \u2265 Real.sqrt ((a^2 + b^2) / 2) + Real.sqrt (ab) := by",
+  "new": "{x y : \u211d} (h : x ^ 2 \u2264 y) : x \u2264 Real.sqrt y := by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(x n : \u2115) (hx : x^3 \u2261 1 [ZMOD n]) : (x - 1) * (x^2 + x + 1) \u2261 0 [ZMOD n] := by",
+  "new": "(x y : \u2115) : (x : \u2124) \u2261 0 [ZMOD y] \u2194 y \u2223 x:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (Real.sqrt (a * (b + 1)) + Real.sqrt (b * (c + 1)) + Real.sqrt (c * (a + 1))) \u2264 (3 / 2) * Real.sqrt ((a + 1) * (b + 1) * (c + 1)) := by",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) : (Real.sqrt (a * b)) \u2264 (a + b) / 2:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(n : \u2115) (a : \u2115 \u2192 \u211d) (h\u2081 : \u2211 i in Finset.range n, a i = 1) (h\u2082 : \u2200 i, 0 \u2264 a i) (h\u2083 : 4 \u2264 n) : \u2211 i in Finset.range n, \u2211 j in Finset.range n, a i * a j \u2264 1 / 4 := by",
+  "new": "(n : \u2115) (\u03b5 : \u211d) (h\u2083\u2080 : \u03b5 > 0) (h\u2084\u2080 : 5 \u2264 n) (h\u2085\u2080 : (n : \u211d) * \u03b5 \u2265 1): \u2211 i in Finset.range 11, (3 * (2 : \u211d)^i / (2 ^ i * (1 + 2 ^ i))) \u2264 45 / 2:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c : \u211d) (h : a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 a^2 + b^2 + c^2 + a * b * c = 4) : a + b + c <= 3 := by",
+  "new": "(x : \u2115) (h1 : x < 20) (h2 : 0 < x) (h3 : x^2 + 1 = 20 * x) : x = 50 / 3 \u2228 x = 1 / 3:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(n : \u2115) (h\u2080 : n > 2) : (3 : \u211d)^n > 3 * n := by",
+  "new": ": \u2200 n : \u2115, 1 < n \u2192 (3 : \u211d)^n > 3 * n:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hab : a + b = 2) : 1 / (a^2 + 1) + 1 / (b^2 + 1) + 3 / (2 * (a^2 + b^2 + 1)) \u2265 3 / 2 := by",
+  "new": ": \u2200 a b : \u211d, a \u2265 0 \u2227 b \u2265 0 \u2192 (a + b) ^ 2 / 2 \u2265 a * b:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) : (a / (2 * a + 4 * b + c) + b / (2 * b + 4 * c + a) + c / (2 * c + 4 * a + b) + (3 * (a * b + b * c + c * a)) / (14 * (a + b + c) ^ 2)) \u2264 (a + b + c) ^ 2 / (6 * (a * b + b * c + c * a)) := by",
+  "new": "(t : \u211d) : t \u2264 (0 + t + forget_the_try) / 2 \u2228 (0 + t + forget_the_try) / 2 \u2264 t:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c d : \u211d) : (3 * b) / (c + d) + 4 * c / (a + b) \u2265 2 * (Real.sqrt 3 - 1) := by",
+  "new": "(a : \u211d) : 0 \u2264 Real.sqrt a:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c : \u2115) (hab : a \u2260 b) (hbc : b \u2260 c) (hca : c \u2260 a) (hA: a \u2208 Finset.Icc 1 6) (hB: b \u2208 Finset.Icc 1 6) (hC: c \u2208 Finset.Icc 1 6) : 7 \u2223 a * b * c + (7 - a) * (7 - b) * (7 - c) := by",
+  "new": "(x : \u2115) (h\u2080 : 4 \u2223 x) : \u2203 k : \u2115, x = 4 * k:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": ": \u2200 x y z : \u211d, x * (x - y - z) * y * (y + z - x) * z * (z + x - y) \u2264 (x + y + z) ^ 6 / 3 ^ 6 := by",
+  "new": ": \u00ac(\u2200 (x y z : \u211d) , (x - y) ^ 2 + (x - z) ^ 2 + (y - z) ^ 2 < 3 * (x * y + x * z + y * z) \u2194 \u2203 x y z : \u211d, (x - y) ^ 2 + (x - z) ^ 2 + (y - z) ^ 2 \u2265 3 * (x * y + x * z + y * z)) := by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(n : \u2115) : 2 * \u220f k in Finset.range n, (3^(2^k) + 1) = 3^(2^n) - 1 := by",
+  "new": "(n : \u2115) (h\u2080 : 0 < n) (h\u2081 : n \u2264 9) : \u2203 m, 3 ^ m + 2 ^ m \u2265 n:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": ": \u2200 n : \u2124, n^4 + 64 = (n^2 + 8)^2 - 16 * n^2 \u2227 (n^2 + 8)^2 - 16 * n^2 = (n^2 + 8 - 4 * n) * (n^2 + 8 + 4 * n) := by",
+  "new": "(n a : \u2115) (H\u2080 : 2 \u2264 a \u2227 a \u2264 n) (H\u2081 : 1 < a \u2227 a \u2264 n) : \u2203 (x y : \u2115), x ^ 2 + a * y ^ 2 = n ^ 2 := by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c d : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (hab : a + b + c + d = 1 / a + 1 / b + 1 / c + 1 / d) : (a + 1) * (b + 1) * (c + 1) * (d + 1) \u2265 16 := by",
+  "new": "(a b c d : \u2115) (habc : a + b + c = 15) (habd : a + b + d = 16) (hcd : c + d = 10) : 1 / 4 \u2264 (a - b)^2 / (a + b) ^ 2:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) (h : a + b + c = 1 / a + 1 / b + 1 / c) : Real.sqrt (a * b) + Real.sqrt (b * c) + Real.sqrt (c * a) \u2265 2 * Real.sqrt 2 := by",
+  "new": "(x : \u2115) (hx : 0 < x) : (1 / Real.sqrt (x ^ 2 + 4)) \u2264 1 / 1:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": ": \u2203 x, (12-x)^(1/3) + (14+x)^(1/3) = 2 \u2227 (12-x)^(1/3)^3 + (14+x)^(1/3)^3 = 26 := by",
+  "new": ": \u2203 x y : \u211d, x^2 + y^2 = (233 / (3 : \u211d))^2 \u2227 (12 - x)^(1/3) + (14 + x)^(1/3) = (2 : \u211d) \u2227 x \u2265 0 \u2227 y \u2265 0:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0)(hab : a + b + c = 3) : a^2 + b^2 + c^2 + 3 * (Real.sqrt (a * b) + Real.sqrt (b * c) + Real.sqrt (c * a)) \u2265 12 := by",
+  "new": "(a b : \u211d) (h\u2080 : 0 \u2264 a \u2227 0 \u2264 b) (h\u2081 : a + b = 2) : a * b + (2 - a) * (2 - b) \u2265 2 * (Real.sqrt (a * b)) - 2:= by",
+  "step": 6,
+  "tactic": "And",
+  "percentage": 0.6
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a + b + c = 1) : (4 * a - Real.sqrt b - Real.sqrt c) / (b + c) + (4 * b - Real.sqrt c - Real.sqrt a) / (c + a) + (4 * c - Real.sqrt a - Real.sqrt b) / (a + b) \u2265 3 * (2 - Real.sqrt 3) * (a ^ 2 + b ^ 2 + c ^ 2) / (a * b + b * c + c * a) := by",
+  "new": ": \u2200 x y z : \u211d, 0 \u2264 x \u2227 0 \u2264 y \u2227 0 \u2264 z \u2227 x + y + z = 1 \u2192 Real.sqrt (x ^ 2 + 3 * y * z) + Real.sqrt (y ^ 2 + 3 * z * x ) + Real.sqrt (z ^ 2 + 3 * x * y) \u2265 x + y + z:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c d : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (hd : d \u2265 0) (h : 3 * (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2) = 4 * (a + b + c + d) + 1) : a ^ 3 + b ^ 3 + c ^ 3 + d ^ 3 \u2265 50 / 27 + 19 / 27 * Real.sqrt 7 := by",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (habc : a + b + c = 2) (h_eq : a * b + b * c + c * a = 1) : a^2 * b^2 + b^2 * c^2 + c^2 * a^2 \u2264 2:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(n : \u2124) : 7 \u2223 n^7 - n := by",
+  "new": ": \u00ac(\u2200 (n : \u2115) , \u2211 k in Finset.Icc (n + 1) (2 * n), k = 2 * \u2211 k in Finset.Icc 1 n, k \u2194 n = 1):= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hab : a + b + c = 3) : (a^2 + 1) * (b^2 + 1) * (c^2 + 1) \u2264 169 / 16 := by",
+  "new": "(a b c : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hab : a + b + c = 3) : a^2 + b^2 + c^2 \u2264 9:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : 1 / a + 1 / b + 1 / c \u2265 (a ^ 2 + 2010 * b ^ 2) / (a ^ 3 + 2010 * b ^ 3) + (b ^ 2 + 2010 * c ^ 2) / (b ^ 3 + 2010 * c ^ 3) + (c ^ 2 + 2010 * a ^ 2) / (c ^ 3 + 2010 * a ^ 3) := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : 1 / a + 1 / b + 1 / c \u2265 3 / (a + b + c):= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (hab : a + b + c = 1) : (Real.sqrt (ab + ac + b^2 + bc + c^2) + Real.sqrt (a^2 + ab + ac + bc + c^2) + Real.sqrt (a^2 + ab + ac + b^2 + bc)) \u2264 Real.sqrt 2 + 1/2 * Real.sqrt 3 := by",
+  "new": "(a b c : \u211d) (hab : a + b + c = 1) (h : a^2 + b^2 + c^2 \u2264 2 * (a * b + b * c + c * a)) : Real.sqrt (a^2 + b^2 + c^2) \u2264 Real.sqrt 2 := by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c d : \u211d) (h : a * c + b * d = 0) : (a + b + c + d) / 2 \u2264 Real.sqrt ((a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2) / 2) := by",
+  "new": ": \u2200 (x y z : \u211d) (h\u2080 : y * z + x * z + x * y = 0) (h\u2081 : x + y + z = 0) (h\u2082 : x * x + y * y + z * z = 1) , x * Real.sqrt (x * x + y * y + z * z) \u2264 1:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (h\u2081 : a + b + c = 3) (h\u2082 : a^2 + b^2 + c^2 = 27) : -27 \u2264 a * b * c \u2227 a * b * c \u2264 5 := by",
+  "new": "(a b c : \u211d) (h\u2081 : a + b + c = 3) (h\u2082 : a^2 + b^2 + c^2 = 27) : 27 / 3 \u2264 a^2 + b^2 + c^2 / 3 := by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (hab : 0 < a) (hbc : 0 < b) (hca : 0 < c) (habc : a * b + b * c + c * a = 3) : (a^2 + 1) * (b^2 + 1) * (c^2 + 1) \u2265 8 := by",
+  "new": ": \u2200 x y z : \u211d, x^2 + y^2 + z^2 = 3 \u2192 x * y * y * z \u2264 3:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : Real.sqrt ((a^2 * b) / (a^3 + b^3 + 2 * c^3)) + Real.sqrt ((b^2 * c) / (b^3 + c^3 + 2 * a^3)) + Real.sqrt ((a^2 * c) / (c^3 + a^3 + 2 * b^3)) \u2264 (3:\u211d) / 2 := by",
+  "new": "(x : \u211d) (hx : 4 / 9 \u2264 x) : 0 < x ^ 3 + 1 + x + 1 + 1 + 1:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : a + b = 2) : 3 * (a / b + b / a) + a ^ 3 * b ^ 3 \u2265 7 := by",
+  "new": ": \u2200 x y : \u211d, 0 < x \u2192 0 < y \u2192 x ^ 3 * y ^ 3 \u2265 0 := by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a \u2227 a < 1) (hb : 0 < b \u2227 b < 1) (hc : 0 < c \u2227 c < 1) (habc : a * b * c = (1 - a) * (1 - b) * (1 - c)) : a^2 + b^2 + c^2 >= 3 / 4 := by",
+  "new": "(a b c d : \u211d) (hab : 0 \u2264 a \u2227 0 \u2264 b \u2227 0 \u2264 c \u2227 0 \u2264 d) (h\u2080 : a + b + c + d = 1) (h\u2081 : a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 = 1) : a * b + b * c + c * d \u2265 3 / 4 * (a * d + b * a + c * b + d * c):= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a / (1 + a ^ 3) + b / (1 + b ^ 3) + c / (1 + c ^ 3)) \u2264 (a / (a + b ^ 2) + b / (b + c ^ 2) + c / (c + a ^ 2)) := by",
+  "new": "(h\u2080 : 0 < a \u2227 0 < b \u2227 0 < c) (h\u2081 : a + b + c = 1) : a / (a + b ^ 2) + b / (b + c ^ 2) + c / (c + a ^ 2) \u2264 2:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(x y z : \u211d) (hx: x >= 0 \u2227 y >= 0 \u2227 z >= 0) (hab : x + y + z = 1) : x^2*y + y^2*z + z^2*x + x*y*z <= 4/27 := by",
+  "new": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x + y + z = 1) : x * y * z + y * z * x + z * x * y \u2264 x * (x + y + z) + y * (x + y + z) + z * (x + y + z):= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (habc : a + b + c = 3) : a^3 + b^3 + c^3 \u2265 3 * a * b * c + 27/2 * |(a - 1) * (b - 1) * (c - 1)| := by",
+  "new": "(a b c : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hc : c \u2265 0) (hab : a + b + c = 1) : |a^2 - b^2| + |b^2 - c^2| + |c^2 - a^2| \u2264 2 * (a^3 + b^3 + c^3) + 2 * (a^2 + b^2 + c^2):= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x * y * z = 1) : 3 / 2 \u2264 1 / (y * z + z) + 1 / (z * x + x) + 1 / (x * y + y) := by",
+  "new": "(x y z : \u211d) (h : 0 < x \u2227 0 < y \u2227 0 < z) (hx : x * y + x * z + y * z = 1) : 9 / 2 \u2264 3 / (x * y + x * z + y * z) + 3 * (x + y + z):= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 1) (h : \u221a(a * b) + \u221a(b * c) + \u221a(c * a) = 1) : 3 * ((a^2 - b * c) / (a + b) + (b^2 - c * a) / (b + c) + (c^2 - a * b) / (c + a)) \u2265 1 := by",
+  "new": "(a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : a + b = 1) : (a + b) ^ (1 / (a + b)) \u2265 a ^ (1 / (a + b)) + b ^ (1 / (a + b)):= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (hab : a \u2208 Set.Icc (-1 : \u211d) 1) (hbc : b \u2208 Set.Icc (-1 : \u211d) 1) (hca : c \u2208 Set.Icc (-1 : \u211d) 1): (a - b) * (b - c) * (c - a) ^ 3 \u2264 8 := by",
+  "new": "(a b : \u211d) (h\u2080 : -1 \u2264 a \u2227 a \u2264 1) (h\u2081 : -1 \u2264 b \u2227 b \u2264 1) : Real.exp a \u2264 Real.exp b \u2194 a \u2264 b := by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(p q r : \u211a) (hp : p + q + r = 0) (hq : p * q * r = 1) : False := by",
+  "new": ": \u2200 a b c : \u2124, a * b * c = 1 \u2192 a * b * c * (a * b + c) = a * b + c:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(x y z t : \u211d) (hx : x \u2208 Set.Icc 0 1) (hy : y \u2208 Set.Icc 0 1) (hz : z \u2208 Set.Icc 0 1) (ht : t \u2208 Set.Icc 0 1) : (x / (y * z * t + 1) + y / (x * z * t + 1) + z / (x * y * t + 1) + t / (x * y * z + 1)) \u2264 3 := by",
+  "new": "(G : Set \u211d) (hG : G \u2286 Set.Icc 0 1) (f : \u2115 \u2192 \u211d) (hf: \u2200 i, f i \u2208 G) (hr : \u2200 i, 0 \u2264 f i \u2227 f i \u2264 1) : \u2211 k in Finset.range 4, f k \u2264 4:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(x y z : \u211d) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : x^2 + y^2 + z^2 + x * y * z = 4) : (x + 1) * (y - 1) * (z + 1) \u2264 (27 / 16 : \u211d) := by",
+  "new": "(x y z : \u211d) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : 16 * x^2 * y^2 * z^2 = (x^2 + y^2 + z^2)^2) : (x * y) ^ 2 + (x * z) ^ 2 + (y * z) ^ 2 \u2264 2 * ((x^2 + y^2 + z^2)^2 / 3) / 2:= by",
+  "step": 7,
+  "tactic": "And",
+  "percentage": 0.8307692307692308
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a + b + c = 3) : a^(1/3) + b^(1/3) + c^(1/3) \u2265 ab + bc + ac := by",
+  "new": "(y z : \u211d) : y + z \u2264 2 * (y * z)^(1 / 2) + y + z:= by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(x y z : \u211d) (hx : x \u2265 0) (hy : y \u2265 0) (hz : z \u2265 0) (h : x + y + z = 1) : 1 / (1 + x ^ 2) + 1 / (1 + y ^ 2) + 1 / (1 + z ^ 2) \u2264 27 / 10 := by",
+  "new": "(x : \u2115 \u2192 \u211d) (n : \u2115) (h\u2080 : \u2211 k in Finset.range n, x k = 1) : \u2203 a b, a \u2265 0 \u2227 b \u2265 0 \u2227 a + b = 1 \u2227 1 / (1 + a ^ 2) + 1 / (1 + b ^ 2) \u2264 27 / 10 := by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(t : \u211d) (ht : t \u2208 Set.Icc (-1) 1) : Real.sqrt (1 + t) + Real.sqrt (1 - t) \u2265 2 - t^2 := by",
+  "new": "{a b : \u211d} (hb : 0 \u2264 b) (hab : a ^ 2 \u2264 b) : a \u2264 Real.sqrt b := by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(x : \u211d) (hx : 0 < x) : x \u2264 (x^1006 - 1)/1006 + 1 := by",
+  "new": "(x y : \u211d) (h\u2080 : 0 < x \u2227 0 < y) (h\u2081 : x * y = 1) : x + y \u2265 2 := by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(f : \u211d \u2192 \u211d) (h\u2081 : 2 * (f 0)^2 = 0) : f 0 = 0 := by",
+  "new": "(f : \u211d \u2192 \u211d) (h\u2081 : \u00ac\u2203 u : \u211d, f u = 0) : \u2200 u : \u211d, (f u) ^ 2 \u2260 0:= by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(x y : \u211d) (hx : 1 < x \u2227 x < 3) (hy : 1 < y \u2227 y < 3) : |(x - 2) * (y - 2)| < 1 := by",
+  "new": "(a b : \u211d) (h\u2081 : 0 \u2264 a \u2227 0 \u2264 b) (h\u2082 : a + b \u2264 1) : |a^2 - 2*a + 1| \u2264 1 \u2227 |2*b^2 - 2*b + 1| \u2264 1 \u2194 a^2 - 2*a + 1 \u2264 1 \u2227 2*b^2 - 2*b + 1 \u2264 1:= by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(a : \u2115 \u2192 \u211d) (a1 : a 0 = 1) (a2 : a 1 = 1/Real.sqrt 3) (a_rec : \u2200 n, n >= 1 \u2192 a (n + 2) = (a n + a (n + 1))/(1 - a n * a (n + 1))) : |a 2009| = 1 := by",
+  "new": "(a b c : \u2115 \u2192 \u211d) (h\u2080 : a 0 = 1 \u2227 b 0 = 1 \u2227 c 0 = 1) (h\u2081 : \u2200 n, a (n + 1) = (b n + c n) / 2 \u2227 b (n + 1) = (a n + c n) / 2 \u2227 c (n + 1) = (a n + b n) / 2) (n : \u2115) : a n + b n + c n = 3 * ((a n + b n + c n) / 3):= by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(a b c : \u211d) : (a + 2 * b) * (b * (a + 2 * c) + a * c - b * c) / (a + 2 * c) + (b + 2 * c) * (c * (b + 2 * a) + b * a - c * a) / (b + 2 * a) + (c + 2 * a) * (a * (c + 2 * b) + c * b - a * b) / (c + 2 * b) \u2265 1 / 2 * ((a + b + c) ^ 2 + (5 * (a ^ 2 + b ^ 2 + c ^ 2) + 4 * (a * b + b * c + c * a)) * (a * b + b * c + c * a) / (a + b + c) ^ 2) := by",
+  "new": "(a b c: \u211d) : a^2 + b^2 + c^2 + 2 * b * c + 2 * a * b + 2 * a * c \u2265 a * b + a * c + b * c:= by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": ": \u2200 n : \u2115, n >= 2 \u2192 n! < ((n + 1) / 2)^n := by",
+  "new": "(n : \u2115) (h\u2081 : 2 \u2264 n) : n ^ 2 \u2264 ((n + 1) / 2) ^ 2 * 4:= by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(k : \u2115) (h : 1 < k) : (2 : \u211d) * (Real.sqrt (k + 1) - Real.sqrt k) < 1 / Real.sqrt k \u2227 (1 : \u211d) / Real.sqrt k < 2 * (Real.sqrt k - Real.sqrt (k - 1)) := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : a * b + b * c + c * a \u2260 0 \u2227 a * b * c \u2260 0 \u2192 a^3 / (a^2 + b^2) + b^3 / (b^2 + c^2) + c^3 / (c^2 + a^2) \u2264 a + b + c:= by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(\u03c9\u2081 \u03c9\u2082 \u03c9\u2083 : \u2102) : \u03c9\u2081 + \u03c9\u2082 + \u03c9\u2083 = 1 \u2227 \u03c9\u2081^2 + \u03c9\u2082^2 + \u03c9\u2083^2 = 3 \u2227 \u03c9\u2081^3 + \u03c9\u2082^3 + \u03c9\u2083^3 = 7 \u2192 \u03c9\u2081^12 + \u03c9\u2082^12 + \u03c9\u2083^12 = 1053 := by",
+  "new": "(\u03c9 : \u2102) (h : \u03c9^3 * (\u03c9^3 - 1) = 0) : \u03c9^3 - 1 = 0 \u2228 \u03c9^3 = 0:= by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(x y z : \u211d) (h : x + y + z = 3) : 4 * (x^6 + y^6 + z^6) + 5 * (x^5 * y + y^5 * z + z^5 * x) \u2265 27 := by",
+  "new": "(x y z : \u211d) (h : x + y + z = 3) (h1 : x^2 + y^2 + z^2 = 3) (l : \u2200 x y : \u211d, x ^ 2 + y ^ 2 = (x + y) ^ 2 - 2 * x * y) : x = 1 \u2227 y = 1 \u2227 z = 1:= by",
+  "step": 8,
+  "tactic": "And",
+  "percentage": 0.8556701030927835
+ },
+ {
+  "old": "(a b c : \u211d) : a\u207b\u00b9 + b\u207b\u00b9 + c\u207b\u00b9 = bc + ac + ab \u2192 bc + ac + ab \u2264 (1 / 3) * (a + b + c) ^ 2 := by",
+  "new": "(a b : \u211d) : (1 / 3) * (a + b) ^ 2 \u2264 a ^ 2 + b ^ 2 + (1 / 3) * (a + b) ^ 2 \u2227 (1 / 3) * (a + b) ^ 2 \u2264 (1 / 3) * (a + b) ^ 2 + a ^ 2 + b ^ 2:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hab : a + b + c = 3) : a^3 + b^3 + c^3 + 4 * a + 4 * b + 4 * c \u2264 15 := by",
+  "new": "(a b c : \u211d) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hab : a + b + c = 3) : a^3 + b^3 + c^3 + 3 * (a + b) * (b + c) * (c + a) \u2264 36:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(x y z : \u211d) (hx: x \u2208 Set.Ioo 0 1 \u2227 y \u2208 Set.Ioo 0 1 \u2227 z \u2208 Set.Ioo 0 1)(habc : x*y*z = (1-x)*(1-y)*(1-z)) : x+y+z >= 1 := by",
+  "new": "{k : \u2115} {a b c : \u2115} (h\u2080 : 0 < a \u2227 0 < b \u2227 0 < c) (h\u2081 : a ^ 2 + b ^ 2 + c ^ 2 = k) (h\u2082 : a * b * c \u2264 k) : a + b + c \u2265 1 \u2227 a * b + b * c + c * a \u2265 1:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(f : \u211d \u2192 \u211d): (\u2200 x y, f (x ^ 2) + f (2 * y ^ 2) = (f (x + y) + f y) * (f (x - y) + f y)) \u2194 \u2203 k:\u211d, \u2200 x:\u211d, f x = k * x := by",
+  "new": "{f : \u211d \u2192 \u211d} (h\u2080 : \u2200 x y, f (x ^ 2) + f (2 * y ^ 2) = (f (x + y) + f y) * (f (x - y) + f y)) (h\u2081 : \u2203 k:\u211d, \u2200 x:\u211d, f x = k * x) : \u2203 k:\u211d, \u2200 x:\u211d, f x = k * x := by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(x y z : \u211d) (h : x + y + z = 0) : (Real.sqrt (9 + 16 * Real.exp (2 * x)) - 4 * Real.exp x) + (Real.sqrt (9 + 16 * Real.exp (2 * y)) - 4 * Real.exp y) + (Real.sqrt (9 + 16 * Real.exp (2 * z)) - 4 * Real.exp z) \u2265 3 := by",
+  "new": "(a b c d : \u211d) (ha : 0 \u2264 a) (hb : 0 \u2264 b) (hc : 0 \u2264 c) (hd : 0 \u2264 d) : Real.sqrt (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2) \u2265 (a + b + c + d) / 4:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(a b : \u211d) : Real.sqrt (a * b) * (Real.sqrt a + Real.sqrt b)^2 \u2264 (a + b)^2 := by",
+  "new": "(a b : \u211d) : (Real.sqrt 3 + 1) * (Real.sqrt 3 - 1) = 2:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a^3 / (b^2 + c^2) + b^3 / (c^2 + a^2) + c^3 / (a^2 + b^2)) \u2265 3 / 2 * ((a^4 + b^4 + c^4) / (a^3 + b^3 + c^3)) := by",
+  "new": "(a b : \u211d) (m : \u2115) (ha : 0 < a) (hb : 0 < b) (hab : a \u2264 b) : a ^ m \u2264 b ^ m := by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "{p q r a b c : \u211d} (hp : p = a + b + c) (hq : q = a * b + b * c + c * a) (hr : r = a * b * c) : 27 * q ^ 2 - 54 * r + 12 * q \u2264 5 := by",
+  "new": "(a b c : \u211d) (hp : 0 < a \u2227 0 < b \u2227 0 < c) (hab : a + b + c = 1) : Real.sqrt (a + b + c) \u2265 2 / 3 \u2227 Real.sqrt (a + b + c) \u2265 2 * (a * b + b * c + c * a) - 1 / 9 := by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(a b c : \u211d) (ha : a > 0 \u2227 b > 0 \u2227 c > 0 \u2227 a * b * c = 1) : 1 / (a^2 + 2 * b^2 + 3) + 1 / (b^2 + 2 * c^2 + 3) + 1 / (c^2 + 2 * a^2 + 3) \u2264 1 / 2 := by",
+  "new": "(a b : \u211d) (ha : a \u2265 0) (hb : b \u2265 0) (hab : a + b \u2265 1) : a * b \u2264 1 / 4.4 \u2228 a * b \u2265 1 / 4.4:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(a b c : \u211d) : (b^2 + c^2 - a^2) * (b - c) ^ 2 + (-b^2 + a^2 + c^2) * (c - a) ^ 2 + (b^2 + a^2 - c^2) * (a - b) ^ 2 \u2265 0 := by",
+  "new": "(x y : \u211d) (h\u2080 : 0 \u2264 x * x + y * y) (h\u2081 : 0 \u2264 (x - y) * (x - y)) (h\u2082 : 0 \u2264 (x + y) * (x + y)) : 0 \u2264 (x - 1) ^ 2 + (y - 1) ^ 2:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(f : \u211d \u2192 \u211d) (hf: f 1 = 0) (hP: \u2200 x, f (x-1) + f x = 1): \u2200 x, f x = 1 - x := by",
+  "new": "(n : \u2115) (f : \u2115 \u2192 \u2115) (hf: f 0 = 1 \u2227 \u2200 x, f (x+1) = f x + 1): f n = n + 1:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(x : \u211d) (hx : 0 < x \u2227 x < Real.pi / 4) : (sin x)^(cos x) < (cos x)^(sin x) := by",
+  "new": ": (\u2200 x : \u211d, 0 \u2264 x \u2227 x \u2264 1 \u2192 Real.sqrt (x^2 + 1 ) \u2265 cos x) \u2228 (\u2200 x : \u211d, 0 \u2264 x \u2227 x \u2264 1 \u2192 Real.sqrt (x^2 + 1 ) < cos x) \u2228 (\u2200 x : \u211d, 0 \u2264 x \u2227 x \u2264 1 \u2192 Real.sqrt (x^2 + 1 ) \u2265 cos x \u2227 Real.sqrt (x^2 + 1 ) < cos x) \u2228 (\u2200 x : \u211d, 0 \u2264 x \u2227 x \u2264 1 \u2192 Real.sqrt (x^2 + 1 ) < cos x \u2227 Real.sqrt (x^2 + 1 ) \u2265 cos x):= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(p x : \u2115) (hp : p.Prime) : totient (p^x) = p^x - p^(x-1) := by",
+  "new": "(a b : \u2115) : \u03c6 (a.gcd b) * \u03c6 a * \u03c6 b = \u03c6 a * \u03c6 b * \u03c6 (a.gcd b) := by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(f : \u211d \u2192 \u211d): (\u2200 x y, f (f (x + y)) = f (x + y) + f x * f y - x * y) \u2194 \u2200 x, f x = x := by",
+  "new": ": \u2200 a : \u211d, (\u2200 x : \u211d, (x - 1) * a = x * 2 - a) \u2194 a = 2 := by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(hx: 2^32+1 = 641*6700417): 2^32+1 = 641*6700417 := by",
+  "new": ": (2^4003 : \u2115) \u2260 2^32 * 2^32 * 2^34 := by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(a b c : \u211d) : (a + b + c) * (a * b + b * c + c * a) / 9 \u2265 (a + b + c) / 3 * (a * b * c) ^ (2 / 3) := by",
+  "new": "(a b c : \u211d) (ha : a > 0) (hb : b > 0) (hc : c > 0) (habc : a * b * c = 1) : (a + b + c) * (1 / a + 1 / b + 1 / c) \u2265 9:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(a b c : \u211d) (hab : a > 0 \u2227 b > 0 \u2227 c > 0) (habc : a + b + c = a * b + b * c + c * a) : a + b + c + 1 \u2265 4 * a * b * c := by",
+  "new": "(w x y z : \u2115) : w * w + x * x + y * y + z * z + 1 = w' * w' + x' * x' + y' * y' + z' * z' \u2192 w * x * y * z > 0 \u2192 w' * x' * y' * z' > 0 \u2192 w * w + x * x + y * y + z * z + 1 > 0:= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(t : \u211d) (h\u2080 : t \u2264 1) : 2 * (3 - t)^2 \u2265 (1 / 4) * (4 - t)^3 + (5 / 4) * t^2 := by",
+  "new": "(n : \u2115) (h\u2081 : 1 < n) : \u2200 i \u2208 (Finset.range n), \u2200 j \u2208 (Finset.range n), i < j \u2192 i \u2265 0 \u2227 j \u2265 0 \u2227 i + j < 2 * n \u2227 i + j \u2265 2 * i := by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(a b c : \u211d) : a^3 + b^3 + c^3 - 3 * a * b * c + 2 * (a + b + c)^2 \u2265 3 * (a + b + c) + (a + b + c) * (a * b + a * c + b * c) := by",
+  "new": "(i : \u2115) (a b c : \u211d) (h\u2081 : 0 < a \u2227 0 < b \u2227 0 < c) (h\u2082 : \u2200 i : \u2115, i \u2264 2 \u2192 a^3 + b^3 + c^3 - 3 * a * b * c + 2 * (a + b + c)^2 \u2265 3 * (a + b + c) + (a + b + c) * (a * b + a * c + b * c)) : (a^3 + b^3 + c^3 - 3 * a * b * c + 2 * (a + b + c)^2) \u2265 3 * (a + b + c) + (a + b + c) * (a * b + a * c + b * c):= by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(a b c x y z : \u211d) (hx : 0 < x \u2227 0 < y \u2227 0 < z)(hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : a/x+b/y+c/z > a/(y+z)+b/(x+z)+c/(x+y) := by",
+  "new": "(a b c : \u211d) : a * (b * c) = b * (c * a) := by",
+  "step": 9,
+  "tactic": "And",
+  "percentage": 0.5714285714285714
+ },
+ {
+  "old": "(x : \u211d) : (sin (20 * \u03c0 / 180))^2 + (cos (80 * \u03c0 / 180))^2 + (Real.sqrt 3 * sin (20 * \u03c0 / 180) * cos (80 * \u03c0 / 180)) = 1 / 4 := by",
+  "new": "(x : \u211d) : (sin x ^ 2 + cos x ^ 2) * sin x * cos x = sin x * cos x * (sin x ^ 2 + cos x ^ 2):= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 1 \u2264 a \u2227 a \u2264 2) (hb : 1 \u2264 b \u2227 b \u2264 2) (hc : 1 \u2264 c \u2227 c \u2264 2): 3 * a * b * c \u2264 a ^ 2 + 2 * b ^ 2 + 3 * c ^ 2 \u2227 a ^ 2 + 2 * b ^ 2 + 3 * c ^ 2 \u2264 15 / 2 * a * b * c := by",
+  "new": "(a b c \u03b1 \u03b2 \u03b3 : \u211d) (ha : 0 < a \u2227 0 < b \u2227 0 < c) (habc : a + b + c = 1) : a ^ 2 * b ^ 2 * c ^ 2 \u2264 16 * a ^ 2 * b ^ 2 * c ^ 2 := by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (2 * a + b * c) / (a ^ 2 + 2 * b * c) + (2 * b + c * a) / (b ^ 2 + 2 * c * a) + (2 * c + a * b) / (c ^ 2 + 2 * a * b) \u2264 1 + (2 / 3) * (a / (b * c) + b / (c * a) + c / (a * b)) := by",
+  "new": "{A B C : \u211d} (hA : 0 \u2264 A) (hB : 0 \u2264 B) (hC : 0 \u2264 C) (hA' : 0 < A \u2228 0 < B \u2228 0 < C) : 0 \u2264 A * B * C := by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a + b + c = 1) : a / Real.sqrt (1 - c) + b / Real.sqrt (1 - a) + c / Real.sqrt (1 - b) \u2264 5 / 4 := by",
+  "new": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a + b + c = 1) : Real.sqrt (1 - b) \u2265 Real.sqrt (a + b) - 1:= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(x : \u211d) (hx : x = 10\u207b\u00b9) : \u2211' i : \u2115, x^i = 0.1111111111 := by",
+  "new": "(x : \u2115) (h\u2081 : 0 < x) : 3 ^ (x + 1) \u2260 0 := by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(x y z : \u211d) (h : x*y + y*z + z*x = 1) : 1/(x + y) + 1/(y + z) + 1/(z + x) \u2265 5/4 := by",
+  "new": "(x y z u v w : \u211d) (h\u2080 : x + y + z = u + v + w) (h\u2081 : x^2 + y^2 + z^2 = u^2 + v^2 + w^2) : x * y + x * z + y * z = u * v + u * w + v * w:= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : 1 / (a * b) + 1 / (b * c) + 1 / (c * a) \u2265 1 \u2192 a / (b * c) + b / (c * a) + c / (a * b) \u2265 1 := by",
+  "new": "(x y : \u211d) (hx : 0 < x) (hy : 0 < y) (hxy : 0 < x + y) : (x / (x + y)) ^ 2 + (y / (x + y)) ^ 2 \u2264 1 \u2192 (x / (x + y) + y / (x + y)) ^ 2 \u2264 4:= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a + b) / (a ^ 2 + b ^ 2) + (b + c) / (b ^ 2 + c ^ 2) + (c + a) / (c ^ 2 + a ^ 2) \u2264 1 / a + 1 / b + 1 / c := by",
+  "new": "{ x : \u211d } (h : 0 \u2264 x) : \u2203 y : \u2124, 0 \u2264 y\u2227 (y : \u211d) \u2264 x + 1/2:= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(a b c d : \u211d) : a^2 + b^2 + c^2 + d^2 + a * b * c * d + 1 \u2265 a * b + a * c + a * d + b * c + b * d + c * d := by",
+  "new": "(a b : \u211d) : (a - b) ^ 2 \u2265 0 \u2194 2 * (a ^ 2 + b ^ 2) \u2265 2 * a * b:= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(a b c : \u211d) (h : a^2 + b^2 + c^2 = 9) (h' : a^3 + b^3 + c^3 = 3 * (a + b + c)) : -9 * Real.sqrt 3 \u2264 a^3 + b^3 + c^3 \u2227 a^3 + b^3 + c^3 \u2264 9 * Real.sqrt 3 := by",
+  "new": "(t : \u211d) (h\u2080 : 0 < t) (h\u2081 : t < 1) (x : \u211d) (h\u2082 : x \u2265 0 \u2227 x \u2264 1) : Real.sqrt (1+t) + Real.sqrt (1 - t) \u2265 Real.sqrt ((1 + t) * (1 - t)):= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(n : \u2115) (a : \u2115 \u2192 \u211d) (h : \u2200 i, 0 \u2264 a i \u2227 a i < 1) : (1 / (2 ^ n)) * (\u220f i in Finset.range n, (2 - a i)) / (\u220f i in Finset.range n, (1 - a i)) \u2265 (4 + \u2211 i in Finset.range n, a i) / (4 - \u2211 i in Finset.range n, a i) := by",
+  "new": "(f : \u2115 \u2192 \u211d) (n : \u2115) (hf: \u2200 k: \u2115, k < n \u2192 0 < f k) (h2f: \u2200 k: \u2115, k < n \u2192 f k \u2264 1) : \u220f k in Finset.range n, f k \u2265 0:= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(a b c d x y z : \u211d) : a + b + c + d + |a - b + c - d| \u2265 x + y + z + |x - y + z| := by",
+  "new": "(y : \u211d) : (\u2200 x < y, \u2203 z, x + z \u2265 y) \u2194 \u2200 x \u2264 y, \u2203 z, x + z = y:= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(z w : \u2102) : \u2016z + 1\u2016 + \u2016w + 1\u2016 + \u2016z * w + 1\u2016 \u2265 \u2016z * w + z + w + 3\u2016 := by",
+  "new": "(z w : \u2102) : (Complex.abs (z * w + z + w) + 1) * ((Complex.abs (z * w + z + w + 3) + 1)) \u2265 (Complex.abs ((z * w + z + w + 3))) := by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a^a * b^b * c^c)^2 \u2265 a^(b + c) * b^(c + a) * c^(a + b) := by",
+  "new": ": (\u2203 a b c : \u211d, (a^a * b^b * c^c)^2 \u2265 a^(b + c) * b^(c+a) * c^(a + b)) \u2227 (\u2203 a b c : \u211d, 0 < a \u2227 0 < b \u2227 0 < c \u2227 a^a * b^b * c^c \u2265 a^(b + c) * b^(c + a) * c^(a + b)) := by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(x y z : \u211d) (h : x*y*z = 1) : (x - 1) / (y + 1) + (y - 1) / (z + 1) + (z - 1) / (x + 1) \u2265 0 := by",
+  "new": "(x : \u211d) (hx : -2 \u2264 x \u2227 x \u2264 2) (y : \u211d) (hy : -2 \u2264 y \u2227 y \u2264 2) (z : \u211d) (hz : -2 \u2264 z \u2227 z \u2264 2) (hxy : x * y * z = 1) : 0 \u2264 (x + y) ^ 2 / (x ^ 2 + y ^ 2 + 1) + (y + z) ^ 2 / (y ^ 2 + z ^ 2 + 1) + (z + x) ^ 2 / (z ^ 2 + x ^ 2 + 1):= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ },
+ {
+  "old": "(x : \u211d) (hx: x \u2265 0) : (1 / (1 + x ^ 2)) \u2265 1 - x / 2 := by",
+  "new": "(x : \u211d) (hx : 0 \u2264 x) : Real.sqrt (1 + x ^ 2) \u2265 1 + x - 1:= by",
+  "step": 10,
+  "tactic": "And",
+  "percentage": 0.42408376963350786
+ }
+]

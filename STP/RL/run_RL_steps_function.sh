@@ -1,29 +1,23 @@
 BASE_MODEL="/n/netscratch/amin_lab/Lab/slim/STP/storage/SFT/tsw6rwex/step-229"
 
-EXP_DIR="/n/netscratch/amin_lab/Lab/slim/STP/storage/v2"
+EXP_DIR="/n/netscratch/amin_lab/Lab/slim/STP/storage/v4"
 DATASET_CONFIG="./dataset_configs/leanworkbook_v2.json"
 
-# rm  -r /n/netscratch/amin_lab/Lab/slim/STP/storage/test2/
-# rm  /n/netscratch/amin_lab/Lab/slim/STP/storage/test/round0/generated_proofs.json*
-# rm  /n/netscratch/amin_lab/Lab/slim/STP/storage/test/round0/sampler.pkl*
-# rm  /n/netscratch/amin_lab/Lab/slim/STP/storage/test/round0/sampler_ckpt/gen*
-# rm  /n/netscratch/amin_lab/Lab/slim/STP/storage/test/round0/sampler_ckpt/test*
-TOTAL_ROUNDS=12
+TOTAL_ROUNDS=24
 START_ROUND=0
-## For STP : reduce to pass 32 and pass 16
-## Reduce the data : 20K of leanwoorkbook
+
 # Loop through each round
 for ((ROUND=$START_ROUND; ROUND<TOTAL_ROUNDS; ROUND++)); do
     # Determine the model to use
     if [ "$ROUND" -eq 0 ]; then
         MODEL="$BASE_MODEL"
         SEED="$ROUND"
-        SPL=16
+        SPL=64
     else
         PREV_ROUND=$((ROUND-1))
         MODEL="$EXP_DIR/round${PREV_ROUND}/RL_model"
         SEED="$ROUND"
-        SPL=8
+        SPL=32
     fi
 
     # Define the experiment directory for the current round

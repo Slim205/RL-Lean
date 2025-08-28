@@ -1,9 +1,0 @@
-[
-    {
-        "dataset_path": "assets/data/training/lean_workbook_dedup.json",
-        "weight": 1,
-        "label": [
-            "leanworkbook"
-        ]
-    }
-]

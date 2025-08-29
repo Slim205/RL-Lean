@@ -4,13 +4,10 @@ We train a *conjecturer* to propose useful theorem statements for a *prover*, th
 <p align="center">
   <img src="photo.png" alt="Alt text" width="400"/>
 </p>
----
 
 ## Why formal math + Lean?
 
 Formal proofs are **machine-checkable**: the Lean compiler verifies every step, removing ambiguity compared to informal math. This also enables **synthetic data generation**—you don’t need to hand-annotate ground truth when the compiler can validate it.
-
----
 
 ## Method overview
 

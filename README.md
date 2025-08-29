@@ -1,5 +1,5 @@
 # RL-Lean
-
+![Alt text](photo.png)
 Reinforcement learning for **formal-math reasoning** with **Lean 4**.
 We train a *conjecturer* to propose useful theorem statements for a *prover*, then use those generated samples to improve the prover via SFT and RL.
 

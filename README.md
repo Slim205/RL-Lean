@@ -4,7 +4,6 @@ We train a *conjecturer* to propose useful theorem statements for a *prover*, th
 <p align="center">
   <img src="photo.png" alt="Alt text" width="400"/>
 </p>
-
 ---
 
 ## Why formal math + Lean?

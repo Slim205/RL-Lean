@@ -1,15 +1,13 @@
 # RL-Lean
-
 Reinforcement learning for **formal-math reasoning** with **Lean 4**.
 We train a *conjecturer* to propose useful theorem statements for a *prover*, then use those generated samples to improve the prover via SFT and RL.
-
----
+<p align="center">
+  <img src="photo.png" alt="Alt text" width="400"/>
+</p>
 
 ## Why formal math + Lean?
 
 Formal proofs are **machine-checkable**: the Lean compiler verifies every step, removing ambiguity compared to informal math. This also enables **synthetic data generation**—you don’t need to hand-annotate ground truth when the compiler can validate it.
-
----
 
 ## Method overview
 
@@ -69,11 +67,11 @@ Additionally, $R_{\text{base}}$ enforces batch-level diversity to prevent collap
 
 ## Dataset & Models
 
-* **Conjecturer-generated dataset:** ~**40k** samples (after deduplication) — [Link](https://huggingface.co/datasets/Slim205/Lean_conjecturer_data_v01)  
+* **Conjecturer-generated dataset:** ~**40k** samples (after deduplication) — [Slim205/Lean_conjecturer_data_v01](https://huggingface.co/datasets/Slim205/Lean_conjecturer_data_v01)  
 * **Base model:** DeepSeek-Prover-v1.5-SFT  
 * **Artifacts:**  
-  * **Conjecturer:** [Link](https://huggingface.co/Slim205/Lean_conjecturer_v1)  
-  * **Prover:** [Link](https://huggingface.co/Slim205/Lean_prover_v1)  
+  * **Conjecturer:** [Slim205/Lean_conjecturer_v1](https://huggingface.co/Slim205/Lean_conjecturer_v1)  
+  * **Prover:** [Slim205/Lean_prover_v1](https://huggingface.co/Slim205/Lean_prover_v1)  
 
 ---
 

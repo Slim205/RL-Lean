@@ -1,0 +1,32 @@
+max_tune_length: 2048
+
+model_name_or_path: "deepseek-ai/DeepSeek-Prover-V1.5-SFT"
+tokenizer_name_or_path: "deepseek-ai/DeepSeek-Prover-V1.5-SFT"
+trust_remote_code: True
+
+trainer:
+  tracker:
+    type: wandb
+    project: "SFT_Prover_V2"
+    name: "SFT_Prover_1"
+  load_checkpoint_path : './storage/conjecturer_V1/SFT_ckpt/ixgwk2n1/'
+
+  mp: p=f32,c=bfloat16
+
+  train_batch_size: 1024
+  num_train_steps: 303
+  steps_per_eval: 20
+
+  tensor_parallel_axes: ["mlp", "heads"]
+  per_device_eval_parallelism: 8
+  per_device_parallelism: 8
+save_freq: 302
+
+optimizer:
+  learning_rate: 1e-4
+  weight_decay: 0.0
+  beta1: 0.9
+  beta2: 0.95
+  epsilon: 1E-5
+  warmup: 20
+  min_lr_ratio: 1.0

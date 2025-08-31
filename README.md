@@ -14,7 +14,6 @@ Formal proofs are **machine-checkable**: the Lean compiler verifies every step, 
 * **Goal.** Train a conjecturer that proposes conjectures **neither too easy nor too hard** for the prover—i.e., maximally useful for training.
 * **Approach.** We use **PPO** with a reward shaped by pass rate, novelty/relatedness, and batch diversity.
 
----
 ### Reward 
 
 We define a base term:

@@ -19,3 +19,4 @@ Goedel-Prover/
 test.*
 ast_parser.py
 docs/
+get-pip*

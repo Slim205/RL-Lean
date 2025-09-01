@@ -88,6 +88,18 @@ sts = [st['new'] for st in old_statements  ]
 print(f'Number of conjecutres : {len(sts)}')
 print(f'Number of conjecutres after deduplication : {len(list(set(sts)))}')
 
+sts_dict = {}
+for x in old_statements : 
+    if x['new'] not in sts_dict : 
+        sts_dict[x['new']] = []
+    sts_dict[x['new']].extend(x['proof'])
+
+s = 0
+for x,y in sts_dict.items() : 
+    sts_dict[x] = list(set(y))
+    s+= len(sts_dict[x])
+print(f'Number of proofs : {s}')
+
 pattern_dict={ x : 0 for x in patterns }
 total = 0
 for st in list(set(sts)) : 

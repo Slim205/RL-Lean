@@ -5,12 +5,12 @@ model = AutoModelForCausalLM.from_pretrained(model_path)
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 
 # Push directly to HF
-model.push_to_hub("Slim205/Lean_prover_v1")
-tokenizer.push_to_hub("Slim205/Lean_prover_v1")
+model.push_to_hub("Slim205/Lean_conjecturer_v2")
+tokenizer.push_to_hub("Slim205/Lean_conjecturer_v2")
 
-from transformers import AutoModelForCausalLM, AutoTokenizer
+# from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model = AutoModelForCausalLM.from_pretrained("Slim205/Lean_prover_v1")
-tokenizer = AutoTokenizer.from_pretrained("Slim205/Lean_prover_v1")
+# model = AutoModelForCausalLM.from_pretrained("Slim205/Lean_conjecturer_v2")
+# tokenizer = AutoTokenizer.from_pretrained("Slim205/Lean_conjecturer_v2")
 
-print("Model and tokenizer loaded successfully 🚀")
+# print("Model and tokenizer loaded successfully 🚀")

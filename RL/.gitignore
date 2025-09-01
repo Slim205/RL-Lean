@@ -12,3 +12,6 @@ __pycache__/
 checkpoints/
 RL_model/
 SFT_model/
+conjecturer*/
+wandb/
+lean_conjecture_v2.jsonl

@@ -26,7 +26,7 @@ batch_size = 1
 num_proc = args.cpu
 print(num_proc)
 timeout = 60 
-url = "http://holy8a14202:12332"
+url = "http://holygpu8a22401:12332"
 logger.info("Testing cached mode")
 client = Lean4Client(base_url=url, disable_cache=False)
 

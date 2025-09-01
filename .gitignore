@@ -13,3 +13,10 @@ leandojo*
 *.pt
 __pycache__/
 logs/
+STP/
+statements_old/
+Goedel-Prover/
+test.*
+ast_parser.py
+docs/
+get-pip*

@@ -70,7 +70,7 @@ Additionally, $R_{\text{base}}$ enforces batch-level diversity to prevent collap
 * **Conjecturer-generated dataset:** ~**40k** samples (after deduplication) — [Slim205/Lean_conjecturer_data_v01](https://huggingface.co/datasets/Slim205/Lean_conjecturer_data_v01)  
 * **Base model:** DeepSeek-Prover-v1.5-SFT  
 * **Artifacts:**  
-  * **Conjecturer:** [Slim205/Lean_conjecturer_v1](https://huggingface.co/Slim205/Lean_conjecturer_v1)  
+  * **Conjecturer:** [Slim205/Lean-conjecturer](https://huggingface.co/Slim205/Lean-conjecturer)
   * **Prover:** [Slim205/Lean_prover_v1](https://huggingface.co/Slim205/Lean_prover_v1)  
 
 ---

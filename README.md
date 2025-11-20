@@ -80,5 +80,4 @@ Additionally, $R_{\text{base}}$ enforces batch-level diversity to prevent collap
 Built on and inspired by: **GodelLM**, **kimina-server**, **VERL**, **STP**, **Levanter**, **Lean Dojo** ,and **DeepSeek-Prover-v1.5**. Thanks to the authors and maintainers of these projects.
 
 ---
-
-
+For more details, please see the slides: [https://github.com/Slim205/RL-Lean/blob/master/Harvard%20Work.pdf]
